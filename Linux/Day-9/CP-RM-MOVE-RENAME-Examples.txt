@@ -1,0 +1,318 @@
+[root@localhost ~]# history 
+    1  history 
+    2  pwd
+    3  touch abc
+    4  ls
+    5  mkdir  /data  
+    6  ls
+    7  cp  abc  /data
+    8  ls  /data
+    9  touch  xyz  
+   10  cp /root/xyz  /data  
+   11  ls  /data
+   12  touch  rajeev 
+   13  ls
+   14  cp  ~/rajeev   /data  
+   15  ls /data  
+   16  ls
+   17  cp xyz   /
+   18  ls
+   19  ls  /
+   20  ls /data
+   21  ls
+   22  cp abc /data 
+   23  cp -i abc /data 
+   24  touch raj 
+   25  cp -i raj  /data 
+   26  ls /data
+   27  cp  raj  /data 
+   28  cp -i  raj  /data 
+   29  ls /data
+   30  mkdir  /fedora 
+   31  cp  /data  /fedora
+   32  cp -r    /data  /fedora
+   33  tree  /data  
+   34  tree /fedora
+   35  touch linux 
+   36  cp -r linux  /data
+   37  ls /data
+   38  ls /
+   39  cp  -rf  /etc  /data    
+   40  ls /data
+   41  mkdir  -p  /kr/network/cloud 
+   42  tree /kr
+   43  mkdir  /data-1
+   44  mkdir  /data-2
+   45  cp -rf  /kr   /data-1
+   46  cp -rvf  /kr   /data-2
+   47  cp -rf  /etc  /data-1
+   48  cp -rvf  /etc  /data-2
+   49  mkdir /data-3
+   50  cp -rf  /fedora   /data   /etc   /data-3 
+   51  ls  /data-3
+   52  cp  /etc/passwd   /etc/crontab /etc/group   /data-3
+   53  ls /data-3
+   54  ls  /etc  
+   55  mkdir  /data-4
+   56  mkdir  /data-5
+   57  cp -rf   /etc  /data-4
+   58  ls /data-4
+   59  cp -rf   /etc/*   /data-5
+   60  ls /data-5
+   61  ls  /etc 
+   62  ls /data-5
+   63  mkdir  /data-6
+   64  ls
+   65  cp -rf  a*    /data-6
+   66  ls /data-6
+   67  mkdir  /data-7
+   68  cp -rf   *.cfg    /data-7 
+   69  ls /data-7
+   70  touch  amit{1..5}.txt 
+   71  ls
+   72  cp -rf *.txt   /data-7
+   73  ls /data-7
+   74  mkdir /tmp/newdir  
+   75  ls /etc 
+   76  ls  /etc/*.conf  
+   77  ls  /etc/nfs*.conf  
+   78  ls  /etc/y*.conf  
+   79  ls  /etc/*.conf  
+   80  cp -rf   /etc/*.conf   /tmp/newdir  
+   81  ls /tmp/newdir
+   82  mkdir  /data-8
+   83  cp -rf  /etc/a*    /data-8
+   84  ls /data-8
+   85  cp -rf  /etc  /home  /usr/bin   /my-new-dir  
+   86  mkdir  /my-new-dir  
+   87  cp -rf  /etc  /home  /usr/bin   /my-new-dir  
+   88  cp -rf  /etc/passwd  /etc/group  /my-newdir-2
+   89  cp -rf /etc  /my-new-dir-2
+   90  ls  /my-new-dir-2
+   91  mkdir /dir1
+   92  cp -rf /etc  /dir1
+   93  cp -rf /etc  /dir2
+   94  ls /dir1
+   95  ls /dir2
+   96  /dir2
+   97  mkdir  /dir3
+   98  mkdir  /dir4
+   99  cp -rf  /etc  /dir3
+  100  ls /dir3
+  101  cp -rf  /etc/*  /dir4
+  102  ls /dir3/etc
+  103  ls
+  104  cp -rf  *   /tmp   
+  105  ls  /tmp 
+  106  mkdir  "new songs"
+  107  ls
+  108  cp -rf   "new songs"   /tmp  
+  109  ls /tmp 
+  110  mkdir kr\ network\ cloud 
+  111  ls
+  112  cp -rf  kr\ network\ cloud   /tmp  
+  113  cp -rf  'kr network cloud'   /data-8
+  114  cp -rf  "kr network cloud"   /data-7
+  115  ls  
+  116  ls  -l  abc 
+  117  date  
+  118  mkdir  /new-1
+  119  mkdir  /new-2
+  120  cp  abc  /new-1
+  121  ls  -l  /new-1/abc 
+  122  cp -p  abc  /new-2  
+  123  ls  -l  /new-2/abc 
+  124  pwd
+  125  echo hello india  > network 
+  126  ls
+  127  cat  network 
+  128  cp network   / 
+
+  130  su - krishna  
+  131  ls
+  132  mkdir /my-dir
+  133  rmdir  /my-dir
+  134  mkdir /my-dir
+  135  touch /my-dir/abc  
+  136  rmdir /my-dir
+  137  rm -rf  /my-dir
+  138  ls
+  139  rm abc  
+  140  rm -i  abc  
+  141  rm -f  abc  
+  142  s
+  143  ls
+  144  rm -rf   *.txt 
+  145  ls  
+  146  ls /
+  147  rm -rf   /data*
+  148* ls  
+  149  rm -rf   /dir*
+  150  ls  /
+  151  rm -rf  /new-1
+  152  rm -rf  /new-2
+  153  rm -rf  /new-*
+  154  ls /
+  155  rm -rf  /my-new-dir   /my-new-dir-2
+  156  ls  /
+  157  rm -rf /fedora   /network
+  158  ls  /
+  159  rm -rf /xyz  
+  160  ls  /
+  161  tree  /kr  
+  162  rm -rvf  /kr
+  163  ls  /
+  164  mkdir  /data  
+  165  cd /data
+  166  touch abc{1..5}
+  167  ls  
+  168  rm -rf  *  
+  169  ls
+  170  cd
+  171  ls
+  172  cp -rf *.cfg  /data
+  173  ls /data
+  174  ls
+  175  rm -rf  *.cfg  
+  176  ls
+  177  cp -rf /data/*   /root  
+  178  ls  
+  179  rm -rf  / 
+  180  touch abc  
+  181  mkdir  /linux  
+  182  ls 
+  183  mv abc  /linux
+  184  ls
+  185  ls  /linux
+  186  touch abc1 abc2
+  187  ls 
+  188  mv abc1 abc2  /linux
+  189  ls  /linux
+  190  mkdir redhat 
+  191  mv redhat   /linux
+  192  ls /linux 
+  193  ls
+  194  touch abc1
+  195  mkdir  /data-2
+  196  mkdir  /data-3
+  197  cp -rf abc1  /data-2
+  198  ls /data-2
+  199  ls 
+  200  mv abc1  /data-3
+  201  ls
+  202  ls /data-3
+  203  touch tajmahal  
+  204  ls
+  205  mv tajmahal mahal  
+  206  ls
+  207  mkdir  ibmdir
+  208  ls
+  209  mv ibmdir  ibm 
+  210  ls
+  211  mv xyz  ibm 
+  212  ls ibm  
+  213  touch tcs  
+  214  ls
+  215  mv  tcs  newtcs  
+  216  ls
+  217  rename newtcs  tcs newtcs 
+  218  ls
+  219  rename mahal tajmahal  mahal 
+  220  ls
+  221  rename tajmahal  mahal 
+  222  rename tajmahal  mahal tajmahal 
+  223  ls 
+  224  mkdir  /kr  
+  225  ls /
+  226  mv  /kr   /krnetwork  
+  227  ls  /
+  228  cd  /
+  229  ls
+  230  rename krnetwork  kr  krnetwork
+  231  ls
+  232  cd
+  233  echo  hello > abc  
+  234  cat abc 
+  235  cat abc  >  /tmp/new-abc  
+  236  mkdir /sqldata  
+  237  mkdir  /backup  
+  238  touch  /sqldata/abc{1..3}
+  239  ls /sqldata
+  240  ls /backup
+  241  rsync -av   /sqldata   /backup
+  242  ls /backup
+  243  ls /backup/sqldata
+  244  touch  /sqldata/abc4
+  245  rsync -av   /sqldata   /backup
+  246  ls /backup/sqldata
+  247  touch  /sqldata/abc{5,6}
+  248  rsync -av   /sqldata   /backup
+  249  echo  hello  >  /sqldata/abc1
+  250  cat  /backup/sqldata/abc1
+  251  cat  /sqldata/abc1
+  252  rsync -av /sqldata  /backup
+  253  cat  /sqldata/abc1
+  254  cat  /backup/sqldata/abc1
+  255  echo  hello india >  /sqldata/linux 
+  256  cat /sqldata/linux 
+  257  ls  /backup/sqldata
+  258  rsync -av  /sqldata  /backup
+  259  ls  /sqldata
+  260  ls  /backup/sqldata
+  261  cat /sqldata/linux 
+  262  cat /backup/sqldata/linux 
+  263  touch  /mydir
+  264  rsync  /mydir  /backup
+  265  ls  /backup
+  266  mkdir  /newdata
+  267  touch /newdata/abc{1,2,3}
+  268  rsync  /newdata   /backup
+  269  rsync -av  /newdata   /backup
+  270  crontab -l  
+  271  crontab -e 
+  272  crontab -l  
+  273  touch  /sqldata/abc{8,9}
+  274  ls /sqldata
+  275  ls  /backup/sqldata
+  276  tail -f  /var/log/cron 
+  277  ls /backup/sqldata
+  278  ls /sqldata
+  279  crontab -e  
+  280  tail -f  /var/log/cron 
+  281  ls /backup/sqldata
+  282  ls /sqldata
+  283  crontab   -r 
+  284  crontab   -l  
+  285  crontab   -e 
+  286  ls /var/spool/cron
+  287  touch abc
+  288  ls 
+  289  ls -i abc  
+  290  find /  -name  "abc"
+  291  find /  -inum  35340085
+  292  mkdir  /cloud1
+  293  mkdir  /cloud2
+  294  cp abc  /cloud1
+  295  ls -i abc  
+  296  ls -i  /cloud1/abc 
+  297  mv  abc  /cloud2  
+  298  ls -i  /cloud2/abc 
+  299  touch  vinit 
+  300  touch  /vinit 
+  301  touch  /tmp/vinit 
+  302  find  /  -name "vinit"
+  303  ls -i vinit  
+  304  ls -i ./vinit  
+  305  ls -i /vinit  
+  306  ls -i vinit  
+  307  ls -i /tmp/vinit  
+  308  find  /  -name "vinit"
+  309  find  /  -name "vinit" -exec ls -i  {} \;
+  310  cp /etc/crontab  /data
+  311  ls /data
+  312  ls -l  /etc/crontab 
+  313  ls -l /data/crontab 
+  314  rm -rf /etc/crontab 
+  315  cp /data/crontab  /etc  
+  316  ls -l /etc/cron
+  317  ls -l /etc/crontab 

@@ -1,0 +1,175 @@
+[root@station10 ~]# history 
+    1  which rpm 
+    2  which yum 
+    3  rpm -qa  rpm 
+    4  rpm -qa  yum 
+    5  yum repolist
+    6  lsblk 
+    7  mkdir  /redhatdvd 
+    8  cd /run/media/root/RHEL-8-0-0-BaseOS-x86_64
+    9  ls
+   10  cp -rf *    /redhatdvd
+   11  cd
+   12  ls  /redhatdvd
+   13  ls  /redhatdvd/AppStream
+   14  ls  /redhatdvd/BaseOS
+   15  eject  
+   16  cd /etc/yum.repos.d
+   17  ls
+   18  vim  redhatdvd.repo 
+   19  cat   redhatdvd.repo 
+   20  cd
+   21  yum clean all 
+   22  cd -
+   23  vim  redhatdvd.repo 
+   24  cd
+   25  yum clean all 
+   26  cd -
+   27  vim redhatdvd.repo 
+   28  cd
+   29  yum clean all 
+   30  yum  repolist 
+   31  rpm -qa  | wc -l  
+   32  expr 4672 + 1658
+   33  expr 6330 - 1320 
+   34  yum  repolist 
+   35  yum list 
+   36  yum list |  grep vsftpd  
+   37  yum list |  grep tree
+   38  yum list |  grep targetcli 
+   39  yum install  vsftpd  
+   40  yum install  vsftpd    -y  
+   41  yum install ftp  lftp  -y  
+   42  yum install targetcli  
+   43  yum install samba*
+   44  yum list  |  grep  nagios
+   45  yum install nagios 
+   46  yum install nagios* 
+   47  yum list |  grep httpd
+   48  yum install  httpd  -y 
+   49  yum remove ftp 
+   50  yum history
+   51  history 
+   52  yum history
+   53  yum install ftp  -y 
+   54  yum history
+   55  yum history |  grep -i  remove
+   56  yum history |  grep -i  install 
+   57  rpm -qa  | wc -l 
+   58  yum list installed 
+   59  rpm -qa  vsftpd 
+   60  yum list installed  vsftpd
+   61  yum remove vsftpd -y
+   62  yum list installed  vsftpd
+   63  rpm -qa  vsftpd 
+   64  rpm -qi ftp 
+   65  yum info ftp 
+   66  yum  list  all 
+   67  yum  list  all  |  ftp
+   68  yum  list  all  |  grep ftp
+   69  yum list 
+   70  yum grouplist 
+   71  yum  groupinfo 'Virtualization Host'
+   72  yum  grouplist 'Virtualization Host'
+   73  yum  groupinstall   'Virtualization Host'
+   74  yum grouplist 
+   75  yum  groupinstalll  'Server with GUI'  -y
+   76  yum  groupinstall  'Server with GUI'  -y
+   77  which createrepo
+   78  find  /redhatdvd  -name  "createrepo*"
+   79  yum install createrepo* -y
+   80  which createrepo
+   81  ls  /redhatdvd/AppStream
+   82  ls  /redhatdvd/AppStream/repodata
+   83  ls  /redhatdvd/BaseOS/repodata
+   84  rm -rf /redhatdvd/AppStream/repodata
+   85  rm -rf /redhatdvd/BaseOS/repodata
+   86  ls  /redhatdvd/AppStream
+   87  ls  /redhatdvd/BaseOS
+   88  yum clean all 
+   89  yum repolist
+   90  ls  /redhatdvd/BaseOS
+   91  createrepo -v  /redhatdvd/BaseOS
+   92  ls  /redhatdvd/BaseOS
+   93  ls  /redhatdvd/AppStream
+   94  yum clean all 
+   95  yum repolist
+   96  createrepo -v  /redhatdvd/AppStream
+   97  ls  /redhatdvd/AppStream
+   98  ls  /redhatdvd/BaseOS
+   99  yum clean all 
+  100  yum  repolist
+  101  yum remove trr
+  102  yum remove tree
+  103  yum  list |  grep   tree
+  104  yum search tree
+  105  yum install  tree -y
+  106  ls  /redhatdvd
+  107  cat  /redhatdvd/RPM-GPG-KEY-redhat-release
+  108  ls
+  109  vim redhatdvd.repo  
+  110  vim /etc/yum.repos.d/redhatdvd.repo 
+  111  yum clean all 
+  112  yum install dhcp-server  
+  113  yum install openldap*
+  114  rm -rf /redhatdvd/
+  115  rm -rf  /etc/yum.repos.d/redhatdvd.repo 
+  116  yum clean all 
+  117  yum repolist
+  118  lsblk 
+  119  ls  /run/media/root/RHEL-8-0-0-BaseOS-x86_64
+  120  ls  /run/media/root/RHEL-8-0-0-BaseOS-x86_64/AppStream
+  121  ls  /run/media/root/RHEL-8-0-0-BaseOS-x86_64/BaseOS
+  122  vim  /etc/yum.repos.d/redhatdvd.repo 
+  123  yum clean all 
+  124  yum  repolist
+  125  ls /
+  126  lsblk 
+  127  mount  /dev/sr0  /mnt  
+  128  lsblk 
+  129  ls  /mnt 
+  130  ls  /mnt/BaseOS
+  131  ls  /mnt/AppStream
+  132  vim /etc/yum.repos.d/redhatdvd.repo 
+  133  yum clean all 
+  134  yum repolist
+  135  lsblk 
+  136  lsblk  -f
+  137  history 
+  138  vim /etc/fstab   ==> do this entry in bottom and save this file
+/dev/sr0                                  /mnt                    iso9660  defaults      0 0
+
+
+:wq
+
+  139  reboot
+
+  141  lsblk 
+  142  ls /mnt/AppStream
+  143  ls /mnt/BaseOS
+  144  cat /etc/yum.repos.d/redhatdvd.repo 
+  145  yum repolist
+  146  yum-config-manager
+  147  yum  install  dnf-utils  -y
+  148  yum-config-manager
+  149  rm -rf  /etc/yum.repos.d/redhatdvd.repo 
+  150  ls /mnt/BaseOS
+  151  ls /mnt/AppStream
+  152  yum-config-manager --add-repo=file:///mnt/BaseOS
+  153  ls  /etc/yum.repos.d
+  154  yum-config-manager --add-repo=file:///mnt/AppStream
+  155  ls  /etc/yum.repos.d
+  156  cat  /etc/yum.repos.d/mnt_AppStream.repo 
+  157  cat  /etc/yum.repos.d/mnt_BaseOS.repo 
+  158  vim  /etc/yum.conf 
+  159  cat   /etc/yum.conf 
+  160  yum clean all 
+  161  yum  repolist
+  162  vim /etc/yum.conf 
+  163  echo "gpgcheck=0"  >>  /etc/yum.repos.d/mnt_AppStream.repo 
+  164  echo "gpgcheck=0"  >>  /etc/yum.repos.d/mnt_BaseOS.repo 
+  165  cat /etc/yum.repos.d/mnt_AppStream.repo 
+  166  cat /etc/yum.repos.d/mnt_BaseOS.repo 
+  167  history 
+
+=======================================

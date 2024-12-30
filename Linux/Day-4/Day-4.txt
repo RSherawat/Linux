@@ -1,0 +1,60 @@
+========================================
+Day-4 Session
+========================================
+
+File and Directory Creation
+
+========================================
+
+
+Linux OS ===>  /  ==> root partition or parent directory or Main partition or main directory
+               
+                  ==> default data  
+                  ==> custom data
+
+========================================
+
+mycomputer  or C Drive  ==>  /  ==> Sub Directory ==> 1- default Directory  2- Custom Directory
+
+========================================
+
+/  ==> around 19 Directory 
+   ==> 17 Directory  ==> OS operate 
+   ==>  2 Directory  ==> user's home account ==> 1- /root     2-  /home 
+
+========================================
+
+touch  ==> Blank File Create
+mkdir  ==> to create directory
+ls     ==> to check data listing 
+cd     ==> to enter into any directory
+pwd    ==> to check my current working directory or present working directory
+
+========================================
+
+[ root @ localhost  ~ ] # pwd
+
+                   /root
+
+[ deepak @ localhost ~ ] $ pwd
+
+                  /home/deepak
+
+[ soniya @ localhost ~ ] $ pwd
+
+                  /home/soniya
+
+======================================
+
+cd directoryname
+cd /
+cd ~
+cd 
+cd /root
+cd ..
+cd  ../..
+cd  -
+cd .
+
+#cat  <options>   filename
+=====================================

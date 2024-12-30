@@ -1,0 +1,296 @@
+==================================
+FIND and Locate Command Examples
+==================================
+
+Windows ==> data location ==> find out
+
+
+My Computer  => data serach ==> data ==> with location ==> screen 
+D:\    ==> Search ==> data ==> screen 
+
+=================================
+
+Linux  ==> Root Partition ==> Present ==>  /  ==> 19 + addon 
+
+=================================
+locate ==> basic operation 
+find   ==> advance operation 
+=================================
+
+find OR locate  ==> both commands are use to find out the location of any file and directory
+                    on any location.
+
+# locate  <options>    <name>
+
+# find <location>  <options>    <argument or name>
+================================
+# find  <location>  <options>   <name or argument >
+
+
+Options:-
+
+-name
+-iname
+-inum
+-size
+-type
+-empty
+-perm
+-exec
+-user
+-group
+-atime
+-amin
+-cmin
+-ctime
+-mtime
+-mmin
+........so on 
+
+========================
+[root@localhost ~]# history 
+    1  history 
+    2  which find 
+    3  which locate 
+    4  locate  useradd 
+    5  updatedb 
+    6  locate  useradd 
+    7  locate  -n 5 useradd
+    8  locate  USERADD
+    9  locate -i   USERADD
+   10  locate  crontab 
+   11  find  /  -name   useradd 
+   12  find  /etc   -name   useradd 
+   13  find  /usr   -name   useradd 
+   14  find  /  -name   useradd* 
+   15  find  /  -name   *useradd* 
+   16  find /  -name passwd 
+   17  find /etc   -name passwd 
+   18  find /var   -name passwd 
+   19  find /usr   -name passwd 
+   20  find  /etc -name crontab 
+   21  find  /etc -name  *crontab* 
+   22  touch manish
+   23  locate manish 
+   24  updatedb 
+   25  locate manish 
+   26  find  /  -name  manish
+   27  find   -name  manish
+   28  find  .  -name  manish
+   29  find  ~  -name  manish
+   30  find  /root   -name  manish
+   31  find /etc -name "*.conf"
+   32  find /etc -name "a*.conf"
+   33  find /etc -name "y*.conf"
+   34  find /etc -name "*.conf"
+   35  find /etc -name "*.conf"  >  /conf  
+   36  cat /conf 
+   37  find /etc -name userdel  
+   38  find /usr  -name userdel  
+   39  find / -name userdel  
+   40  ls
+   41  ls -i manish 
+   42  find  /  -inum 35340034
+   43  find /  -name passwd
+   44  find /  -name  Passwd
+   45  find /  -iname  Passwd
+   46  find  /  -iname  USERADD 
+   47   
+   48  mkdir  /data 
+   49  cd /data
+   50  touch  abc1 abc2 abc3
+   51  mkdir d1 d2 d3
+   52  ls
+   53  ls  -F
+   54  cd
+   55  find  /data  -type  f
+   56  find  /data  -type  f  | wc -l  
+   57  find  /data  -type  d
+   58  find  /data  -type  l 
+   59  find /data  -empty
+   60  echo hello  >  /data/abc1 
+   61  find /data  -empty
+   62  find /data  !  -empty
+   63  find  /data  -type f 
+   64  find  /data  -type f  -empty
+   65  find  /data  -type f  ! -empty
+   66  find  /data  -type d  
+   67  find  /data  -type d  -empty
+   68  touch  /data/d3/linux 
+   69  find  /data  -type d  -empty
+   70  find  /data  -type d  ! -empty
+   71  ls /etc 
+   72  ls /etc  | wc -l
+   73  find  /etc -type f 
+   74  find  /etc -type d
+   75  find  /etc -type l
+   76  find  /etc -type f  | wc -l  
+   77  find  /etc -type d  | wc -l  
+   78  find  /etc -type l  | wc -l  
+   79  find /etc -type l 
+   80  find /etc -type l  |  grep  "system-release"
+   81  ls -l  /etc/system-release
+   82  find /etc -type l  |  grep  "redhat-release"
+   83  find /etc -type f  |  grep  "redhat-release"
+   84  find /etc -type f -empty
+   85  cat /etc/crypttab
+   86  find /etc -type f -empty | wc -l 
+   87  find /etc -type f ! -empty | wc -l 
+   88  du -sh  /etc  
+   89  du -sh  /home 
+   90  du -sh  /etc/passwd
+   91  du -sh  /etc/crontab 
+   92  find  /etc  -size  +2M  
+   93  du -sh  /etc/udev/hwdb.bin
+   94  du -sh  /etc/selinux/targeted/policy/policy.31
+   95  find  /etc  -size  -2M  
+   96  find  /etc  -size  +2M -size -10M  
+   97  du -sh  /etc/selinux/targeted/policy/policy.31
+   98  du -sh /etc/udev/hwdb.bin
+   99  find /etc  -size +2M -type f  
+  100  find  /etc -perm 000
+  101  ls -l  /etc/shadow
+  102  find  /etc  -name  -perm  777
+  103  find  /etc  -perm  777
+  104  touch /tmp/rajeev 
+  105  find /  -name rajeev
+  106  find  /tmp  -empty
+  107  echo hello >  /tmp/rajeev 
+  108  find /tmp -name rajeev
+  109  find /tmp -empty
+  110  find /tmp ! -empty
+  111  find /etc -name useradd
+  112  find /etc -name user
+  113  du -sh /etc/systemd/user
+  114  du -sh /etc/xdg/systemd/user
+  115  du -sh /etc/dconf/profile/user
+  116  find /etc -name user
+  117  find /etc -name user -exec ls -l  {}
+  118  find /etc -name user -exec ls -l  {}  \;
+  119  find /etc -name passwd -exec ls -l  {}  \;
+  120  find /etc -name passwd
+  121  find /etc -name passwd -exec du -sh {} \;
+  122  find /etc -name passwd -exec ls -i {}  \;
+  123  find -etc -name  passwd |  ls -l 
+  124  find /etc -name  passwd |  ls -l 
+  125  find /etc -name  passwd -exec du -sh {} \; 
+  126  ls /data
+  127  mkdir  /linux
+  128* 
+  129  find  /data -type f -exec cp -rf  {}  /linux \;
+  130  ls  /linux 
+  131  cat /linux/abc1
+  132  find /etc -name  passwd 
+  133  mkdir  /redhat 
+  134  ls /data
+  135  find /data  -type f
+  136  find /data  -type f -exec cp -rf {}  /redhat 
+  137  find /data  -type f -exec cp -rf {}  /redhat   \;
+  138  ls  /redhat
+  139  find /redhat -empty
+  140  find /redhat -empty -exec rm -rf {}   \;
+  141  ls  /redhat
+  142  find /etc -size  +2M 
+  143  find /etc -size  +2M  >  /new-file  
+  144  cat /new-file 
+  145  find /etc -size  +2M  -exec cp -rf  {}   /redhat  \;
+  146  ls  /redhat
+  147  find  /redhat  -size +2M -type f 
+  148  find  /redhat  -size +2M -type f -exec rm -rf  {}  \;
+  149  find / -name useradd
+  150  find /etc  -size +2M  -size -10M 
+  151  find /etc  -size +2M  -size -10M   -exec du -sh {}  \;
+  152  find /etc  -size +2M  -size -10M -type f  -exec du -sh {}  \;
+  153  find /etc  -size +2M  -size -10M -type f  -exec ls -i   \;
+  154  find /etc  -size +2M  -size -10M -type f  -exec ls -i {}  \;
+  155  find /etc  -size +2M  -size -10M
+  156  find /etc  -size +2M  -size -10M |  grep policy
+  157  find /etc  -size +2M  -size -10M |  wc -l 
+  158  useradd  harry
+  159  su - harry 
+  160  find  /  -user  harry  
+  161  find  /  -group   harry  
+  162  mkdir  /backup  
+  163  find  /  -user   harry 
+  164  find  /  -user   harry   -exec cp -rf  {}  /backup  \;
+  165  ls /backup
+  166  man find 
+  167  find /etc  -name "*.conf"
+  168  find /etc  -name "*.py"
+  169  find /usr  -name "*.py"
+  170  history 
+
+========================
+
+
+
+
+
+==============================
+locate commnad examples:-
+==============================
+
+    1  ls /
+    2  which locate 
+    3  which find  
+    4  rpm  -q  -f  /usr/bin/locate
+    5  rpm  -q  -f  /usr/bin/find 
+    6  rpm -q -a  mlocate 
+    7  rpm -q -a  findutils  
+    8  which locate 
+    9  which find 
+   10  cat  /etc/default/useradd  
+   11  locate  useradd 
+   12  updatedb  
+   13  locate  -S
+   14  locate useradd 
+   15  locate usermod  
+   16  locate userdel
+   17  locate smb.conf 
+   18  cat  /etc/samba/smb.conf
+   19  locate  useradd
+   20  locate  USERADD 
+   21  locate  -i  USERADD 
+   22  locate useradd 
+   23  locate -n 5  useradd 
+   24  locate -n 2  useradd 
+   25  locate useradd
+   26  find  /  -name useradd
+   27  locate useradd
+   28  find  /  -name useradd*
+   29  find  /  -name  *useradd*
+   30  find  /etc  -name  *useradd*
+   31  find  /usr  -name  *useradd*
+   32  touch abc  
+   33  ls
+   34  locate abc  
+   35  touch   tcs  
+   36  locate tcs
+   37  touch  ibmdata  
+   38  locate  ibmdata 
+   39  ls
+   40  locate -S
+   41  updatedb 
+   42  locate -S
+   43  locate ibmdata  
+   44  touch   krish
+   45  locate  krish 
+   46  find  /  -name krish
+   47  updatedb 
+   48  locate -S
+   49  locate krish
+   50  ls -i
+   51  ls  
+   52  ls -i
+   53  find  /  -name abc  
+   54  find  /  -inum  35340034
+   55  history 
+   56  find  /   -name abc  
+   57  find  -name abc  
+   58  pwd
+   59  find  /root  -name abc  
+   60  find  .  -name abc  
+   61  history 
+
+
+

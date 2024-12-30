@@ -1,0 +1,118 @@
+[root@localhost ~]# history 
+    1  runlevel 
+    2  systemctl get-default  
+    3  rpm -qa  | wc -l  
+    4  yum  repolist
+    5  lsblk 
+    6  df -h
+    7  mount   /dev/sr0   /mnt  
+    8  lsblk  
+    9  ls  /mnt  
+   10  ls  /mnt/AppStream
+   11  ls  /mnt/BaseOS
+   12  vim /etc/yum.repos.d/redhatdvd.repo  
+   13  vi /etc/yum.repos.d/redhatdvd.repo  
+   14  ls  /etc/yum.repos.d
+   15  cat   /etc/yum.repos.d/redhatdvd.repo 
+   16  yum clean all 
+   17  yum  repolist
+   18  rpm -qa  | wc -l 
+   19  expr 1658  +  4672
+   20  expr  6330  -  417
+   21  which tree
+   22  which vim  
+   23  yum install  vim*   -y 
+   24  which  vim  
+   25  which  vi
+   26  which  tree
+   27  yum install  tree  -y  
+   28  mkdir -p  /data/a1/a2/a3/a4
+   29  tree  /data
+   30  yum  grouplist
+   31  yum  groupinstall  "Server with GUI"  -y 
+   32  rpm -qa  | wc   -l  
+   33  systemctl isolate graphical.target 
+   34  systemctl isolate  graphical.target 
+   35  systemctl  set-default  graphical.target 
+   36  systemctl reboot
+   37  lsblk  
+   38  cat  /etc/yum.repos.d/redhatdvd.repo 
+   39  mount  /dev/sr0  /mnt/
+   40  lsblk  
+   41  yum clean all 
+   42  yum repolist
+   43  df -Th  
+   44  vi /etc/fstab 
+   45  systemctl daemon-reload
+   46  reboot 
+   47  ls  /mnt  
+   48  lsblk  
+   49  yum repolist
+   50  cat  /etc/fstab 
+   51  df  -Th 
+   52  umount  /mnt 
+   53  vim /etc/fstab 
+   54  systemctl daemon-reload  
+   55  rm -rf /etc/yum.repos.d/redhatdvd.repo 
+   56  yum clean all
+   57  ls  /etc/yum.repos.d
+   58  cat   /etc/yum.repos.d/redhat.repo 
+   59  yum install  httpd  -y
+   60  yum  update  -y  
+   61  ls  /etc/yum.repos.d
+   62  ifconfig 
+   63  ifdown ens160
+   64  ifup ens160
+   65  ifconfig 
+   66  ping google.com
+   67  ls  /etc/yum.repos.d
+   68  yum install   https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+   69  ls /etc/yum.repos.d
+   70  yum clean all 
+   71  yum repolist
+   72  yum install  glances  -y
+   73  yum list  |  grep glances
+   74  yum install  htop  -y
+   75  df  -h
+   76  mount  /dev/sr0 /mnt 
+   77  ls  /mnt/AppStream
+   78  ls  /mnt/BaseOS
+   79  yum install  glances  -y
+   80  vim /etc/yum.repos.d/redhatdvd.repo  
+   81  cd
+   82  yum clean all
+   83  yum repolist
+   84  yum install  glances  -y
+   85  rm -rf  /etc/yum.repos.d/redhatdvd.repo 
+   86  umount  /mnt  
+   87  ls  /etc/yum.repos.d
+   88  subscription-manager  register --username linuxwaleguruji  --password  Fedora@123   --auto-attach
+   89  ls  /etc/yum.repos.d
+   90  cat   /etc/yum.repos.d/redhat.repo 
+   91  yum clean all
+   92  yum repolist
+   93  yum install glances  -y 
+   94  yum install zsh*  
+   95  wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+   96  ls
+   97  um install  epe
+   98  yum install  epel-release-latest-8.noarch.rpm  -y
+   99  ls
+  100  cd Downloads/
+  101  ls
+  102  cd
+  103  wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+  104  wget https://download.teamviewer.com/download/linux/teamviewer-host.x86_64.rpm
+  105  ls
+  106  yum install  teamviewer-host.x86_64.rpm  -y
+  107  ls Downloads
+  108  yum install Downloads/anydesk-6.1.1-1.el8.x86_64.rpm 
+  109  vim /etc/yum.repos.d/google.repo  
+  110  c
+  111  yum clean all  
+  112  yum repolist
+  113  yum install google-chrome-stable
+  114  yum install  vsftpd  httpd  
+  115  yum install  mariadb* -y
+  116  htop
+  117  glances 

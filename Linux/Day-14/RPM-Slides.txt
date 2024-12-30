@@ -1,0 +1,125 @@
+=================================================================
+  
+                RPM Management
+                     OR
+    How we can install any RPM on rhel OS as per demands ?
+
+=================================================================
+
+What is RPM  ?
+
+1- RPM basically is a set of instruction defined by the developers
+   to install any application or services or commands .
+
+2- if we have rpm building knowledge we can also build rpm as per needs.
+
+3- it is also called .exe files in windows operating  system.  
+
+================================================================
+RHEL-8 ISO Image
+                 ======> Folders ==> number of RPMs 
+RHEL-7 ISO Image
+
+================================================================
+RPM installation concept ?
+
+1- During the OS Installation  ==> As per Groups ==> server with GUI OR Minimal Installatation 
+2- After the OS Installation 
+
+================================================================
+
+RHEL-8 ==> Folder  ==> 6500 RPMs ==> 1320 rpms   already installed 
+
+
+================================================================
+Remaining RPMs
+
+
+Choice-1  We can Conncet ISO image and we can copy the rpms folder to install any rpm in my machine
+Choice-2  Direct using OS Vendor Based 
+Choice-3  Application vendor => Internet web sites which provides the free or paid rpms
+Choice-4  we can also install some inhouse rpms which is developed by any developer in office setup.
+
+================================================================
+
+RPM installation Tools OR Utility OR Commands ?
+
+1- rpm    ==> it is use to install any rpms but without automatic depandancies resolution.
+              we need to install manually required rpm or depandancies first before installing
+              any actual application rpms step by step.
+
+2- yum    ==> It is an Smart Utility which is also use to install any rpms with automatic
+              depandancies Resolution . basically it is an advance concept of rpm command.
+
+# rpm  -i  <packagename>  ==> we need to define rpms location as well + we need to install first dependancies
+
+     OR
+
+# yum install packagename ===> repo file  ==> read  ==> location [one time]
+
+=================================================================
+1- local to local collection 
+2- network based server or internet based url
+================================================= ===============
+google chrome donwload for rhel 8 
+anydesk install downlaod for rhel 8 
+================================================================
+***************************************************************
+RPM naming Syntax:
+1-  RPM name
+2-  Version  
+3-  Release  ==> el5     el6    el7    el8 
+4-  Architecture ==>  32 Bit  or 64 Bit ===>     x86_64      .noarch
+5-  Extention  ==> .rpm
+****************************************************************
+In rhel-7 iso image ==> Single Folder ==>  Packages  <=== RPMs
+****************************************************************
+In rhel-8 iso image ==> Double Folder ==> BaseOS     ==> Packages + repodata 
+                                      ==> AppStream  ==> Packages + repodata 
+****************************************************************
+Chapter-1  How we can manage or install rpm using rpm command on any machine  ?
+Chapter-2  How we can manage or install rpm using yum command on any machine ?
+
+================================================================
+Chapter-1  How we can manage or install rpm using rpm command on any machine  ?
+
+Objective:-
+
+1- Querry     # rpm -q   <short-package-name>   OR  # rpm -qa  tree  OR  # rpmquery  tree 
+2- Erase      # rpm -e   <short-package-name>   OR  # rpm -e   tree
+3- Install    # rpm -i   <full-package-name>    OR  # rpm -i /redhatdvd/AppStream/Packages/xyz----.rpm
+4- update     # rpm -U   <Full-package-name>    OR  # rpm -U /xyz-location/new-rpm-name........rpm
+
+================================
+
+================================================================
+www.redhat.com
+================================================================
+Step-1  Connect ISO image for local practise . and copy all rpm folders into any directory.
+================================================================
+Step-2  do the practise with rpm command ?
+================================================================
+Step-3 do the same practise with yum command ?
+================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

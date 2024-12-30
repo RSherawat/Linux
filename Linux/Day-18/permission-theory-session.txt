@@ -1,0 +1,257 @@
+========================================
+      Permissions 
+
+========================================
+machine <== OS <== User <== login
+
+1- Remote login
+2- local to login
+========================================
+1- Activity using any xyz commands
+2- data creation 
+========================================
+Types of permissions ?
+
+1- Command executuion based rights  permissions
+2- File and directory based permissions
+========================================
+1- default permissions OR automatic permission  ===> Using Umask Value 
+2- custom permissions  ==> chmod and setfacl 
+========================================
+#  touch  /abc     ==> default permissions
+#  mkdir  /data    ==> default permissions
+
+========================================
+
+# ls  -l  /abc   OR  #  ll  /abc  
+
+# ls  -ld  /data 
+
+========================================
+permissions  ==> Three Attributes
+
+Read         ==>   r              ==>  4
+
+Write        ==>   w              ==>  2
+ 
+Execute      ==>   x              ==>  1
+
+==================================================
+                symoblic code      Numeric Code
+==================================================
+none         ==>   -                  0
+==================================================
+read  write  execute  ==> r w x  ==> rwx
+                      ==> 4 2 1  ==> 7
+                      ==> r - -  ==> 4
+                      ==> r - x  ==> 5
+                      ==> - - -  ==> 0
+==================================================
+pair   ==>  r - -     OR  4+0+0  ==> 4
+       ==>  r - x     OR  4+0+1  ==> 5
+       ==>  r w -     OR  4+2+0  ==> 6
+       ==>  r w x     OR  4+2+1  ==> 7
+       ==>  - - -     OR  0+0+0  ==> 0
+==================================================
+r  ==> 4
+w  ==> 2
+x  ==> 1
+==================================================
+
+File OR directory     ==> Three Blocks
+
+First Block   ==> r w x  OR 7
+Second Block  ==> r w x  OR 7
+Third Block   ==> r w x  OR 7
+==================================================
+File or directory  ==> Three Block  ==> 7 7 7  ==> highest permissions
+                                    ==> 0 0 0  ==>  lowest permissions 
+
+==================================================
+File or Directory ==> Three Block 
+
+First Block  ==>  owner
+Second Block ==>  group owner/members
+Third Block  ==>  others users/groups 
+=================================================
+Note:-
+
+Owner — the user who creates and owns a file or folder.
+Group — all users who are members of the same group.
+Others — all other users on the system who are neither the owner nor members of a group.
+=================================================
+
+# mkdir  /data 
+
+owner   ==> root 
+group   ==> root 
+
+deepak 
+sumit
+tcs <== user1 user2 user3
+
+================================================
+First-Bit     First Block    Second Block     Third Block 
+               Owner           Group        Other users/groups
+================================================ 
+
+Permission apply ==> 
+
+1- chmod     ==> Owner group Others  ==> one short ==> overall ==> but you can not mentioned 
+                                                                   the particular user/groupname 
+2- setfacl   ==> name based permission  ==> pariticular user / groups 
+
+================================================
+
+# chmod  owner group others   <file or directory-name>
+
+# setfacl  -m  u:username:r-x     /data 
+               g:groupname:rwx    /data
+
+================================================
+default permisisons
+================================================
+root ==> 
+
+Directory  ==>    7      5        5
+                Owner   group    Others
+                rwx     r-x      r-x
+
+
+File      ==>    6       4        4
+                owner   group    others
+                 rw-     r--      r--
+               
+
+================================================
+deepak ==> 
+
+Directory  ==>    7      7        5
+                Owner   group    Others
+                rwx     rwx      r-x
+
+
+File      ==>    6       6       4
+                owner   group    others
+                 rw-     rw-      r--
+
+===============================================
+
+Umask Value  ?
+
+Umask always define the default permissions of any upcomming file and directory.
+
+===============================================
+default umask value for super user account ==>  0 2 2
+"  "   "   "    "   "   normal user "  "   ==>  0 0 2
+===============================================
+root  ==> default permissions 
+
+directory  ==>   7 7 7
+              -  0 2 2
+                ======
+                 7 5 5
+                ======
+
+file       ==>   6 6 6
+              -  0 2 2
+                ======
+                 6 4 4
+                ======
+==============================================
+deepak 
+
+directory  ==>   7 7 7
+              -  0 0 2
+                ======
+                 7 7 5
+                ======
+
+
+file       ==>   6 6 6
+              -  0 0 2
+                ======
+                 6 6 4
+                ======
+=========================================================
+How we can check the umask value or how we can change it
+=========================================================
+read
+change
+=========================================================
+
+
+ [root@localhost ~]# umask  
+0022
+[root@localhost ~]# 
+[root@localhost ~]# umask  222
+[root@localhost ~]# 
+[root@localhost ~]# umask  
+0222
+[root@localhost ~]# touch  /ibm  
+[root@localhost ~]# mkdir  /tcs  
+[root@localhost ~]# 
+[root@localhost ~]# ls -l  /ibm 
+-r--r--r--. 1 root root 0 Dec 17 09:35 /ibm
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld /tcs  
+dr-xr-xr-x. 2 root root 6 Dec 17 09:35 /tcs
+[root@localhost ~]# vim  .bashrc
+
+go in bottom and add this line
+
+umask 222
+
+:wq
+
+===================================
+How we can remove the umask value ?
+
+[root@localhost ~]# vim  .bashrc
+
+go in bottom and delete last line
+
+:wq
+
+# exit
+
+
+
+[root@localhost ~]# umask  
+0022
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# ls -l  /ibm 
+-r--r--r--. 1 root root 0 Dec 17 09:35 /ibm
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld  /tcs  
+dr-xr-xr-x. 2 root root 6 Dec 17 09:35 /tcs
+[root@localhost ~]# 
+[root@localhost ~]# chmod  644  /ibm  
+[root@localhost ~]# chmod  755  /tcs  
+[root@localhost ~]# 
+[root@localhost ~]# ls -l  /ibm 
+-rw-r--r--. 1 root root 0 Dec 17 09:35 /ibm
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld  /tcs
+drwxr-xr-x. 2 root root 6 Dec 17 09:35 /tcs
+[root@localhost ~]# 
+
+
+
+========================== 
+chown
+chgrp      ==> owner changing command 
+
+=========================
+chmod      ==> Permissions apply or modify  ==> Overall or one short
+setfacl    ==> with naming concept 
+========================
+getfacl
+ls -l     ==> permissions display or read
+ls -ld
+=======================
+
+
+ 

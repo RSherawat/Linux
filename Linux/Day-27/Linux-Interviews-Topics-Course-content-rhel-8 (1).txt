@@ -1,0 +1,125 @@
+========================================
+
+ Course Content and Interviews Topics
+
+========================================
+Redhat Course Content    ==> RHEL-7 and RHEL-8 Books  ==> Course content Changes
+
+First Module   ==> RHCSA ==> Two Books    ==> SA-1 and SA-2  ==> Basic Linux Admin 
+Second Module  ==> RHCE  ==> old syllabus ==> Server and client configuration manually ==> RHEL-7 ==> Third Book
+                   RHCE  ==> New syllabus ==> Auotmation with Ansible ==> RHEL-8 ==> Third Book
+========================================
+RHCSA Course Content ?
+1-  What is the use of Linux and Unix OS, Features of linux, Linux Flavors , Unix flavors , Windows , DOS
+2-  How we can install rhel-8 using GUI and CLI method 
+3-  Linux Basic Commands 
+4-  How we can create file and directory - touch mkdir cd ls pwd cat tac 
+5-  Daily rutines ==> cat tac wc |  ;  > >>  tee tee -a ls tree head tail sed cut awk FHS grep egrep fgrep Examples
+                     less more find locate alias help man file , tar , gzip, bzip , xz examples ....so on 
+6-  Gedit , VI and VIM operation , cp , rm , mv , rename, rsync and inodes , soft link and hard link
+7-  Systemctl examples , Runlevel and targets , Single user mode and grub password 
+8-  User and Group management, Password policy and SUDO concept 
+9-  File permission - chmod chown chgrp umask setfacl getfacl chattr and lsattr , SUID SGID and Sticky Bit
+10- RPM Installation - using rpm and YUM coonfiguration - Local , internet, RHN , online repo
+11- Job Scheduling ==> Crontab and at command  
+12- Process Management ==>  ps jobs fg bg kill top pstree examples
+13- Network Configuration ==> Theory Session + Practical configuration 
+14- SSH server and SSH Client , Password less authentication , port fowarding examples
+15- netstat, scp and rsync exaples, Network Teaming and Network Bridging
+16- Storage concept ==> Standard Partition, MBR and GPT , fdisk and parted
+17- SWAP Creation , LVM Creation and Raid concept - raid-0 raid-1 raid-5, 6 and raid-10 examples
+18- Selinux 
+19- Fiewalls  - tcp wrapper and IPtables and Firewalld { missing } Basic concept 
+20- VDO and Stratis and Cockpit  [ new topics in rhel-8 ]
+21- Syslog concept and NTP concept  plus two extra topics ==> nagios and zabbix concept
+22- Booting Process and OS troubleshooting concept- rescue mode
+23- KVM Virtualization and Basic Docker Concept
+24- Basic Shell Scripting Concept
+======================================================================
+RHCE  ==> Two choice ==> old content  ==> server and client configuration
+                         new content  ==> Automation with ansible
+======================================================================
+Around ==> 14 chapter ==> Ansible Book
+Around ==> 12 Chapter ==> Old book ==> related to server and client configuration
+======================================================================
+Mandatory Topics ==> RHCE - 7 Course content
+
+Third Book ?
+
+1- YUM
+2- NFS
+3- FTP
+4- SAMBA
+5- SCSI + ISCSI
+6- NIS 
+7- LDAP Client  
+9- DHCP
+9- PXE Boot + Kickstart Installation Server  
+10- DNS Server + Client  
+11- Apache server   ====> Extra Topics  LAMP server and Apache/Tomcat
+12- Postfix
+13- Database - Mariadb
+
+====================================================================
+
+
+
+Extra Topics ==>
+
+1- LMAP Server , Apache Tomcat configuration  
+2- Nagios and Zabiix Monitoring tools
+3- Basic Cluster concept , Multipathing Concept and SAN Stotage basic ideas
+4- Basic Cloud concept and Virtualization ==> AWS Azure Google Openstack 
+5- Database basic 
+6- nmap , tcpdump, wireshark
+7- sar , isostat vmstat top ps 
+
+====================================================================
+
+
+Next Level ==>
+
+Next profile  ==> Linux admin  + Cloud Engineeer and Solution Architect and Devops Engineeer
+
+Linux ==> RHCSA + RHCE 
+     +
+AWS Cloud Training 
+  +
+DevOps Profile  ==> Ansible , Docker , Kubernetes , GIT , Jenkins and Nagios Zabbix
+
+====================================================================
+Certification 
+
+1- RHCSA 
+2- RHCE [ optional ]
+3- AWS Cloud 
+4- Kubernetes ==> CKA
+
+====================================================================
+
+tecmint.com
+thegeekstuff.com
+arkit.co.in
+learnitguide.net
+server-world.info
+
+====================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,115 @@
+=========================================
+        Day-11  Part-1
+=========================================
+1- date
+2- cal
+3- timedatectl 
+4- How we can connect my machine with internet ?
+5- How we can configure NTP Client From any Global
+   NTP Setting for time sync. ?
+
+=========================================
+NTP Configuration 
+
+1- using Chrony ==> New concept ==> in Rhel-7 + RHEL-8 ==> chrony and service name ==> chronyd 
+2- using ntp   ==> old solution ==> Till RHEL-6 ==> package ==> ntp  and service name ==> ntpd 
+
+========================================
+
+/etc/ntp.conf 
+
+/etc/chrony.conf  
+
+======================================== 
+    1  date
+    2  cal
+    3  cal 2022
+    4  cal 1  2022
+    5  cal 2  2022
+    6  cal 6  2022
+    7  cal -3  6  2022
+    8  cal -1  6  2022
+    9  cal --help
+   10  date  ; cal  
+   11  date 
+   12  date +%H
+   13  date +%M
+   14  date +%S
+   15  date +%Y
+   16  date +%y
+   17  date +%M
+   18  date +%m
+   19  date +%B
+   20  date +%Y
+   21  date +%y
+   22  date +%D
+   23  date +%d
+   24  date +%A
+   25  date +%a
+   26  date +%r
+   27  date +%H:%M
+   28  date +%H:%M:%Y
+   29  echo $(date)
+   30  echo $(date +%A)
+   31  echo "Today is = $(date +%A)"
+   32  mkdir  database-$(date +%H:%M:%A:%Y)
+   33  ls
+   34  mkdir  database-$(date +%H:%M:%S:%A:%Y)
+   35  ls
+   36  mkdir  database-$(date +%H:%M:%S:%A:%Y)
+   37  ls
+   38  date  
+   39  date  mmddhhmmyy
+   40  date  021911252022
+   41  date
+   42  date  021911252022.10
+   43  date 
+   44  date -s "Sat Mar 21 12:30:19 IST 2021"
+   45  date  
+   46  date -s  "Sun Feb 19 11:34:20 IST 2022"
+   47  date  
+   48  timedatectl 
+   49  timedatectl list-timezones 
+   50  timedatectl list-timezones  |  grep -i dhaka
+   51  timedatectl list-timezones  |  grep -i kolkata
+   52  timedatectl set-timezone Asia/Dhaka
+   53  timedatectl 
+   54  date
+   55  timedatectl list-timezones  |  grep -i kolkata
+   56  timedatectl set-timezone Asia/Kolkata
+   57  timedatectl 
+   58  date  
+   59  history 
+   60  rpm -qa chrony
+   61  rpm -qa ntp
+   62  systemctl is-active  chronyd 
+   63  ifconfig 
+   64  ifup ens160
+   65  ifconfig 
+   66  ping google.com 
+   67  cat  /etc/chrony.conf 
+   68  vim /etc/chrony.conf 
+   69  cat   /etc/chrony.conf 
+   70  systemctl restart  chronyd  
+   71  systemctl enable  chronyd  
+   72  systemctl is-active chronyd 
+   73  systemctl is-enabled chronyd 
+   74  timedatectl 
+   75  chronyc source
+   76  chronyc sources
+   77  vim /etc/chrony.conf 
+   78  systemctl restart  chronyd  
+   79  timedatectl 
+   80  chronyc sources
+   81  timedatectl 
+   82  systemctl start chronyd 
+   83  systemctl enable chronyd 
+   84  timedatectl 
+   85  vim /etc/chrony.conf 
+   86  systemctl start chronyd 
+   87  systemctl restart chronyd 
+   88  timedate
+   89  timedatectl 
+   90  chronyc sources
+
+========================================= 

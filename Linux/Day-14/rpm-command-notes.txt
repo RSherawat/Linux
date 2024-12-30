@@ -1,0 +1,182 @@
+[root@station10 ~]# history 
+    1  lsblk  
+    2  mkdir  /redhatdvd 
+    3  cd  /run/media/root/RHEL-8-0-0-BaseOS-x86_64
+    4  ls
+    5  cp -rf  *   /redhatdvd
+    6  cd
+    7  ls  /redhatdvd
+    8  ls  /redhatdvd/AppStream
+    9  ls  /redhatdvd/BaseOS
+   10  ls  /redhatdvd/BaseOS/Packages/
+   11  ls  /redhatdvd/AppStream/Packages
+   12  rpm -qa  | wc -l
+   13  ls  /redhatdvd/AppStream/Packages | wc -l 
+   14  ls  /redhatdvd/BaseOS/Packages | wc -l 
+   15  expr 1661 + 4988
+   16  expr 6649 - 1320
+   17  history 
+   18  eject 
+   19  lsblk 
+   20  ls  /redhatdvd
+   21  ls /redhatdvd/AppStream
+   22  ls /redhatdvd/BaseOS
+   23  find  /redhatdvd   -name  "vsftpd"
+   24  find  /redhatdvd   -name  "vsftpd*"
+   25  find  /redhatdvd   -name  "tree*"
+   26  cd /redhatdvd/BaseOS/Packages
+   27  cd
+   28  which rpm 
+   29  which yum 
+   30  rpm -qa   
+   31  rpm -qa    | wc -l 
+   32  ls /usr/bin  | wc -l
+   33  ls /usr/sbin  | wc -l
+   34  expr 1475 + 594
+   35  rpm -qa  tree
+   36  rpm -qa  gzip 
+   37  rpm -qa  bzip2
+   38  rpm -qa  xz 
+   39  which tree
+   40  which gzip
+   41  which bzip2
+   42  which xz 
+   43  rpm -qa  vim
+   44  rpm -qa  vim*
+   45  rpm -qa  vim-enhanced
+   46  rpm -qa  vim-minimal
+   47  rpm -qa  vim*
+   48  rpm -qa tar
+   49  rpm -qa tar*
+   50  rpm -qa *tar*
+   51  rpm -qa  | grep vim 
+   52  rpm -qa  | grep tar
+   53  rpm -qa  | grep tree
+   54  rpm -qa  tree  
+   55  rpm -qa  *tree*  
+   56  rpm -qa  | grep tree
+   57  rpm -qa  tree
+   58  rpm -qa  ftp
+   59  rpm -qa  lftp
+   60  rpm -qa  vsftpd
+   61  ls /redhatdvd/AppStream/Packages |  grep ftp
+   62  rpm -ivh  /redhatdvd/AppStream/Packages/vsftpd-3.0.3-28.el8.x86_64.rpm 
+   63  cd /redhatdvd/AppStream/Packages
+   64  rpm -ivh ftp-0.17-78.el8.x86_64.rpm 
+   65  cp lftp-4.8.4-1.el8.x86_64.rpm  /root  
+   66  cd
+   67  ls  
+   68  rpm -ivh lftp-4.8.4-1.el8.x86_64.rpm 
+   69  rpm -qa  vsftpd  
+   70  rpm -qa  ftp
+   71  rpm -qa  lftp
+   72  rpm -qa  |  wc -l 
+   73  rpm -qa  tree
+   74  rpm -qa  tar
+   75  rpm -qa  ftp
+   76  rpm -qa  vsftpd
+   77  rpm -qa vim-enhanced
+   78  rpm -e  vim-enhanced
+   79  vim  xyz 
+   80  vi xyz  
+   81  cat xyz 
+   82  rpm -e  vsftpd  
+   83  rpm -e  ftp 
+   84  rpm -e  tree  
+   85  rpm -e  tar 
+   86  rpm -e  tar  --nodeps
+   87  rpm -e gzip 
+   88  rpm -e gzip  --nodeps  
+   89  ls  /
+   90  ls  /redhatdvd
+   91  ls  /redhatdvd/BaseOS
+   92  ls  /redhatdvd/AppStream
+   93  ls  /redhatdvd/AppStream/Packages |  grep ftp
+   94  ls  /redhatdvd/AppStream/Packages |  grep vsftpd
+   95  ls  /redhatdvd/AppStream/Packages |  grep tree
+   96  ls  /redhatdvd/AppStream/Packages |  grep vim 
+   97  rpm -ivh /redhatdvd/AppStream/Packages/vim-enhanced-8.0.1763-10.el8.x86_64.rpm 
+   98  rpm -qa  vim-enhanced
+   99  cd  /redhatdvd/AppStream/Packages
+  100  rpm -ivh ftp-0.17-78.el8.x86_64.rpm 
+  101  rpm -ivh vsftpd-3.0.3-28.el8.x86_64.rpm 
+  102  rpm -ivh ftp-0.17-78.el8.x86_64.rpm  --force  
+  103  cd
+  104  cd /redhatdvd/BaseOS/Packages
+  105  rpm -iv  tree-1.7.0-15.el8.x86_64.rpm 
+  106  rpm -i gzip-1.9-4.el8.x86_64.rpm 
+  107  rpm -ivh  tar-1.30-4.el8.x86_64.rpm 
+  108  cd
+  109  rpm -qa  tree  tar  gzip tree  vim-enhanced
+  110  rpm -qa ftp  vsftpd  
+  111  systemctl start  vsftpd  
+  112  systemctl enable    vsftpd  
+  113  find  /redhatdvd  -name  "targetcli*"
+  114  cd /redhatdvd/AppStream/Packages/
+  115  rpm -ivh  targetcli-2.1.fb49-1.el8.noarch.rpm 
+  116  cd
+  117  cd  -
+  118  pwd
+  119  rpm -ivh targetcli-2.1.fb49-1.el8.noarch.rpm 
+  120  cd  ../..
+  121  ls
+  122  cd  BaseOS/Packages
+  123  rpm -ivh  python3-configshell-1.1.fb25-1.el8.noarch.rpm 
+  124  rpm -ivh  python3-pyparsing-2.1.10-7.el8.noarch.rpm 
+  125  rpm -ivh  python3-urwid-1.3.1-4.el8.x86_64.rpm 
+  126  rpm -ivh  python3-configshell-1.1.fb25-1.el8.noarch.rpm 
+  127  rpm -ivh  python3-rtslib-2.1.fb69-3.el8.noarch.rpm 
+  128  rpm -ivh  python3-kmod-0.9-20.el8.x86_64.rpm 
+  129  rpm -ivh  python3-rtslib-2.1.fb69-3.el8.noarch.rpm 
+  130  rpm -ivh  target-restore-2.1.fb69-3.el8.noarch.rpm 
+  131  pwd
+  132  cd ../..
+  133  cd AppStream/Packages
+  134  rpm -ivh targetcli-2.1.fb49-1.el8.noarch.rpm 
+  135  cd
+  136  systemctl start  target
+  137  systemctl enable   target
+  138  rpm -qpR  /redhatdvd/AppStream/Packages/targetcli-2.1.fb49-1.el8.noarch.rpm 
+  139  rpm -qa  targetcli 
+  140  rpm -qR  targetcli 
+  141  rpm -qa ftp
+  142  cd  /redhatdvd/AppStream/Packages
+  143  rpm -Uvh  ftp-0.17-78.el8.x86_64.rpm 
+  144  rpm -Uvh  ftp-0.17-78.el8.x86_64.rpm --force  
+  145  rpm -ivh  httpd-2.4.37-10.module+el8+2764+7127e69e.x86_64.rpm 
+  146  rpm -ivh  httpd-2.4.37-10.module+el8+2764+7127e69e.x86_64.rpm --force --nodeps
+  147  cd
+  148  rpm -qa  tree
+  149  rpmquery tree
+  150  rpm -qi tree  
+  151  rpm -qa  tree 
+  152  rpm -qi  tree 
+  153  which tree
+  154  rpm -qd  tree
+  155  cat  /usr/share/doc/tree/README
+  156  rpm -qd  tree
+  157  which  tree
+  158  rpm -qf  tree
+  159  rpm -qf /usr/bin/tree 
+  160  which useradd 
+  161  rpm -qf  /usr/sbin/useradd
+  162  rpm -qf  /usr/sbin/fdisk 
+  163  rpm -qa  util-linux
+  164  rpm -qf  /etc/crontab 
+  165  rpm -ql  crontabs
+  166  rpm -qd  crontabs
+  167  rpm -qc  crontabs
+  168  rpm -qd  tree
+  169  rpm -qc  tree
+  170  rpm -qa  vsftpd
+  171  rpm -qi  vsftpd
+  172  rpm -qd  vsftpd
+  173  which  vsftpd
+  174  rpm -qf  /usr/sbin/vsftpd
+  175  cat  /etc/vsftpd/vsftpd.conf 
+  176  rpm -qf   /etc/vsftpd/vsftpd.conf 
+  177  rpm -qc  vsftpd
+  178  rpm -qd  vsftpd
+  179  rpm -ql    vsftpd
+  180  rpm -ql  tree
+  181  history 

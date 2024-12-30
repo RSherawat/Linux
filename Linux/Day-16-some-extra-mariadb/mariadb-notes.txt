@@ -1,0 +1,1910 @@
+=====================
+maridb-notes
+=====================
+
+
+[root@basemachine ~]# 
+[root@basemachine ~]# ifconfig 
+ens33: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.10.100  netmask 255.255.255.0  broadcast 192.168.10.255
+        inet6 fe80::cf70:2b59:bb6d:31d1  prefixlen 64  scopeid 0x20<link>
+        ether 00:0c:29:4a:46:e3  txqueuelen 1000  (Ethernet)
+        RX packets 2603  bytes 161505 (157.7 KiB)
+        RX errors 0  dropped 2225  overruns 0  frame 0
+        TX packets 129  bytes 12724 (12.4 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 112  bytes 9824 (9.5 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 112  bytes 9824 (9.5 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+[root@basemachine ~]# hostname
+basemachine.example.com
+[root@basemachine ~]# 
+[root@basemachine ~]# ls  /etc/yum.repos.d
+abc.repo  redhat.repo
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+
+
+
+
+
+
+
+
+
+
+[root@basemachine ~]# 
+[root@basemachine ~]# cat    /etc/yum.repos.d/abc.repo 
+
+[root@basemachine ~]# 
+
+
+
+
+
+
+
+[root@basemachine ~]# yum repolist
+Loaded plugins: langpacks, product-id, search-disabled-repos, subscription-manager
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+repo id                                                        repo name                                                                    status
+abc                                                            this is my yum repo.                                                         5,099
+repolist: 5,099
+[root@basemachine ~]# 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# rpm -qa mariadb
+[root@basemachine ~]# rpm -qa mariadb-server 
+[root@basemachine ~]# 
+[root@basemachine ~]# yum install mariadb*  -y 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@basemachine ~]# mount  /dev/sr0  /mnt/
+mount: /dev/sr0 is write-protected, mounting read-only
+[root@basemachine ~]# 
+[root@basemachine ~]# yum install mariadb*  -y 
+Loaded plugins: langpacks, product-id, search-disabled-repos, subscription-manager
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+Package 1:mariadb-libs-5.5.56-2.el7.x86_64 already installed and latest version
+Resolving Dependencies
+--> Running transaction check
+---> Package mariadb.x86_64 1:5.5.56-2.el7 will be installed
+---> Package mariadb-bench.x86_64 1:5.5.56-2.el7 will be installed
+--> Processing Dependency: perl(GD) for package: 1:mariadb-bench-5.5.56-2.el7.x86_64
+---> Package mariadb-devel.x86_64 1:5.5.56-2.el7 will be installed
+--> Processing Dependency: openssl-devel(x86-64) for package: 1:mariadb-devel-5.5.56-2.el7.x86_64
+---> Package mariadb-server.x86_64 1:5.5.56-2.el7 will be installed
+--> Processing Dependency: perl-DBD-MySQL for package: 1:mariadb-server-5.5.56-2.el7.x86_64
+---> Package mariadb-test.x86_64 1:5.5.56-2.el7 will be installed
+--> Processing Dependency: perl(Env) for package: 1:mariadb-test-5.5.56-2.el7.x86_64
+--> Processing Dependency: perl(Test::More) for package: 1:mariadb-test-5.5.56-2.el7.x86_64
+--> Running transaction check
+---> Package openssl-devel.x86_64 1:1.0.2k-12.el7 will be installed
+--> Processing Dependency: krb5-devel(x86-64) for package: 1:openssl-devel-1.0.2k-12.el7.x86_64
+--> Processing Dependency: zlib-devel(x86-64) for package: 1:openssl-devel-1.0.2k-12.el7.x86_64
+---> Package perl-DBD-MySQL.x86_64 0:4.023-6.el7 will be installed
+---> Package perl-Env.noarch 0:1.04-2.el7 will be installed
+---> Package perl-GD.x86_64 0:2.49-3.el7 will be installed
+---> Package perl-Test-Simple.noarch 0:0.98-243.el7 will be installed
+--> Processing Dependency: perl(Test::Harness) >= 2.03 for package: perl-Test-Simple-0.98-243.el7.noarch
+--> Running transaction check
+---> Package krb5-devel.x86_64 0:1.15.1-18.el7 will be installed
+--> Processing Dependency: libkadm5(x86-64) = 1.15.1-18.el7 for package: krb5-devel-1.15.1-18.el7.x86_64
+--> Processing Dependency: keyutils-libs-devel for package: krb5-devel-1.15.1-18.el7.x86_64
+--> Processing Dependency: libcom_err-devel for package: krb5-devel-1.15.1-18.el7.x86_64
+--> Processing Dependency: libselinux-devel for package: krb5-devel-1.15.1-18.el7.x86_64
+--> Processing Dependency: libverto-devel for package: krb5-devel-1.15.1-18.el7.x86_64
+---> Package perl-Test-Harness.noarch 0:3.28-3.el7 will be installed
+---> Package zlib-devel.x86_64 0:1.2.7-17.el7 will be installed
+--> Running transaction check
+---> Package keyutils-libs-devel.x86_64 0:1.5.8-3.el7 will be installed
+---> Package libcom_err-devel.x86_64 0:1.42.9-11.el7 will be installed
+---> Package libkadm5.x86_64 0:1.15.1-18.el7 will be installed
+---> Package libselinux-devel.x86_64 0:2.5-12.el7 will be installed
+--> Processing Dependency: libsepol-devel(x86-64) >= 2.5-6 for package: libselinux-devel-2.5-12.el7.x86_64
+--> Processing Dependency: pkgconfig(libpcre) for package: libselinux-devel-2.5-12.el7.x86_64
+--> Processing Dependency: pkgconfig(libsepol) for package: libselinux-devel-2.5-12.el7.x86_64
+---> Package libverto-devel.x86_64 0:0.2.5-4.el7 will be installed
+--> Running transaction check
+---> Package libsepol-devel.x86_64 0:2.5-8.1.el7 will be installed
+---> Package pcre-devel.x86_64 0:8.32-17.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================================================
+ Package                           Arch                 Version                         Repository         Size
+================================================================================================================
+Installing:
+ mariadb                           x86_64               1:5.5.56-2.el7                  abc               9.1 M
+ mariadb-bench                     x86_64               1:5.5.56-2.el7                  abc               388 k
+ mariadb-devel                     x86_64               1:5.5.56-2.el7                  abc               752 k
+ mariadb-server                    x86_64               1:5.5.56-2.el7                  abc                11 M
+ mariadb-test                      x86_64               1:5.5.56-2.el7                  abc               8.1 M
+Installing for dependencies:
+ keyutils-libs-devel               x86_64               1.5.8-3.el7                     abc                37 k
+ krb5-devel                        x86_64               1.15.1-18.el7                   abc               269 k
+ libcom_err-devel                  x86_64               1.42.9-11.el7                   abc                31 k
+ libkadm5                          x86_64               1.15.1-18.el7                   abc               175 k
+ libselinux-devel                  x86_64               2.5-12.el7                      abc               186 k
+ libsepol-devel                    x86_64               2.5-8.1.el7                     abc                77 k
+ libverto-devel                    x86_64               0.2.5-4.el7                     abc                12 k
+ openssl-devel                     x86_64               1:1.0.2k-12.el7                 abc               1.5 M
+ pcre-devel                        x86_64               8.32-17.el7                     abc               480 k
+ perl-DBD-MySQL                    x86_64               4.023-6.el7                     abc               140 k
+ perl-Env                          noarch               1.04-2.el7                      abc                16 k
+ perl-GD                           x86_64               2.49-3.el7                      abc               173 k
+ perl-Test-Harness                 noarch               3.28-3.el7                      abc               302 k
+ perl-Test-Simple                  noarch               0.98-243.el7                    abc               170 k
+ zlib-devel                        x86_64               1.2.7-17.el7                    abc                50 k
+
+Transaction Summary
+================================================================================================================
+Install  5 Packages (+15 Dependent packages)
+
+Total download size: 33 M
+Installed size: 245 M
+Downloading packages:
+----------------------------------------------------------------------------------------------------------------
+Total                                                                            73 MB/s |  33 MB  00:00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : 1:mariadb-5.5.56-2.el7.x86_64                                                               1/20 
+  Installing : libcom_err-devel-1.42.9-11.el7.x86_64                                                       2/20 
+  Installing : keyutils-libs-devel-1.5.8-3.el7.x86_64                                                      3/20 
+  Installing : libkadm5-1.15.1-18.el7.x86_64                                                               4/20 
+  Installing : libsepol-devel-2.5-8.1.el7.x86_64                                                           5/20 
+  Installing : pcre-devel-8.32-17.el7.x86_64                                                               6/20 
+  Installing : libselinux-devel-2.5-12.el7.x86_64                                                          7/20 
+  Installing : perl-DBD-MySQL-4.023-6.el7.x86_64                                                           8/20 
+  Installing : 1:mariadb-server-5.5.56-2.el7.x86_64                                                        9/20 
+  Installing : perl-Test-Harness-3.28-3.el7.noarch                                                        10/20 
+  Installing : perl-Test-Simple-0.98-243.el7.noarch                                                       11/20 
+  Installing : libverto-devel-0.2.5-4.el7.x86_64                                                          12/20 
+  Installing : krb5-devel-1.15.1-18.el7.x86_64                                                            13/20 
+  Installing : perl-GD-2.49-3.el7.x86_64                                                                  14/20 
+  Installing : zlib-devel-1.2.7-17.el7.x86_64                                                             15/20 
+  Installing : 1:openssl-devel-1.0.2k-12.el7.x86_64                                                       16/20 
+  Installing : perl-Env-1.04-2.el7.noarch                                                                 17/20 
+  Installing : 1:mariadb-test-5.5.56-2.el7.x86_64                                                         18/20 
+  Installing : 1:mariadb-devel-5.5.56-2.el7.x86_64                                                        19/20 
+  Installing : 1:mariadb-bench-5.5.56-2.el7.x86_64                                                        20/20 
+  Verifying  : perl-Env-1.04-2.el7.noarch                                                                  1/20 
+  Verifying  : krb5-devel-1.15.1-18.el7.x86_64                                                             2/20 
+  Verifying  : zlib-devel-1.2.7-17.el7.x86_64                                                              3/20 
+  Verifying  : perl-Test-Simple-0.98-243.el7.noarch                                                        4/20 
+  Verifying  : perl-GD-2.49-3.el7.x86_64                                                                   5/20 
+  Verifying  : 1:openssl-devel-1.0.2k-12.el7.x86_64                                                        6/20 
+  Verifying  : libverto-devel-0.2.5-4.el7.x86_64                                                           7/20 
+  Verifying  : libselinux-devel-2.5-12.el7.x86_64                                                          8/20 
+  Verifying  : perl-Test-Harness-3.28-3.el7.noarch                                                         9/20 
+  Verifying  : 1:mariadb-devel-5.5.56-2.el7.x86_64                                                        10/20 
+  Verifying  : perl-DBD-MySQL-4.023-6.el7.x86_64                                                          11/20 
+  Verifying  : 1:mariadb-bench-5.5.56-2.el7.x86_64                                                        12/20 
+  Verifying  : pcre-devel-8.32-17.el7.x86_64                                                              13/20 
+  Verifying  : libsepol-devel-2.5-8.1.el7.x86_64                                                          14/20 
+  Verifying  : libkadm5-1.15.1-18.el7.x86_64                                                              15/20 
+  Verifying  : keyutils-libs-devel-1.5.8-3.el7.x86_64                                                     16/20 
+  Verifying  : 1:mariadb-test-5.5.56-2.el7.x86_64                                                         17/20 
+  Verifying  : 1:mariadb-server-5.5.56-2.el7.x86_64                                                       18/20 
+  Verifying  : libcom_err-devel-1.42.9-11.el7.x86_64                                                      19/20 
+  Verifying  : 1:mariadb-5.5.56-2.el7.x86_64                                                              20/20 
+
+Installed:
+  mariadb.x86_64 1:5.5.56-2.el7        mariadb-bench.x86_64 1:5.5.56-2.el7 mariadb-devel.x86_64 1:5.5.56-2.el7
+  mariadb-server.x86_64 1:5.5.56-2.el7 mariadb-test.x86_64 1:5.5.56-2.el7 
+
+Dependency Installed:
+  keyutils-libs-devel.x86_64 0:1.5.8-3.el7                krb5-devel.x86_64 0:1.15.1-18.el7                    
+  libcom_err-devel.x86_64 0:1.42.9-11.el7                 libkadm5.x86_64 0:1.15.1-18.el7                      
+  libselinux-devel.x86_64 0:2.5-12.el7                    libsepol-devel.x86_64 0:2.5-8.1.el7                  
+  libverto-devel.x86_64 0:0.2.5-4.el7                     openssl-devel.x86_64 1:1.0.2k-12.el7                 
+  pcre-devel.x86_64 0:8.32-17.el7                         perl-DBD-MySQL.x86_64 0:4.023-6.el7                  
+  perl-Env.noarch 0:1.04-2.el7                            perl-GD.x86_64 0:2.49-3.el7                          
+  perl-Test-Harness.noarch 0:3.28-3.el7                   perl-Test-Simple.noarch 0:0.98-243.el7               
+  zlib-devel.x86_64 0:1.2.7-17.el7                       
+
+Complete!
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# yum install mariadb*  -y 
+Loaded plugins: langpacks, product-id, search-disabled-repos, subscription-manager
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+Package 1:mariadb-server-5.5.56-2.el7.x86_64 already installed and latest version
+Package 1:mariadb-test-5.5.56-2.el7.x86_64 already installed and latest version
+Package 1:mariadb-devel-5.5.56-2.el7.x86_64 already installed and latest version
+Package 1:mariadb-bench-5.5.56-2.el7.x86_64 already installed and latest version
+Package 1:mariadb-5.5.56-2.el7.x86_64 already installed and latest version
+Package 1:mariadb-libs-5.5.56-2.el7.x86_64 already installed and latest version
+Nothing to do
+[root@basemachine ~]# 
+[root@basemachine ~]# systemctl  start  mariadb 
+[root@basemachine ~]# systemctl  enable   mariadb 
+Created symlink from /etc/systemd/system/multi-user.target.wants/mariadb.service to /usr/lib/systemd/system/mariadb.service.
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# systemctl  status firewalld 
+
+[root@basemachine ~]# systemctl  status firewalld 
+● firewalld.service - firewalld - dynamic firewall daemon
+   Loaded: loaded (/usr/lib/systemd/system/firewalld.service; disabled; vendor preset: enabled)
+   Active: inactive (dead)
+     Docs: man:firewalld(1)
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# systemctl  staty firewalld 
+Unknown operation 'staty'.
+[root@basemachine ~]# systemctl  start firewalld 
+[root@basemachine ~]# systemctl  enable   firewalld 
+Created symlink from /etc/systemd/system/dbus-org.fedoraproject.FirewallD1.service to /usr/lib/systemd/system/firewalld.service.
+Created symlink from /etc/systemd/system/multi-user.target.wants/firewalld.service to /usr/lib/systemd/system/firewalld.service.
+[root@basemachine ~]# systemctl  status firewalld 
+● firewalld.service - firewalld - dynamic firewall daemon
+   Loaded: loaded (/usr/lib/systemd/system/firewalld.service; enabled; vendor preset: enabled)
+   Active: active (running) since Sun 2021-09-19 12:11:10 IST; 6s ago
+     Docs: man:firewalld(1)
+ Main PID: 4029 (firewalld)
+   CGroup: /system.slice/firewalld.service
+           └─4029 /usr/bin/python -Es /usr/sbin/firewalld --nofork --nopid
+
+Sep 19 12:11:09 basemachine.example.com systemd[1]: Starting firewalld - dynamic firewall daemon...
+Sep 19 12:11:10 basemachine.example.com systemd[1]: Started firewalld - dynamic firewall daemon.
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# firewall-cmd  --permanent  --list-services 
+ssh dhcpv6-client
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# firewall-cmd  --permanent  --add-service=mysql  
+success
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# firewall-cmd  --permanent  --add-port=3306/tcp  
+success
+[root@basemachine ~]# firewall-cmd  --permanent  --add-port=3306/udp 
+success
+[root@basemachine ~]# 
+[root@basemachine ~]# firewall-cmd   --reload  
+success
+[root@basemachine ~]# firewall-cmd  --permanent  --list-services 
+
+
+[root@basemachine ~]# firewall-cmd  --permanent  --list-services 
+ssh dhcpv6-client mysql
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# netstat  -tunlp  |  grep 3306 
+tcp        0      0 0.0.0.0:3306            0.0.0.0:*               LISTEN      3901/mysqld         
+[root@basemachine ~]# 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# rpm -qa mariadb
+mariadb-5.5.56-2.el7.x86_64
+[root@basemachine ~]# rpm -qa mariadb-server 
+mariadb-server-5.5.56-2.el7.x86_64
+[root@basemachine ~]# 
+[root@basemachine ~]# which  mysql 
+/usr/bin/mysql
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# rpm -qf  /usr/bin/mysql
+mariadb-5.5.56-2.el7.x86_64
+[root@basemachine ~]# 
+
+
+
+
+
+
+
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# mysql 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@basemachine ~]# mysql  -u  root 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 2
+Server version: 5.5.56-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> 
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| test               |
++--------------------+
+4 rows in set (0.00 sec)
+
+MariaDB [(none)]> exit
+Bye
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# mysql  
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 3
+Server version: 5.5.56-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> exit
+Bye
+[root@basemachine ~]# 
+
+
+
+
+
+
+
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# mysql  -u  root 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 4
+Server version: 5.5.56-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> 
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| test               |
++--------------------+
+4 rows in set (0.00 sec)
+
+MariaDB [(none)]> use  mysql;
+MariaDB [(none)]> use  mysql;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB [mysql]> 
+MariaDB [mysql]> show tables;
++---------------------------+
+| Tables_in_mysql           |
++---------------------------+
+| columns_priv              |
+| db                        |
+| event                     |
+| func                      |
+| general_log               |
+| help_category             |
+| help_keyword              |
+| help_relation             |
+| help_topic                |
+| host                      |
+| ndb_binlog_index          |
+| plugin                    |
+| proc                      |
+| procs_priv                |
+| proxies_priv              |
+| servers                   |
+| slow_log                  |
+| tables_priv               |
+| time_zone                 |
+| time_zone_leap_second     |
+| time_zone_name            |
+| time_zone_transition      |
+| time_zone_transition_type |
+| user                      |
++---------------------------+
+24 rows in set (0.00 sec)
+
+MariaDB [mysql]> 
+MariaDB [mysql]> 
+MariaDB [mysql]> select   *   from  user;
+MariaDB [mysql]> select   *   from  user;
+
+
+MariaDB [mysql]> 
+MariaDB [mysql]> 
+MariaDB [mysql]> 
+MariaDB [mysql]> 
+MariaDB [mysql]> select   user,host  from  user;
++------+-------------------------+
+| user | host                    |
++------+-------------------------+
+| root | 127.0.0.1               |
+| root | ::1                     |
+|      | basemachine.example.com |
+| root | basemachine.example.com |
+|      | localhost               |
+| root | localhost               |
++------+-------------------------+
+6 rows in set (0.00 sec)
+
+
+
+
+MariaDB [mysql]> exit
+Bye
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# mysql_secure_installation 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@basemachine ~]# mysql_secure_installation 
+
+NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
+      SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
+
+In order to log into MariaDB to secure it, we'll need the current
+password for the root user.  If you've just installed MariaDB, and
+you haven't set the root password yet, the password will be blank,
+so you should just press enter here.
+
+Enter current password for root (enter for none): 
+OK, successfully used password, moving on...
+
+Setting the root password ensures that nobody can log into the MariaDB
+root user without the proper authorisation.
+
+Set root password? [Y/n] y
+New password: 
+Re-enter new password: 
+Password updated successfully!
+Reloading privilege tables..
+ ... Success!
+
+
+By default, a MariaDB installation has an anonymous user, allowing anyone
+to log into MariaDB without having to have a user account created for
+them.  This is intended only for testing, and to make the installation
+go a bit smoother.  You should remove them before moving into a
+production environment.
+
+Remove anonymous users? [Y/n] y
+ ... Success!
+
+Normally, root should only be allowed to connect from 'localhost'.  This
+ensures that someone cannot guess at the root password from the network.
+
+Disallow root login remotely? [Y/n] y
+ ... Success!
+
+By default, MariaDB comes with a database named 'test' that anyone can
+access.  This is also intended only for testing, and should be removed
+before moving into a production environment.
+
+Remove test database and access to it? [Y/n] y
+ - Dropping test database...
+ ... Success!
+ - Removing privileges on test database...
+ ... Success!
+
+Reloading the privilege tables will ensure that all changes made so far
+will take effect immediately.
+
+Reload privilege tables now? [Y/n] y
+ ... Success!
+
+Cleaning up...
+
+All done!  If you've completed all of the above steps, your MariaDB
+installation should now be secure.
+
+Thanks for using MariaDB!
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# mysql  
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO)
+[root@basemachine ~]# 
+[root@basemachine ~]# mysql  -u root 
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO)
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# mysql  -u root -p 
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 15
+Server version: 5.5.56-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> exit
+Bye
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# mysql -u root -p  
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 16
+Server version: 5.5.56-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> 
+MariaDB [(none)]> 
+MariaDB [(none)]> show  databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
++--------------------+
+3 rows in set (0.01 sec)
+
+MariaDB [(none)]> 
+MariaDB [(none)]> 
+MariaDB [(none)]> 
+MariaDB [(none)]> 
+MariaDB [(none)]> 
+MariaDB [(none)]> 
+MariaDB [(none)]> create database  redhatbooks;
+Query OK, 1 row affected (0.01 sec)
+
+MariaDB [(none)]> 
+MariaDB [(none)]> create database  inventory;
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [(none)]> 
+MariaDB [(none)]> show  databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| inventory          |
+| mysql              |
+| performance_schema |
+| redhatbooks        |
++--------------------+
+5 rows in set (0.00 sec)
+
+MariaDB [(none)]> 
+MariaDB [(none)]> drop database  redhatbooks;
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [(none)]> 
+MariaDB [(none)]> show  databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| inventory          |
+| mysql              |
+| performance_schema |
++--------------------+
+4 rows in set (0.00 sec)
+
+MariaDB [(none)]> use  inventory;
+Database changed
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> show  tables;
+Empty set (0.00 sec)
+
+MariaDB [inventory]> exit;
+Bye
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+
+Note:- Download or copy any sample dump file for practise purpose only.
+
+
+[root@basemachine ~]# 
+[root@basemachine ~]# ls
+anaconda-ks.cfg  Documents  initial-setup-ks.cfg  Pictures  rhel-server-7.5-x86_64-dvd.iso  Videos
+Desktop          Downloads  Music                 Public    Templates
+[root@basemachine ~]# cd Desktop
+[root@basemachine Desktop]# 
+[root@basemachine Desktop]# ls
+mariadb.dump
+[root@basemachine Desktop]# cp  mariadb.dump  /root  
+[root@basemachine Desktop]# cd
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+
+
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# pwd
+/root
+[root@basemachine ~]# ls  
+anaconda-ks.cfg  Documents  initial-setup-ks.cfg  Music     Public                          Templates
+Desktop          Downloads  mariadb.dump          Pictures  rhel-server-7.5-x86_64-dvd.iso  Videos
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# mysql -u root p 
+
+
+
+
+
+
+
+[root@basemachine ~]# mysql -u root -p  
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 17
+Server version: 5.5.56-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> exit
+Bye
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# mysql -u root -p   -h  localhost
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 18
+Server version: 5.5.56-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> 
+MariaDB [(none)]> 
+MariaDB [(none)]> 
+MariaDB [(none)]> show databases;
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| inventory          |
+| mysql              |
+| performance_schema |
++--------------------+
+4 rows in set (0.00 sec)
+
+MariaDB [(none)]> 
+MariaDB [(none)]> use  inventory;
+Database changed
+MariaDB [inventory]> 
+MariaDB [inventory]> show tables;
+Empty set (0.00 sec)
+
+MariaDB [inventory]> source  /root/mariadb.dump;
+MariaDB [inventory]> show tables;
++---------------------+
+| Tables_in_inventory |
++---------------------+
+| category            |
+| manufacturer        |
+| product             |
++---------------------+
+3 rows in set (0.00 sec)
+
+MariaDB [inventory]> select  *  from category;
+
+
+
+
+
+
+MariaDB [inventory]> select  *  from category;
++----+------------+
+| id | name       |
++----+------------+
+|  1 | Networking |
+|  2 | Servers    |
+|  3 | Ssd        |
++----+------------+
+3 rows in set (0.00 sec)
+
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> select  *  from  manufacturer;
++----+----------+----------------+-------------------+
+| id | name     | seller         | phone_number      |
++----+----------+----------------+-------------------+
+|  1 | SanDisk  | John Miller    | +1 (941) 329-8855 |
+|  2 | Kingston | Mike Taylor    | +1 (341) 375-9999 |
+|  3 | Asus     | Wilson Jackson | +1 (432) 367-8899 |
+|  4 | Sony     | Allen Scott    | +1 (876) 213-4439 |
++----+----------+----------------+-------------------+
+4 rows in set (0.00 sec)
+
+MariaDB [inventory]> select  name  from  manufacturer;
++----------+
+| name     |
++----------+
+| SanDisk  |
+| Kingston |
+| Asus     |
+| Sony     |
++----------+
+4 rows in set (0.00 sec)
+
+MariaDB [inventory]> select  name,seller  from  manufacturer;
++----------+----------------+
+| name     | seller         |
++----------+----------------+
+| SanDisk  | John Miller    |
+| Kingston | Mike Taylor    |
+| Asus     | Wilson Jackson |
+| Sony     | Allen Scott    |
++----------+----------------+
+4 rows in set (0.00 sec)
+
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> select   *  from product;
++----+-------------------+---------+-------+-------------+-----------------+
+| id | name              | price   | stock | id_category | id_manufacturer |
++----+-------------------+---------+-------+-------------+-----------------+
+|  1 | ThinkServer TS140 |  539.88 |    20 |           2 |               4 |
+|  2 | ThinkServer RD630 | 2379.14 |    20 |           2 |               4 |
+|  3 | RT-AC68U          |  219.99 |    10 |           1 |               3 |
+|  4 | X110 64GB         |   73.84 |   100 |           3 |               1 |
++----+-------------------+---------+-------+-------------+-----------------+
+4 rows in set (0.00 sec)
+
+MariaDB [inventory]> 
+MariaDB [inventory]> select   name  from product;
++-------------------+
+| name              |
++-------------------+
+| ThinkServer TS140 |
+| ThinkServer RD630 |
+| RT-AC68U          |
+| X110 64GB         |
++-------------------+
+4 rows in set (0.00 sec)
+
+MariaDB [inventory]> select   name,price from product;
++-------------------+---------+
+| name              | price   |
++-------------------+---------+
+| ThinkServer TS140 |  539.88 |
+| ThinkServer RD630 | 2379.14 |
+| RT-AC68U          |  219.99 |
+| X110 64GB         |   73.84 |
++-------------------+---------+
+4 rows in set (0.00 sec)
+
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> select   name,price,stock   from product;
++-------------------+---------+-------+
+| name              | price   | stock |
++-------------------+---------+-------+
+| ThinkServer TS140 |  539.88 |    20 |
+| ThinkServer RD630 | 2379.14 |    20 |
+| RT-AC68U          |  219.99 |    10 |
+| X110 64GB         |   73.84 |   100 |
++-------------------+---------+-------+
+4 rows in set (0.00 sec)
+
+MariaDB [inventory]> 
+MariaDB [inventory]> select   name,price,stock   from product where id=1;
++-------------------+--------+-------+
+| name              | price  | stock |
++-------------------+--------+-------+
+| ThinkServer TS140 | 539.88 |    20 |
++-------------------+--------+-------+
+1 row in set (0.00 sec)
+
+MariaDB [inventory]> select  id,name,price,stock   from product where id=1;
++----+-------------------+--------+-------+
+| id | name              | price  | stock |
++----+-------------------+--------+-------+
+|  1 | ThinkServer TS140 | 539.88 |    20 |
++----+-------------------+--------+-------+
+1 row in set (0.00 sec)
+
+MariaDB [inventory]> 
+MariaDB [inventory]> select  id,name,price,stock   from product where price  > 1000;
+MariaDB [inventory]> select  id,name,price,stock   from product where price  > 1000;
++----+-------------------+---------+-------+
+| id | name              | price   | stock |
++----+-------------------+---------+-------+
+|  2 | ThinkServer RD630 | 2379.14 |    20 |
++----+-------------------+---------+-------+
+1 row in set (0.00 sec)
+
+MariaDB [inventory]> 
+MariaDB [inventory]> select  id,name,price,stock   from product where price  < 1000;
++----+-------------------+--------+-------+
+| id | name              | price  | stock |
++----+-------------------+--------+-------+
+|  1 | ThinkServer TS140 | 539.88 |    20 |
+|  3 | RT-AC68U          | 219.99 |    10 |
+|  4 | X110 64GB         |  73.84 |   100 |
++----+-------------------+--------+-------+
+3 rows in set (0.00 sec)
+
+MariaDB [inventory]> select  id,name,price,stock   from product where stock=20;
++----+-------------------+---------+-------+
+| id | name              | price   | stock |
++----+-------------------+---------+-------+
+|  1 | ThinkServer TS140 |  539.88 |    20 |
+|  2 | ThinkServer RD630 | 2379.14 |    20 |
++----+-------------------+---------+-------+
+2 rows in set (0.00 sec)
+
+MariaDB [inventory]> select  id,name,price,stock   from product where stock > 20;
++----+-----------+-------+-------+
+| id | name      | price | stock |
++----+-----------+-------+-------+
+|  4 | X110 64GB | 73.84 |   100 |
++----+-----------+-------+-------+
+1 row in set (0.00 sec)
+
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> select   *  from product;
++----+-------------------+---------+-------+-------------+-----------------+
+| id | name              | price   | stock | id_category | id_manufacturer |
++----+-------------------+---------+-------+-------------+-----------------+
+|  1 | ThinkServer TS140 |  539.88 |    20 |           2 |               4 |
+|  2 | ThinkServer RD630 | 2379.14 |    20 |           2 |               4 |
+|  3 | RT-AC68U          |  219.99 |    10 |           1 |               3 |
+|  4 | X110 64GB         |   73.84 |   100 |           3 |               1 |
++----+-------------------+---------+-------+-------------+-----------------+
+4 rows in set (0.00 sec)
+
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> update  product  set   price=2000,stock=1000  where  id = 4 ;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> select   *  from product;
++----+-------------------+---------+-------+-------------+-----------------+
+| id | name              | price   | stock | id_category | id_manufacturer |
++----+-------------------+---------+-------+-------------+-----------------+
+|  1 | ThinkServer TS140 |  539.88 |    20 |           2 |               4 |
+|  2 | ThinkServer RD630 | 2379.14 |    20 |           2 |               4 |
+|  3 | RT-AC68U          |  219.99 |    10 |           1 |               3 |
+|  4 | X110 64GB         |    2000 |  1000 |           3 |               1 |
++----+-------------------+---------+-------+-------------+-----------------+
+4 rows in set (0.00 sec)
+
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> insert into product  (name,price,stock,id_category,id_manufacturer) values ('dell server',40000,10,1,3); 
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [inventory]> 
+MariaDB [inventory]> select   *  from product;
++----+-------------------+---------+-------+-------------+-----------------+
+| id | name              | price   | stock | id_category | id_manufacturer |
++----+-------------------+---------+-------+-------------+-----------------+
+|  1 | ThinkServer TS140 |  539.88 |    20 |           2 |               4 |
+|  2 | ThinkServer RD630 | 2379.14 |    20 |           2 |               4 |
+|  3 | RT-AC68U          |  219.99 |    10 |           1 |               3 |
+|  4 | X110 64GB         |    2000 |  1000 |           3 |               1 |
+|  5 | dell server       |   40000 |    10 |           1 |               3 |
++----+-------------------+---------+-------+-------------+-----------------+
+5 rows in set (0.00 sec)
+
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> select   *  from product;
++----+-------------------+---------+-------+-------------+-----------------+
+| id | name              | price   | stock | id_category | id_manufacturer |
++----+-------------------+---------+-------+-------------+-----------------+
+|  1 | ThinkServer TS140 |  539.88 |    20 |           2 |               4 |
+|  2 | ThinkServer RD630 | 2379.14 |    20 |           2 |               4 |
+|  3 | RT-AC68U          |  219.99 |    10 |           1 |               3 |
+|  4 | X110 64GB         |    2000 |  1000 |           3 |               1 |
+|  5 | dell server       |   40000 |    10 |           1 |               3 |
++----+-------------------+---------+-------+-------------+-----------------+
+5 rows in set (0.00 sec)
+
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> delete  from  product  where  id = 5;
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [inventory]> select   *  from product;
++----+-------------------+---------+-------+-------------+-----------------+
+| id | name              | price   | stock | id_category | id_manufacturer |
++----+-------------------+---------+-------+-------------+-----------------+
+|  1 | ThinkServer TS140 |  539.88 |    20 |           2 |               4 |
+|  2 | ThinkServer RD630 | 2379.14 |    20 |           2 |               4 |
+|  3 | RT-AC68U          |  219.99 |    10 |           1 |               3 |
+|  4 | X110 64GB         |    2000 |  1000 |           3 |               1 |
++----+-------------------+---------+-------+-------------+-----------------+
+4 rows in set (0.01 sec)
+
+MariaDB [inventory]> show tables;
+MariaDB [inventory]> show tables;
++---------------------+
+| Tables_in_inventory |
++---------------------+
+| category            |
+| manufacturer        |
+| product             |
++---------------------+
+3 rows in set (0.00 sec)
+
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> drop table  category;
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [inventory]> 
+MariaDB [inventory]> show tables;
++---------------------+
+| Tables_in_inventory |
++---------------------+
+| manufacturer        |
+| product             |
++---------------------+
+2 rows in set (0.00 sec)
+
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> use mysql;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB [mysql]> 
+MariaDB [mysql]> 
+MariaDB [mysql]> select   user  from  user;
++------+
+| user |
++------+
+| root |
+| root |
+| root |
++------+
+3 rows in set (0.00 sec)
+
+MariaDB [mysql]> select   user,host  from  user;
+
+
+
+
+MariaDB [mysql]> select   user,host  from  user;
++------+-----------+
+| user | host      |
++------+-----------+
+| root | 127.0.0.1 |
+| root | ::1       |
+| root | localhost |
++------+-----------+
+3 rows in set (0.00 sec)
+
+MariaDB [mysql]> 
+MariaDB [mysql]> create  user  harry@localhost   identified by  'redhat'; 
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [mysql]> 
+MariaDB [mysql]> select   user,host  from  user;
++-------+-----------+
+| user  | host      |
++-------+-----------+
+| root  | 127.0.0.1 |
+| root  | ::1       |
+| harry | localhost |
+| root  | localhost |
++-------+-----------+
+4 rows in set (0.00 sec)
+
+MariaDB [mysql]> 
+MariaDB [mysql]> create  user  natasha@'192.168.10.11'   identified by  'redhat'; 
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [mysql]> 
+MariaDB [mysql]> select   user,host  from  user;
++---------+---------------+
+| user    | host          |
++---------+---------------+
+| root    | 127.0.0.1     |
+| natasha | 192.168.10.11 |
+| root    | ::1           |
+| harry   | localhost     |
+| root    | localhost     |
++---------+---------------+
+5 rows in set (0.00 sec)
+
+MariaDB [mysql]> 
+MariaDB [mysql]> create  user  suraj@'192.168.10.%'   identified by  'redhat'; 
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [mysql]> 
+MariaDB [mysql]> create  user  raj@'%'   identified by  'redhat'; 
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [mysql]> 
+MariaDB [mysql]> select   user,host  from  user;
++---------+---------------+
+| user    | host          |
++---------+---------------+
+| raj     | %             |
+| root    | 127.0.0.1     |
+| suraj   | 192.168.10.%  |
+| natasha | 192.168.10.11 |
+| root    | ::1           |
+| harry   | localhost     |
+| root    | localhost     |
++---------+---------------+
+7 rows in set (0.00 sec)
+
+MariaDB [mysql]> exit;
+Bye
+[root@basemachine ~]# 
+[root@basemachine ~]# mysql  -u harry  -p redhat  -h localhost
+Enter password: 
+ERROR 1044 (42000): Access denied for user 'harry'@'localhost' to database 'redhat'
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# mysql  -u harry  -p   -h localhost
+[root@basemachine ~]# mysql  -u harry  -p   -h localhost
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 20
+Server version: 5.5.56-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> 
+MariaDB [(none)]> 
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
++--------------------+
+1 row in set (0.00 sec)
+
+MariaDB [(none)]> 
+MariaDB [(none)]> select   users();
+
+
+
+MariaDB [(none)]> select   users();
+ERROR 1305 (42000): FUNCTION users does not exist
+MariaDB [(none)]> 
+MariaDB [(none)]> 
+MariaDB [(none)]> 
+MariaDB [(none)]> select   user();
++-----------------+
+| user()          |
++-----------------+
+| harry@localhost |
++-----------------+
+1 row in set (0.00 sec)
+
+MariaDB [(none)]> 
+MariaDB [(none)]> exit
+Bye
+[root@basemachine ~]# 
+[root@basemachine ~]# mysql  -u root   -p   -h localhost
+
+
+
+
+
+
+
+[root@basemachine ~]# mysql  -u root   -p   -h localhost
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 21
+Server version: 5.5.56-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> 
+MariaDB [(none)]> select  user();
++----------------+
+| user()         |
++----------------+
+| root@localhost |
++----------------+
+1 row in set (0.00 sec)
+
+MariaDB [(none)]> use inventory;
+
+
+
+
+
+MariaDB [(none)]> use inventory;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> show tables;
++---------------------+
+| Tables_in_inventory |
++---------------------+
+| manufacturer        |
+| product             |
++---------------------+
+2 rows in set (0.00 sec)
+
+MariaDB [inventory]> 
+MariaDB [inventory]> grant insert,select on  inventory.product to harry@localhost; 
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [inventory]> 
+MariaDB [inventory]> grant all  on  inventory.*    to  raj@'%'; 
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [inventory]> 
+MariaDB [inventory]> show grants for harry@localhost;
++--------------------------------------------------------------------------------------------------------------+
+| Grants for harry@localhost                                                                                   |
++--------------------------------------------------------------------------------------------------------------+
+| GRANT USAGE ON *.* TO 'harry'@'localhost' IDENTIFIED BY PASSWORD '*84BB5DF4823DA319BBF86C99624479A198E6EEE9' |
+| GRANT SELECT, INSERT ON `inventory`.`product` TO 'harry'@'localhost'                                         |
++--------------------------------------------------------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+MariaDB [inventory]> 
+MariaDB [inventory]> show grants for raj@'%';
++----------------------------------------------------------------------------------------------------+
+| Grants for raj@%                                                                                   |
++----------------------------------------------------------------------------------------------------+
+| GRANT USAGE ON *.* TO 'raj'@'%' IDENTIFIED BY PASSWORD '*84BB5DF4823DA319BBF86C99624479A198E6EEE9' |
+| GRANT ALL PRIVILEGES ON `inventory`.* TO 'raj'@'%'                                                 |
++----------------------------------------------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+MariaDB [inventory]> exit;
+Bye
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# mysql  -u  harru  -predhat -h localhost
+ERROR 1045 (28000): Access denied for user 'harru'@'localhost' (using password: YES)
+[root@basemachine ~]# 
+[root@basemachine ~]# mysql  -u  harry  -predhat -h localhost
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 23
+Server version: 5.5.56-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| inventory          |
++--------------------+
+2 rows in set (0.00 sec)
+
+MariaDB [(none)]> use inventory;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB [inventory]> show tables;
++---------------------+
+| Tables_in_inventory |
++---------------------+
+| product             |
++---------------------+
+1 row in set (0.00 sec)
+
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> 
+MariaDB [inventory]> exit
+Bye
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# mysqldump  -u  root -p  inventory  >   /tmp/inventory.dump   
+Enter password: 
+[root@basemachine ~]# 
+[root@basemachine ~]# ls  /tmp
+inventory.dump
+ssh-L84pvMaFUp6A
+systemd-private-26105937521c4c2db935605401235a1c-colord.service-R2uNxX
+systemd-private-26105937521c4c2db935605401235a1c-cups.service-Bsrexm
+systemd-private-26105937521c4c2db935605401235a1c-mariadb.service-X18akr
+systemd-private-26105937521c4c2db935605401235a1c-rtkit-daemon.service-PiSPab
+tracker-extract-files.0
+VMwareDnD
+yum_save_tx.2021-09-19.12-09.mze7Gp.yumtx
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# mysqldump  -u  root -p --all-databases    >   /tmp/alldb.dump   
+Enter password: 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# ls  /tmp  
+alldb.dump
+inventory.dump
+ssh-L84pvMaFUp6A
+systemd-private-26105937521c4c2db935605401235a1c-colord.service-R2uNxX
+systemd-private-26105937521c4c2db935605401235a1c-cups.service-Bsrexm
+systemd-private-26105937521c4c2db935605401235a1c-mariadb.service-X18akr
+systemd-private-26105937521c4c2db935605401235a1c-rtkit-daemon.service-PiSPab
+tracker-extract-files.0
+VMwareDnD
+yum_save_tx.2021-09-19.12-09.mze7Gp.yumtx
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# mysqldump  -u  root -predhat --all-databases    >   /tmp/alldb.dump   
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# crontab  -l  
+no crontab for root
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# crontab  -e 
+*/5	*	*	*	*    mysqldump  -u  root -predhat --all-databases  >  /tmp/abc-$(date +%H:%M:%S:%Y).dump
+
+
+:wq
+
+ 
+no crontab for root - using an empty one
+crontab: installing new crontab
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# crontab  -l  
+*/5	*	*	*	*    mysqldump  -u  root -predhat --all-databases  >  /tmp/abc-$(date +%H:%M:%S:%Y).dump
+[root@basemachine ~]# 
+
+
+
+
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# ls  /tmp  
+alldb.dump
+inventory.dump
+ssh-L84pvMaFUp6A
+systemd-private-26105937521c4c2db935605401235a1c-colord.service-R2uNxX
+systemd-private-26105937521c4c2db935605401235a1c-cups.service-Bsrexm
+systemd-private-26105937521c4c2db935605401235a1c-mariadb.service-X18akr
+systemd-private-26105937521c4c2db935605401235a1c-rtkit-daemon.service-PiSPab
+tracker-extract-files.0
+VMwareDnD
+yum_save_tx.2021-09-19.12-09.mze7Gp.yumtx
+[root@basemachine ~]# ifconfig | less
+[root@basemachine ~]# 
+
+
+
+
+
+[root@basemachine ~]# 
+You have mail in /var/spool/mail/root
+[root@basemachine ~]# 
+[root@basemachine ~]# ls  /tmp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@basemachine ~]# mysql  -u  root -p 
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# mysql  -u  root -p 
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 31
+Server version: 5.5.56-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> 
+MariaDB [(none)]> 
+MariaDB [(none)]> use mysql;
+
+
+
+
+
+
+
+MariaDB [(none)]> use mysql;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB [mysql]> 
+MariaDB [mysql]> 
+MariaDB [mysql]> 
+MariaDB [mysql]> select  user,host  from user;
++---------+---------------+
+| user    | host          |
++---------+---------------+
+| raj     | %             |
+| root    | 127.0.0.1     |
+| suraj   | 192.168.10.%  |
+| natasha | 192.168.10.11 |
+| root    | ::1           |
+| harry   | localhost     |
+| root    | localhost     |
++---------+---------------+
+7 rows in set (0.00 sec)
+
+MariaDB [mysql]> exit
+Bye
+You have new mail in /var/spool/mail/root
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# useradd  natsha  
+[root@basemachine ~]# passwd natasha 
+passwd: Unknown user name 'natasha'.
+[root@basemachine ~]# 123
+bash: 123: command not found...
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# useradd  natasha  
+
+
+
+
+
+
+
+
+
+
+
+
+[root@basemachine ~]# useradd  natasha  
+[root@basemachine ~]# 
+[root@basemachine ~]# passwd natasha 
+Changing password for user natasha.
+New password: 
+BAD PASSWORD: The password is shorter than 8 characters
+Retype new password: 
+passwd: all authentication tokens updated successfully.
+[root@basemachine ~]# 
+[root@basemachine ~]# 
+[root@basemachine ~]# mysql  -u  root -p 
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 36
+Server version: 5.5.56-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> 
+MariaDB [(none)]> use mysql;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB [mysql]> create user  natasha@localhost  identified by  'redhat';
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [mysql]> 
+MariaDB [mysql]> use  inventory;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB [inventory]> grant all  on  inventory.*   to  natasha@localhost;
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [inventory]> 
+MariaDB [inventory]> exit
+Bye
+
+================================
+Client Node ==> notes
+================================
+[root@station1 ~]# 
+[root@station1 ~]# 
+[root@station1 ~]# 
+[root@station1 ~]# which mysql 
+/usr/bin/which: no mysql in (/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/root/bin)
+[root@station1 ~]# 
+[root@station1 ~]# 
+[root@station1 ~]# 
+[root@station1 ~]# yum install mariadb  -y 
+Updating Subscription Management repositories.
+Unable to read consumer identity
+This system is not registered to Red Hat Subscription Management. You can use subscription-manager to register.
+Last metadata expiration check: 1 day, 0:54:51 ago on Sat 18 Sep 2021 12:07:31 PM IST.
+Dependencies resolved.
+=================================================================================================
+ Package                       Arch      Version                                 Repository
+                                                                                            Size
+=================================================================================================
+Installing:
+ mariadb                       x86_64    3:10.3.11-1.module+el8+2765+cfa4f87b    path-2    6.2 M
+Installing dependencies:
+ mariadb-common                x86_64    3:10.3.11-1.module+el8+2765+cfa4f87b    path-2     62 k
+ mariadb-connector-c           x86_64    3.0.7-1.el8                             path-2    148 k
+ mariadb-connector-c-config    noarch    3.0.7-1.el8                             path-2     13 k
+Enabling module streams:
+ mariadb                                 10.3                                                   
+
+Transaction Summary
+=================================================================================================
+Install  4 Packages
+
+Total size: 6.4 M
+Installed size: 39 M
+Downloading Packages:
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Running scriptlet: mariadb-connector-c-3.0.7-1.el8.x86_64                                  1/1 
+  Preparing        :                                                                         1/1 
+  Installing       : mariadb-connector-c-config-3.0.7-1.el8.noarch                           1/4 
+  Installing       : mariadb-common-3:10.3.11-1.module+el8+2765+cfa4f87b.x86_64              2/4 
+  Installing       : mariadb-connector-c-3.0.7-1.el8.x86_64                                  3/4 
+  Installing       : mariadb-3:10.3.11-1.module+el8+2765+cfa4f87b.x86_64                     4/4 
+  Running scriptlet: mariadb-3:10.3.11-1.module+el8+2765+cfa4f87b.x86_64                     4/4 
+  Verifying        : mariadb-3:10.3.11-1.module+el8+2765+cfa4f87b.x86_64                     1/4 
+  Verifying        : mariadb-common-3:10.3.11-1.module+el8+2765+cfa4f87b.x86_64              2/4 
+  Verifying        : mariadb-connector-c-3.0.7-1.el8.x86_64                                  3/4 
+  Verifying        : mariadb-connector-c-config-3.0.7-1.el8.noarch                           4/4 
+Installed products updated.
+
+Installed:
+  mariadb-3:10.3.11-1.module+el8+2765+cfa4f87b.x86_64                                            
+  mariadb-common-3:10.3.11-1.module+el8+2765+cfa4f87b.x86_64                                     
+  mariadb-connector-c-3.0.7-1.el8.x86_64                                                         
+  mariadb-connector-c-config-3.0.7-1.el8.noarch                                                  
+
+Complete!
+[root@station1 ~]# 
+[root@station1 ~]# 
+[root@station1 ~]# 
+[root@station1 ~]# 
+[root@station1 ~]# which mysql 
+/usr/bin/mysql
+[root@station1 ~]# 
+[root@station1 ~]# ping 192.168.10.100
+PING 192.168.10.100 (192.168.10.100) 56(84) bytes of data.
+64 bytes from 192.168.10.100: icmp_seq=1 ttl=64 time=0.610 ms
+64 bytes from 192.168.10.100: icmp_seq=2 ttl=64 time=0.165 ms
+^C
+--- 192.168.10.100 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 59ms
+rtt min/avg/max/mdev = 0.165/0.387/0.610/0.223 ms
+[root@station1 ~]# 
+[root@station1 ~]# 
+[root@station1 ~]# 
+
+
+
+
+
+
+
+
+
+[root@station1 ~]# 
+[root@station1 ~]# 
+[root@station1 ~]# 
+[root@station1 ~]# 
+[root@station1 ~]# mysql  -u  root  -p  -h   192.168.10.100 
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'root'@'192.168.10.12' (using password: YES)
+[root@station1 ~]# 
+[root@station1 ~]# 
+[root@station1 ~]# mysql  -u  harry   -p  -h   192.168.10.100 
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'harry'@'192.168.10.12' (using password: YES)
+[root@station1 ~]# 
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@station1 ~]# 
+[root@station1 ~]# 
+[root@station1 ~]# 
+[root@station1 ~]# 
+[root@station1 ~]# mysql  -u raj   -p  -h   192.168.10.100 
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 29
+Server version: 5.5.56-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> 
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| inventory          |
++--------------------+
+2 rows in set (0.001 sec)
+
+MariaDB [(none)]> 
+MariaDB [(none)]> use inventory;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB [inventory]> show tables;
++---------------------+
+| Tables_in_inventory |
++---------------------+
+| manufacturer        |
+| product             |
++---------------------+
+2 rows in set (0.001 sec)
+
+MariaDB [inventory]> exit;
+Bye
+[root@station1 ~]# 
+[root@station1 ~]# 
+[root@station1 ~]# 
+[root@station1 ~]# 
+[root@station1 ~]# ifconfig 
+ens160: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.10.12  netmask 255.255.255.0  broadcast 192.168.10.255
+        inet6 fe80::97b7:7e2d:a944:7a70  prefixlen 64  scopeid 0x20<link>
+        ether 00:0c:29:a9:af:55  txqueuelen 1000  (Ethernet)
+        RX packets 511  bytes 35723 (34.8 KiB)
+        RX errors 0  dropped 264  overruns 0  frame 0
+        TX packets 162  bytes 15827 (15.4 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 138  bytes 11566 (11.2 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 138  bytes 11566 (11.2 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+virbr0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        inet 192.168.122.1  netmask 255.255.255.0  broadcast 192.168.122.255
+        ether 52:54:00:29:63:7d  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+[root@station1 ~]# 
+[root@station1 ~]# 
+[root@station1 ~]# 
+[root@station1 ~]# 
+[root@station1 ~]# mysql  -u suraj   -p  -h   192.168.10.100 
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 32
+Server version: 5.5.56-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> 
+MariaDB [(none)]> 
+MariaDB [(none)]> exit
+Bye
+[root@station1 ~]# 
+[root@station1 ~]# 
+[root@station1 ~]# mysql  -u  natasha    -p  -h   192.168.10.100 
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'natasha'@'192.168.10.12' (using password: YES)
+[root@station1 ~]# 
+[root@station1 ~]# 
+
+
+[root@station1 ~]# 
+[root@station1 ~]# 
+[root@station1 ~]# ssh natasha@192.168.10.100
+The authenticity of host '192.168.10.100 (192.168.10.100)' can't be established.
+ECDSA key fingerprint is SHA256:Al6ohVlOlCHtprbTo+GsYbDu1OgEObSN8x/FbrfhL6A.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '192.168.10.100' (ECDSA) to the list of known hosts.
+natasha@192.168.10.100's password: 
+[natasha@basemachine ~]$ 
+[natasha@basemachine ~]$ 
+[natasha@basemachine ~]$ mysql -u natasha -p 
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'natasha'@'localhost' (using password: YES)
+[natasha@basemachine ~]$ 
+[natasha@basemachine ~]$ 
+[natasha@basemachine ~]$ mysql -u natasha -p 
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'natasha'@'localhost' (using password: YES)
+[natasha@basemachine ~]$ 
+[natasha@basemachine ~]$ 
+
+
+
+
+
+
+[natasha@basemachine ~]$ 
+[natasha@basemachine ~]$ 
+[natasha@basemachine ~]$ 
+[natasha@basemachine ~]$ 
+[natasha@basemachine ~]$ mysql -u natasha -p 
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 37
+Server version: 5.5.56-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> 
+MariaDB [(none)]> exit
+Bye
+[natasha@basemachine ~]$ exit
+logout
+Connection to 192.168.10.100 closed.
+[root@station1 ~]# 
+
+
+===================================================================
+
+[root@basemachine ~]# tail -f /var/log/mariadb/mariadb.log 
+
+
+
+
+
+
+
+
+

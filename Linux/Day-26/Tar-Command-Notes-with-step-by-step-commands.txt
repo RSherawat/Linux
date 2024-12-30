@@ -1,0 +1,189 @@
+    1  which tar
+    2  which gzip
+    3  which bzip2
+    4  which xz
+    5  rpm -qa  tar
+    6  rpm -qa  gzip
+    7  rpm -qa  bzip2
+    8  rpm -qa  xz
+    9  history
+   10  ls
+   11  touch abc1 abc2 abc3
+   12  ls
+   13  tar  -cvf  network.tar    abc*
+   14  ls
+   15  tar  -tvf  network.tar
+   16  touch abc4
+   17  ls
+   18  tar  -rvf  network.tar  abc4
+   19  ls
+   20  tar  -tvf  network.tar
+   21  touch abc5
+   22  ls
+   23  ls
+   24  tar  -rvf  network.tar   abc5
+   25  tar  -tvf  network.tar
+   26  ls
+   27  gzip    network.tar
+   28  ls
+   29  tar  -tvf network.tar.gz
+   30  touch abc6
+   31  tar  -rvf  network.tar.gz   abc6
+   32  gzip  -d   network.tar.gz
+   33  ls
+   34  gzip   network.tar
+   35  ls
+   36  gunzip    network.tar.gz
+   37  ls
+   38  tar  -rvf   network.tar  abc6
+   39  ls
+   40  tar  -tvf   network.tar
+   41  gzip   network.tar
+   42  ls
+   43  rm -rf abc*
+   44  ls
+   45  gunzip   network.tar.gz
+   46  ls
+   47  tar -xvf  network.tar
+   48  ls
+   49  tar -xvf  network.tar   -C   /tmp
+   50  ls  /tmp
+   51  mkdir  /linux
+   52  ls
+   53  tar -xvf  network.tar   -C   /linux
+   54  ls  /linux
+   55  mkdir  /redhat
+   56  cd  /redhat
+   57  tar -xvf   /root/network.tar
+   58  ls
+   59  cd
+   60  tar  -xvf  network.tar    -C  /redhat
+   61  ls /redhat
+   62  ls
+   63  gzip   network.tar
+   64  ls
+   65  rm -rf abc*
+   66  ls
+   67  tar  -xvf  network.tar.gz
+   68  ls
+   69  rm -rf abc*
+   70  tar  -xzvf  network.tar.gz
+   71  ls
+   72  rm -rf abc*
+   73  ls
+   74  ls /redhat
+   75  gzip   /redhat
+   76  tar  -cvf   cloud.tar  /redhat/
+   77  ls
+   78  tar  -tvf  cloud.tar
+   79  ls
+   80  gzip  cloud.tar
+   81  ls
+   82  rm -rf cloud.tar.gz
+   83  ls  /redhat
+   84  tar  -czvf  cloud.tar.gz    /redhat/
+   85  ls
+   86  gunzip  cloud.tar.gz
+   87  ls
+   88  tar -xvf  cloud.tar
+   89  ls
+   90  ls redhat
+   91  rm -rf  /redhat
+   92  ls
+   93  ls redhat
+   94  rm -rf cloud.tar   network.tar.gz
+   95  ls
+   96  ls  /
+   97  ls /etc
+   98  du -sh  /etc
+   99  tar  -czvf   redhat.tar.gz    /etc
+  100  ls
+  101  tar  -cjvf fedora.tar.bz2   /etc
+  102  ls
+  103  tar  -cJvf  linux.tar.xz   /etc
+  104  ls
+  105  du -sh  /etc
+  106  du -sh redhat.tar.gz
+  107  du -sh  fedora.tar.bz2
+  108  du -sh  linux.tar.xz
+  109  tar  -tvf  redhat.tar.gz
+  110  tar  -tvf  redhat.tar.gz | grep shadow
+  111  tar  -tvf  redhat.tar.gz | grep useradd
+  112  ls
+  113  tar  -xzvf  redhat.tar.gz
+  114  ls
+  115  du -sh etc
+  116  tar  -xjvf  fedora.tar.bz2
+  117  ls
+  118  tar  -xJvf  linux.tar.xz
+  119  ls
+  120  history
+  121  echo  "testing"  >   tcs
+  122  cat tcs
+  123  ls
+  124  gzip  tcs
+  125  ls
+  126  zcat  tcs.gz
+  127  gunzip  tcs.gz
+  128  ls
+  129  tar  -cvf  krishna.tar  tcs
+  130  ls
+  131  tar -tvf krishna.tar
+  132  gzip   krishna.tar
+  133  ls
+  134  rm -rf  tcs
+  135  ls
+  136  tar -tvf krishna.tar.gz
+  137  tar  -xvf krishna.tar.gz
+  138  ls
+  139  rm -rf  krishna.tar.gz
+  140  ls
+  141  bzip2  tcs
+  142  ls
+  143  bzcat    tcs.bz2
+  144  bunzip2  tcs.bz2
+  145  ls
+  146  xz  tcs
+  147  ls
+  148  xzcat   tcs.xz
+  149  unxz   tcs.xz
+  150  ls
+  151  touch abc1 abc2 abc3
+  152  ls
+  153  tar  -cvf    krnetwork.tar  abc*
+  154  ls
+  155  rm -rf abc*
+  156  ls
+  157  tar -tvf  krnetwork.tar
+  158  touch abc4
+  159  tar -rvf  krnetwork.tar  abc4
+  160  ls
+  161  rm -rf abc4
+  162  tar  -tvf  krnetwork.tar
+  163  ls
+  164  tar  -xvf  krnetwork.tar  abc4
+  165  ls
+  166  tar  -tvf  krnetwork.tar
+  174  tar  -f  krnetwork.tar  --delete   abc4
+  175  tar  -tvf  krnetwork.tar
+  176  ls
+  177  history
+  178  mkdir  /kr-network
+  179  touch  /kr-network/abc{1..3}
+  180  ls /kr-network
+  181  tar  -cvf  ibm.tar   /kr-network
+  182  tar  -tvf  ibm.tar
+  183  ls
+  184  rm -rf abc*
+  185  ls
+  186  tar  -tvf  ibm.tar
+  187  tar  -xvf  ibm.tar  kr-network/abc3
+  188  ls
+  189  cd kr-network
+  190  ls
+  191  cd
+  192  tar  -tvf ibm.tar
+  193  tar  -f ibm.tar --delete  abc1
+  194  tar  -f ibm.tar --delete  kr-network/abc1
+  195  tar  -tvf ibm.tar
+  196  ls

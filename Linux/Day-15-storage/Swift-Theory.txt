@@ -1,0 +1,169 @@
+================================
+Chapter-8 Swift Object Storage
+================================
+In Openstack ==> 
+
+Types of Storage Solutions available in openstak ?
+
+1- Non persistent Storage ==> Instance ==> 1- root disk  2- swap disk  3- ephemeral disk
+2- persistent Storage     ==> 1- Block Storage  2- Object Storage  3- File Share Storage [manila File system]
+
+================================
+Instance  <== Data  <== Store
+
+instance  <=== 1- OS Defined data  2- Custom data or application or backup data
+
+Instance <== 1- Non persistent disk ==> using any selected flavor based disk
+             2- persistent disk ==> Volumes using cinder block storage provider service
+
+
+Instance ==> root disk  ==> 1- Non persistent root disk   2- persistent root disk [using bootable volume]
+
+================================
+
+Block storage   ==> Cinder
+Object storage  ==> Swift
+Shared File     ==> Manila
+
+===============================
+
+Cinder  ==> Volumes  ==> attach ==> data writting
+
+Types of Volumes ?
+
+1- non bootable volumes ==> to attached with any live running instaces to store any types of data.
+2- Bootable volumes    ==> to launch any instance to provide persistent root disk
+
+===============================
+
+Data store  ==> Person ==> having the two choices
+
+===============================
+Types of Users ?
+
+
+1- IT or Technical based users
+2- Non IT or non technical Users
+
+===============================
+
+Data or objects  ==> evey files or folder  ==> called object
+
+1- pdf
+2- songs
+3- movies
+4- xls docs ppt
+5- html xml java script programming
+6- yaml playbooks
+6- pics  videos clip projects
+
+===============================
+Continue data write  + read  ==> Example:-  database server
+Write once + read many 
+===============================
+users ==> Objects users
+===============================
+1- local ==> Device or desktop or laptop ==> Choice-1
+2- Portable device ==> floppy,cdroom,dvd,pendrive,USB Portable Disk ==> Choice-2
+3- Object Storage ==> third Choice ==> aws google azure 
+
+Why we are going to configure Swift node in our organization ?
+                               [ Private object storage server ]
+===============================
+Public ==> Cloud  ==> vendors ==> Debid card + credit + account signup ==> login
+
+===============================
+object storage or online cloud data storage
+=============================== 
+Object Storage Provider Node  ==> 1- Public Object Storage Provider [Common users or public users]
+                                  2- Private Object Storage provider [With in the company]
+
+===============================
+Project User ==> Instance ==> need ==> Volume
+Cinder
+CEPH  ==> backend ==> Storage disk ==> provider
+
+===============================
+1- project user or account user
+2- Swift Service
+3- Backend Strorage provider solution [CEPH or Local to local ]
+===============================
+
+1- Account
+
+2- Container
+
+3- Object
+
+===============================
+user1  ==> Container1  ==> birthday-1 <== upload [object]
+                       ==> birthday-2 <== upload [object]
+
+
+user2  == Container2   ==> psuedo folder  <==  objects
+ 
+==============================
+Swift node  using Packstack Tool ==> local to local ==> storage  ==>  /srv/node
+Swift node using TripleO Method  ==> 1- controller [swift]   2- ceph storage [Pool]==> swift configuration
+==============================
+
+Swift + CEPH
+Cinder + CEPH
+Glance + CEPH
+Nova + CEPH
+manila + CEPH 
+
+=============================
+
+Service END + Backend Storage END
+
+============================
+Image upload ==> Controller ==> Glance ==> 1-  local to local   2- can add any network based storage solution [CEPH]
+
+============================
+
+1- Account
+
+2- Containers
+
+3- Object
+
+===========================
+Swift ==> CEPH ==> user1 user2  user3
+===========================
+1- GUI
+2- CLI
+===========================
+1- user End   ===> 1- using GUI dashboard  2- using fully CLI
+2- SWift end
+3- CEPH end
+===========================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+

@@ -1,0 +1,66 @@
+==========================================================
+Permissions:-
+
+1- File or directory
+2- command execution 
+
+==========================================================
+Basic permissions    ==> chmod  chown chgrp
+Advance permission   ==> setfacl 
+==========================================================
+
+permissions apply  ==> chmod and setfacl
+owner changing     ==> chown and chgrp 
+
+testing or read    ==> ls -l   ls -ld  getfacl 
+
+==========================================================
+
+.  ==> no acl
++  ==> acl is working on it 
+
+# getfacl   <file or directoryname>
+==========================================================
+root  ==> directory  ==>  7 5 5 
+               file  ==>  6 4 4
+
+deepak  ==> directory  ==> 7 7 5
+                file   ==> 6 6 4
+
+==========================================================
+first block ==> owner
+second block  ==> group
+last block     ==> for all other users/group members available in my machine
+
+==========================================================
+Permission Changing method ? chmod 
+
+1- numeric method      ==> 7 7 7    7 5 5   66 4    660     740
+2- symbolic method  
+
+
+
+===========================================================
+chown + chgrp  ==> syntax same 
+chmod   => numberic + symbolic 
+===========================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

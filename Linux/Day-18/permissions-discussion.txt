@@ -1,0 +1,17 @@
+============================
+Permissions 
+============================
+
+
+machine <=== OS  <===  Application/services/Tools/Software
+
+Machine <=== OS  <=== Activity <== users <=== 
+
+============================
+
+Types of Permissions ?
+
+1- File and Directory  ==> Access Allow or Deny ==> File and directory based permissions
+2- Command Execution Based Permissions 
+
+============================

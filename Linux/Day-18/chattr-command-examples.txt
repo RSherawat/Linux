@@ -1,0 +1,369 @@
+===================================
+Example of chattr + lsattr command + SUID Examples
+
+[root@localhost ~]# echo  hello india > redhat 
+[root@localhost ~]# ls
+anaconda-ks.cfg  Documents  initial-setup-ks.cfg  Pictures  redhat     Videos
+Desktop          Downloads  Music                 Public    Templates
+[root@localhost ~]# 
+[root@localhost ~]# cat redhat 
+hello india
+[root@localhost ~]# 
+[root@localhost ~]# ls -l redhat 
+-rw-r--r--. 1 root root 12 Apr 30 11:49 redhat
+[root@localhost ~]# 
+[root@localhost ~]# lsattr redhat  
+------------------ redhat
+[root@localhost ~]# 
+[root@localhost ~]# chattr   +a  redhat 
+[root@localhost ~]# 
+[root@localhost ~]# lsattr redhat  
+-----a------------ redhat
+[root@localhost ~]# 
+[root@localhost ~]# cat redhat 
+hello india
+[root@localhost ~]# cp redhat   /tmp 
+[root@localhost ~]# 
+[root@localhost ~]# cat  /tmp/redhat 
+hello india
+[root@localhost ~]# 
+[root@localhost ~]# mkdir  /backup 
+[root@localhost ~]# 
+[root@localhost ~]# mv redhat   /backup
+mv: cannot move 'redhat' to '/backup/redhat': Operation not permitted
+[root@localhost ~]# 
+[root@localhost ~]# rm -rf  redhat 
+rm: cannot remove 'redhat': Operation not permitted
+[root@localhost ~]# 
+[root@localhost ~]# echo  hello  > redhat 
+bash: redhat: Operation not permitted
+[root@localhost ~]# 
+[root@localhost ~]# echo  hello  >> redhat 
+[root@localhost ~]# 
+[root@localhost ~]# cat  redhat 
+hello india
+hello
+[root@localhost ~]# 
+[root@localhost ~]# ls
+anaconda-ks.cfg  Documents  initial-setup-ks.cfg  Pictures  redhat     Videos
+Desktop          Downloads  Music                 Public    Templates
+[root@localhost ~]# 
+[root@localhost ~]# rename  redhat  linux redhat 
+rename: redhat: rename to linux failed: Operation not permitted
+[root@localhost ~]# 
+[root@localhost ~]# vim redhat 
+[root@localhost ~]# 
+[root@localhost ~]# lsattr redhat
+-----a------------ redhat
+[root@localhost ~]# 
+[root@localhost ~]# chattr  -a  redhat
+[root@localhost ~]# 
+[root@localhost ~]# lsattr redhat
+------------------ redhat
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# chattr  +i  /etc/passwd
+[root@localhost ~]# 
+[root@localhost ~]# lsattr   /etc/passwd
+----i------------- /etc/passwd
+[root@localhost ~]# 
+[root@localhost ~]# useradd  soniya  
+useradd: cannot open /etc/passwd
+[root@localhost ~]# 
+[root@localhost ~]# chattr  -i  /etc/passwd
+[root@localhost ~]# 
+[root@localhost ~]# lsattr   /etc/passwd
+------------------ /etc/passwd
+[root@localhost ~]# 
+[root@localhost ~]# chattr  +a  /etc/passwd
+[root@localhost ~]# lsattr   /etc/passwd
+-----a------------ /etc/passwd
+[root@localhost ~]# 
+[root@localhost ~]# useradd  soniya  
+useradd: cannot open /etc/passwd
+[root@localhost ~]# 
+[root@localhost ~]# chattr -a  /etc/passwd
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# chattr   +i   /etc/shadow
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# lsattr  /etc/shadow
+----i------------- /etc/shadow
+[root@localhost ~]# 
+[root@localhost ~]# passwd 
+Changing password for user root.
+New password: 
+BAD PASSWORD: The password is shorter than 8 characters
+Retype new password: 
+passwd: Authentication token manipulation error
+[root@localhost ~]# 
+[root@localhost ~]# chattr   -i   /etc/shadow
+[root@localhost ~]# 
+[root@localhost ~]# lsattr  /etc/shadow
+------------------ /etc/shadow
+[root@localhost ~]# 
+[root@localhost ~]# 
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# useradd soniya  
+[root@localhost ~]# 
+[root@localhost ~]# su - soniya  
+[soniya@localhost ~]$ 
+[soniya@localhost ~]$ ls
+[soniya@localhost ~]$ 
+[soniya@localhost ~]$ touch abc 
+[soniya@localhost ~]$ exit
+logout
+[root@localhost ~]# 
+[root@localhost ~]# chattr  -R  +i  /home 
+[root@localhost ~]# 
+[root@localhost ~]# su - soniya 
+[soniya@localhost ~]$ ls
+abc
+[soniya@localhost ~]$ touch abc2
+touch: setting times of 'abc2': No such file or directory
+[soniya@localhost ~]$ ls
+abc
+[soniya@localhost ~]$ echo  hello india > abc
+-bash: abc: Operation not permitted
+[soniya@localhost ~]$ exit
+logout
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# chattr  -R  -i  /home 
+[root@localhost ~]# 
+[root@localhost ~]# su - soniya  
+[soniya@localhost ~]$ 
+[soniya@localhost ~]$ ls
+abc
+[soniya@localhost ~]$ 
+[soniya@localhost ~]$ touch abc2
+[soniya@localhost ~]$ 
+[soniya@localhost ~]$ ls
+abc  abc2
+[soniya@localhost ~]$ exit
+logout
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# su - soniya 
+[soniya@localhost ~]$ 
+[soniya@localhost ~]$ ls
+abc  abc2
+[soniya@localhost ~]$ rm -rf abc2
+[soniya@localhost ~]$ 
+[soniya@localhost ~]$ ls
+abc
+[soniya@localhost ~]$ 
+[soniya@localhost ~]$ lsattr  abc  
+------------------ abc
+[soniya@localhost ~]$ 
+[soniya@localhost ~]$ chattr  +i   abc  
+chattr: Operation not permitted while setting flags on abc
+[soniya@localhost ~]$ exit
+logout
+[root@localhost ~]# 
+
+
+
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# which  chattr
+/usr/bin/chattr
+[root@localhost ~]# 
+[root@localhost ~]# ls -l /usr/bin/chattr
+-rwxr-xr-x. 1 root root 17528 Dec 17  2018 /usr/bin/chattr
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# chmod   4755   /usr/bin/chattr 
+[root@localhost ~]# 
+[root@localhost ~]# ls -l /usr/bin/chattr
+-rwsr-xr-x. 1 root root 17528 Dec 17  2018 /usr/bin/chattr
+[root@localhost ~]# 
+[root@localhost ~]# chmod  u+s  /usr/bin/chattr 
+[root@localhost ~]# ls -l /usr/bin/chattr
+-rwsr-xr-x. 1 root root 17528 Dec 17  2018 /usr/bin/chattr
+[root@localhost ~]# 
+[root@localhost ~]# chmod  u-s  /usr/bin/chattr 
+[root@localhost ~]# ls -l /usr/bin/chattr
+-rwxr-xr-x. 1 root root 17528 Dec 17  2018 /usr/bin/chattr
+[root@localhost ~]# 
+[root@localhost ~]# chmod  u+s  /usr/bin/chattr 
+[root@localhost ~]# ls -l /usr/bin/chattr
+-rwsr-xr-x. 1 root root 17528 Dec 17  2018 /usr/bin/chattr
+[root@localhost ~]# 
+[root@localhost ~]# su - soniya  
+[root@localhost ~]# su - soniya  
+[soniya@localhost ~]$ 
+[soniya@localhost ~]$ 
+[soniya@localhost ~]$ 
+[soniya@localhost ~]$ lsattr abc 
+------------------ abc
+[soniya@localhost ~]$ 
+[soniya@localhost ~]$ chattr  +i abc 
+[soniya@localhost ~]$ 
+[soniya@localhost ~]$ lsattr abc 
+----i------------- abc
+[soniya@localhost ~]$ 
+[soniya@localhost ~]$ cat abc 
+[soniya@localhost ~]$ 
+[soniya@localhost ~]$ rm -rf abc 
+rm: cannot remove 'abc': Operation not permitted
+[soniya@localhost ~]$ 
+[soniya@localhost ~]$ exit
+logout
+[root@localhost ~]# rm -rf   /home/soniya/abc 
+rm: cannot remove '/home/soniya/abc': Operation not permitted
+[root@localhost ~]# 
+[root@localhost ~]# lsattr    /home/soniya/abc 
+----i------------- /home/soniya/abc
+[root@localhost ~]# 
+[root@localhost ~]# chattr  -i  /home/soniya/abc 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# ls -l  /usr/bin/chattr 
+-rwsr-xr-x. 1 root root 17528 Dec 17  2018 /usr/bin/chattr
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# chmod   u-s  /usr/bin/chattr 
+[root@localhost ~]# 
+[root@localhost ~]# su - soniya  
+[soniya@localhost ~]$ 
+[soniya@localhost ~]$ fdisk -l
+fdisk: cannot open /dev/sr0: Permission denied
+fdisk: cannot open /dev/sda: Permission denied
+[soniya@localhost ~]$ exit
+logout
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# which fdisk 
+/usr/sbin/fdisk
+[root@localhost ~]# 
+[root@localhost ~]# ls -l   /usr/sbin/fdisk
+-rwxr-xr-x. 1 root root 140008 Dec 11  2018 /usr/sbin/fdisk
+[root@localhost ~]# 
+[root@localhost ~]# chmod   u+s  /usr/sbin/fdisk 
+[root@localhost ~]# 
+[root@localhost ~]# ls -l   /usr/sbin/fdisk
+-rwsr-xr-x. 1 root root 140008 Dec 11  2018 /usr/sbin/fdisk
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# chmod   4755  /usr/sbin/fdisk 
+[root@localhost ~]# 
+[root@localhost ~]# ls -l   /usr/sbin/fdisk
+-rwsr-xr-x. 1 root root 140008 Dec 11  2018 /usr/sbin/fdisk
+[root@localhost ~]# 
+[root@localhost ~]# which  useradd 
+/usr/sbin/useradd
+[root@localhost ~]# 
+[root@localhost ~]# ls -l  /usr/sbin/useradd
+-rwxr-xr-x. 1 root root 161920 Dec 18  2018 /usr/sbin/useradd
+[root@localhost ~]# 
+[root@localhost ~]# chmod   750  /usr/sbin/useradd 
+[root@localhost ~]# 
+[root@localhost ~]# ls -l  /usr/sbin/useradd
+-rwxr-x---. 1 root root 161920 Dec 18  2018 /usr/sbin/useradd
+[root@localhost ~]# 
+[root@localhost ~]# chmod   u+s /usr/sbin/useradd 
+[root@localhost ~]# 
+[root@localhost ~]# ls -l  /usr/sbin/useradd
+-rwsr-x---. 1 root root 161920 Dec 18  2018 /usr/sbin/useradd
+[root@localhost ~]# 
+[root@localhost ~]# su - soniya  
+[soniya@localhost ~]$ 
+[soniya@localhost ~]$ useradd deep
+-bash: /usr/sbin/useradd: Permission denied
+[soniya@localhost ~]$ 
+[soniya@localhost ~]$ fdisk -l
+Disk /dev/sda: 30 GiB, 32212254720 bytes, 62914560 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xda0a5810
+
+Device     Boot    Start      End  Sectors  Size Id Type
+/dev/sda1  *        2048  2050047  2048000 1000M 83 Linux
+/dev/sda2        2050048 32770047 30720000 14.7G 83 Linux
+/dev/sda3       32770048 38914047  6144000    3G 82 Linux swap / Solaris
+[soniya@localhost ~]$ exit
+logout
+[root@localhost ~]# 
+[root@localhost ~]# ls -l  /usr/sbin/fdisk
+-rwsr-xr-x. 1 root root 140008 Dec 11  2018 /usr/sbin/fdisk
+[root@localhost ~]# 
+[root@localhost ~]# chmod  4750  /usr/sbin/fdisk
+[root@localhost ~]# 
+[root@localhost ~]# su - soniya  
+[soniya@localhost ~]$ 
+[soniya@localhost ~]$ fdisk -l
+-bash: /usr/sbin/fdisk: Permission denied
+[soniya@localhost ~]$ 
+[soniya@localhost ~]$ useradd deep
+-bash: /usr/sbin/useradd: Permission denied
+[soniya@localhost ~]$ exit
+logout
+[root@localhost ~]# 
+
+[root@localhost ~]# chmod  4755  /usr/sbin/useradd 
+[root@localhost ~]# chmod  4755  /usr/sbin/fdisk 
+[root@localhost ~]# 
+[root@localhost ~]# su - soniya  
+[soniya@localhost ~]$ 
+[soniya@localhost ~]$ useradd deep
+sss_cache must be run as root
+useradd: sss_cache exited with status 1
+useradd: Failed to flush the sssd cache.
+sss_cache must be run as root
+useradd: sss_cache exited with status 1
+useradd: Failed to flush the sssd cache.
+[soniya@localhost ~]$ 
+[soniya@localhost ~]$ 
+[soniya@localhost ~]$ fdisk -l
+Disk /dev/sda: 30 GiB, 32212254720 bytes, 62914560 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xda0a5810
+
+Device     Boot    Start      End  Sectors  Size Id Type
+/dev/sda1  *        2048  2050047  2048000 1000M 83 Linux
+/dev/sda2        2050048 32770047 30720000 14.7G 83 Linux
+/dev/sda3       32770048 38914047  6144000    3G 82 Linux swap / Solaris
+[soniya@localhost ~]$ exit
+logout
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# ls -l /usr/sbin/fdisk 
+-rwsr-xr-x. 1 root root 140008 Dec 11  2018 /usr/sbin/fdisk
+[root@localhost ~]# ls -l /usr/sbin/useradd 
+-rwsr-xr-x. 1 root root 161920 Dec 18  2018 /usr/sbin/useradd
+[root@localhost ~]# 
+[root@localhost ~]# ls -l /usr/bin/chattr 
+-rwxr-xr-x. 1 root root 17528 Dec 17  2018 /usr/bin/chattr
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# chmod u-s  /usr/sbin/useradd 
+[root@localhost ~]# chmod u-s  /usr/sbin/fdisk
+[root@localhost ~]# 
+[root@localhost ~]# ls -l /usr/bin/chattr 
+-rwxr-xr-x. 1 root root 17528 Dec 17  2018 /usr/bin/chattr
+[root@localhost ~]# ls -l /usr/sbin/useradd 
+-rwxr-xr-x. 1 root root 161920 Dec 18  2018 /usr/sbin/useradd
+[root@localhost ~]# 
+[root@localhost ~]# ls -l /usr/sbin/fdisk
+-rwxr-xr-x. 1 root root 140008 Dec 11  2018 /usr/sbin/fdisk
+
+===================================

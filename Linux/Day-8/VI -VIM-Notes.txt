@@ -1,0 +1,89 @@
+************************
+
+File Creation and Files Editing 
+
+************************
+
+# touch abc  
+
+# echo  "hello"  > abc  
+
+# cat abc
+
+hello
+
+
+Files Editing Tools OR commands in linux  ?
+
+
+ #  gedit              ==> Support only in GUI mode 
+
+ #  vi  and  vim       ==> Support in Both GUI + CLI mode ==> Command based operation 
+
+
+Examples of gedit command  ?
+
+Example of vi and vim command  ?
+
+1- Which RPM is required to use vi and vim commands ?
+2- What is the difference between vi and vim commands?
+
+*******************************************************************
+
+Features of Vi ( Visual Editor ) command
+
+1-  Blank and white color 
+2-  will not display the cursor positions  
+3-  not highlihts any spell errors
+4-  not recommended for any developers and linux admins.
+5-  support in unix + linux both flavors 
+
+*******************************************************************
+
+Features of vim  ( VIM enhanced Editor ) command
+
+1-  color full mode   
+2-  will display the cursor positions  automatically
+3-  will automatically any spell errors
+4-  highly recommended for any developers and linux admins.
+5-  specailly launched in linux flavors. 
+ 
+****************************************************************
+
+Examples of vi and vim commands  ?
+       OR 
+How we can create any files using vi and vim commands ?
+
+***************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

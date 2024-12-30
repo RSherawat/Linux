@@ -1,0 +1,246 @@
+===========================================
+Network configuration - Practical Session
+===========================================
+VM-1  <=== RHEL-8
+
+
+
+VM-2  <=== RHEL-8
+
+
+
+
+VM-1     =====> VM-2
+VM-1     <====  VM-2
+
+     
+Note:- we can use IP address on these machine as per demands from any defined class ranges
+
+============================================
+VM-1     ==> C Class  ==> private network ==>   192.168.0.10/24
+VM-2     ==> C Class  ==> private network ==>   192.168.0.20/24
+
+machine-1     machine-2
+ping           ping 
+============================================
+IP assign ==> 1- using DHCP Server   2- manual configuration
+Hostname  ==> configure  ===> 
+
+FQ  DN   ==> format 
+
+Domain  ==> example.com OR   test.com  OR   training.com   OR  nokia.com
+
+Fully qualified . Domain Name
+
+node1.example.com
+node2.example.com 
+
+pc1.example.com
+pc2.example.com
+
+machine1.example.com
+machine2.example.com
+
+max-hospital-pc1.max.com
+max-hospital-pc2.max.com 
+
+system1.example.com
+systemc2.example.com
+
+node1.nokia.com
+node2.nokia.com
+usserver-orange-PC1.nokia.com 
+=============================================
+VM-1
+
+192.168.0.10/24
+station10.example.com
+
+VM-2
+
+192.168.0.20/24
+station20.example.com
+
+VM-1   ===> VM-2
+VM-1   <=== VM-2
+
+
+Note:  bydefault machines can communicate only with IP address to IP address
+but not hostname to hostname 
+
+if we want ==>
+
+Solution-1     we have to configure DNS client in machine in  /etc/resolv.conf file 
+Solution-2     if we are not having DNS server in my setup in that we can use /etc/hosts file.
+               
+=====================================================
+Till RHEL-6
+
+# hostname 
+# cat /etc/sysconfig/network
+
+IN RHEL-7+8
+
+#hostname
+#hostnamectl
+# cat /etc/hostname 
+
+/etc/hosts  ==> always work is same
+/etc/resolv.conf  ==> always work is same
+======================================================
+RHEL-6 interface Name
+
+1- loopback  ==> lo
+2- main interface ==> eth0   eth1  eth2
+
+# cat  /etc/sysconfig/network-scripts/ifcfg-eth0  ==> file name
+# cat   /etc/sysconfig/network-scripts/ifcfg-eth0 ==> file name
+
+
+rhel-7 + rhel-8
+
+1- loopback  ==>  lo
+2- main interface  ==> ens33 or ens160
+
+# cat /etc/sysconfig/network-scripts/ifcfg-ens160
+
+======================================================
+RHEL-6
+
+# setup  ==> interfacename ==> eth0
+              filename     ==> eth0 
+
+RHEL-7
+
+# nmcli or nmtui   OR   Direct File method 
+
+nmcli ==> ifname     ==> interface name ==> ens160
+          con-name   ==> OR  ==> Filename ==> Optional
+
+# nmcli connection add  con-name  xyz   ifname ens160
+
+con-name  ==> can be anything ==> 
+ifname    ==> as per ifconfig command output 
+
+
+ens160  ==> file  ==> ens160
+eth1    ==> file  ==> eth1 
+
+
+# nmcli connection show
+# nmcli connection up 
+                   down
+                   delete
+                   add
+                   modify  
+======================================================
+
+Machine-1
+
+task-1   How we can set hostname
+
+[root@localhost ~]# hostname
+localhost.localdomain
+[root@localhost ~]# 
+[root@localhost ~]# hostnamectl 
+   Static hostname: localhost.localdomain
+         Icon name: computer-vm
+           Chassis: vm
+        Machine ID: 37bcad5fec194b19934ad5c12bcca645
+           Boot ID: 4c91624ae22e467aab8d15a4b2e6f8ff
+    Virtualization: vmware
+  Operating System: Red Hat Enterprise Linux 8.0 (Ootpa)
+       CPE OS Name: cpe:/o:redhat:enterprise_linux:8.0:GA
+            Kernel: Linux 4.18.0-80.el8.x86_64
+      Architecture: x86-64
+[root@localhost ~]# 
+[root@localhost ~]# hostnamectl set-hostname   station10.example.com
+[root@localhost ~]# 
+[root@localhost ~]# cat  /etc/hostname   
+station10.example.com
+[root@localhost ~]# exit
+
+close this terminal and re open it
+
+[root@station10 ~]# 
+[root@station10 ~]# hostname
+station10.example.com
+[root@station10 ~]#
+
+
+Task-2  How we can configure IP address and subnet Mask
+
+    7  hostname
+    8  hostnamectl 
+    9  hostnamectl set-hostname   station10.example.com
+   10  cat  /etc/hostname   
+   11  exit
+   12  hostname
+   13  ifconfig 
+   14  cat  /etc/sysconfig/network-scripts/ifcfg-ens160 
+   15  nmcli connection show 
+   16  nmcli connection delete ens160 
+   17  nmcli connection show 
+   18  ifconfig 
+   19  ls  /etc/sysconfig/network-scripts
+   20  nmcli connection show 
+   21  nmcli connection add  con-name ens160 ifname ens160 type ethernet  autoconnect  yes ip4 192.168.0.10/24  
+   22  nmcli connection show 
+   23  ifconfig 
+   24  cat  /etc/sysconfig/network-scripts/ifcfg-ens160 
+   25  ifconfig 
+   26  cat  /etc/sysconfig/network-scripts/ifcfg-ens160 
+   27  hostname
+   28  ifconfig  ens160
+   29  ifconfig lo 
+
+
+====================================
+
+Machine-2   Go on machine number 2 and do the same steps and change only hostname and ipaddess
+
+
+
+
+=====================================
+
+Task-3  Test the network reachability using ip address
+Task-4  How we can connect these machine with hostname using /etc/hosts file 
+Task-5  How we can test these machine 
+
+=====================================
+
+Advance Configuration
+
+
+Task-6  How we can change ip without deleting the profile
+
+        Choice-1  using nmcli
+        Choice-2  direct using file
+
+======================================
+
+Task-7  How we can take IP from any DHCP server ?  ==> Choice-1  using nmcli   Choice-2 direct file edit
+                   OR
+         How we can configure Internet in my Virtual machine using DHCP  ?
+
+
+Task-8   How we can configure IPaddress +  netmask  + gateway + dns1 + dns2 in single command 
+         1- nmcli 
+         2- direct file editing
+======================================
+
+
+tcpdump
+
+tshark [CLI based ]   ==> epel repo 
+
+wireshark
+
+=======================================
+
+
+
+
+
+

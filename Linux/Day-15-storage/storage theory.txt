@@ -1,0 +1,62 @@
+======================================
+  Storage Related Concept in Linux ?
+======================================
+
+
+Task-1  How we can create custom partition during the redhat Installation ?
+Task-2  How we can create custom partition after the OS installation from any available disk using fdisk ?
+Task-2  How we can create custom partition from any disk using parted command ?
+
+
+======================================
+Types of Partition scheme or technology ?
+
+1- Stanadard partition 
+2- SWAP
+3- LVM
+4- RAID
+
+======================================
+
+fdisk or parted  ==> enter  ==> new create  ==> save   ==> partprobe or udevadm settle
+
+Partition ==> hard disk  ==> Primary/Logical but we can create any technology over extended partition.
+ 
+======================================
+
+Three Steps  ==> Common Steps
+
+======================================
+
+Next Steps  ==> As per topics ==> we will run the command as per topics/Technology
+
+======================================
+
+1- standard or normal ==> forth steps  ==> 4-  Standard Partition related  
+2- Swap               ==> forth steps  ==> 4-  SWAP Related Command 
+3- LVM                ==> Forth Steps  ==> 4-  LVM related Command 
+4- Raid               ==> Forth Steps  ==> 4-  Raid relaed command 
+
+======================================
+Country ==> area  ==> insaan ==> 
+======================================
+
+disk ==> using fdisk or parted ==> as per dos or GPT ==> save ==> update ==> steps change
+
+======================================
+Three Steps ==> Command
+After three steps  ==> command will be change as per the topics
+
+1- check details about yout available disk ==>1- # lsblk    2- # fdisk -l   3- parted  /dev/sda print 
+2- now go into your disk and create partition as per demands using [ fdisk or parted ]
+3- update your disk using partprobe or udevadm settle
+
+======================================
+4- Create Filesystem
+5- create the mounting point
+======================================
+Note:- in every topics second steps can be possible by two choices or two comamnds - 1- fdisk 2- parted
+======================================
+
+
+

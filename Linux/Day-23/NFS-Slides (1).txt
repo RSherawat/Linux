@@ -1,0 +1,91 @@
+********************************************************************************
+ NFS  Server & NFS Client    OR  File sharing Concept between the machines ?
+********************************************************************************
+Network File System 
+       OR
+Network File Sharing
+       OR
+Network File Server
+===================================
+data access  ?
+
+1- Copy     ==> scp and rsync
+2- Link     ==> ln             ==> one place to another place but with in the machine
+3- downloading  ==> FTP
+4- uploading    ==> FTP
+5- mounting   ==> NFS ==> between the machines
+
+==================================
+
+
+/etc/exports  ==> using NFS  ==> Data share 
+
+==================================
+
+
+NFS  ==> Network File system OR Sharing  OR  File sharing 
+
+1- NFS Server basically use for file and directory sharing over the network.
+
+2- with the help of nfs server we can mount any shared directory on client machine.
+
+3- NFS  server always work with PORTMAP service to create Virtual tunnel between
+   server and client machine with the help of RPC service. [ Remote Procedure Call ]
+
+*******************************************
+
+
+
+
+Types of Storage Concept  ?
+
+1-  DAS ==> Direct Attached Storage  ==> floppy, cdroom, dvd, hardrive, USB hardrive are the examples of DAS.
+
+2-  NAS ==> Network Attached Storage ==>  File Sharing Concept ==> NFS Server and SAMBA are the example of NAS.
+
+3-  SAN ==> Storage Area network     ==>  Block Device Sharing ==>  SCSI + ISCSI
+
+==========================================
+
+4-  online cloud data storage OR object Storage server ==> 
+
+*******************************************
+# mount    192.168.0.10:/share     /data 
+===========================================
+
+Server Side ?
+
+
+package:  nfs-utils
+Daemon:   nfs-server { in RHEL-7 + Rhel-8}   { in rhel-5 + 6 it was only   ==> nfs  }
+
+Examples:  in rhel5  + rhel-6
+
+# service   nfs restart  
+# chkconfig  nfs  on  
+
+Examples: in RHEL-7 + RHEL-8
+
+# systemctl start nfs-server 
+# systemctl enable nfs-server 
+
+File:    /etc/nfs.conf   
+
+data sharing file:    /etc/exports  <=== Blank 
+        
+Log:   /var/log/messages
+
+port number:   2049  { NFS    }
+               111   { Portmap } ==> already running  
+
+*********************************************
+
+NFS Client Side ?
+
+Types of NFS mounting method  ?
+
+1- Temporary using mount command 
+2- permanent mounting in  /etc/fstab file
+
+
+*********************************************

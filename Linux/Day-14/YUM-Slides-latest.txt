@@ -1,0 +1,228 @@
+=========================================================
+
+       YUM   [ yellowDog  update Manager or modifier ]
+           OR
+    Yellow dog Updater Modified ]
+
+=========================================================
+RPM Installation utility ?
+
+1- RPM 
+2- YUM 
+=========================================================
+Machine <== OS  <== default application/services/utility
+
+Local machine   ==> Local ISO image==> connect ==> RPMs collection ==> folder  ==> Copy 
+
+# rpm -ivh   <package name>
+# rpm -ivh   <package name>
+
+=========================================================
+~ ] # yum install  packagename ===>  /etc/yum.repos.d/xyz.repo  => read  ==> baseurl ==> rpm location
+
+1- local to local
+2- internet based or network based url
+
+=========================================================
+
+# ls /etc/yum.repos.d
+
+# cat  /etc/yum.repos.d/redhat.repo  ==> direct redhat website ==> rpms ==> location ==> url 
+
+
+# yum install packagename ==> 
+
+==========================
+personal machine ==> rhel-8
+
+# yum install  this  ==> error ==> there is no repo found
+
+==========================
+*************************************************************************
+
+1-  YUM basically is a smart tool which is also use to install any rpms with automatic depandancies
+    Resolution.
+
+2-  but if we are using RPM command , we need to install RPMs depandancies manually 
+    step by step.
+
+1- Install 
+2- Querry                        
+3- update 
+4- Erase or uninstall 
+
+========================
+
+# yum install  httpd ==>  plus ==> 9 package 
+
+========================
+/etc/yum.repos.d/redhatdvd.repo     ==> 2 Folder
+/etc/yum.repos.d/openstacloud.repo  ==> 10 folder
+/etc/yum.repos.d/jboss.repo 
+========================
+
+baseurl ==> types of url  ==> 1- localtolocal  2- internet or network 
+
+
+ /tcs <=== 15 packages   <== four actual rpm + 11 required rpms
+
+
+# cd /tcs  
+# ls  
+
+15 rpms 
+
+Choice-1 using rpm command   ==> these is no need to create repo file and mentioned the url as well.
+Choice-2 using yum command   ==> then we need to create repo file and need to mention this  /tcs path in baseurl parameter.
+
+yum ==> repo ==> url ==> 1- rpms collection   2- repodata directory
+ 
+=======================
+yum Basically provides a smart way for RPM installation from any defined location.
+
+YUM  ==> path  ==> 1- Number of RPMs  +  2- repodata 
+
+YUM Always works on repodata directory to mantains the indexing file in .xml.gz  format.
+
+it means if we are ging to provide any path in YUM repository,
+Repodata directory must be available seperatly in every defined path.
+
+
+/redhatdvd/AppSream/   Packages [ can be anything ] + repodata [same]
+/redhatdvd/BaseOS/     Packages [ can be anything ] + repodata [same]
+
+# mkdir  /redhatdvd/AppStream/repodata ==> no ==> wrong command 
+
+# createrepo -v   /redhatdvd/AppStream  ==> A to Z ==> rpm name ==> respectiv  ==> XML  ==> repodata ==> store
+
+======================
+
+
+YUM Always Support two types of URL  ?
+
+
+1- Local URLs    ===> local machine 
+                 ==>  RPM + repodata ==> folder ==> YUM repo  ==> need to mention it
+
+
+2- Network Based URL ==> this path can be network based 
+
+3- Internet based    ==> we can directly install any rpm from live internet based repository or URLs.
+
+    
+
+****************************************************************************************************
+#   ls  /etc/yum.repos.d
+
+baseurl=
+
+network based examples:--
+
+ftp://server-ip/path
+http://
+https://
+
+****************************************************************************************************
+
+file://
+
+****************************************************************************************************
+
+path ==>    /redhatdvd/BaseOS
+            /redhatdvd/AppStream
+
+****************************************************************************************************
+
+file:///redhatdvd/BaseOS/   ==> packages + repodata
+file:///redhatdvd/AppStream ==> packages  + repodata
+
+1- file:///redhatdvd/BaseOS/
+
+
+************************************************************************************
+
+
+How to configue  LOCAL YUM using local URL ?
+
+
+
+Step-1   connect ISO Image in your machine and copy all the dvd files
+         into any directory.
+
+
+
+Step-2   Create repo file with any name and define your URL as per copy place ?
+
+****************************************************************************************
+choice-1 single repo with single baseurl
+choice-2 single repo with multiple url 
+========================================================================================
+# cd /etc/yum.repos.d
+
+# vim redhatdvd.repo
+
+[url-1]
+
+baseurl=file:///redhatdvd/AppStream ==> 4500
+
+
+[url-2]
+
+baseurl=file:///redhatdvd/BaseOS  ==> 2200
+
+:wq 
+
+# vim  jboss.repo
+
+[jboss-1]
+baseurl=https://www.redhat.com/jboss/version6/rhel8/jboss1
+
+[jboss-2]
+baseurl=https://www.redhat.com/jboss/version6/rhel8/jboss2
+
+:wq
+
+4700 RPMS 
+
+
+# yum install xyz ==> 
+
+========================================================================================
+
+# yum repolist
+
+repo               rpmcollection 
+path-1             4500
+path-2             2200
+jboss-1            3000 
+jboss-2            2000
+
+=======================================================================================
+#vim  xyz.repo
+
+[repoid]
+parameters=value
+parameters=value
+
+[repoid]
+parameter=value
+parameter=value
+
+:wq
+
+========================================================================================
+# which rpm
+# which yum 
+# yum repolist
+
+   0  or no repo available 
+
+========================================================================================
+
+# yum install  <xyz-command> === not allowed
+
+# rm -rf  /etc/yum.repos.d/xyz.repo
+ 
+========================================================================================
+
+

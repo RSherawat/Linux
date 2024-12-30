@@ -1,0 +1,82 @@
+=====================
+ Swap Creating Steps
+=====================
+
+
+SWAP Creating Method ?
+
+1- During the OS installation 
+2- After the OS installation from any disk using mkswap and swapon command ?
+
+=====================
+why we need Swap ?
+
+Kernel  ==> memory management
+
+Swap ==> Linux  ==>Advance Concept ==> Secondary memory or additional virtual Memory
+
+=====================
+
+2 GB  ==> SWAP   + 1 GB SWAP  ==> 3 GB  ==> Merge
+
+=====================
+Free  -h
+
+3 GB 
+
+swapon -s 
+
+/dev/sda3   ==> 2 GB   -2
+
+/dev/sda5   ==> 1 GB   -3
+
+
+=====================
+
+fdisk or parted  ==> mkswap + swapon
+
+=====================
+
+1- using Partition  ==> ==> fdisk or parted 
+2- using file method ==> using dd command
+
+====================
+
+# df -h 
+
+
+/dev/sda2    ==> 15 GB  ==> 4 GB already used  ==> 11 GB free   ==>   /
+
+
+===================
+Swap Creataion Steps using partition ?
+===================
+Five Steps 
+
+1- Check details about the disk
+2- go into disk and create partition as per demand [ using fdisk or parted ]
+3- update the disk
+
+===================
+4- mkswap
+5- swapon 
+===================
+6- activate it into /etc/fstab file  ==> HOLD
+===================
+SWAP Hex code  ==>  82 
+===================
+Primary + logical ==>  83 
+===================
+
+
+
+
+
+
+
+
+
+
+
+
+

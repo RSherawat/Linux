@@ -1,0 +1,227 @@
+****************************************************************
+
+         User Management
+              OR
+  How to Manage Users account in Linux  OS ?
+
+****************************************************************
+
+Who is user ?
+
+1- A user is a person which has uniq identity to enter 
+   into any server machine.
+
+2- With this username he/she can easily operate , configure
+   and monitor any live servers as per defined permissions.
+
+By default during the OS installation time ==>  root user 
+will be automatically created only.
+
+*******************************************************************
+Objective:- 
+
+# useradd  <options>    <username> 
+# usermod  <options>	<username>
+# userdel  <options>	<username>
+# passwd  <options>   <username>
+# id   username 
+# su  -  <username>
+$ exit
+
+# groups  <username>
+ 
+
+******************************************************************* 
+
+# useradd  sachin
+# passwd   sachin
+
+Type Password: 123
+Retype Passowrd: 123
+
+*******************************************************************
+
+
+Users Related information files ?
+
+1- UID                    ====>  User ID  
+2- GID                    ====>  Group ID
+3- /home/sachin/          ====>  Default Home directory place for all normal users.
+4- /etc/passwd  	  ====>  It contains all  user's related information. ===> x ==>  /etc/shadow      
+5- /etc/group             ====>  It contains all group's related information. ===> x ==>  /etc/gshadow    
+6- /etc/shadow            ====>  It contains all  users password in encrypted format. 
+7- /etc/gshadow           ====>  It contains all group password in encrypted format.  
+8- /var/spool/mail/sachin ====>  default place for system defined mail alerts. 
+==================================================================
+$ mail     ==> this command will calls mails from the  /var/spool/mail/username 
+
+******************************************************************
+Types of Algo ==> 1- MD-5     2- SHA  ==>  SHA-256  & SHA-512 { in rhel-7 + rhel-8 }
+
+# cat  /etc/default/useradd    ==> HOME=/home
+# cat  /etc/login.defs 
+
+Two files  ==> User mangement  ==> default settings ===> call
+
+******************************************************************
+Note:
+
+1- All Unix based OS always works on UPG [ User primary group ] Scheme.
+2- IT means User will  reserve one UID and ONE GID.....
+
+3- UID of any users always remains one but GID of any users default will be one
+ but it can be more then one when you will associate same user with in 
+ the multiple group membership.
+
+
+
+*******************************************************************
+
+UID and GID Range  ==>  [ 0 - 60000 ]   ==> It devide into three parts
+
+UID   ==>  0  -  60000
+GID   ==>  0  -  60000
+
+*******************************************************************
+
+
+Types of Users ?
+
+1- Super user       ===>  root 
+
+      UID  ==>  0
+      GID  ==>  0
+
+2- System defined users or service defined users  
+   ==> ftp, dns, games, ldap ..etc 
+
+  [ will generate automatically after 
+  installing any application or services  ]
+
+    UID   ==>  1 - 999
+    GID   ==>  1 - 999
+
+3- Normal users or custom users   ===>  deepak , sumit  ,  rahul
+ 
+                    [ created by any super user or any sudo admin user ]
+
+    UID   ==> 1000  - 60000
+    GID   ==> 1000  - 60000
+
+  # cat  /etc/login.defs  
+
+
+
+****************************************************************************
+# ls  /home
+
+# cat  /etc/default/useradd    <== HOME=/home 
+
+Note:   we can change user home directory location if we want.
+
+***************************************************************************** 
+#  cat   /etc/passwd     ===>    7 Fields
+
+   root    :    x    :    0  :    0    :    root   :    /root   :   /bin/bash
+
+1- Username
+2- password Pointer  ==>  /etc/shadow 
+3- UID
+4- GID
+5- Comment OR Fullname OR GECOS OR Profilename
+6- home directory
+7- Login Shell 
+
+*********************************************************************************
+
+#   cat  /etc/group      ==>  4 fields
+
+ groupname : x :  GID Number :  Secondary Members Name
+
+
+1- groupname
+2- password pointer == /etc/gshadow
+3- GID Number
+4- Members name 
+=================================
+Example-1
+
+# groupadd  tcs 
+# cat  /etc/group 
+tcs:x:1001: 
+
+
+=================================
+
+Example-2
+
+# useradd   -G   tcs   user1
+# useradd   -G   tcs   user2
+# cat  /etc/group 
+tcs:x:1001: user1,user2
+
+
+=================================
+
+**********************************************************************************
+
+# cat  /etc/shadow      ==>    9 Fields
+
+ username : Encrypted-password :  next seven Fields -- password policy 
+
+  1          2                         7
+
+***********************************************************************************
+===================================================================================
+User management Practical Session ?
+===================================================================================
+
+
+
+
+Task-1 How we can add any user and verify thier account information ? 
+Task-2 How we can modify comment fields or profilename or displayname of any user acccount ?   
+Task-3 How we can change login shell of any user ?  
+Task-4 How can add any user into any different directory rather then /home ?
+Task-5 How we can move any existing user from one directory to another directory ?
+Task-6 How to add any user with any special UID and GID ?
+Task-7 How we can delete any user ?
+
+# userdel  username   { without home directory and mailbox }
+
+            OR 
+
+# userdel  -rf  username  { With home account + mailbox }
+
+
+
+Task-8 How we can rename any user account  ?
+
+
+Task-9 How we can delete password prompt for any  user ?
+Task-10 How we can lock and unlock any user account  ?
+
+
+*******************************************
+Next Topics:-
+
+SUDO  ==> Power ==> Command extr rights ==> 20 Minutes 
+Password Policy ==> How we can password policy on any user account ==> 20 
+Group Membership <== How we can add or remove any user into any groups ?
+
+*******************************************
+
+Permissions ==> 1-  Command based Permission 
+                2-  File or directory based permissions
+
+*******************************************
+
+
+
+
+
+
+
+
+
+

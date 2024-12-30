@@ -1,0 +1,55 @@
+=======================================
+
+  NTP  Server  & NTP Client
+
+ [ Network Time Protocol ]
+
+=======================================
+
+1- NTP basically use to provide the time syncronization ( syncing ) concept.
+
+2- We have two choice to provider NTP Settings on any machine :- 
+
+
+Types of NTP Server ?
+
+1- GLobal NTP  Server OR  Public NTP Server using the internet  provided by any vendor
+2- local NTP server with in the infra.
+
+========================================
+Note:  we can configure ntp server and client concept using ntp or chrony package.
+Recommended ==> in rhel-7  rhel-8 we should configure NTP using chrony package.
+========================================
+Old Concept ====>   
+                   package     ==>  ntp
+                   daemon      ==>  ntpd
+                   file        ==>  /etc/ntp.conf  
+                   Port number ==>  123 (UDP)
+
+========================================
+New concept====>
+                  package     ==>  chrony
+                  daemon      ==>  chronyd
+                  file        ==>  /etc/chrony.conf  
+                  Port number ==>  123 (UDP)
+                  log file    ==>  /var/log/messages 
+
+========================================
+
+Task-1  how we can connect my machines with os vendor based NTP pools.
+Task-2  How we can connect my machine with any free NTP service provider POOL OR IP.
+Task-3  How we can configure  local inhouse NTP Server and NTP Client.
+
+========================================
+
+Note: for Task-1 and task-2 Internet must be running in your machines.
+
+           Task-3  you have two choices either we can with internet based ip or
+                   can configure Local Intranet Based IP
+
+=========================================
+
+
+
+
+

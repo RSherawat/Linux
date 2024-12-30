@@ -1,0 +1,18 @@
+=======================================
+SCP and Rsync ==> 
+
+How we can copy any files and directory
+from one machine to another machine ?
+        OR
+How we to take backup of any application/
+services data from one node to another node ?
+
+=======================================
+
+1- Network concept Theory Session ?
+2- How we can configure network between two or more machine ?
+
+======================================
+Note: - Both machines must be reachable using IP address .
+======================================
+

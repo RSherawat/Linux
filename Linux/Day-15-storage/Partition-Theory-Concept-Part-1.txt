@@ -1,0 +1,214 @@
+============================================================
+
+Storage Concept in Linux OS ?
+
+    OR
+
+How we can create Partition to store data ?
+
+    OR
+
+Standard partition ?
+
+============================================================
+
+Machine  ===> RAM CPU DISK   <=== OS
+                             <=== Windows + Linux 
+
+============================================================
+
+OS <=== DISK 
+
+Types of Data
+
+1- OS defined Files or Directory or folder                                 
+2- create by any user for application backup or software data or sharing data
+
+============================================================
+
+OS defined data ==> during the OS installation  + After the installing any application
+Custom Data     ==> After the OS installation only.
+
+============================================================
+
+Why we need partition into any hard drive ?
+
+we want to store os files and Personal data files.
+
+============================================================
+
+Partition: 
+
+1- it is a method by which we can break a disk into small small parts.
+2- These partition can be use to store OS files and personal data files.
+
+============================================================
+
+In windows:-
+
+Disk 
+partition  ==>   C:\    D:\    E:\   F:\  .....so on 
+
+C:\   ==> mandatory Disk and remainigs are optional.
+
+C:\  ==> use to store os file and we can also use it for the personal data. 
+D:\  E:  F:\ ==> recommened drive to store data .
+
+============================================================
+
+In linux ==> there is no concept of  C:\  D:\  E:\   F:\  Drive.
+Whole OS will represent by  / 
+ [ root filesystem or root partition or parent directory ]
+
+============================================================
+
+/  <=== it contains around 19 sub directory to manage the OS.    
+   <=== we can also create new directory over the root partition to store         
+        any personal data.
+
+============================================================
+
+   <===  /  <== Types of data <== default data  
+                              <== custom data 
+
+============================================================
+
+# ls  /            <== default data  
+
+# mkdir  /data
+# mkdir  /movie    <== custom data  
+
+===========================================================
+
+
+Disk  ==> 30 GB  ==> 15 GB  ==>     <====  19 Sub directory <== default space
+                                     <==== Remaining space <== OS files + Data
+
+===========================================================
+
+# fdisk -l 
+# lsblk  
+
+===========================================================
+
+===========================================================
+
+===========================================================
+
+Disk Name
+
+1- PATA OR IDE            ===> hda ==> hda1  hda2 hda3   hdb ==> hdb1 hdb2 hdb3 ..etc
+2- SATA OR ssd disk       ===> sda ==> sda1  sda2  sda3....etc 
+3- Virtual Disk           ===> vda ==> vda1  vda2 
+
+============================================================
+# fdisk -l  ==> to find out the details about your disk
+   OR
+# lsblk  
+
+sda==> 30 GB  ==> DiskName ==> sda1  ==>  15 GB   ==>   /  <====  19 
+
+
+Example:  15 GB  - 4 GB  ==> already used space ==>  11 GB free Space 
+
+Hard disk  ==> 30 GB  - 15 GB  ==> 15 GB Free Space - 5 GB  ==> 10 GB
+# mkdir  /data  <=== 
+
+/data  ==> sda  ==> sda2  ==>  5 GB  ==> ext2-ext3-ext4 or xfs   ==>   /data 
+       ==> sda  ==> sda3  ==> 10 GB  ==> xfs    ==> /storage
+
+============================
+
+DISK  ==> Zero   
+
+============================================================
+Disk  ?
+
+partition ?
+
+
+Format or file system creation
+
+mount point
+
+
+data copy
+
+=========================================================== 
+
+Redhat Installation 
+
+Disk  ==> 30 GB ==> During the Installation 
+
+1- Automatic Partition   ==> machine will automatically used this space but we can not mentioned size manually ==> bydefault LVM
+2- Custom Partition      ==> we can plan these partition as per needs ==> ==> we can select as per demands standard/LVM
+
+===========================================================
+Types of Scheme or technology ?
+
+1- LVM       ==> can be extend or reduce as per demands  ===> Automatic installation ==> it will use LVM Based Method 
+2- Standard  ==> Fixed Size concept  ==> we can not extend/reduce it. 
+===========================================================
+
+Task-1  How we can create Partition During the OS installation ?
+Task-2  How we can create Partitions to store data after the OS installation from any available disk  ?
+
+===========================================================
+
+Types of Partition Creation technology ?
+
+1- Standard Method OR Standard Volume ==> fixed size partition concept 
+2- LVM Method [ logical volume manager]     ==> Recomended
+                   ==> cos we can extend or reduce this volume size in future
+
+===========================================================
+
+In windows ==> C:\ 
+
+===========================================================
+
+How many partitions requried to install linux OS ?
+
+1-    /              ==> OS Files + Data files    
+2-    swap partition ==> Virtual memory ==> twice of main memory
+
+[Note:- If we have one GB Ram or 2GB ram machines ]
+
+==========================================================
+
+3-    /boot    ==> OS booting File  ==> Optional 
+
+==========================================================
+Task-1   Standard Partition 
+==========================================================
+
+sda ==>   30 GB   DISK SPACE
+
+sda1  ==>  /boot   ==> os booting files             ==> 1  GB 
+sda2  ==>  /       ==> Remaining  os Files + data   ==> 15 GB 
+sda3  ==>  swap    ==> Virtual Memory               ==>  2 GB 
+
+==========================================================
+30 GB   -  18 GB  ==>   12 GB Free Space 
+==========================================================
+Task-2  How we can use this free space using CLI to store any data ?
+==========================================================
+Disk
+parition  ==> standard or LVM 
+Format
+mount point
+data 
+==========================================================
+
+
+
+
+
+
+
+
+
+
+
+
+

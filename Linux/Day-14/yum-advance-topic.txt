@@ -1,0 +1,19 @@
+=======================================
+
+YUM Configuration - Advance Concept
+                +
+           Application
+======================================
+Linux Flavor ==> Install
+
+1- During the OS Installation ==> as per sellected groups ==> RPM installation 
+2- after the OS installation  ==> per per need we can install it with respective source location
+
+======================================
+
+Task-1  Redhat Installation  ==> YES  ==> 1- Server with GUI   2- Minimal Installation
+Task-2  CentOS Installation  ==> Steps are same just like redhat os installation 
+
+
+
+======================================

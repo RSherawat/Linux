@@ -1,0 +1,52 @@
+=============================================
+       Database Configuration 
+             OR
+       My-Sql Database Configuration
+             OR
+       MariaDB  Configuration 
+    
+=============================================
+Machine  <=== web application 
+
+=============================================
+machine <== Linux OS  <=== Mariadb Install <== Database Server
+=============================================
+
+Machine <===
+
+Operating System <====
+
+Mariadb Installation <=== Data base Server  <=== There is no adddon database and tables 
+
+Login 
+
+Database Create 
+
+Information ==> rows and column formats  ===> 1- We can create tables and update the information 
+                                              2- copy or download any ready dump file and extract it
+
+
+=============================================
+# wget   http://jfkdjfksdjfksdjkfjkdfjdf/xyz.dump 
+
+=============================================
+Machine  <=== OS  <=== Database
+=============================================
+
+1- OS Based Uses
+
+2- Database Operating or managing Users 
+
+=============================================
+
+# ssh   username@server-ip
+
+
+=============================================
+
+#  mysql  -u   username  -p   -h   databaseserver-ip
+
+=============================================
+
+
+

@@ -1,0 +1,48 @@
+[root@localhost ~]# history 
+    1  which locate 
+    2  which find 
+    3  rpm  -qf   /usr/bin/find
+    4  rpm  -qf   /usr/bin/locate 
+    5  cat /etc/default/useradd 
+    6  locate  useradd 
+    7  updatedb 
+    8  locate  useradd 
+    9  locate  -n  5 useradd 
+   10  locate  useradd 
+   11  locate  -n  5 useradd 
+   12  locate  -S
+   13  touch  manisha  
+   14  locate  manisha  
+   15  locate  -S
+   16  updatedb 
+   17  locate  -S
+   18  touch  krnetwork
+   19  locate  -S
+   20  updatedb 
+   21  locate  -S
+   22  locate manisha 
+   23  locate krnetwork  
+   24  touch  net2
+   25  locate net2
+   26  find  /  -name  "net2"
+   27  updatedb 
+   28  locate  net2
+   29  locate crontab
+   30  find  /  -name "crontab"
+   31  find  /  -name "*crontab*"
+   32  updatedb 
+   33  locate smb.conf  
+   34  find  /  -name  "smb.conf"
+   35  find  /etc    -name  "smb.conf"
+   36  find  /  -name useradd 
+   37  find  /usr    -name useradd 
+   38  find  /etc    -name useradd 
+   39  find   -name useradd 
+   40  ls
+   41  find   -name  ibm  
+   42  find  .   -name  ibm  
+   43  find     -name  ibm  
+   44  find   /  -name  ibm  
+   45  locate  -S
+   46  find /etc  -size  +2M 
+   47  du -sh  /etc/udev/hwdb.bin

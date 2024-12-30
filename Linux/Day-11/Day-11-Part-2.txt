@@ -1,0 +1,148 @@
+=================================
+Day-11- part-2
+=================================
+
+
+Normal File and Normal Directory
+
+
+# touch abc
+# mkdir data 
+
+
+================================
+
+Hidden Files and Hidden Directory Concept
+
+================================
+Task-1  How we can configure auto startup commands after every login on any machine ?
+Task-2  what is the diffrence between  .bashrc and  /etc/rc.local file ?
+Task-3  How we can create Command Aliases ?
+
+
+Alias  ==> It is use to create shortcut name of any existing commands ?
+
+==================================
+   1  ls  
+    2  ls -a 
+    3  ls
+    4  ls -a
+    5  mkdir  /data  
+    6  cd /data
+    7  touch  .abc  
+    8  ls  
+    9  ls -a
+   10  mkdir d1
+   11  mkdir .d2
+   12  ls
+   13  l.
+   14  ls  -a  
+   15  cd
+   16  ls 
+   17  l.
+   18  ls  -a  
+   19  ls
+   20  ls -a
+   21  cat .bashrc
+   22  cat bashrc
+   23  mkdir /public  
+   24  cd /public
+   25  ls
+   26  ls -a 
+   27  cd .
+   28  mkdir d1
+   29  mkdir d2
+   30  mkdir d3
+   31  ls 
+   32  l.
+   33  ls -a  
+   34  cd
+   35  vim /etc/passwd 
+   36  vim  .vimrc  
+   37  vim /etc/passwd
+   38  vim /etc/crontab 
+   39  rm -rf  .vimrc 
+   40  vim /etc/crontab 
+   41  vim /etc/passwd 
+   42  vim .vimrc 
+   43  vim  /etc/passwd
+   44  vim  /etc/group
+   45  vim  /etc/crontab 
+   46  vim  xyz  
+   47  cat  xyz  
+   48  cat -n   xyz  
+   49  su -  krishna 
+   50  cd /public
+   51  ls -a
+   52  touch  .xyz  
+   53  ls -a
+   54  mv  .xyz   xyz  
+   55  ls 
+   56  cd
+   57  ls -a 
+   58  vim  .bashrc 
+   59  vim .bashrc 
+   60  vim  .bashrc 
+   61  cat /etc/rc.local 
+   62  alias 
+   63  alias   c='clear'
+   64  alias  diskinfo='lsblk'
+   65  lscpu | sed  -n  '13p'
+   66  alias cpumodel="lscpu | sed  -n  '13p'"
+   67  alias 
+   68  c
+   69  diskinfo 
+   70  cpumodel 
+   71  date ; cal
+   72  alias  diskinfo='lsblk'
+   73  alias   c='clear'
+   74  vim .bashrc 
+   75  c
+   76  diskinfo 
+   77  c
+   78  diskinfo 
+   79  alias 
+   80  alias
+   81  ifconfig 
+   82  vim  .bashrc 
+   83  ipdekho 
+   84  bash
+   85  ipdekho 
+   86  unalias  c
+   87  c
+   88  unalias  -a 
+   89  ls
+   90  ls --color 
+   91  ls
+   92  alias 
+   93  vi  .bashrc 
+   94  c
+   95  ipdekho
+   96  diskinfo
+   97  cat  .bashrc 
+   98  alias 
+   99  who
+  100  logininfo 
+  101  ls  /usr/local/bin 
+  102  vim  /usr/local/bin/logininfo
+  103  cat    /usr/local/bin/logininfo
+  104  ls -l     /usr/local/bin/logininfo
+  105  chmod  +x  /usr/local/bin/logininfo 
+  106  ls -l     /usr/local/bin/logininfo
+  107  logininfo
+  108  su -  krishna 
+  109  useradd soniya  
+  110  su - soniya  
+  111  vim  /usr/local/bin/logininfo 
+  112  logininfo
+  113  rm -rf  /usr/local/bin/logininfo 
+  114  logininfo
+  115  vim  /etc/bashrc 
+  116  history 
+====================================
+
+
+
+
+
+

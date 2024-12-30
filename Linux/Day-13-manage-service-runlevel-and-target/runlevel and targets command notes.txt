@@ -1,0 +1,24 @@
+==================================================
+Runlevel
+==================================================
+   43  runlevel
+   44  who -r 
+   45  runlevel 
+   46  init 3  
+   47  runlevel 
+   48  who -r  
+   49  vim /etc/inittab 
+===================================================
+Targets
+===================================================
+    1  systemctl get-default 
+    2  systemctl isolate multi-user.target 
+    3  systemctl  set-default multi-user.target 
+    4  cat  /etc/systemd/system/default.target 
+    5  systemctl  set-default  graphical.target 
+    6  cat  /etc/systemd/system/default.target 
+    7  systemctl  set-default multi-user.target 
+    8  cat  /etc/systemd/system/default.target 
+    9  systemctl reboot 
+
+====================================================

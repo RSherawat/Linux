@@ -1,0 +1,160 @@
+==================================================
+  
+     DNS server and Client Configuration 
+
+       [ Domain Name System ]
+               OR
+       [ Domain Name Service ]
+               OR
+       [ Domain Name Server ]
+
+==================================================
+
+
+
+DNS ==> DNS server basically provide naming resolution service from name to ip and ip to name.
+
+Types of domain ?
+
+1- Local domain   ==>  example.com   training.com    xyz.training.com    anuj.com
+
+2- Global domain  ==> www.redhat.com   yahoo.com
+
+==================================================
+
+
+==================================================
+
+Networking class  ==> 
+
+1-  IP to IP  ==> connect 
+
+2-  Name to Name  ==> can not connected until unless we don't have two solutions ?
+
+we are not using 
+
+1-  /etc/hosts         ===> without any DNS server - naming connectivity in that case we can use this file
+
+2-  /etc/resolv.conf   ===> With any DNS server 
+==================================================
+syntax:-
+
+# cat   /etc/hosts
+
+machine-ip    machine-name   alias-name 
+==================================================
+Syntax:-
+
+# cat  /etc/resolv.conf
+
+search          example.com
+nameserver      192.168.0.10
+nameserver      192.168.0.20
+
+==================================================
+Types of DNS Server ?
+
+1- Primary DNS or Master DNS  ==> It contains main records of all machines.
+
+2- Secondary DNS or Slave DNS ==> It replica server of Master DNS machine.
+
+==================================================
+
+Types of Zone File  ?
+
+1- Forward Zone   ==>   convert all request from name to IP.
+
+2- Reverse Zone   ==>   convert all querry from IP to name.
+
+==================================================
+machine-1    Master DNS configure
+
+machine-2    Slave DNS configure
+
+Remaining machine ==> act as a client node 
+
+=================================================
+
+# vim /etc/resolv.conf 
+
+search        example.com
+nameserver    192.168.0.10
+nameserver    192.168.0.20
+
+:wq    
+
+          OR
+
+# cat /etc/sysconfig/network-scripts/ifcfg-ens160
+
+IPADDR=192.168.0.11
+NETMASK=255.255.2550
+GATEWAY=192.168.0.1
+DNS1=192.168.0.10
+DNS2=192.168.0.20
+================================================
+
+FQ . DN 
+
+example.com  ==> domain name 
+
+machine1.example.com
+machine2.example.com
+machine3.example.com
+
+node1.example.com
+node2.example.com
+node3.example.com
+
+max-hospital-pc1.max.com
+max-hosptial-pc2.max.com
+ 
+================================================
+
+Service Profile
+
+Server Side
+
+Package     :  bind 
+Daemon      :  named
+port number :  53
+main file   :  /etc/named.conf
+Zone file   :  /var/named/forward.zone
+               /var/named/reverse.zone
+
+Log         :  /var/log/messages  
+
+================================================
+Client Side: 
+1-  /etc/resolv.conf
+        OR
+2-  /etc/sysconfig/network-scripts/ifcfg-ens160  
+================================================
+
+Types of DNS Records ?
+
+A      ( Address )          ==>  It maps all Querry from Name to IP ==> use in IP-V4
+
+PTR    ( Pointer )          ==>  It maps all querry from IP to Name.
+
+CNAME ( canonical name )    ==>  can be use to define alias name of any machine name or domain name.
+
+MX    ( Mail Exchange )     ==>  use in mail server concept.
+
+AAAA  ( address )           ==>  use in IP-V6
+
+SOA   ( server of authority)   ==>  define your DNS server machine name.
+      ( start of authority )   ==>
+
+================================================
+
+Note:-
+
+1- set your machine name and ip on your machine 
+2- YUM repository must be configured
+
+===============================================
+Reference Link:-
+===============================================
+
+https://www.redhat.com/sysadmin/dns-configuration-introduction

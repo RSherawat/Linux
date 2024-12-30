@@ -1,0 +1,73 @@
+======================================================
+
+[root@localhost ~]# 
+[root@localhost ~]# umask 
+0022
+[root@localhost ~]# 
+[root@localhost ~]# mkdir  /data-1
+[root@localhost ~]# touch /xyz  
+[root@localhost ~]# 
+[root@localhost ~]# ls -l  /xyz 
+-rw-r--r--. 1 root root 0 Apr 16 12:59 /xyz
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld /data-1
+drwxr-xr-x. 2 root root 6 Apr 16 12:59 /data-1
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# umask  222
+[root@localhost ~]# 
+[root@localhost ~]# umask  
+0222
+[root@localhost ~]# touch  /xyz-2
+[root@localhost ~]# mkdir  /data-2
+[root@localhost ~]# 
+[root@localhost ~]# ls -l /xyz-2
+-r--r--r--. 1 root root 0 Apr 16 13:00 /xyz-2
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld  /data-2
+dr-xr-xr-x. 2 root root 6 Apr 16 13:00 /data-2
+
+~ # vim  .bashrc    ==> to set permanent umask value
+
+
+go in bottom and add umask line save this file
+
+# .bashrc
+  
+# User specific aliases and functions
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+umask 222
+
+:wq
+
+
+[root@localhost ~]# umask  
+0222
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld  /data-2
+dr-xr-xr-x. 2 root root 6 Apr 16 13:00 /data-2
+[root@localhost ~]# 
+[root@localhost ~]# ls -l /xyz-2 
+-r--r--r--. 1 root root 0 Apr 16 13:00 /xyz-2
+[root@localhost ~]# 
+[root@localhost ~]# chmod   755  /data-2
+[root@localhost ~]# chmod   644   /xyz-2 
+[root@localhost ~]# 
+[root@localhost ~]# mkdir  /data-3
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld /data-3
+dr-xr-xr-x. 2 root root 6 Apr 16 13:04 /data-3
+[root@localhost ~]# 
+[root@localhost ~]# cat  /etc/bashrc 
+
+
+===========================================

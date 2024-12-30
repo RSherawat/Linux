@@ -1,0 +1,90 @@
+[root@localhost ~]# 
+[root@localhost ~]# history 
+    1  ifconfig 
+    2  ifup ens33
+    3  ping google.com
+    4  ls  /etc/yum.repos.d
+    5  yum clean all 
+    6  yum  repolist
+    7  yum  list 
+    8  rm -rf  /var/run/yum.pid
+    9  yum  list 
+   10  rpm -qa  vsftpd  
+   11  rpm -qa  httpd
+   12  rpm -qa  samba*
+   13  yum list |  grep  "vsftpd"
+   14  yum install  vsftpd -y
+   15  tree
+   16  yum install tree -y
+   17  yum install  httpd  -y  
+   18  yum install samba  -y  
+   19  mkdir  -p  /data/a1/a2/a/3
+   20  tree  /data
+   21  systemctl start  vsftpd  
+   22  systemctl enable    vsftpd  
+   23  systemctl start httpd
+   24  systemctl enable  httpd
+   25  systemctl start smb  
+   26  systemctl enable   smb  
+   27  yum list  |  
+   28  yum list  
+   29  htop
+   30  glances  
+   31  top 
+   32  yum list  | grep  htop  
+   33  yum list  | grep  glances
+   34  yum check-updates 
+   35  yum  update  -y
+   36  rpm -qa  | wc -l 
+   37  yum list |  grep glances 
+   38  yum list |  grep htop
+   39  yum list |  grep teamviewer
+   40  yum list |  grep googlechrome
+   41  yum list |  grep  httpd
+   42  wget wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+   43  ls
+   44  ls  /etc/yum.repos.d
+   45  rpm -ivh  epel-release-latest-7.noarch.rpm
+   46  ls  /etc/yum.repos.d
+   47  yum  clean all 
+   48  yum  repolist
+   49  yum list  |  grep glances
+   50  yum list  |  grep htop
+   51  yum list  |  grep httpd
+   52  yum install glances  -y
+   53  yum install htop  -y
+   54  which  htop  
+   55  which  glances
+   56  yum install teamviewer  -t 
+   57  yum install teamviewer  -y
+   58  yum list  |  grep team
+   59  yum list  |  grepanydesk
+   60  yum list  |  grep anydesk
+   61  glances
+   62  top
+   63  htop
+   64  yum list
+   65  yum install zmap  -y
+   66  rpm -ql   zmap 
+   67  ls
+   68  ls Downloads
+   69  rpm -ivh  /root/Downloads/anydesk-6.1.1-1.el7.x86_64.rpm 
+   70  yum   install  /root/Downloads/anydesk-6.1.1-1.el7.x86_64.rpm
+   71  ls  /etc/yum.repos.d
+   72  wget https://download.teamviewer.com/download/linux/teamviewer-host.x86_64.rpm
+   73  ls
+   74  rpm -ivh teamviewer-host.x86_64.rpm 
+   75  yum localinstall teamviewer-host.x86_64.rpm 
+   76  vi /etc/yum.repos.d/google-chrome.repo
+   77  yum clean all
+   78  yum  repolist
+   79  yum install -y google-chrome-stable
+   80  yum install httpd php php-cli gcc glibc glibc-common gd gd-devel net-snmp openssl-devel wget
+   81  yum install make gettext autoconf net-snmp-utils epel-release perl-Net-SNMP postfix unzip automake
+   82  wget https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-4.0-1.el7.noarch.rpm
+   83  yum locainstall  zabbix-release-4.0-1.el7.noarch.rpm
+   84  yum localinstall  zabbix-release-4.0-1.el7.noarch.rpm
+   85  ls  /etc/yum.repos.d
+   86  yum install zabbix-server-mysql zabbix-web-mysql zabbix-agent
+   87  yum install bind  bind-utils  
+   88  history 

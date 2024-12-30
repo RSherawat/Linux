@@ -1,0 +1,103 @@
+========================================
+
+Day-1 part-2
+
+========================================
+1- machine 
+
+2- Operating System     <== linux admin role
+
+3- Application System   <== linux admin role
+
+========================================
+
+Types of Machine ?
+
+1- Phsyical machine
+2- Virtual machine
+3- Cloud based machine
+
+======================================
+
+1- hardware machine
+
+======================================
+
+2- OS Vendor  ==> Official website ==> Bootable Image OR ISO Image  ==> Download OR Copy 
+3- Application Vendor ==> official website or internet website ==> URL ==> link ==> Download
+
+=====================================
+Linux ==> Flavor ==> Vendor ==> webiste ==> download 
+=====================================
+H/w Machine 
+
+Server machine 
+
+Client machine
+
+=====================================
+Laptop-1    Laptop-2
+RHEL-8       RHEL-8
+=====================================
+VM-1      VM-2
+
+RHEL-8    RHEL-8
+=====================================
+
+Linux Flavor ==>
+
+=====================================
+Google Drive ==> Link  ==> ISO Image Download
+=====================================
+Types of login mode ?
+
+1- GUI  Mode  ==> Graphical user interface
+2- CLI  Mode  ==> Command Line Interface  [80%]
+
+=====================================
+1- DOS      ==> CLI 
+2- Windows 
+
+=====================================
+During the OS installation Time ==> 1- GUI + CLI Both
+                                    2- only CLI 
+=====================================
+How we can download linux Flavor Direct Using Vendor Website ?
+
+1-  Mint linux
+2-  ubuntu linux
+3-  Kali linux
+4-  centos linux
+5-  fedora linux and other vendors 
+=====================================
+6- Redhat Linux  ==> RHN account Create or Redhat Login ==> Signup
+7- Suse Linux
+=====================================
+Choice  ==> RHEL-8 training ==> Virtual machine ==> 1- VirtualBox  2- Vmware workstation 
+
+=====================================
+
+1- RHEL-8 ISO image download 
+2- Vmware workstation 
+
+=========================================== DONE =========================================
+
+
+How we can Prepare my personal LAB for Practise ?
+
+===========================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

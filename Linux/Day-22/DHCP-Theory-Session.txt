@@ -1,0 +1,79 @@
+*********** DHCP [ Dynamic Host Configuration protocol ] **************
+
+===============================================
+
+Types of IP assigning IP Method ?
+
+1-  manual or static        ===> 
+2-  automatic or dynamic    ===> 
+
+===============================================
+
+manual or static method :-
+
+1- manual ip can be configured on any machine with the help system admin only...
+2- admin task will increase
+3- there is lot of chances of ip misconfiguration 
+4- need to mantain the database of Free IP availible in my network.
+
+
+automatic or dynamic    ===> using DHCP Server or protocol  
+
+***************************************************
+DHCP
+***************************************************
+
+* DHCP protocol use to assign automatic IPs to the all running machine in LAN network.
+* With the help of DHCP protocol we can eailsy manage my large network with in the oraganisation.
+* We can also use DHCP protocol in PXE Boot + Kickstart installation methods.
+* We can also provide the DNS and NTP settings in client machine using DHCP File 
+  if we have in my network.
+
+
+
+* DHCP server always perform DORA process before assigning any IP on any client machine.
+
+What is DORA [ Discovery  Offer Request Acknowledgement ] Process in DHCP  ?
+
+DHCP Lease file  ==>   /var/lib/dhcpd/dhcpd.leases 
+
+*************************************************
+DHCP ?
+
+1- Device based ==> modem , router 
+2- OS based  ==> windows and linux examples.
+   
+*************************************************
+Server Side:
+
+Package:   dhcp-server 
+Daemon :   dhcpd 
+File   :   /etc/dhcp/dhcpd.conf 
+Log    :   /var/log/messages
+Lease File:  /var/lib/dhcpd/dhcpd.leases
+port number:   67 [ Server Side ] 
+               68 [ Client Side ]
+
+*************************************************
+Client : ?
+
+How to take IP using DHCP server  ?
+
+1-   using  NMCLI   command  
+2-   we can do direct entry in LAN Card or interface protocol.
+
+
+     BOOTPROTO=dhcp
+
+===============================================
+
+
+Linux ==> by default OS Based Firewall 
+
+==============================================
+iptables ==> till rhel - 6 
+
+firewalld  ==> in rhel-7 and rhel-8 ==> 
+
+ 
+==============================================

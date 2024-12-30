@@ -1,0 +1,237 @@
+*************
+SSH Server + SSH Client   ==> already covered 
+
+NIS     ==> network information System   
+
+LDAP    ==> Light weight directory access protocol 
+
+*************
+
+Types o f login method on any machine  ?
+
+1- local to local     ==> 
+
+===> users are directly sitting in front of the actual machine they are login with
+     his/her username + password 
+
+2- local to remote    ==> 
+
+===> users are sitting on another machine...but he/she want to login from the 
+    any machine on 
+     any remote users using any remote login providing service.
+    Example == telnet OR SSH  
+
+
+******************************************************************************************************************
+
+3- NIS OR LDAP  OR IPA    [ linux based user authetication service over the domain ] 
+        OR
+   AD [ active directory ]        [ windows ]
+
+***************************************************************  *************************************************
+  ****   NIS  [ network information system ]  OR   YP -Server [ yellow Pages ] ***
+
+1- NIS server basically provides the users related informaton over the network .
+
+2- it always use for user authentication and autherization ... 
+
+3-  with the help of NIS server we can login on any machine those are 
+    connecting with NIS sever.
+
+4- NIS server basically share users information from :- 
+
+1- /etc/passwd
+2- /etc/group  
+3- etc/shadow 
+
+4- NIS server developed by SUN microsystem.
+
+5- we can cofigure NFS server to share the users home directory for centeralized machine.
+
+***********************************************************************************************
+
+package:   ypserv   ypbind  yp-tools
+
+daemon:  ypserv  
+
+port number: there is no portnumber by default 
+           [ but we can fixed it if want to add in firewalld service ]
+
+file:   /etc/ypserv.conf  [ server side ]    and  /etc/yp.conf  [ client side ]  
+
+Log:   /var/log/messages 
+
+director:    /var/yp 
+
+*************************************************************************************************
+
+Client Side :    ypbind ,  yp-tools 
+Daemon      :   ypbind 
+File 	    :  /etc/yp.conf   and  /etc/sysconfig/network
+
+*************************************************************************************************
+
+Step-1    create  users with password into any directory .
+Step-2    set your nisdomain name with any name so that your client machine 
+          can be connect with this nis domain name.
+Step-3    install yp package  and start the ypserv services..
+          stop the firewalls if you don't required
+          now initialize the YP- database. 
+          and define your machine as a NIS master server
+Step-4    go into  /var/yp directory and  update the NIS database
+         using make command after every change on NIS server.
+
+**************************************************************************************************
+Step-5    now share your's home directory using NFS server 
+           so that it can be mount on any directory and data will be 
+          automatically store on your server machine.  
+         [ this step is optional if you don't want to configure 
+         autofs mounting on client side machines. ]
+
+************************************************************************************************** 
+
+Note:   in rhel-5, rhel-6, rhel-7 and rhel-8 NIS server side steps are same in every OS
+        version.
+        but if you are going to configure NIS client till rhel-7 all steps will be same
+        but in rhel-8 NIS client side  configuration steps are different.
+
+**************************************************************************************************
+On RHEL-7
+
+Part-1   Step-1   How to configure NIS client on RHEL-7 machine  
+         Step-2   How to mount users home directory in client side in rhel-7
+         Step-4   How we can test the users after login is it data directly writting on server machine in user's home directory
+
+
+***************************************************************************************************
+On RHEL-8    authconfig-tui and authconfig-gtk commands not available...
+             new command is authselect in rhel-8
+             to connect your machine with NIS server or LDAP server.
+
+Part-2 
+         Step-1   How to configure NIS client on RHEL-8 machine  
+         Step-2   How to mount users home directory in client side in rhel-8
+         Step-3   How we can test the users after login is it data directly writting on server machine in user's home directory
+
+
+*********************************************************************************************
+
+LDAP  ==> Lieght Wight Directory Access protocol
+
+
+
+1- LDAP is also a client server communication protocol which is use for user
+   authentication and autherization over the network same like as NIS server.
+
+
+2- LDAP Always use our same domain which is running on any DNS server.
+
+Example:    example.com  
+
+our client machine must be connected with this DNS domain.....   /etc/resolv.conf ==> search       example.com
+                                                                                      nameserver   192.168.0.10
+
+3-  LDAP server can be connect from any linux machine as well as windows machine.
+
+
+*****************************************************************************************************
+
+
+
+Server END ==> user creation  + LDAP database managing 
+
+
+******************************************************************************************************
+
+
+Client END ==> LDAP client connectivity same like as NIS  + User mounting with autofs concept..
+
+
+*******************************************************************************************************
+
+In redhat exam ==> Examiner laptop  ==>  172.25.254.254  ==> DNS + LDAP server ==> 
+
+domain       = example.com
+Server name  = classroom.example.com
+Server IP    = 172.25.254.254
+
+user's name  = ldapuser0  to ldapuser20
+password     = password 
+
+user's home directory =>  /home/guests/
+
+note:   /home/guests directory is already shared with NFS server.
+
+note:   mount ldapuserX on your machine as per your machine number....
+
+Exam ==> machine name  ==> server0.example.com    ==> ldapuser0 
+                           server5.example.com    ==> ldapuser5 
+
+****************************************************************************************************
+
+How to configure LDAP client   or How we can connect any machine with any LDAP server ?
+
+domain name ==>  example.com    OR example.co.in    ==> dc=example,dc=com  OR  dc=example,dc=co,dc=in
+
+*****************************************************************************************************
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+

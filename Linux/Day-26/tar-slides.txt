@@ -1,0 +1,104 @@
+************************
+
+Day- 6
+
+
+****************************************
+
+****  TAR  [ Tape archive] *************
+
+****************************************
+
+Tar command basically use to create archive and compress n number of files and directory.
+
+Archive    ==> collection of file and folder into a single tar file.
+
+Compress   ==> data Size will be compress , it will help in storage concept so that 
+               it will use less space rather then the actual size.
+
+
+tar command basically support these compresstion method :-
+
+1- gzip    OR  .gz     ==> gunzip              ===>  -z   [ small z ]
+
+2- bzip2   OR   .bz2   ==> bunzip version 2    ===>  -j   [ small j ]
+
+2- xz      OR   .xz    ==> xz                  ===>  -J   [ caps J ]
+
+Note: If we are not using any option with tar command in that case it will create only the tar file.
+      we can use anyone options as per demands to compress any tar file or actual file.
+
+
+*******************************
+
+1- tar    ==> Flow Diagram
+
+******************************
+
+2- gzip
+3- bzip2  ==> Flow Diagram
+4- xz
+
+******************************
+
+Syntax:
+
+
+
+#  tar   <options>     <arvice-name>     <name of the files and directory>
+
+-c    ==> create archive
+-x    ==> Extract
+-r    ==> Append
+-v    ==> verbose
+-f    ==> From File  [ Mandatory ]
+-t    ==> to check data listing of any tar file
+-C  [capital C] ==>  to change the extract location 
+
+*********************************************************
+
+-z    ==> support  .gz extention or method
+-j    ==> support  .bz2 extention or method
+-J    ==> Support  .xz extention or method
+
+*********************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

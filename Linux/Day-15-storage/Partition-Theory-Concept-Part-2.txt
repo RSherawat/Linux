@@ -1,0 +1,143 @@
+=========================================
+   What is partition ?
+
+       OR
+ 
+How we can Create Standard OR Normal Partition
+to store data into any new mounting Points ?
+
+=========================================
+  
+Partition: 
+
+1- it is a method by which we can break a disk into small small parts.
+2- These partition can be use to store OS files and personal data files.
+
+Note:- 
+
+1- Every hard drive always manage by MBR or GPT [GUID partition Table ] technology ?
+2- In first sector we have already installed MBR [master boot record ] technology.
+3- MBR Basically Bydefault  allow maximum four partition into any disk.
+4- MBR basically allow two types of partition .
+
+1- Primary partition  <== can be use to store os data and personal data.
+
+2- Extended partition [Optional] <== 3- Logical partition [optional]
+                       ==> it is a sub part of extended partition
+
+=========================================
+Fdisk  ==> Support only MBR OR dos
+Parted ==> Support Both MBR and GPT
+
+Note:-1-  if we are going to create partition into any fresh blank disk using fdisk command in that case 
+          there is no need to define disk label format 
+          before creating the partition cos it will use automatically dos or MBR technology.
+
+     2-   if we are ging to create partition into any fresh blank disk using parted command in that case we need to set first
+          disk label cos this command support both technologies.
+
+     3-   if we are having already GPT technology set on any drive in that we will use only parted command to 
+          manage the drive.    
+
+     4-   fdisk command can manage tge storage till 2 TB only but not more then 2 TB .
+
+     5-   parted command can support less then 2 TB and more then 2 TB as well. 
+=========================================
+=========================================
+/dev/sda  ==> 30 GB
+
+linux install  
+
+1- sda1  ==> P1  ==>  /boot  ==> 1 GB
+2- sda2  ==> P2  ==>  /      ==> 15 GB
+3- sda3  ==> P3  ==>  swap   ==>  2 GB
+
+=========================================
+4- sda4  ==> E   ==> Full free space ==> 12 GB  
+5- sda5  ==> L1  ==>  /home  ==>  3 GB
+6- sda6  ==> L2  ==>  /storage ==> 2 GB
+=========================================
+MBR Limits  ==> 4 Partition  ==> including primary + Extended
+=========================================
+Primary Limits
+
+1- Min ==> 1 
+2- MAX ==> 4 
+
+Extended Limits  [can be optional ]
+
+1- Min  ==> 0 
+2- Max  ==> 1
+
+=========================================
+Choice diargram
+=========================================
+Disk ==> primary    [usable]
+     ==> extended   [ It is use to create only the logical partition OR Extend the MBR limits ]
+     ==> logical    [usable]
+
+=========================================
+HEX Code OR partition ID
+
+Primary & Logical  ==>  83 
+Extended           ==>   5
+
+=========================================
+
+SWAP  ==>  82
+LVM   ==>  8e
+RAID  ==>  fd
+normal parition or standard partition  ==>  83 [ bydefault ]
+
+=========================================
+Theory Complete
+=========================================
+
+
+
+
+
+
+
+
+
+
+
+==============================================================
+Task-2
+==============================================================
+
+
+
+
+
+How we can create Standard Partition OR normal partition Using Fdisk Command ?
+
+Step-1  ==> find out the details about your disk
+
+Step-2  ==> Now go into hardisk with any command [ fdisk or parted ]
+            create partition as per need and save it  
+
+Step-3  ==> Update the partition table 
+        # partprobe  /dev/sda  {Till RHEL-7 }
+        # udevadm settle   { new command in rhel-8 } <== Parted 
+ 
+==============================================================
+
+Step-4  ==> Now format the partition into any filesystem type = ext2 ext3 ext4 xfs
+                         OR
+            Create the filesystem
+
+Step-5  ==> Mount this partition on any directory 
+
+        Types of mouting method ?
+       1- Temporary  ==>   #  mount   source   destination  
+       2- Permanent  ==>   #  vim  /etc/fstab ==> do entry here
+
+Step-6   ==> How we can test this partition is it working or not ?	
+
+=========================================================
+
+How to mount any partition using UUID or Block ID Concept ?
+
+=========================================================

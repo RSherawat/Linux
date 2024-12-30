@@ -1,0 +1,387 @@
+=================================
+Day-4 Command Notes
+=================================
+    1  ls
+    2  pwd
+    3  ls
+    4  ls  ~
+    5  ls  /root 
+    6  ls  /
+    7  ls  /home 
+    8  ls  /tmp 
+    9  ls  /
+   10  touch  abc
+   11  touch  /xyz  
+   12  touch  /tmp/xyz  
+   13  ls
+   14  ls  /
+   15  ls /tmp
+   16  touch  abc1 abc2 abc3
+   17  ls
+   18  touch  vinit  /ibm 
+   19  ls 
+   20  ls  /
+   21  touch  /root/vinit2   vinit3    /vinit4
+   22  ls  
+   23  ls  /
+   24  touch  raj1  /root/raj2   ~/raj3
+   25  ls
+   26  touch  ~/red1   /red2
+   27  ls
+   28  ls /
+   29  useradd soniya 
+   30  su - soniya 
+   31  ls  /
+   32  cd  /
+   33  pwd
+   34  ls
+   35  cd
+   36  ls  /home 
+   37  cd  /home 
+   38  ls
+   39  pwd
+   40  cd
+   41  cd  /home 
+   42  cd
+   43  ls /home 
+   44  cd  /home 
+   45  ls
+   46  cd
+   47  touch krish  krish-1  /krish-2   /tmp/krish-3
+   48  ls
+   49  ls  /
+   50  ls /tmp
+   51  touch  tcs{1,2,3}
+   52  ls
+   53  touch hcl{1..5}
+   54  ls
+   55  touch  rajeev.txt  
+   56  ls
+   57  touch  rajeev{1..3}.txt 
+   58  ls
+   59  touch redhat{0..10..2}
+   60  ls
+   61  touch  fedora{1..10..2}
+   62  ls
+   63  mkdir personal
+   64  mkdir  /publicdata 
+   65  ls 
+   66  ls  /
+   67  mkdir  dir1  /dir1   /tmp/dir1
+   68  ls
+   69  ls  /
+   70  ls /tmp
+   71  ls  /
+   72  touch  /publicdata/abc
+   73  ls /publicdata
+   74  cd  /publicdata
+   75  ls
+   76  touch xyz  
+   77  ls
+   78  cd
+   79  touch  /publicdata/xyz1
+   80  ls  /publicdata
+   81  ls 
+   82  touch  personal/abc 
+   83  ls personal
+   84  touch  /root/personal/xyz 
+   85  ls personal
+   86  touch  ~/personal/vinit 
+   87  ls personal
+   88  ls ~/personal
+   89  ls /root/personal
+   90  ls
+   91  mkdir  /personal 
+   92  clear
+   93  touch  /personal/krnetwork
+   94  touch  personal/krnetwork 
+   95  touch  /root/personal/cloud  
+   96  ls  personal
+   97  ls /personal
+   98  touch  /publicdata/ cloud  
+   99  ls
+  100  ls  /publicdata
+  101  touch  /publicdata/-cloud 
+  102  ls  /publicdata
+  103  cat  /publicdata/cloud 
+  104  cat  /publicdata/-cloud 
+  105  ls
+  106  mkdir  /redhat
+  107  ls  /
+  108  mkdir  /redhat/fedora 
+  109  touch  /redhat/linux 
+  110  ls  /redhat
+  111  touch  /redhat/fedora/data  
+  112  ls /redhat
+  113  ls /redhat/fedora
+  114  ls  /redhat
+  115  ls  /redhat/fedora
+  116  tree  /redhat  
+  117  cd  /publicdata
+  118  pwd
+  119  cd  ..
+  120  cd
+  121  pwd
+  122  cd  ..
+  123  cd
+  124  cd  /
+  125  cd
+  126  cd ..
+  127  cd
+  128  cd  /publicdata
+  129  ls
+  130  mkdir data  
+  131  ls
+  132  cd  data 
+  133  pwd
+  134  cd  ..
+  135  cd ..
+  136  cd
+  137  mkdir  /data1
+  138  ls /data1
+  139  mkdir  /data1/data2
+  140  ls /data1
+  141  ls /data1/data2
+  142  mkdir  /data1/data2/data3
+  143  tree  /data1
+  144  cd  /data1
+  145  ls
+  146  cd data2
+  147  ls
+  148  cd  data3
+  149  pwd
+  150  cd
+  151  cd  /data1/data2
+  152  ls
+  153  cd  /data3
+  154  cd  data3
+  155  pwd
+  156  cd  /
+  157  cd
+  158  mkdir  /data2
+  159  mkdir  /data2/d{1..5}
+  160  ls  /data2
+  161  mkdir  --help
+  162  mkdir -p  /kr/network/cloud
+  163  ls  /kr 
+  164  ls  /kr/network
+  165  ls  /kr/network/cloud
+  166  tree /kr
+  167  ls  /kr 
+  168  ls  -R  /kr 
+  169  mkdir /kr/network/cloud/linux 
+  170  mkdir /kr/network/cloud/linux/fedora/redhat  
+  171  mkdir -p  /kr/network/cloud/linux/fedora/redhat  
+  172  mkdir -p    /data/a1/a2/a3/a4
+  173  tree  /data
+  174  ls /data
+  175  ls /data/a1
+  176  ls /data/a1/a2
+  177  ls /data/a1/a2/a3
+  178  ls /data/a1/a2/a3/a4
+  179  cd  /data 
+  180  ls
+  181  cd  a1
+  182  ls
+  183  cd  a2
+  184  ls
+  185  cd a3
+  186  ls
+  187  cd a4
+  188  ls
+  189  pwd
+  190  cd  ..
+  191  cd  ../..
+  192  cd /
+  193  cd
+  194  cd /data
+  195  ls
+  196  cd a1
+  197  ls
+  198  cd a2
+  199  cd
+  200  cd  /data/a1/a2
+  201  cd
+  202  cd /data/a1/a2
+  203  cd
+  204  cd  -
+  205  cd
+  206  cd /data
+  207  cd
+  208  cd  -
+  209  cd
+  210  cd  . 
+  211  ls  /
+  212  cp  /etc/passwd  .
+  213  ls
+  214  cd  /data/a1/a2/a3
+  215  cp  /etc/passwd  .
+  216  ls
+  217  cd
+  218  cd  .
+  219   
+  220  cd /data  
+  221  cd
+  222  cd -
+  223  cd
+  224  tree  /data 
+  225  ls /data
+  226  ls -R /data
+  227  cd  /data/a1/a2/a3
+  228  pwd
+  229  ls
+  230  ls  ~
+  231  ls  /root 
+  232  touch  ~/rohit 
+  233  ls
+  234  ls  ~
+  235  ls  ~/
+  236  touch  /root/amit 
+  237  ls  /root  
+  238  pwd
+  239  touch  ../../rajat 
+  240  ls ../..
+  241  mkdir  ../sumit  
+  242  ls  ..
+  243  mkdir  /rohit  
+  244  ls  /
+  245  ls 
+  246  touch   a4/abc
+  247  ls
+  248  ls a4
+  249  touch  /data/a1/rajat
+  250  pwd
+  251  ls
+  252  touch  ./newfile 
+  253  ls
+  254  touch  ~/newfile 
+  255  ls ~
+  256  cd
+  257  touch ../new-file 
+  258  ls /
+  259  ls
+  260  ls -F
+  261  cd  /
+  262  cd data  
+  263  cd a1
+  264  cd a2
+  265  cd
+  266  cd /data/a1/a2
+  267  cd
+  268  ls
+  269  ls /
+  270   
+  271  tree  /data 
+  272  find  /data  -type d  
+  273  find  /data  -type f  
+  274  find  /data  -type f   | wc -l
+  275  find  /data  -type d   | wc -l
+  276  mkdir  new\ songs 
+  277  ls
+  278  mkdir  kr\ network\ cloud 
+  279  ls
+  280  cd new\ songs
+  281  cd
+  282  cd  kr\ network\ cloud
+  283  cd
+  284  mkdir  rakesh\ kumar\ yadav 
+  285  ls
+  286  cd rakesh\ kumar\ yadav
+  287  cd
+  288  mkdir  'kail sharma'
+  289  mkdir  "mohit sharma"
+  290  ls
+  291  cd  'kail sharma'
+  292  cd
+  293  cd kail\ sharma
+  294  cd
+  295  cd  "mohit sharma"
+  296  cd
+  297  cd  'mohit sharma'
+  298  cd
+  299  cd  mohit\ sharma
+  300  cd
+  301  ls
+  302  touch  kr\ network\ cloud/abc  
+  303  ls  kr\ network\ cloud
+  304  x=5
+  305  echo  $x
+  306  x=10
+  307  echo  $x
+  308  date 
+  309  date +%H
+  310  date +%H:%M
+  311  date +%H:%M:%Y
+  312  date +%H:%M:%Y:%A
+  313  echo   $(date +%H:%M:%Y:%A)
+  314  hostname
+  315  echo $hostname 
+  316  echo $(hostname) 
+  317  echo date 
+  318  echo $(date) 
+  319  echo $(date +%A) 
+  320  echo $(date +%A:%H:%M:%Y) 
+  321  mkdir  storage-$(date +%H:%M:%S:%A:%Y) 
+  322  ls 
+  323  x=abc 
+  324  echo $x
+  325  echo $(date)
+  326  set |  grep abc  
+  327  ls
+  328  cat  /etc/crontab
+  329  cat  -n   /etc/crontab
+  330  cat    /etc/crontab
+  331  cat  /etc/passwd 
+  332  useradd  user1
+  333  useradd  user2
+  334  useradd  user3
+  335  useradd  user4
+  336  ls  /home 
+  337  cat /etc/passwd 
+  338  cat -n  /etc/passwd 
+  339  cat  /etc/group 
+  340  oniya:x:1001:1001::/home/soniya:/bin/bash
+  341  user1:x:1002:1002::/home/user1:/bin/bash
+  342  user2:x:1003:1003::/home/user2:/bin/bash
+  343  user3:x:1004:1004::/home/user3:/bin/bash
+  344  user4:x:1005:1005::/home/user4:/bin/bash
+  345  cat  /etc/crontab   /etc/passwd 
+  346  cat    /etc/passwd   /etc/crontab 
+  347  # For details see man 4 crontabs
+  348  # Example of job definition:
+  349  # .---------------- minute (0 - 59)
+  350  # |  .------------- hour (0 - 23)
+  351  # |  |  .---------- day of month (1 - 31)
+  352  # |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+  353  # |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+  354  # |  |  |  |  |
+  355  # *  *  *  *  * user-name  c
+  356  cat -n  /etc/crontab  /etc/passwd
+  357  ls
+  358  cat  anaconda-ks.cfg 
+  359  ls
+  360  cat  initial-setup-ks.cfg 
+  361  cat  -n  /etc/crontab 
+  362  cat   /etc/crontab 
+  363  cat  -n  /etc/crontab 
+  364  cat  -b  /etc/crontab 
+  365  cat  /etc/crontab 
+  366  tac    /etc/crontab 
+  367  history 
+  368  touch ashish_sharma
+  369  ls
+  370  cat ashish_sharma 
+  371  echo 
+  372  echo hello 
+  373  echo hello india 
+  374  echo hello krishna, How are you ?
+  375  x=5
+  376  clear
+  377  echo $x
+  378  echo $(x)
+  379  echo $(date)
+  380  echo $(hostname)
+
+=================================
+   Completed
+=================================

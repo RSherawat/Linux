@@ -1,0 +1,213 @@
+=====================================================
+How we can manage traffic with IP-Tables Firewalls ?
+=====================================================
+
+
+Machine <== OS  <== Services <== Request <== controll <== Firewalls 
+
+Rule Apply  ==> Allow and Deny Rules  as per demands
+
+=====================================================
+Example:- SSH    <== Pre installed and running 
+=====================================================
+Other Examples   <== NFS  FTP HTTP samba ...so on 
+=====================================================
+Machine-1   ==> RHEL-8   <== Server Node  <=== Services deploy
+ 
+Machine-2   ==> RHEL-8   <== Client Node
+
+=====================================================
+
+machine <== Firewalls  <== 1- iptables   ==> 1- active       1- inactive    
+                           2- firewalld  ==> 2- inative      2- active 
+
+====================================================
+IP-Tables Examples
+====================================================
+[root@station10 ~]# history 
+    1  hostname
+    2  hostnamectl set-hostname  station10.example.com  
+    3  ifconfig 
+    4  ifup ens160
+    5  ifconfig 
+    6  lsblk  
+    7  mount  /dev/sr0  /mnt
+    8  cd /etc/yum.repos.d
+    9  ls
+   10  vim dvd.repo  
+   11  cd
+   12  yum clean all 
+   13  yum repolist  
+   14  systemctl is-active sshd 
+   15  systemctl is-enabled sshd 
+   16  netstat -tunlp  |  grep sshd
+   17  rpm -qa firewall*
+   18  rpm -qa iptables*
+   19  systemctl status firewalld 
+   20  systemctl status iptables 
+   21  yum list  |  grep  iptables 
+   22  yum install  iptables*  -y  
+   23  systemctl status iptables 
+   24  systemctl stop firewalld  
+   25  systemctl disable  firewalld  
+   26  systemctl  mask  firewalld 
+   27  systemctl status firewalld 
+   28  systemctl  start  iptables 
+   29  systemctl  enable    iptables 
+   30  systemctl status iptables 
+   31  iptables -L  
+   32  iptables -L  INPUT
+   33  iptables -L  OUTPUT
+   34  iptables -L  FORWARD
+   35  iptables -L  INPUT  --line-number
+   36  iptables  -D INPUT   5
+   37  iptables -L  INPUT  --line-number
+   38  service iptables save 
+   39  iptables -L  INPUT  --line-number
+   40  iptables -F INPUT 
+   41  iptables -L  INPUT 
+   42  iptables -F
+   43  service iptables save 
+   44  iptables  -L
+   45  systemctl is-active sshd
+   46  iptables -I INPUT -p tcp  --dport 22  -s  192.168.0.9 -j REJECT
+   47  service iptables save 
+   48  iptables -L 
+   49  iptables -F INPUT 
+   50  service iptables save 
+   51  iptables -I INPUT -p tcp  --dport 22  -s  192.168.0.9 -j DROP 
+   52  service iptables save 
+   53  iptables  -F INPUT
+   54  service iptables save 
+   55  iptables -I INPUT -p tcp  --dport 22  -s  192.168.0.0/24 -j REJECT 
+   56  service iptables save 
+   57  iptables  -F INPUT
+   58  service iptables save 
+   59  iptables -I INPUT -p tcp  --dport 22   -j REJECT 
+   60  service iptables save 
+   61  iptables  -F INPUT
+   62  service iptables save 
+   63  iptables -I INPUT -p tcp   -s  192.168.0.9   -j REJECT 
+   64  service iptables save 
+   65  iptables  -F INPUT
+   66  service iptables save 
+   67  iptables -I INPUT -p tcp    -j REJECT 
+   68  service iptables save 
+   69  iptables  -F INPUT
+   70  service iptables save 
+   71  iptables -I INPUT -p  icmp  -s  192.168.0.9  -j DROP 
+   72  service iptables save 
+   73  iptables  -F
+   74  service iptables save 
+   75  iptables -I INPUT -p  icmp  -s  192.168.0.9  -j REJECT
+   76  service iptables save 
+   77  iptables  -F
+   78  service iptables save 
+   79  iptables -I INPUT -p  icmp  -j DROP 
+   80  service iptables save 
+   81  iptables -I INPUT -p  icmp  -s 192.168.0.9  -j ACCEPT 
+   82  service iptables save 
+   83  iptables  -F
+   84  service iptables save 
+   85  iptables -I INPUT -p  tcp  --dport 22   -s 192.168.0.0/24  -j REJECT 
+   86  service iptables save 
+   87  iptables  -F
+   88  service iptables save 
+   89  iptables -I INPUT -p  tcp  --dport 22   ! -s 192.168.0.0/24  -j REJECT 
+   90  service iptables save 
+   91  iptables  -F
+   92  iptables -I INPUT -p  tcp  -j REJECT 
+   93  service iptables save 
+   94  iptables  -F
+   95  service iptables save 
+   96  iptables -F
+   97  service iptables save 
+   98  iptables  -I INPUT -m  mac  --mac-souce  00:0c:29:41:ce:58 -j DROP 
+   99  iptables  -I INPUT -m  mac  --mac-source  00:0c:29:41:ce:58 -j DROP 
+  100  service iptables save 
+  101  iptables -F
+  102  service iptables save 
+  103  iptables  -I INPUT -m  mac  --mac-source  00:0c:29:41:ce:58 -j REJECT
+  104  service iptables save 
+  105  iptables -F
+  106  service iptables save 
+  107  iptables -L INPUT
+  108  iptables -L
+  109  iptables -I INPUT  -m multiport  -p  tcp   --dport 22,23,80,443  -s 192.168.0.9  -j REJECT   
+  110  service iptables save 
+  111  iptables -L INPUT
+  112  iptables  -F 
+  113  service iptables save 
+  114  history 
+  115  ifconfig 
+  116  ssh root@192.168.0.9
+  117  iptables  -I OUTPUT -p tcp  --dport 22  -d  192.168.0.9  -j DROP 
+  118  service iptables save 
+  119  ssh  root@192.168.0.9
+  120  iptables -F
+  121  service iptables save 
+  122  ssh  root@192.168.0.9
+  123  netstat  -tunlp |  grep 22
+  124  netstat  -tunlp |  grep sshd
+  125  netstat  -tunlp |  grep  1122
+  126  vim /etc/ssh/sshd_config 
+  127  systemctl restart sshd  
+  128  getenforce 
+  129  systemctl status sshd.service
+  130  tail -f  /var/log/audit/audit.log 
+  131  getenforce 
+  132  netstat -tunlp  |  grep sshd
+  133  semanage  port  -l  | grep ssh
+  134  semanage port  -a  -t  ssh_port_t    -p  tcp  1122
+  135  semanage  port  -l  | grep ssh
+  136  systemctl   restart sshd 
+  137  netstat -tunlp |  grep sshd  
+  138  iptables -F 
+  139  service iptables save 
+  140  yum install  http* -y 
+  141  systemctl  start  httpd 
+  142  systemctl  enable    httpd 
+  143  netstat -tunlp  |  grep  httpd 
+  144  cd  /var/www/html
+  145  ls
+  146  echo  "hello india"  >  index.html  
+  147  ls
+  148  cat index.html 
+  149  cd
+  150  grep -i -n  listen  /etc/httpd/conf/httpd.conf 
+  151  semanage  port  -l  |  grep  http
+  152  vim  /etc/httpd/conf/httpd.conf 
+  153  systemctl   restart  httpd  
+  154  httpd -t 
+  155  getenforce 
+  156  tail -f /var/log/audit/audit.log 
+  157  cat  /var/log/audit/audit.log 
+  158  semanage port  -l | grep http
+  159  semanage port -a -t  http_port_t  -p tcp  85
+  160  semanage port  -l | grep http
+  161  systemctl   restart  httpd 
+  162  netstat -tunlp  |  grep  httpd 
+  163  which curl 
+  164  curl   http://192.168.0.6
+  165  curl   http://192.168.0.6:85
+  166  netstat -tunlp  |  grep sshd
+  167  iptables -t  nat  -A PREROUTING -p tcp --dport 22 -j REDIRECT --to-port 1122
+  168  service  iptables save  
+  169  iptables  -F  
+  170  service  iptables save  
+  171  systemctl status  iptables
+  172  systemctl status  firewalld
+  173  systemctl stop  iptables  
+  174  systemctl disable    iptables  
+  175  systemctl  start  firewalld 
+  176  systemctl unmask firewalld 
+  177  systemctl  start  firewalld 
+  178  systemctl  enable    firewalld 
+  179  systemctl is-active firewalld
+  180  systemctl is-enabled  firewalld
+  181  firewall-cmd --list-services 
+
+
+======================================================================
+
+

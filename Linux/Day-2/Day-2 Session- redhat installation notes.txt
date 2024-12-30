@@ -1,0 +1,198 @@
+=========================================================
+   Day-2 Session
+=========================================================
+  How we can Prepare my personal lab ?
+            OR
+  How we can install rhel 8 Linux Flavor ?
+=========================================================
+
+
+Machines  <====  Operating System <=== Application/Software/Tools
+
+=========================================================
+
+
+Linux Vendors  ==> official website ==> URL ==> Link ==> Bootable Image ==> Download ==> Machine ==> install 
+
+=========================================================
+Types of Machine ?
+
+1- Physical machine
+2- Virtual machine
+3- Cloud based machine
+
+=========================================================
+Requirement:-  Bootable ISO Image 
+=========================================================
+
+OS Installation Choice ?
+
+1- We can install OS direct into any physical machine windows/linux
+2- We can create dual booting concept to install any operating system.
+3- we can create virtual machine using any software to install Linux Operating system.[ Virtual Box OR Vmware ]
+4- we can create VMs on any cloud based platform providers.Ex:- Google Cloud, AWS Cloud, Azure Cloud ..others
+
+=========================================================
+Recomended Choice 3 ==> As a student or beginners  or Choice-4 
+========================================================= 
+Types of Resource Planning ?
+
+1- Local Resource     ==>  1- cdrom    2- dvd  3- pendrive
+
+2- Direct ISO image   ==>  If you are using any virtualization based software you can direct start installation 
+                           with this ISO image
+
+3- network based Resources ==> PXE Boot Server or Network based Installation Server
+
+========================================================
+machine <== RHEL-8 <== Linux admin <== Command runs ===> PXE Boot server 
+========================================================
+Types of Login Mode OR env ?
+
+1- GUI Mode ==> Graphical User Interface
+2- CLI Mode ==> Command line interface
+
+========================================================
+Types working Style ?
+
+1- GUI Based
+2- CLI Based  ==> Linux Admin ==> 80%
+
+========================================================
+VLC Media play download for windows  ==>  .exe 
+VLC Media play download for Redhat  ==>   .rpm [ redhat package manager ] 
+
+========================================================
+In Windows ==> Software ==>  .exe  or setup file
+
+========================================================
+ISO Image ==> Folders ==> Collection of RPMs ==> Group or bundle Group ==> SET
+Redhat DVD ==> Folder ==> number of rpms ==> 6500 RPMs
+========================================================
+Two options:-
+
+1- Server with GUI       ==> GUI + CLI Mode ==> by default 1320 RPMs
+2- Minimal Installation  ==> only CLI Mode  ==> 450 RPMs
+
+========================================================
+useradd
+userdel   ==> rpms
+usermod
+
+tree     ==> tree ==> install
+
+========================================================
+Types of Login Users ?
+
+1- Super user                  ==>  root  ==> 100%                       ==>  #
+ 
+2- Normal users/Custom Users   ==>  amit deepak rahul ==> limited Rights ==>  $
+
+========================================================
+SUDO user ?
+========================================================
+
+File    <===> File
+Folder  <===> Directory
+
+========================================================
+
+ Start the Linux Installation 
+
+
+
+
+
+========================================================
+1- Virtualization Concept  ==> VMware workstation + Virtual Box
+2- RHEL 8 ISO image 
+========================================================
+Requirement:-
+
+1- 64 Bit machine 
+2- BIOS Settings ==> Virtualization technology must be enabled
+ 
+========================================================
+
+Step-1  First we will virtual Box or Vmware workstation.
+Step-2  Click on Vmware Icons and Create Virtual Machine as per required hardware configuration.
+Step-3  Click on CD/DVD icon connect your ISO image then power on your machine
+Step-4  Select First Option ==> Install redhat enterprise linux 8  [Enter]
+        and continue the installation 
+
+    Reboot  ==> not listed ==> root 
+                           ==> redhat   ==> then you will command prompt to run any command.
+
+========================================================
+Types of installation method ?
+
+1- GUI based  ==> using the mouse 
+2- CLI based  ==> using only keyboard
+
+=========================================================
+
+Types of Machine access method ?
+
+1- Local to Local
+
+2- Remote login ==> windows ==> putty software 
+
+=========================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

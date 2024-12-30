@@ -1,0 +1,88 @@
+======================================
+
+======================================
+
+How we can Operate or manage
+Services/Daemons/Units on Linux Operating System ?
+
+======================================
+
+
+Machine <=== RAM + CPU + DISK  <=== Operating System
+
+======================================
+Machine  <=== Operating system 
+
+<===1- Default services/Daemons/Units <== During the OS installation time
+<===2- Custom Services/Daemon/Units   <== After the OS installation 
+                                          we need to install it manually
+
+
+========================================
+Linux machine  <== crond and sshd  <== by default 
+========================================
+Crontab  ==> RPMs ==> File ==> service  ==> crond 
+========================================
+# systemctl  status crond
+# systemctl start crond 
+# systemctl enable crond 
+
+========================================
+Types of linux Machine ?
+
+1- physical machine
+2- virtual machine     <== os  <== as per requirement of the project  <=== we need to install and configure n number of service
+3- cloud based machine 
+
+=======================================
+
+Machine <=== OS installation  <=== 1- default services
+                                   3- custom services
+
+
+rhel-8   ==> crontab  + ssh  ==> topic name
+
+crontab ==> service name  ==> crond 
+SSH     ==> service name  ==> sshd
+
+=======================================
+FTP server
+DNS "
+LDAP      ==> daemon/service/unit  ==> start/enable
+NTP
+NFS
+
+=====================================
+=====================================
+service & chkconfig till rhel-6  ==> init
+
+     systemctl ==> new in rhel-7+8  ==> systemd
+=====================================
+
+Linux <== machine ==> 
+
+1-  Pre installed / need to install first
+2-  configuration as per needs
+3-  we will start the respective services
+4-  we will test the service
+
+===================================
+
+==================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   

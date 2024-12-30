@@ -1,0 +1,244 @@
+===================================================
+mounting and unmounting concept ?
+===================================================
+
+mount point or access point or mapping point OR data access point ?
+
+==================================================
+In windows
+==================================================
+HARD Disk  ==> Partition 
+
+500 GB DISK
+  OR
+hard Disk  ===> partitions  ==> data store ==> disk ==> break ==> Partitions
+  OR
+Hard Drive 
+
+
+C:\  ===> OS Storage partiton      ==>  OS Operating Files + Personal Data [ Recommended Practise ]
+D:\
+E:\  ===> Data Storage Partition   ==>  Personal Data 
+F:\
+
+500 GB Drive  ==> 
+
+50GB  ==> C:\
+200GB ==> D:\
+250GB ==> E:\
+
+Disk  ==> partiton  ==> data [ OS based File + Personal Files]
+
+======================================================
+In Linux 
+======================================================
+
+Machine  <== Linux based Flavor <== DISK Name <== different display <== # lsblk or fdisk -l 
+
+
+1- PATA Disk or IDE disk  ==>  /dev/hda ==> 500 GB ==>  /dev/hda1   /dev/hda2   /dev/hda3..so on 
+                               /dev/hdb ==> 200 GB ==>  /dev/hdb1   /dev/hdb2   /dev/hdb3..so on
+
+2- SATA OR ssd DISK       ==>  /dev/sda ==> /dev/sda1   /dev/sda2   /dev/sda3 
+                               /dev/sdb ==> /dev/sdb1   /dev/sdb2   /dev/sdb3
+                               /dev/sdc ==> ................................so on 
+
+3- Virtual Disk           ==> /dev/vda ==>  /dev/vda1  /dev/vda2 ...so on
+                              /dev/vdb ==>  /dev/vdb1  /dev/vdb2 ...so on
+
+======================================================
+ / ==> root partition or parent directory ==> by default sub directory ==> OS operating directory
+
+ /dev  ==> device or devices information 
+
+Autmatic Name ==> Read  ==> lsblk or fdisk -l  ==> will display for the linux admin 
+
+======================================================
+/dev/sr0           ==>  CD Drive name
+/dev/sdb1          ==>  single pendrive 
+/dev/<any-name>    ==>  can be another device 
+======================================================
+# cd   /dev/sr0  ==> will execute ==> YES or NO  ==> NO
+
+change Directory
+======================================================
+# mkdir  /data 
+# mkdir  /storage
+
+# ls /data     <== blank
+# ls /storage  <== blank
+
+# lsblk
+
+device-1  ==>  /dev/sr0
+device-2  ==>  /dev/sdb1
+ 
+# cd /dev/sr0  ==> NO
+
+# mount  /dev/sr0   /data  
+
+# ls /data 
+
+xyz1  xyz2 xyz3
+
+
+# mount  /dev/sdb1  /storage
+
+# ls  /storage 
+
+abc1  abc2 abc3
+
+=========================================================
+# cd /dev/sr0
+# cd /dev/sdb1  ==> NO
+
+# cd  /data
+# ls     ==>  /dev/sr0
+
+# cd /storage
+# ls     ==>   /dev/sdb1
+
+========================================================
+
+# mkdir  /backup1
+# mkdir  /backup2
+
+# cp -rf  /data/*   /backup1
+# cp -rf  /storage/*   /backup2
+
+========================================================
+
+# umount  /data
+
+#  ls  /data  ==> no  ==> Blank
+
+# umount  /storage
+
+# ls  /storage  ==> no  ==> balnk 
+
+========================================================
+
+/dev/sr0   ==>  /backup1
+/dev/sdb1  ==>  /backup2
+
+========================================================
+In linux we need to create mount point for every device to access the data.
+========================================================
+
+
+
+30 GB Drive  
+==>  /dev/sda 
+
+       /dev/sda1
+       /dev/sda2
+
+========================================================
+
+/dev/sda ==> 30 GB 
+
+/dev/sda1  ==> 15 GB  ==>  /   ==> 19 Sub Directory
+                         
+/dev/sda2  ==>  5 GB  ==>  /data
+
+/dev/sda3  ==> 10 Gb  ==>  /storage
+
+========================================================
+
+Redhat Installation  ?  <== DISK provide
+
+1- Manual Installation with Required Space
+2- Automatic Installation ==> we can defined partition size
+
+========================================================
+
+CDrom  ==> Data  ==> Copy ==>
+
+Linux  <== USB Drive <== Access Method
+
+1- Automatic mounting point 
+2- we can mount thid drive on  /mnt directory or any other custom directory
+
+=======================================================
+
+# lsblk 
+
+cdrom or dvd or pendrive  ==> 
+
+Till RHEL-6
+
+/media
+
+in RHEL-7 + RHEL-8  ==> /media will not be directly accessible
+
+# ls  /run/media/root  <=== FIXED  <== automatic mount point 
+
+
+# cd /run/media/root/Drivename
+   
+          OR
+
+# mount  /dev/sr0   /mnt 
+# mount  /dev/sr0   /mydir 
+
+# umount  /mnt or /mydir 
+
+=======================================================
+/media
+  or        ==> Same  <=== this is the automatic mounting point for all USB Device.
+/run/media 
+
+
+
+
+
+/mnt or /mydir   <== Can be mount any partition or Disk or USB Drive 
+
+=======================================================
+
+# mount  /dev/sda5  /data 
+
+# ls  /data 
+
+# umount  /data 
+
+# mount  /dev/sda5   /storage 
+
+# ls  /data     ==> blank 
+# ls  /storage  ==> data visible
+
+=======================================================
+
+Pendrive Access Method
+
+=======================================================
+
+# lsblk  ==>  /dev/sdb1 
+
+
+# mount  /dev/sdb1  /mnt 
+
+# ls  /mnt 
+
+# cp -rf  /etc   /mnt    <== machine to pendirve
+# cp -rf  /mnt/*  /tmp   ==> from the pendrive to machine
+
+# umount  /mnt 
+
+=====================================================
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+

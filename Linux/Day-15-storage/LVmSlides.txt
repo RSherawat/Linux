@@ -1,0 +1,176 @@
+**********************************************
+
+LVM  [ logical Volume manager or management ]
+
+**********************************************
+
+Data Store  <=== partition or volume  <========== 
+
+Types of partition OR Volume  Creation concept  ?
+
+1- Standard partition or Volume==> Fixed Size ==> 
+  We can not Extend or Reduce this Volume Size
+
+2- LVM  ===> We can extend or reduce any space at run time.
+
+
+***********************************************
+1- LVM (logical volume manager) is a management technology for storage.
+
+2- LVM technology basically provides the flexible types of
+   storage concept where we can easily extend or reduce any volumes size as per deamand.
+
+3- LVM always use in physical datacenters and in cloud based infra.
+
+4- LVM consist by Physical Volumes and Volume groups  .
+
+5- benefits of using LVM, volumes can be reduced or extended easily. 
+
+6- LVM is very flexible to do this with just one command line.
+
+===========================
+Disk  => Partition 
+
+1- PV create
+2- VG Create
+3- LV Create
+===========================
+ 
+************************************************
+
+What Is The Difference Between LVM And Standard Partition ?
+
+   Partition sizes can be easily changed with LVM compared to standard partition.
+   With LVM, you do not need to unmount a filesystem before resizing,
+   it can be done while online.
+================================================
+
+Standard Volumes Diagram 
+
+************************************************
+LVM  Diagram
+
+************************************************
+
+
+What is physical Volume ?
+
+1- physical Volume means a physical partition which comes from the 
+   hard drive with 8e hex code.
+
+2- Atleast one PV is required to create any one volume group.
+
+
+What is Volume group ?
+
+1- Volume groups basically collection of one or more PVs.
+2- One Volume group can be devide into a one or more logical volumes.
+3- Every LVM's Always depend on the Volume groups.
+4- Volume group behave just like as Storage containers.
+
+What is Logical volume  ?
+
+1- LVM basically is a sub part of the Volume group with any defined filesystem.
+2- Every LVM can have any types of Filesystem and mounting point.
+========================================================================
+
+1- Pvcreation     ==> pvcreate    pvdisplay   pvs
+2- Vgcreation     ==> vgcreate    vgdisplay   vgs
+3- LV creation    ==> lvcreate    lvdislay    lvs 
+4- format         ==> mkfs.type  
+5- mount          ==> mount   +  /etc/fstab  
+6- testing        ==> data write 
+
+=========================================================================
+What is Extent or block size or chunk size ?
+1- PE [ physical extent ]
+2- LE [ logical extent ]
+
+==>> Each physical volume is divided chunks of data, known as physical extents, 
+     these extents have the same size as the logical extents for the volume group.
+
+
+===> logical extent (LE) Each logical volume is split into chunks of data,     
+     known as logical extents.
+
+A- The disk space available for allocation in Volume Group is divided into units of
+   a fixed-size called extents.
+
+B- An extent is the smallest unit of storage that can be allocated. 
+   Within a physical volume, extents are referred to as physical extents.
+
+C- A logical volume is allocated into logical extents of the same size as
+   the physical extents.
+
+BY default 1 PE = 4 MB     [ we change , if we require using  -s option in vgcreate ]
+
+Example:-  1 physical Volume  ==> 500 MB 
+             Volume group     ==> 500 MB /  125 PE
+
+             Logical Volume   ==> 100 MB / 25 LE 
+
+Volume Group  ==> 125 PE  - 25 PE  ==>  100 PE or 400 MB ==> Free Space or Free PE
+pvdisplay ==> PE
+vgdisplay ==> PE
+lvdisplay ==> LE
+
+====== n number of PE ==> volume group  ==> n number PE devides in n number of LEs.
+ 
+========================================= 
+=========================================================================
+********************
+7- LVM Extend
+8- LVM reduce
+9- VG extend 
+
+*******************
+
+10- How we can deactivate and reactivate any LVMs ?
+
+******************
+
+create a new LVM ?
+
+Vgname   ==> fedora
+Lvname   ==> redhat
+1 PE     ==> 8M 
+LVM Name ==> 20 LE 
+format   ==> ext4
+mount    ==> /lvm3
+
+8  *  20  ==> 160 MB + 30 MB ( Extra ) ==> 190 MB  ==> PV 
+****************** 
+
+
+LVM Extend ?    ===> We can extant LVM size  at run time OR in off line .
+                     no need to unmount it. 
+
+Note:    In Volume group blank space must be available
+
+Task-1   if Filesystem Type is in ext2,ext3 and ext-4
+        First method: using Two commands      ==> lvextend and resize2fs 
+        Second method: using single commands  ==> using  lvresize 
+     
+       
+
+
+Task-2   if Filesystem Type is in  xfs  
+
+          First method:   lvextend  + xfs_growfs {support till rhel-7 }
+          Second method:   lvresize   { recommended command in rhel-8}
+
+
+
+*****************************************************
+
+LVM Reduce    ==> 
+
+1- support only in offline mode 
+2- LVM reduce operation does not support in xfs based filesystem.
+   but it is possible in ext2 ext3 and ext-4.
+
+******************************************************
+
+
+
+

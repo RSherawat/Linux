@@ -1,0 +1,83 @@
+=======================================
+     ACL [ Access Control List ]
+=======================================
+
+default permissions
+custom  permissions
+
+=======================================
+umask                                                                   
+chmod     ==> change the permissions     ==> overall  ==> owner  group  others
+setfacl   ==> to apply the permissions   ==> using the username and group name  
+
+
+=======================================
+chmod ==> one short
+=======================================
+
+setacl  ==> to apply the ACL
+getfacl ==> to find out report about acl based permissions 
+
+=======================================
+# touch   /tmp/xyz  ==> file  ==>  6 4  4  
+# chmod  770  /tmp/xyz  ==> other zero 
+# chmod  777  /tmp/xyz 
+# chmod  640  /tmp/xyz
+
+soniya  ==> r--
+deepak  ==> rw-    ==> Solution ==>  setfacl
+alok    ==> rwx 
+
+=========================================
+rahul  sachin ==> Zero 
+=========================================
+# ls -l  /etc/passwd 
+---- --- --- .  ==> NO acl  ==> chmod based permisson apply ==> only chmod based
+             +  ==> we have applied acl on this files.  OR chmod + setfacl based
+# getfacl  /etc/passwd 
+
+========================================
+ACL  ==> it is mainly use to apply permission on any 
+         file or directory with any particular username
+         and group name.
+========================================
+
+Types of ACL ?
+
+1- Access ACL     ==> particular file and particular directory 
+
+2- default ACL or automatic acl   ==> can be applied only on directory but not on any file.
+
+========================================
+Examples of Accces ACL ?
+
+# setfacl    -m   u:username:permissions    <file or directoryname>
+# setfacl    -m   g:groupname:permissons    <file or directoryname>
+
+========================================
+
+Examples of default acl ?
+
+# setfacl  -d  -m  u:username:permissions   <directoryname>
+# setfacl  -d  -m  g:groupname:permissons    <directoryname>
+
+========================================
+
+# setfacl  -m  u:rajeev:rwx   /share  ==> Access ACL
+# setfacl -d -m u:rajeev:r-x  /share  ==> Default ACL
+# mkdir  /share/data
+# getfacl /share
+# getfacl /share/data
+
+# setfacl  -m u:alok:r-x   /share
+# getfacl   /share 
+
+
+Note:- 
+
+1-     if we are planning to give default ACL to any particular users/groups
+       in that case access acl we need to apply first otherwise default acl will not work.
+
+2-     by default we always apply access ACL only.
+
+========================================

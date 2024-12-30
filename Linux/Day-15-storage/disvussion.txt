@@ -1,0 +1,54 @@
+=========================================
+
+  Storage Next Session
+
+=========================================
+
+Task-1  How we can create Custom Partition
+        During linux installation as per demands ?
+
+Task-2  Machine <== Disk-1  <== Space ==> OS defined Directory + Free Space 
+                <== Disk-2 + Disk-3  ==> Free Space  ==> Partition ==> Format ==> mount
+
+========================================
+machine <== Types of Disk
+
+1- Local to Local Disk 
+2- Network based Drive 
+
+========================================
+
+Machine <== DISK <== OS
+
+1- Primary Disk ==> OS operating disk
+2- Secondory Disk or additional disk   ==> Local to local and Network based
+
+======================================== 
+Linux <== Machine <== Disk  <== Linux admin <== Partition Crate + Format + Mount ==> method always will be the same
+========================================
+# lsblk or # fdisk -l   ==> hard disk information must be available
+========================================
+SAN Storage provider Node or SAN storage Server  <=== Storage admin <== drive <== permission <== HIT <== Drive <== mapped
+   OR
+ Block Storage or Network based Block storage disk
+========================================
+# fdisk -l 
+========================================
+
+DISK  ==> Partition ==> Cut  ==> DISK Operating Programs ==> MBR + GPT ==> Programs ==> disk ==> 
+
+1- MBR  [ master boot record]
+2- GPT  [ GUID partition table]
+
+=======================================
+
+1- BIOS   ==> MBR
+2- UEFI   ==> GPT
+
+=======================================
+DISK ==> Label  ==> MBR
+     ==> Lable  ==> GPT
+=======================================
+fdisk  ==> 1-  MBR or dos label   2- 2 TB
+parted ==> 1-  MBR and GPT        2- more then 2TB
+=======================================

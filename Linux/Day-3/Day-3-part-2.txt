@@ -1,0 +1,129 @@
+======================================
+
+Day-3- part-2
+
+======================================
+  Data Creation planning ?
+======================================
+
+Machine <=== Physical Machine 
+        <=== Virtual machine       <====  DISK  <=== Operating System
+        <=== Cloud based machine
+
+
+machine  <=== Disk  <=== OS
+
+1-  Default Data      <=== 1- During the OS installation time
+                      <=== 2- After the OS installation ==> if  we are installing any software or application/Tools
+
+
+2-  Custom Data       <=== After the OS installation time only  ==>  Created by any users always 
+
+==================================== 
+====================================
+
+Examples:-
+
+Windows   ==>  Drive OR Disk  ==> Partition  ==>    C:\      D:\     E:\ 
+Linux     ==>  Drive OR Disk  ==> partition  ==> There is no concept of C D E F drive. 
+
+In Linux Operating System  <==== Default Data  +  Custom Data
+
+
+we have single parent place  or parent folder or parent directory which is called  ==>  / 
+
+
+[root  @  localhost  ~ ] #  ls  /
+
+==> Around 19  sub directory   ==> OS  ==>  
+
+  # ls  /
+
+output  ==> 19 directory
+
+  # mkdir  /data 
+
+  # ls  /
+
+output    ==> 20 
+  
+  # mkdir  /fedora 
+
+  # ls  /
+
+output   ==>  21
+
+
+  #  mkdir   /fedora/redhat
+
+output   ==>  21 directory 
+  # ls  /  ==> 21 
+  # ls  /fedora
+     redhat
+
+======================================
+
+/   ==> around 19 sub directory 
+
+    ==>  17     ==> Operating System  ==>  operate 
+    ==>  2     ==>  User home account ==> reserved  ==>  /root   ==> home account of super user
+                                                    ==>  /home   ==> home account for all normal user
+
+=====================================
+/home ==> common place for all the normal users
+
+/home/deepak/
+/home/soniya/
+
+====================================
+
+[ root @ localhost  ~  ] # ls    ==>  /root 
+
+[ deepak @ localhost ~ ] $ ls    ==>  /home/deepak
+
+                         $ ls  /root        ==> will not execute 
+                         $ ls /home/rajeev  ==> will not execute 
+                     ~ ] $ ls 
+                     ~ ] $ ls  /home/deepak  ==> will work
+                     ~ ] $ ls  /
+
+=====================================
+
+root           ==>  private place or home directory  [ yes ]  +  public place [ Full access ]
+
+deepak         ==>  private place or home directory  [ yes ]  +  public place [ read only permission ] 
+                                                                                        OR
+                                                                  we can set permissions as per demands
+
+=====================================
+
+/         ==> root partition or parent directory or parent folder
+
+/root     ==> private or home directory of super user
+
+root      ==> Super User Name
+
+====================================
+
+/home/deepak  ==> home directory of any normal user
+/home/rajeev  ==> 
+
+====================================
+
+
+
+
+  ~ ] # pwd
+
+    /root 
+
+ ~ ] $ pwd
+
+   /home/deepak
+
+ 
+
+
+
+
+

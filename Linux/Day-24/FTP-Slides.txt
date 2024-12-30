@@ -1,0 +1,79 @@
+==================================
+
+    FTP   [ File Transfer Protocol ]
+
+==================================
+
+
+
+1- FTP server basically use to allow downloading and uploading
+   operation from any client side machine on live ftp server.
+
+2- It basically allo two types of operation 
+   1- GET   OR Downloading  
+   2- PUT   OR Uploading
+
+3- IT support in LAN and WAN Environment.
+
+4- Types of User account on FTP Server ?
+   1- Anonymous account  ==> ftp or anonymous ==> Get <== By default
+                                               upload <==we need allow it manually
+                        ==> home account ==>  /var/ftp/====>
+                                                       <====
+                           uploading is not allowed by default, we can allow it. 
+
+
+   2- FTP valid user account  ==> deepak  ==> /home/deepak  <== get + put
+                              ==> rahul   ==> /home/rahul   <== get + put 
+
+Note: in  rhel-8 by default we can't access any ftp server 
+      with ftp or anonymous account, we need to allow login manually.
+
+==============================================================
+
+192.168.0.10 ===> /var/ftp/xyz1
+             ===> /var/ftp/pub/abc 
+
+==============================================================
+
+192.168.0.20    # wget    ftp://192.168.0.10/xyz1
+                # wget    ftp://192.168.0.10/pub/abc
+
+firefox      ftp://192.168.0.10        ==> /var/ftp/
+             ftp://alok@192.168.0.10   ==> /home/alok
+===============================================================
+Server Side:-
+
+package:   vsftpd
+Daemon :   vsftpd
+File   :   /etc/vsftpd/vsftpd.conf 
+Port number:    21 [ Control Connection ]
+                20 [ Data connection ]
+
+Log    :    /var/log/xferlog OR   /var/log/vsftpd.log 
+Place  :    /var/ftp     ==> for anonyous users
+            /home/deepak ==> for valid users account
+
+====================================================================
+Client Side:
+CLI based Command ==> 1- ftp    2- lftp     3-  sftp    4- wget   
+GUI based Command ==> 5- firefox or any browser 6- FileZila   7- Winscp 
+====================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

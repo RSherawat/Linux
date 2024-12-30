@@ -1,0 +1,792 @@
+========================
+Usermanagement  Notes
+========================
+Task-1
+
+[root@localhost ~]# 
+[root@localhost ~]# ls /home  
+krishna
+[root@localhost ~]# 
+[root@localhost ~]# id root 
+uid=0(root) gid=0(root) groups=0(root)
+[root@localhost ~]# 
+[root@localhost ~]# id krishna  
+uid=1000(krishna) gid=1000(krishna) groups=1000(krishna)
+[root@localhost ~]# 
+[root@localhost ~]# groups  krishna  
+krishna : krishna
+[root@localhost ~]# 
+[root@localhost ~]# grep root  /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+operator:x:11:0:operator:/root:/sbin/nologin
+[root@localhost ~]# 
+[root@localhost ~]# grep root  /etc/group 
+root:x:0:
+[root@localhost ~]# grep root  /etc/shadow
+root:$6$nkljSMAtyQ0ktYR3$M9nUSZfT4C9vk3OrWEXXnf2fedhjFk.Ps7sTNHp/fJOuWNpziE9Oo96dtrlVP/oztwwNr1LywTiTZP33uCqXK1::0:99999:7:::
+[root@localhost ~]# 
+
+
+[root@localhost ~]# 
+[root@localhost ~]# grep  krishna  /etc/passwd
+krishna:x:1000:1000:krishna:/home/krishna:/bin/bash
+[root@localhost ~]# 
+[root@localhost ~]# grep  krishna  /etc/group 
+krishna:x:1000:
+[root@localhost ~]# 
+[root@localhost ~]# grep  krishna  /etc/shadow
+krishna:$6$5b9RnUm.CST2y1s8$99vYcq1/Ij8D2x8BNWijMG8yT9bkL9t.a7.D0IimvrYiOeBaoZjAvLsvBg8AKQOYG/88aEzqW/eK7skySq.vH.::0:99999:7:::
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# cat  /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+krishna:x:1000:1000:krishna:/home/krishna:/bin/bash
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# useradd sachin  
+[root@localhost ~]# 
+[root@localhost ~]# passwd  sachin  
+Changing password for user sachin.
+New password: 
+BAD PASSWORD: The password is shorter than 8 characters
+Retype new password: 
+passwd: all authentication tokens updated successfully.
+[root@localhost ~]# 
+[root@localhost ~]# ls  /home
+krishna  sachin
+[root@localhost ~]# 
+[root@localhost ~]# id sachin  
+uid=1001(sachin) gid=1001(sachin) groups=1001(sachin)
+[root@localhost ~]# 
+[root@localhost ~]# groups sachin 
+sachin : sachin
+[root@localhost ~]# 
+[root@localhost ~]# grep  sachin  /etc/passwd
+sachin:x:1001:1001::/home/sachin:/bin/bash
+[root@localhost ~]# 
+[root@localhost ~]# grep  sachin  /etc/group  
+sachin:x:1001:
+[root@localhost ~]# grep  sachin  /etc/shadow
+sachin:$6$OmItFQMiVkLE.5A5$qG/YeWZJCb4PHPl49KVoAzfldUtERo0NXERZnIbfdZS8v6.wcndWiiwA79Rq7aGx7dGZe2WaSoozIg7VXLbpN/:19092:0:99999:7:::
+[root@localhost ~]# 
+[root@localhost ~]# su -  sachin 
+[sachin@localhost ~]$ 
+[sachin@localhost ~]$ pwd
+/home/sachin
+[sachin@localhost ~]$ ls  
+[sachin@localhost ~]$ exit
+logout
+[root@localhost ~]#
+
+
+=======================
+Task-2
+[root@localhost ~]# grep sachin  /etc/passwd
+sachin:x:1001:1001::/home/sachin:/bin/bash
+[root@localhost ~]# 
+[root@localhost ~]# usermod   -c  "sachin kumar"  sachin  
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# grep sachin  /etc/passwd
+sachin:x:1001:1001:sachin kumar:/home/sachin:/bin/bash
+[root@localhost ~]# 
+[root@localhost ~]# usermod   -c  "sachin sharma"  sachin  
+
+[root@localhost ~]# 
+[root@localhost ~]# grep sachin  /etc/passwd
+sachin:x:1001:1001:sachin sharma:/home/sachin:/bin/bash
+[root@localhost ~]# 
+[root@localhost ~]# useradd -c  "DB admin"  natasha  
+[root@localhost ~]# passwd natasha  
+Changing password for user natasha.
+New password: 
+BAD PASSWORD: The password is shorter than 8 characters
+Retype new password: 
+passwd: all authentication tokens updated successfully.
+[root@localhost ~]# 
+[root@localhost ~]# grep natasha  /etc/passwd
+natasha:x:1002:1002:DB admin:/home/natasha:/bin/bash
+[root@localhost ~]# 
+[root@localhost ~]# usermod  -c  "it admin"  natasha
+
+[root@localhost ~]# 
+[root@localhost ~]# grep natasha  /etc/passwd
+natasha:x:1002:1002:it admin:/home/natasha:/bin/bash
+[root@localhost ~]# 
+
+=======================
+Task-3
+
+[root@localhost ~]# 
+[root@localhost ~]# grep  natasha  /etc/passwd 
+natasha:x:1002:1002:it admin:/home/natasha:/bin/bash
+[root@localhost ~]# 
+[root@localhost ~]# su -  natasha  
+[natasha@localhost ~]$ 
+[natasha@localhost ~]$ ls
+[natasha@localhost ~]$ cd
+[natasha@localhost ~]$ pwd
+/home/natasha
+[natasha@localhost ~]$ exit
+logout
+[root@localhost ~]# 
+[root@localhost ~]# usermod  -s  /sbin/nologin natasha 
+[root@localhost ~]# 
+[root@localhost ~]# grep  natasha  /etc/passwd 
+natasha:x:1002:1002:it admin:/home/natasha:/sbin/nologin
+[root@localhost ~]# 
+[root@localhost ~]# su  -  natasha 
+This account is currently not available.
+[root@localhost ~]# 
+[root@localhost ~]# usermod  -s  /bin/bash  natasha 
+[root@localhost ~]# 
+[root@localhost ~]# grep  natasha  /etc/passwd 
+natasha:x:1002:1002:it admin:/home/natasha:/bin/bash
+[root@localhost ~]# 
+[root@localhost ~]# su - natasha  
+[natasha@localhost ~]$ 
+[natasha@localhost ~]$ exit
+logout
+[root@localhost ~]# 
+[root@localhost ~]# useradd  -c  "sales team"  -s  /sbin/nologin  suraj  
+[root@localhost ~]# 
+[root@localhost ~]# passwd suraj  
+Changing password for user suraj.
+New password: 
+BAD PASSWORD: The password is shorter than 8 characters
+Retype new password: 
+passwd: all authentication tokens updated successfully.
+[root@localhost ~]# 
+[root@localhost ~]# grep suraj  /etc/passwd
+suraj:x:1003:1003:sales team:/home/suraj:/sbin/nologin
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# usermod  -s  /bin/bash suraj  
+[root@localhost ~]# 
+[root@localhost ~]# grep suraj  /etc/passwd
+suraj:x:1003:1003:sales team:/home/suraj:/bin/bash
+[root@localhost ~]# 
+[root@localhost ~]# cat  /etc/default/useradd 
+# useradd defaults file
+GROUP=100
+HOME=/home
+INACTIVE=-1
+EXPIRE=
+SHELL=/bin/bash
+SKEL=/etc/skel
+CREATE_MAIL_SPOOL=yes
+
+[root@localhost ~]# 
+
+
+========================
+Task-4 and Task-5
+
+[root@localhost ~]# mkdir  /test  
+[root@localhost ~]# 
+[root@localhost ~]# useradd  -d  /test/user1    user1  
+[root@localhost ~]# useradd  -d  /test/user2    user2
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# ls  /home  
+krishna  natasha  sachin  suraj
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# ls  /test  
+user1  user2
+[root@localhost ~]# 
+[root@localhost ~]# grep  user1  /etc/passwd
+user1:x:1004:1004::/test/user1:/bin/bash
+[root@localhost ~]# 
+[root@localhost ~]# grep  user2  /etc/passwd
+user2:x:1005:1005::/test/user2:/bin/bash
+[root@localhost ~]# 
+[root@localhost ~]# su - user1  
+[user1@localhost ~]$ 
+[user1@localhost ~]$ pwd
+/test/user1
+[user1@localhost ~]$ 
+[user1@localhost ~]$ exit
+logout
+[root@localhost ~]# ls  /home 
+[root@localhost ~]# ls  /home 
+krishna  natasha  sachin  suraj
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# su - sachin  
+[sachin@localhost ~]$ 
+[sachin@localhost ~]$ 
+[sachin@localhost ~]$ touch abc1 abc2 abc3
+[sachin@localhost ~]$ ls
+abc1  abc2  abc3
+[sachin@localhost ~]$ 
+[sachin@localhost ~]$ pwd
+/home/sachin
+[sachin@localhost ~]$ exit
+logout
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# usermod  -m   -d   /test/sachin  sachin 
+[root@localhost ~]# 
+[root@localhost ~]# ls /test  
+sachin  user1  user2
+[root@localhost ~]# 
+[root@localhost ~]# su - sachin  
+[sachin@localhost ~]$ pwd
+/test/sachin
+[sachin@localhost ~]$ ls  
+abc1  abc2  abc3
+[sachin@localhost ~]$ exit
+logout
+[root@localhost ~]# 
+[root@localhost ~]# ls  /home  
+krishna  natasha  suraj
+[root@localhost ~]# 
+[root@localhost ~]# su - suraj  
+[suraj@localhost ~]$ 
+[suraj@localhost ~]$ touch abc1 abc
+[suraj@localhost ~]$ exit
+logout
+[root@localhost ~]# 
+[root@localhost ~]# usermod  -d  /test/suraj  suraj  
+[root@localhost ~]# 
+[root@localhost ~]# grep suraj  /etc/passwd
+suraj:x:1003:1003:sales team:/test/suraj:/bin/bash
+[root@localhost ~]# 
+[root@localhost ~]# su - suraj  
+su: warning: cannot change directory to /test/suraj: No such file or directory
+[suraj@localhost root]$ 
+[suraj@localhost root]$ exit
+logout
+[root@localhost ~]# ls  /home  
+krishna  natasha  suraj
+[root@localhost ~]# 
+[root@localhost ~]# mv  /home/suraj    /test  
+[root@localhost ~]# 
+[root@localhost ~]# ls  /home  
+krishna  natasha
+[root@localhost ~]# 
+[root@localhost ~]# ls  /test  
+sachin  suraj  user1  user2
+[root@localhost ~]# 
+[root@localhost ~]# su - suraj  
+[suraj@localhost ~]$ 
+[suraj@localhost ~]$ pwd
+/test/suraj
+[suraj@localhost ~]$ ls 
+abc  abc1
+[suraj@localhost ~]$ exit
+logout
+[root@localhost ~]# 
+
+[root@localhost ~]# useradd -d  /test/ravi  ravi  
+[root@localhost ~]# 
+[root@localhost ~]# useradd ravish  
+[root@localhost ~]# 
+[root@localhost ~]# usermod  -m  -d  /test/ravish  ravish  
+
+
+
+
+========================
+Task-6
+
+[root@localhost ~]# tail -n 1  /etc/passwd
+ravish:x:1007:1007::/test/ravish:/bin/bash
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# useradd   -u  3000  harry  
+[root@localhost ~]# 
+[root@localhost ~]# id harry  
+uid=3000(harry) gid=3000(harry) groups=3000(harry)
+[root@localhost ~]# 
+[root@localhost ~]# passwd  harry 
+Changing password for user harry.
+New password: 
+BAD PASSWORD: The password is shorter than 8 characters
+Retype new password: 
+passwd: all authentication tokens updated successfully.
+[root@localhost ~]# 
+[root@localhost ~]# grep harry  /etc/passwd
+harry:x:3000:3000::/home/harry:/bin/bash
+[root@localhost ~]# 
+[root@localhost ~]# grep harry  /etc/group 
+harry:x:3000:
+[root@localhost ~]# 
+[root@localhost ~]# userdel -rf  harry  
+[root@localhost ~]# 
+[root@localhost ~]# id harry  
+id: ‘harry’: no such user
+[root@localhost ~]# 
+[root@localhost ~]# useradd  harry 
+[root@localhost ~]# useradd  harry 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# id harry  
+uid=1008(harry) gid=1008(harry) groups=1008(harry)
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# usermod  -u  3000  harry  
+[root@localhost ~]# 
+[root@localhost ~]# id harry  
+uid=3000(harry) gid=1008(harry) groups=1008(harry)
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# groupmod -g  3000  harry 
+
+[root@localhost ~]# 
+[root@localhost ~]# id harry  
+uid=3000(harry) gid=3000(harry) groups=3000(harry)
+[root@localhost ~]# 
+[root@localhost ~]# grep harry  /etc/passwd
+harry:x:3000:3000::/home/harry:/bin/bash
+[root@localhost ~]# 
+[root@localhost ~]# grep harry  /etc/group 
+harry:x:3000:
+[root@localhost ~]# 
+[root@localhost ~]# userdel  -rf harry  
+[root@localhost ~]# 
+
+========================
+Task-7
+========================
+
+[root@localhost ~]# ls   /home 
+krishna  natasha
+[root@localhost ~]# ls   /var/spool/mail
+krishna  natasha  ravi  ravish  rpc  sachin  suraj  user1  user2
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# userdel  --help
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@localhost ~]# userdel  --help
+Usage: userdel [options] LOGIN
+
+Options:
+  -f, --force                   force some actions that would fail otherwise
+                                e.g. removal of user still logged in
+                                or files, even if not owned by the user
+  -h, --help                    display this help message and exit
+  -r, --remove                  remove home directory and mail spool
+  -R, --root CHROOT_DIR         directory to chroot into
+  -P, --prefix PREFIX_DIR       prefix directory where are located the /etc/* files
+  -Z, --selinux-user            remove any SELinux user mapping for the user
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# ls  /home
+krishna  natasha
+[root@localhost ~]# 
+[root@localhost ~]# userdel -rf  natasha 
+
+
+
+
+
+
+
+[root@localhost ~]# userdel -rf  natasha 
+[root@localhost ~]# 
+[root@localhost ~]# ls  /home  
+krishna
+[root@localhost ~]# 
+[root@localhost ~]# ls  /var/spool/mail
+krishna  ravi  ravish  rpc  sachin  suraj  user1  user2
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# useradd  natasha  
+[root@localhost ~]# 
+[root@localhost ~]# ls  /home  
+krishna  natasha
+[root@localhost ~]# ls  /var/spool/mail
+krishna  natasha  ravi  ravish  rpc  sachin  suraj  user1  user2
+[root@localhost ~]# 
+[root@localhost ~]# userdel  natasha  
+[root@localhost ~]# 
+[root@localhost ~]# id natasha 
+id: ‘natasha’: no such user
+[root@localhost ~]# 
+[root@localhost ~]# ls  /home  
+krishna  natasha
+[root@localhost ~]# ls  /var/spool/mail
+krishna  natasha  ravi  ravish  rpc  sachin  suraj  user1  user2
+[root@localhost ~]# 
+[root@localhost ~]# userdel  natasha  
+userdel: user 'natasha' does not exist
+[root@localhost ~]# 
+[root@localhost ~]# userdel  -rf  natasha  
+userdel: user 'natasha' does not exist
+[root@localhost ~]# 
+[root@localhost ~]# rm -rf /home/natasha
+[root@localhost ~]# rm -rf  /var/spool/mail/natasha
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+
+========================
+Task-8
+
+[root@localhost ~]# tail -n 1  /etc/passwd
+ravish:x:1007:1007::/test/ravish:/bin/bash
+[root@localhost ~]# 
+[root@localhost ~]# usermod  -l   manish  ravish  
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# su -  ravish  
+su: user ravish does not exist
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# su -  manish  
+[manish@localhost ~]$ 
+[manish@localhost ~]$ exit
+logout
+[root@localhost ~]# 
+[root@localhost ~]# grep manish  /etc/passwd
+manish:x:1007:1007::/test/ravish:/bin/bash
+[root@localhost ~]# 
+[root@localhost ~]# 
+
+========================
+Task-9
+
+[root@localhost ~]# useradd  rakesh 
+[root@localhost ~]# 
+[root@localhost ~]# grep rakesh  /etc/shadow
+rakesh:!!:19092:0:99999:7:::
+[root@localhost ~]# 
+[root@localhost ~]# passwd  -d  rakesh  
+Removing password for user rakesh.
+passwd: Note: deleting a password also unlocks the password.
+passwd: Success
+[root@localhost ~]# 
+[root@localhost ~]# grep rakesh /etc/passwd
+rakesh:x:1008:1008::/home/rakesh:/bin/bash
+[root@localhost ~]# 
+[root@localhost ~]# grep rakesh /etc/shadow 
+rakesh::19092:0:99999:7:::
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# su - krishna 
+[krishna@localhost ~]$ 
+[krishna@localhost ~]$ su - rakesh 
+[rakesh@localhost ~]$ exit
+logout
+[krishna@localhost ~]$ exit
+logout
+[root@localhost ~]#
+[root@localhost ~]# passwd  rakesh 
+Changing password for user rakesh.
+New password: 
+BAD PASSWORD: The password is shorter than 8 characters
+Retype new password: 
+passwd: all authentication tokens updated successfully.
+[root@localhost ~]# 
+[root@localhost ~]# 
+
+
+========================
+Task-10
+
+[root@localhost ~]# usermod  -L  rakesh  
+[root@localhost ~]# 
+[root@localhost ~]# passwd  -l  rakesh  
+Locking password for user rakesh.
+passwd: Success
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# su - rakesh 
+[rakesh@localhost ~]$ exit
+logout
+[root@localhost ~]# 
+[root@localhost ~]# su -  krishna 
+[krishna@localhost ~]$ 
+[krishna@localhost ~]$ su - rakesh  
+Password: 
+su: Authentication failure
+[krishna@localhost ~]$ exit
+logout
+[root@localhost ~]# usermod  -U  rakesh  
+[root@localhost ~]# passwd -u  rakesh 
+Unlocking password for user rakesh.
+passwd: Success
+[root@localhost ~]# 
+[root@localhost ~]# su -  krishna 
+[krishna@localhost ~]$ 
+[krishna@localhost ~]$ su - rakesh  
+Password: 
+[rakesh@localhost ~]$ 
+[rakesh@localhost ~]$ exit
+logout
+[krishna@localhost ~]$ exit
+logout
+[root@localhost ~]# 
+
+[root@localhost ~]# useradd deepak 
+[root@localhost ~]# 
+[root@localhost ~]# grep deepak  /etc/passwd
+deepak:x:1009:1009::/home/deepak:/bin/bash
+[root@localhost ~]# 
+[root@localhost ~]# grep deepak  /etc/shadow
+deepak:!!:19092:0:99999:7:::
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# passwd  -d  deepak  
+Removing password for user deepak.
+passwd: Note: deleting a password also unlocks the password.
+passwd: Success
+[root@localhost ~]# 
+[root@localhost ~]# grep deepak  /etc/shadow
+deepak::19092:0:99999:7:::
+[root@localhost ~]# 
+[root@localhost ~]# passwd  deepak  
+Changing password for user deepak.
+New password: 
+BAD PASSWORD: The password is shorter than 8 characters
+Retype new password: 
+passwd: all authentication tokens updated successfully.
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# grep deepak  /etc/shadow
+deepak:$6$oJeJ/Wt92vXJCrn0$Dy/m2jKlD3rTatoUADNRzN1vXwfgQuLTOIFiSJ6IjvtXQ0kcbsBoF/q/7GoPy3T8fpLviGCOxAb395ovlkehw1:19092:0:99999:7:::
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# usermod  -L  deepak  
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# grep deepak  /etc/passwd
+deepak:x:1009:1009::/home/deepak:/bin/bash
+[root@localhost ~]# grep deepak  /etc/shadow
+deepak:!$6$oJeJ/Wt92vXJCrn0$Dy/m2jKlD3rTatoUADNRzN1vXwfgQuLTOIFiSJ6IjvtXQ0kcbsBoF/q/7GoPy3T8fpLviGCOxAb395ovlkehw1:19092:0:99999:7:::
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# usermod  -U  deepak  
+[root@localhost ~]# 
+[root@localhost ~]# grep deepak  /etc/shadow
+deepak:$6$oJeJ/Wt92vXJCrn0$Dy/m2jKlD3rTatoUADNRzN1vXwfgQuLTOIFiSJ6IjvtXQ0kcbsBoF/q/7GoPy3T8fpLviGCOxAb395ovlkehw1:19092:0:99999:7:::
+[root@localhost ~]# 
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+
+
+
+
+
+
+
+
+
+========================
+  157  cut  -d:  -f2  /etc/shadow  | grep  ^[$]
+  158  cut  -d:  -f2  /etc/shadow  | grep  ^[!]
+========================
+
+Task-11  How we can recover user's profile related files from  /etc/skel directory.
+
+[root@localhost ~]# 
+[root@localhost ~]# useradd  kapil  
+[root@localhost ~]# 
+[root@localhost ~]# su - kapil  
+[kapil@localhost ~]$ 
+[kapil@localhost ~]$ ls 
+[kapil@localhost ~]$ 
+[kapil@localhost ~]$ ls  -a  
+.  ..  .bash_logout  .bash_profile  .bashrc  .mozilla
+[kapil@localhost ~]$ 
+[kapil@localhost ~]$ 
+[kapil@localhost ~]$ exit
+logout
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# cd /etc/skel
+[root@localhost skel]# ls
+[root@localhost skel]# 
+[root@localhost skel]# ls -a
+.  ..  .bash_logout  .bash_profile  .bashrc  .mozilla
+[root@localhost skel]# 
+[root@localhost skel]# cd
+[root@localhost ~]# 
+[root@localhost ~]# su - kapil
+[root@localhost ~]# su - kapil
+[kapil@localhost ~]$ 
+[kapil@localhost ~]$ 
+[kapil@localhost ~]$ 
+[kapil@localhost ~]$ ls -a 
+.  ..  .bash_history  .bash_logout  .bash_profile  .bashrc  .mozilla
+[kapil@localhost ~]$ 
+[kapil@localhost ~]$ 
+[kapil@localhost ~]$ 
+[kapil@localhost ~]$ rm -rf   .*
+rm: refusing to remove '.' or '..' directory: skipping '.'
+rm: refusing to remove '.' or '..' directory: skipping '..'
+[kapil@localhost ~]$ 
+[kapil@localhost ~]$ ls -a 
+.  ..
+[kapil@localhost ~]$ exit
+logout
+[root@localhost ~]# cd /etc/skel
+[root@localhost skel]# ls -a 
+.  ..  .bash_logout  .bash_profile  .bashrc  .mozilla
+[root@localhost skel]# 
+[root@localhost skel]# cp -rf   .bash*  .mozilla    /home/kapil
+[root@localhost skel]# cd
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# su - kapil  
+[kapil@localhost ~]$ ls -a  
+.  ..  .bash_history  .bash_logout  .bash_profile  .bashrc  .mozilla
+[kapil@localhost ~]$ 
+[kapil@localhost ~]$ exit
+logout
+[root@localhost ~]# 
+
+=============================
+
+Task-12  how we can add any user manually without using useradd command ?
+
+[root@localhost ~]# cd  /home
+[root@localhost home]# ll 
+total 8
+drwx------. 15 deepak  deepak  4096 Apr 10 13:48 deepak
+drwx------.  3 kapil   kapil     99 Apr 10 14:02 kapil
+drwx------.  3 krishna krishna   99 Apr 10 13:35 krishna
+drwx------. 15 rakesh  rakesh  4096 Apr 10 13:36 rakesh
+drwx------.  3 ramesh  ramesh    78 Apr 10 13:57 ramesh
+[root@localhost home]# 
+[root@localhost home]# 
+[root@localhost home]# mkdir monika 
+[root@localhost home]# 
+[root@localhost home]# ll
+total 8
+drwx------. 15 deepak  deepak  4096 Apr 10 13:48 deepak
+drwx------.  3 kapil   kapil     99 Apr 10 14:02 kapil
+drwx------.  3 krishna krishna   99 Apr 10 13:35 krishna
+drwxr-xr-x.  2 root    root       6 Apr 10 14:06 monika
+drwx------. 15 rakesh  rakesh  4096 Apr 10 13:36 rakesh
+drwx------.  3 ramesh  ramesh    78 Apr 10 13:57 ramesh
+[root@localhost home]# 
+[root@localhost home]# vim /etc/passwd 
+
+
+
+monika:x:1013:1013::/home/monika:/bin/bash
+
+
+:wq
+
+
+[root@localhost home]# vim /etc/group
+monika:x:1013:
+
+:wq
+
+[root@localhost home]# ll
+total 8
+drwx------. 15 deepak  deepak  4096 Apr 10 13:48 deepak
+drwx------.  3 kapil   kapil     99 Apr 10 14:02 kapil
+drwx------.  3 krishna krishna   99 Apr 10 13:35 krishna
+drwxr-xr-x.  2 root    root       6 Apr 10 14:06 monika
+drwx------. 15 rakesh  rakesh  4096 Apr 10 13:36 rakesh
+drwx------.  3 ramesh  ramesh    78 Apr 10 13:57 ramesh
+[root@localhost home]# 
+[root@localhost home]# chown  monika   /home/monika
+[root@localhost home]# chgrp   monika   /home/monika
+[root@localhost home]# 
+[root@localhost home]# ll
+total 8
+drwx------. 15 deepak  deepak  4096 Apr 10 13:48 deepak
+drwx------.  3 kapil   kapil     99 Apr 10 14:02 kapil
+drwx------.  3 krishna krishna   99 Apr 10 13:35 krishna
+drwxr-xr-x.  2 monika  monika     6 Apr 10 14:06 monika
+drwx------. 15 rakesh  rakesh  4096 Apr 10 13:36 rakesh
+drwx------.  3 ramesh  ramesh    78 Apr 10 13:57 ramesh
+[root@localhost home]# 
+[root@localhost home]# chmod   700   /home/monika
+[root@localhost home]# 
+[root@localhost home]# 
+[root@localhost home]# ll
+total 8
+drwx------. 15 deepak  deepak  4096 Apr 10 13:48 deepak
+drwx------.  3 kapil   kapil     99 Apr 10 14:02 kapil
+drwx------.  3 krishna krishna   99 Apr 10 13:35 krishna
+drwx------.  2 monika  monika     6 Apr 10 14:06 monika
+drwx------. 15 rakesh  rakesh  4096 Apr 10 13:36 rakesh
+drwx------.  3 ramesh  ramesh    78 Apr 10 13:57 ramesh
+[root@localhost home]# 
+[root@localhost home]# cd
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# cd  /etc/skel
+[root@localhost skel]# 
+[root@localhost skel]# ls -a  
+.  ..  .bash_logout  .bash_profile  .bashrc  .mozilla
+[root@localhost skel]# 
+[root@localhost skel]# 
+[root@localhost skel]# cp -rf   .bash*  .mozilla    /home/monika
+[root@localhost skel]# cd
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# id  monika  
+uid=1013(monika) gid=1013(monika) groups=1013(monika)
+[root@localhost ~]# 
+[root@localhost ~]# passwd   monika 
+Changing password for user monika.
+New password: 
+BAD PASSWORD: The password is shorter than 8 characters
+Retype new password: 
+passwd: all authentication tokens updated successfully.
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# grep monika /etc/passwd
+monika:x:1013:1013::/home/monika:/bin/bash
+[root@localhost ~]# 
+[root@localhost ~]# grep monika /etc/group
+monika:x:1013:
+[root@localhost ~]# 
+[root@localhost ~]# grep monika /etc/shadow
+monika:$6$8grAClOkggzwWMPc$O97U5FBeHAcjBjzbRJLYGky/4nAIeWdUR1GT2ovIzvwpbT3rOzqDfUlXrhAabL4Y7XNjSLBCXQBdwWpnlt0hz0:19092::::::
+[root@localhost ~]# 
+[root@localhost ~]# su - monika 
+[monika@localhost ~]$ 
+[monika@localhost ~]$ pwd
+/home/monika
+[monika@localhost ~]$ 
+[monika@localhost ~]$ ls
+[monika@localhost ~]$ 
+[monika@localhost ~]$ cd
+[monika@localhost ~]$ 
+[monika@localhost ~]$ exit
+logout
+[root@localhost ~]# 
+
+
+
+
+==============================
+
+

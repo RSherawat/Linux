@@ -1,0 +1,675 @@
+===============================================
+Permissions
+
+1- basic permissions ==> chmod chown chgrp umask
+
+2- advance permissions  ==> setfacl + chattr 
+
+===============================================
+
+Special Permissions
+
+1-  SUID            ==> set user id  or super user id     ==> 4             ==>  u+s
+
+2-  SGID            ==> set group id or super group id    ==> 2             ==>  g+s
+
+3-  Sticky Bit      ==> sticky bit                        ==> 1             ==>  o+t
+
+
+                                                           numeric code         Symbolic code
+===============================================
+read       ==> 4
+write      ==> 2
+execute    ==> 1
+
+owner group others
+---   ---   ---
+rwx   rwx   rwx 
+
+===============================================
+SUID,SGID and Sticky bit always we can set by chmod command 
+===============================================
+
+# chmod      firstblock  secondblock  thirdblock     <file or directoryname>  ==> without special permissions
+
+# chmod     first                second       third    forth   <file or directoryname>
+           Special               owner        groups   others
+           Permissions
+
+===============================================
+
+# chmod  4755    <xyz>    ==> SUID
+# chmod  2755    <xyz>    ==> SGID
+# chmod  1755    <xyz>    ==> Sticky bit
+
+===============================================
+
+-          rws     rws   rwt  
+blank
+d
+l
+
+==============================================
+
+# chmod   u+s    <xyz>  ==> to set SUID
+# chmod   u-s    <xyz>  ==> to remove SUID
+
+# chmod  4755   <xyz>   ==>
+# chmod  0755   <xyz>   ==> 
+
+=============================================
+# chmod   g+s    <xyz>  ==> to set SGID
+# chmod   g-s    <xyz>  ==> to remove SGID
+
+# chmod  2755   <xyz>   ==>
+# chmod  0755   <xyz>   ==>
+
+=============================================
+
+# chmod   o+t    <xyz>  ==> to set sticky bit
+# chmod   o-t    <xyz>  ==> to remove sticky bit
+
+# chmod  1755   <xyz>   ==>
+# chmod  0755   <xyz>   ==>  
+
+
+============================================
+
+# chmod    6755   <xyz>   ==> SUID  + SGID 
+
+# chmod     7777    <xyz>  ==> SUID + SGID + Sticky bit 
+
+=============================================
+# ls -ld  /data   ==>  755
+
+# chmod  0777   /data   ==> there is no SUID SGID Sticky bit
+
+
+# chmod  1777   /data    ==> basic permissions  + Sticky bit
+=============================================
+
+rws      rws      rwt
+SUID     SGID     Sticky bit
+=============================================
+
+rwS     rwS    rwT => not having x permissions in backend
+
+=============================================
+
+1- Examples of SUID
+
+
+2- Examples of  Sticky Bit
+
+
+3- Examples of SGID
+
+============================================
+SUID Examples notes
+
+
+[root@localhost ~]# fdisk -l 
+Disk /dev/sda: 30 GiB, 32212254720 bytes, 62914560 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xefc3a6f1
+
+Device     Boot   Start      End  Sectors Size Id Type
+/dev/sda1  *       2048  2099199  2097152   1G 83 Linux
+/dev/sda2       2099200 62914559 60815360  29G 8e Linux LVM
+
+
+Disk /dev/mapper/rhel-root: 26 GiB, 27913093120 bytes, 54517760 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/mapper/rhel-swap: 3 GiB, 3221225472 bytes, 6291456 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+[root@localhost ~]# 
+[root@localhost ~]# useradd soniya 
+[root@localhost ~]# 
+[root@localhost ~]# su - soniya  
+[soniya@localhost ~]$ 
+[soniya@localhost ~]$ fdisk -l 
+fdisk: cannot open /dev/sda: Permission denied
+fdisk: cannot open /dev/sr0: Permission denied
+fdisk: cannot open /dev/mapper/rhel-root: Permission denied
+fdisk: cannot open /dev/mapper/rhel-swap: Permission denied
+[soniya@localhost ~]$ exit
+logout
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# which fdisk 
+/usr/sbin/fdisk
+[root@localhost ~]# ls -l  /usr/sbin/fdisk
+-rwxr-xr-x. 1 root root 140008 Dec 11  2018 /usr/sbin/fdisk
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# chmod  4755   /usr/sbin/fdisk 
+[root@localhost ~]# 
+[root@localhost ~]# ls -l  /usr/sbin/fdisk
+-rwsr-xr-x. 1 root root 140008 Dec 11  2018 /usr/sbin/fdisk
+[root@localhost ~]# 
+[root@localhost ~]# chmod  0755   /usr/sbin/fdisk 
+[root@localhost ~]# 
+[root@localhost ~]# ls -l  /usr/sbin/fdisk
+-rwxr-xr-x. 1 root root 140008 Dec 11  2018 /usr/sbin/fdisk
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# chmod   u+s   /usr/sbin/fdisk 
+[root@localhost ~]# 
+[root@localhost ~]# ls -l  /usr/sbin/fdisk
+-rwsr-xr-x. 1 root root 140008 Dec 11  2018 /usr/sbin/fdisk
+[root@localhost ~]# 
+[root@localhost ~]# useradd gaurav
+[root@localhost ~]# 
+[root@localhost ~]# su - gaurav  
+[gaurav@localhost ~]$ 
+[gaurav@localhost ~]$ fdisk -l 
+Disk /dev/sda: 30 GiB, 32212254720 bytes, 62914560 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xefc3a6f1
+
+Device     Boot   Start      End  Sectors Size Id Type
+/dev/sda1  *       2048  2099199  2097152   1G 83 Linux
+/dev/sda2       2099200 62914559 60815360  29G 8e Linux LVM
+
+
+Disk /dev/mapper/rhel-root: 26 GiB, 27913093120 bytes, 54517760 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/mapper/rhel-swap: 3 GiB, 3221225472 bytes, 6291456 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+[gaurav@localhost ~]$ exit
+logout
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# su - soniya  
+[soniya@localhost ~]$ 
+[soniya@localhost ~]$ fdisk -l 
+Disk /dev/sda: 30 GiB, 32212254720 bytes, 62914560 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xefc3a6f1
+
+Device     Boot   Start      End  Sectors Size Id Type
+/dev/sda1  *       2048  2099199  2097152   1G 83 Linux
+/dev/sda2       2099200 62914559 60815360  29G 8e Linux LVM
+
+
+Disk /dev/mapper/rhel-root: 26 GiB, 27913093120 bytes, 54517760 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/mapper/rhel-swap: 3 GiB, 3221225472 bytes, 6291456 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+[soniya@localhost ~]$ exit
+logout
+[root@localhost ~]# 
+[root@localhost ~]# chmod   u-s  /usr/sbin/fdisk 
+[root@localhost ~]# 
+[root@localhost ~]# ls -l   /usr/sbin/fdisk 
+-rwxr-xr-x. 1 root root 140008 Dec 11  2018 /usr/sbin/fdisk
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# which su  
+/usr/bin/su
+[root@localhost ~]# ls -l /usr/bin/su
+-rwsr-xr-x. 1 root root 52784 Dec 11  2018 /usr/bin/su
+[root@localhost ~]# 
+[root@localhost ~]# chmod  u-s  /usr/bin/su 
+[root@localhost ~]# 
+[root@localhost ~]# ls -l /usr/bin/su
+-rwxr-xr-x. 1 root root 52784 Dec 11  2018 /usr/bin/su
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# chmod  u+s  /usr/bin/su 
+[root@localhost ~]# 
+[root@localhost ~]# ls -l /usr/bin/su
+-rwsr-xr-x. 1 root root 52784 Dec 11  2018 /usr/bin/su
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# which passwd  
+/usr/bin/passwd
+[root@localhost ~]# 
+[root@localhost ~]# ls -l /usr/bin/passwd  
+-rwsr-xr-x. 1 root root 34512 Aug 12  2018 /usr/bin/passwd
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# ls -l   /usr/bin
+[root@localhost ~]# ls -l   /usr/sbin
+
+=============================================
+Completed
+=============================================
+
+
+=============================================
+without Sticky bit Examples
+
+
+[root@localhost ~]# 
+[root@localhost ~]# mkdir  /data 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# chmod  777  /data  
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld /data
+drwxrwxrwx. 2 root root 6 May  1 12:08 /data
+[root@localhost ~]# 
+[root@localhost ~]# ls /
+bin   data  etc   lib    media  opt   root  sbin   srv  tmp  var
+boot  dev   home  lib64  mnt    proc  run   share  sys  usr
+[root@localhost ~]# 
+[root@localhost ~]# useradd  user1
+[root@localhost ~]# useradd  user2
+[root@localhost ~]# 
+[root@localhost ~]# su - user1
+[user1@localhost ~]$ 
+[user1@localhost ~]$ cd  /data 
+[user1@localhost data]$ 
+[user1@localhost data]$ echo  hello  > abc1
+[user1@localhost data]$ ls
+abc1
+[user1@localhost data]$ cat abc1 
+hello
+[user1@localhost data]$ ll
+total 4
+-rw-rw-r--. 1 user1 user1 6 May  1 12:09 abc1
+[user1@localhost data]$ exit
+logout
+[root@localhost ~]# 
+[root@localhost ~]# su - user2  
+[user2@localhost ~]$ 
+[user2@localhost ~]$ cd /data
+[user2@localhost data]$ ls
+abc1
+[user2@localhost data]$ 
+[user2@localhost data]$ cat abc1 
+hello
+[user2@localhost data]$ echo hello  > abc2
+[user2@localhost data]$ 
+[user2@localhost data]$ ll
+total 8
+-rw-rw-r--. 1 user1 user1 6 May  1 12:09 abc1
+-rw-rw-r--. 1 user2 user2 6 May  1 12:10 abc2
+[user2@localhost data]$ cat abc1
+hello
+[user2@localhost data]$ cat abc2
+hello
+[user2@localhost data]$ 
+[user2@localhost data]$ rm -rf abc2
+[user2@localhost data]$ ls
+abc1
+[user2@localhost data]$ 
+[user2@localhost data]$ rm -rf abc1
+[user2@localhost data]$ ls
+[user2@localhost data]$ exit
+logout
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld /data  
+drwxrwxrwx. 2 root root 6 May  1 12:10 /data
+[root@localhost ~]# 
+
+==========================================
+With Sticky Bit Examples
+==========================================
+
+[root@localhost ~]# chmod  1777  /data  
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld /data  
+drwxrwxrwt. 2 root root 6 May  1 12:10 /data
+[root@localhost ~]# 
+[root@localhost ~]# chmod  o-x  /data 
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld /data  
+drwxrwxrwT. 2 root root 6 May  1 12:10 /data
+[root@localhost ~]# 
+[root@localhost ~]# chmod  o+x  /data 
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld /data  
+drwxrwxrwt. 2 root root 6 May  1 12:10 /data
+[root@localhost ~]# 
+[root@localhost ~]# su - user1  
+[user1@localhost ~]$ 
+[user1@localhost ~]$ cd  /data
+[user1@localhost data]$ 
+[user1@localhost data]$ 
+[user1@localhost data]$ echo hello > abc1
+[user1@localhost data]$ 
+[user1@localhost data]$ ll
+total 4
+-rw-rw-r--. 1 user1 user1 6 May  1 12:13 abc1
+[user1@localhost data]$ 
+[user1@localhost data]$ 
+[user1@localhost data]$ exit
+logout
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# su - user2  
+[user2@localhost ~]$ 
+[user2@localhost ~]$ cd /data
+[user2@localhost data]$ ls
+abc1
+[user2@localhost data]$ ll
+total 4
+-rw-rw-r--. 1 user1 user1 6 May  1 12:13 abc1
+[user2@localhost data]$ 
+[user2@localhost data]$ cat abc1 
+hello
+[user2@localhost data]$ 
+[user2@localhost data]$ echo  hello  > abc2
+[user2@localhost data]$ 
+[user2@localhost data]$ ll
+total 8
+-rw-rw-r--. 1 user1 user1 6 May  1 12:13 abc1
+-rw-rw-r--. 1 user2 user2 6 May  1 12:13 abc2
+[user2@localhost data]$ 
+[user2@localhost data]$ rm -rf abc2 
+[user2@localhost data]$ 
+[user2@localhost data]$ ls
+abc1
+[user2@localhost data]$ 
+[user2@localhost data]$ 
+[user2@localhost data]$ cat abc1 
+hello
+[user2@localhost data]$ 
+[user2@localhost data]$ 
+[user2@localhost data]$ rm -rf abc1 
+rm: cannot remove 'abc1': Operation not permitted
+[user2@localhost data]$ 
+[user2@localhost data]$ exit
+logout
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld /data
+drwxrwxrwt. 2 root root 18 May  1 12:13 /data
+[root@localhost ~]# 
+[root@localhost ~]# chmod 0755  /data
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld /data
+drwxr-xr-x. 2 root root 18 May  1 12:13 /data
+[root@localhost ~]# 
+
+===========================================
+Complete
+===========================================
+Examples of SGID  ?
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# mkdir  /publicdata 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld  /publicdata
+drwxr-xr-x. 2 root root 6 May  1 12:19 /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# groupadd  ibm 
+[root@localhost ~]# 
+[root@localhost ~]# chgrp  ibm  /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# groupadd  ibm 
+groupadd: group 'ibm' already exists
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld  /publicdata
+drwxr-xr-x. 2 root ibm 6 May  1 12:19 /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# touch  /publicdata/abc{1..3}
+[root@localhost ~]# 
+[root@localhost ~]# ls -l /publicdata
+total 0
+-rw-r--r--. 1 root root 0 May  1 12:20 abc1
+-rw-r--r--. 1 root root 0 May  1 12:20 abc2
+-rw-r--r--. 1 root root 0 May  1 12:20 abc3
+[root@localhost ~]# 
+[root@localhost ~]# chgrp  -R   ibm  /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# ls -l /publicdata
+total 0
+-rw-r--r--. 1 root ibm 0 May  1 12:20 abc1
+-rw-r--r--. 1 root ibm 0 May  1 12:20 abc2
+-rw-r--r--. 1 root ibm 0 May  1 12:20 abc3
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld  /publicdata
+drwxr-xr-x. 2 root ibm 42 May  1 12:20 /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# touch  /publicdata/abc{4,5,6}
+[root@localhost ~]# 
+[root@localhost ~]# ls -l /publicdata
+total 0
+-rw-r--r--. 1 root ibm  0 May  1 12:20 abc1
+-rw-r--r--. 1 root ibm  0 May  1 12:20 abc2
+-rw-r--r--. 1 root ibm  0 May  1 12:20 abc3
+-rw-r--r--. 1 root root 0 May  1 12:21 abc4
+-rw-r--r--. 1 root root 0 May  1 12:21 abc5
+-rw-r--r--. 1 root root 0 May  1 12:21 abc6
+[root@localhost ~]# 
+[root@localhost ~]# chgrp  -R   ibm  /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# ls -l /publicdata
+total 0
+-rw-r--r--. 1 root ibm 0 May  1 12:20 abc1
+-rw-r--r--. 1 root ibm 0 May  1 12:20 abc2
+-rw-r--r--. 1 root ibm 0 May  1 12:20 abc3
+-rw-r--r--. 1 root ibm 0 May  1 12:21 abc4
+-rw-r--r--. 1 root ibm 0 May  1 12:21 abc5
+-rw-r--r--. 1 root ibm 0 May  1 12:21 abc6
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld  /publicdata
+drwxr-xr-x. 2 root ibm 78 May  1 12:21 /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# chmod  2755  /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld  /publicdata
+drwxr-sr-x. 2 root ibm 78 May  1 12:21 /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# touch   /publicdata/pub{1..3}
+[root@localhost ~]# 
+[root@localhost ~]# ll  /publicdata
+total 0
+-rw-r--r--. 1 root ibm 0 May  1 12:20 abc1
+-rw-r--r--. 1 root ibm 0 May  1 12:20 abc2
+-rw-r--r--. 1 root ibm 0 May  1 12:20 abc3
+-rw-r--r--. 1 root ibm 0 May  1 12:21 abc4
+-rw-r--r--. 1 root ibm 0 May  1 12:21 abc5
+-rw-r--r--. 1 root ibm 0 May  1 12:21 abc6
+-rw-r--r--. 1 root ibm 0 May  1 12:23 pub1
+-rw-r--r--. 1 root ibm 0 May  1 12:23 pub2
+-rw-r--r--. 1 root ibm 0 May  1 12:23 pub3
+[root@localhost ~]# 
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld /publicdata
+drwxr-sr-x. 2 root ibm 114 May  1 12:23 /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# chmod  0755  /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld /publicdata
+drwxr-sr-x. 2 root ibm 114 May  1 12:23 /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# chmod  g-s  /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld /publicdata
+drwxr-xr-x. 2 root ibm 114 May  1 12:23 /publicdata
+[root@localhost ~]# 
+
+====================================================
+Examples of SGID + Sticky Bit both + SUID 
+====================================================
+[root@localhost ~]# 
+[root@localhost ~]# chmod  3777  /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld /publicdata
+drwxrwsrwt. 2 root ibm 114 May  1 12:23 /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# su - user1
+[user1@localhost ~]$ 
+[user1@localhost ~]$ cd /publicdata
+[user1@localhost publicdata]$ 
+[user1@localhost publicdata]$ ls
+abc1  abc2  abc3  abc4  abc5  abc6  pub1  pub2  pub3
+[user1@localhost publicdata]$ 
+[user1@localhost publicdata]$ touch ibm10
+[user1@localhost publicdata]$ 
+[user1@localhost publicdata]$ echo hello > ibm10 
+[user1@localhost publicdata]$ 
+[user1@localhost publicdata]$ ll
+total 4
+-rw-r--r--. 1 root  ibm 0 May  1 12:20 abc1
+-rw-r--r--. 1 root  ibm 0 May  1 12:20 abc2
+-rw-r--r--. 1 root  ibm 0 May  1 12:20 abc3
+-rw-r--r--. 1 root  ibm 0 May  1 12:21 abc4
+-rw-r--r--. 1 root  ibm 0 May  1 12:21 abc5
+-rw-r--r--. 1 root  ibm 0 May  1 12:21 abc6
+-rw-rw-r--. 1 user1 ibm 6 May  1 12:27 ibm10
+-rw-r--r--. 1 root  ibm 0 May  1 12:23 pub1
+-rw-r--r--. 1 root  ibm 0 May  1 12:23 pub2
+-rw-r--r--. 1 root  ibm 0 May  1 12:23 pub3
+[user1@localhost publicdata]$ exit
+logout
+[root@localhost ~]# 
+[root@localhost ~]# su - user2 
+[user2@localhost ~]$ 
+[user2@localhost ~]$ cd  /publicdata
+[user2@localhost publicdata]$ 
+[user2@localhost publicdata]$ 
+[user2@localhost publicdata]$ echo hello > ibm11
+[user2@localhost publicdata]$ 
+[user2@localhost publicdata]$ cat  ibm10 
+hello
+[user2@localhost publicdata]$ 
+[user2@localhost publicdata]$ cat  ibm11
+hello
+[user2@localhost publicdata]$ 
+[user2@localhost publicdata]$ 
+[user2@localhost publicdata]$ 
+[user2@localhost publicdata]$ rm -rf  ibm10 
+rm: cannot remove 'ibm10': Operation not permitted
+[user2@localhost publicdata]$ exit
+logout
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld /publicdata
+drwxrwsrwt. 2 root ibm 140 May  1 12:27 /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# chmod  1777  /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld /publicdata
+drwxrwsrwt. 2 root ibm 140 May  1 12:27 /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# chgrp root  /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# chmod  g-s /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld /publicdata
+drwxrwxrwt. 2 root root 140 May  1 12:27 /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# chmod  u+s,g+s,o+t  /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld /publicdata
+drwsrwsrwt. 2 root root 140 May  1 12:27 /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# chmod  u-s /publicdata
+[root@localhost ~]# ls -ld /publicdata
+drwxrwsrwt. 2 root root 140 May  1 12:27 /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# chmod  g-s /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld /publicdata
+drwxrwxrwt. 2 root root 140 May  1 12:27 /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# chmod  o-t /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld /publicdata
+drwxrwxrwx. 2 root root 140 May  1 12:27 /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# chmod  7777  /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld /publicdata
+drwsrwsrwt. 2 root root 140 May  1 12:27 /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# chmod  0777  /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld /publicdata
+drwsrwsrwx. 2 root root 140 May  1 12:27 /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# chmod  u-s,g-s  /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld /publicdata
+drwxrwxrwx. 2 root root 140 May  1 12:27 /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# rm -rf /publicdata
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# umask  
+0022
+[root@localhost ~]# 
+
+
+
+
+==========================================
+
+Examples of SGID + Sticky Bit both
+
+===========================================
+SUID  ==> role
+SGID  ==> role
+Sticky Bit ==> role
+
+===========================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

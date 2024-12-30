@@ -1,0 +1,199 @@
+===============================
+
+Firewall ==> It is use to allow or deny any Traffic comming to the server side.
+
+Types of Firewalls ?
+
+1- Software Based or OS based Firewall ----
+2- Hardware Based Firewall ----- Firewall team 
+
+===============================
+
+Till  RHEL-6
+
+1- TCP - Wrappers ==> basic Firewall    ==>/etc/hosts.allow and  /etc/hosts.deny
+2- IP-Tables      ==> advance Firewall
+
+===============================
+
+In RHEL-7
+
+1- TCP- Wrappers 
+2- IP-Tables    +  New concept  with [ Firewalld ]  <== RHEL-7 + RHEL-8
+
+===============================
+
+In RHEL-8
+
+TCP-wrappers <==== Wipe out --- not using in rhel-8 ..but till rhel-7 it was
+                                properly working 
+
+Highly Recommended firewall is firewalld 
+
+===============================
+
+
+
+Till RHEL-7    TCP - wrappers + IPtables
+In rhel-8     we are using only firewalld concept
+
+===============================
+
+First Topic   ==> TCP  -  Wrappers
+
+===============================
+
+TCP-Wrappers ==> 
+1- Basically it is an example of OS based inbuilt firewall.
+2- With the help of tcp-wrappers we can control any incomming traffic
+   comming to the server side.
+
+3- TCP wrappers always works on two files:-
+   1- /etc/hosts.deny  2- /etc/hosts.allow
+
+4-   syntax:       daemonname:  client-list
+
+================================
+
+Example-1
+
+How to block a particular machine to access my SSH service ?
+ 
+On Server machine:-
+
+# vim  /etc/hosts.deny 
+
+
+sshd:  192.168.1.27
+
+:wq
+
+# systemctl  restart sshd  
+
+
+On client Machine:-
+
+# ssh   root@192.168.1.20
+
+Note: This request must be rejected .
+
+======================================
+
+Possible Syntax OR Examples :   /etc/hosts.deny or  /etc/hosts.allow 
+
+======================================
+
+# vim   /etc/hosts.deny  OR  /etc/hosts.allow 
+
+Rules:- note: you can define any rules as per your deamnds in these files.
+
+sshd:  192.168.1.7
+sshd:  192.168.1.7  192.168.1.10
+sshd:  192.168.1.0/24
+sshd:  192.168.0.0/24   192.168.1.0/24
+sshd:  .example.com
+vsftpd: 192.168.0.20
+sshd:  ALL
+sshd,vsftpd: ALL
+ALL:  192.168.1.7
+vsftpd: ALL
+sshd: ALL EXCEPT 192.168.1.7
+sshd: ALL EXCEPT  192.168.1.0/24
+ALL: ALL EXCEPT 192.168.1.0/24
+ALL EXCEPT sshd: ALL
+
+========================================
+
+Advance Rules:-
+
+========================================
+
+# vim  /etc/hosts.deny  
+
+
+sshd:  192.168.1.7    : ALLOW 
+
+
+ :wq
+
+========================================
+
+
+# vim  /etc/hosts.allow  
+
+
+sshd:  192.168.1.7   :  DENY
+
+:wq
+
+========================================
+
+IP-Tables 
+
+========================================
+
+1- IPtables basically is also an example of software based firewalls.
+2- With the help of iptables we can apply advance rules as compare to TCP wrappers.
+
+Types of Rules:-
+
+1- Incomming Rules
+2- Outgoing Rules
+3- Forward Based Rules
+
+=========================================
+
+package:  iptables
+daemon:   iptables 
+file:     /etc/sysconfig/iptables   <=== all rules will store here
+command:  iptables 
+
+=========================================
+Syntax:- 
+
+# iptables  -L   INPUT      -p  tcp    -s        -j  ACCEPT
+            -I   OUTPUT         udp    -d            REJECT    
+            -A   FORWARD        icmp   --sport       DROP
+            -R                         --dport       REDIRECT
+            -D
+            -F
+
+=========================================
+-L   ==> List
+-I   ==> Insert
+-A   ==> Append
+-R   ==> Replace
+-D   ==> Delete
+-F   ==> Flush 
+
+=========================================
+
+Types of Chain ==> INPUT 
+               ==> OUTPUT
+               ==> FORWARD
+
+=========================================
+
+-p  ==> protocol 
+
+=========================================
+
+-s      ==> Source ip
+-d      ==> Destination ip
+--sport ==> source port
+--dport ==> destination port
+
+=========================================
+ 
+-j      ==> Jump 
+
+=========================================
+
+Types of Action:-
+
+ACCEPT      ==>  The Traffic is allowed  
+REJECT      ==>  The Traffic is blocked and error mesg send to the end user.
+DROP        ==>  The Traffic is blocked but no error mesg send to the end user.
+REDIRECT    ==>  use in Port forwarding based Examples
+
+=========================================

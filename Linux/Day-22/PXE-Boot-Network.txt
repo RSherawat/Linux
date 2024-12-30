@@ -1,0 +1,221 @@
+************************************* 
+WeekEnds :-
+
+DHCP
+PXE Boot Installation + Kickstart Installation  
+LDAP concept 
+PAM Policy ......
+
+****************************************************************************
+
+************ DHCP [ Dynamic Host Configuration protocol ]  *****************
+
+Types of IP assigning IP Method ?
+
+1-  manual or static        ===> 
+
+1- can be configured on any machine with the help system admin only...
+2- admin task will increase
+3- there is lot of chances of ip misconfiguration 
+4- need to mantain the database of Free IP availible in my network.
+
+2-  automatic or dynamic    ===> 
+
+1- using DHCP Server or protocol  ..
+
+***************************************************
+DHCP
+***************************************************
+
+*	DHCP protocol use to assign automatic IPs to the all running machine in LAN network.
+*       With the help of DHCP protocol we can eailsy manage my large network with in the oraganisation.
+*       We can also use DHCP protocol in PXE Boot + Kickstart installation methods.
+*       We can also provide the DNS and NTP settings in client machine using DHCP File if we have in my network.
+*       DHCP server always perform DORA process before assigning any IP on any client machine.
+
+What is DORA [ Discovery  Offer Request Acknowledgement] Process in DHCP  ?
+
+DHCP Lease file  ==>   /var/lib/dhcpd/dhcpd.leases 
+
+*************************************************
+DHCP ?
+
+1- Device based ==> modem , router 
+2- OS based
+   
+*************************************************
+Server Side:
+
+package:   dhcp 
+Daemon :   dhcpd 
+File   :   /etc/dhcp/dhcpd.conf 
+Log    :   /var/log/messages
+Lease File:  /var/lib/dhcpd/dhcpd.leases
+port number:   67 [ Server Side ] 
+               68 [ Client Side ]
+
+*************************************************
+Client : ?
+
+How to take IP using DHCP server  ?
+
+1-   using  NMCLI   command  
+2-   we can do direct entry in LAN Card or interface protocol.
+
+
+     BOOTPROTO=dhcp
+
+*************************************************
+*****************************************
+
+Installation method  ?
+
+1- Local Resource   ==> 1- cdrom   2- DVD   3- Bootable pendrive  4- ISO connect 
+
+2- network based Resource  OR PXE boot Installation Server OR network Based Installation server 
+
+****************************************
+
+What is PXE Boot Installation Server  ?
+
+we can Install any OS on any client side machines using PXE server.
+
+***************************************
+
+DVD Sharring protocol  ==> to share the OS files for Installation Process.
+
+1-  NFS        ==>  /redhtdvd   <===   /etc/exports
+2-  FTP        ==>  /var/ftp/redhatdvd      <==== COPY  <===  FTP Sharing Place
+3-  HTTP       ==>  /var/www/html/redhatdvd <==== COPY  <=== http sharing place
+
+Note: we can configure any protocol to share the DVD Files. 
+
+Note:  we will use HTTP server concept to share DVD files for the network Installation.
+
+DHCP Server     ==> use to provide automatic IPs during the OS installation .
+
+***************************************
+
+1- HTTP            ==>  /var/www/html/redhatdvd/ <==== Full dvd files copy
+2- DHCP
+3- TFTP protocol ==>TFTP ==> /var/lib/tftpboot/rhel7/   <=====  from your actual dvd 
+ 1- kernel ( vmlinuz ) 2- ( initrd.img ) 
+
+***************************************
+
+Stage-1  ==> TFTP  
+Stage-2  ==> HTTP 
+
+***************************************
+
+
+PXE Boot Server without Kickstart  <===  
+
+PXE boot Server with Kickstart Answer file or unattended installation 
+
+
+****************************************
+Note:  hostname , IP and YUM  must be configured on PXE server 
+Step-1 Install HTTP server and enable it... Disabled the firewalls.
+       create the directory  in  under  /var/www/html  to copy all the dvd files.
+Step-2 Connect ISO image to copy all the dvd files into  /var/www/html/rhel7dvd
+       directory then eject your ISO image.
+       note: ISO images can be of any linux flavors.
+Step-3 Install  TFTP service and enable it ...and create first stage booting steps.
+Step-4 Configure DHCP Server to provide IPs on client side... ?
+Step-5 Now install package which provide the required files to configure PXE setting.
+Step-6 create the VM in your VMware ...don't connect ISO..just power on the machine it will automatically connect with
+       your PXE boot Server...you can install any OS using Boot menu selection.
+Step-7 Now create the kickstart answer file so that installation steps can be automate without user initeraction.
+
+***************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 

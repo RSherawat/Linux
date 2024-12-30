@@ -1,0 +1,35 @@
+
+
+
+
+
+==========================
+
+case-1  folder ==> rpms collection  + there is no repodata ==> we need to create manually 
+case-2  folder ==> rpms collection  + repodata [already avaiable]  ==> then no need to create repodata
+case-3  folder ==> 4500 + repodata  ==> 500 ==> copy ==> 5000 ==> we need again create or update ==> old ==> replace==> with new
+case-4  folder ==> 4500 + repodata  ==> 200 RPMS ==> remove  ==> 4300 ==> we need to again update it
+
+==========================
+www.redhat.com  ==> machine  ==> ftp or http  ==> folder path  ==> share
+
+
+only rpms    ==> download ==>then ==> folder ==> collect ==> 1- using rpm    2- using yum 
+
+rpms _ with + repodata   ==> no download required ==> we can direct use this url
+
+HCL  ==> machine-1 ==> cloud  ==> cloud based rpms ==> url 
+         machine-2 ==> jboss  ==> jboss based rpms
+
+50 new rpms 
+
+
+ftp://192.168.0.100/data/rhel8/AppStream
+ftp://192.168.0.100/data/rhel8/BaseOS
+
+========================
+# wget   ftp://192.168.0.100/data/rhel8/AppStream/Packages/ftp-----------.rpm 
+
+# rpm -ivh  asfjkdsjfkdsfjsdkfjskdf.rpm 
+
+========================

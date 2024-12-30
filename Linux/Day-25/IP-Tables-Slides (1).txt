@@ -1,0 +1,356 @@
+================  Firewall  Concept =================
+                     OR
+How to Allow and Deny any traffice coming from any client machine on linux servers ?
+
+=====================================================
+
+What is firewalls in linux  ?
+
+Firewall basically use to allow or deny any request on server machine.
+
+With the help of firewall we can set allow and deny rules to access any services.
+
+Example:   ssh  , ftp , database, httpd  .... etc  
+
+Types of firewall  ?
+
+Physical Infra
+
+1- hardware based firewall
+
+2- Software based firewall  ==> With in the OS
+
+Cloud infra
+
+3- Third party public cloud provider based firewall....    aws cloud , google cloud,  alibaba , azure cloud ...openstack ...etc 
+
+================================================
+
+In linux we have os defined firewalls inbuilt in OS....
+
+
+1- TCP - Wrappers
+
+2- IP-Tables ===> Till rhel-6 
+
+=============================================
+
+3- IPtables replaced with firewalld ( new firewall concept in rhel-7 + rhel- 8 )
+
+=============================================
+
+Note:  in RHEL-8 we can not controll any traffic using TCP wrappers...
+      this technology has been removed in rhel-8. but till RHEL-7  we can eaisly use it....
+
+=============================================
+
+Advance Firewall ==>  IP-tables OR Firewalld  { new product in rhel-7  + rhel-8 }
+
+default firewall in rhel-7 + 8 is firewalld  but still we can apply the rules using iptables 
+in rhel-7 + in rhel-8.
+
+=============================================
+
+Note:  at a time in a machine we can use single firewalls only either we can use iptables or else we can go with firewalld.
+       but on same time we can not use both services.
+
+==============================================
+
+in rhel-8  we have only two options in software firewalls  ==> 1- IP-tables    OR  2- Firewalld 
+
+Till rhel-6  1- TCP - wrappers    2- IP-Tables
+
+in RHEL-7  1- TCP - wrappers    2- IPtables or firewalld  
+
+
+
+*********************************
+
+First Topic :=====
+
+*********************************
+
+**************  TCP - Wrappers *************** 
+
+1- IT is an example of software firewalls .
+
+2- with the help of tcp wrappers we can apply only incomming based rules on server machine 
+   to allow or deny any traffic coming to the server side.
+
+Types of Rules :-   1-  Incoming    2- Outgoing   3- forwarding 
+
+Note:   with the help iptables and firewalld we can apply any types of rules in linux OS.
+
+3-  TCP-wrappers always works only on these two files:-   note:   syntax are same in both files. 
+
+  1-    /etc/hosts.deny     ==> to apply deny rules
+
+  2-   /etc/hosts.allow     ==> to apply Allow rules
+
+
+****************************************************************
+
+Syntax :-
+
+daemonname:  clientlist
+
+
+****************************************************************
+
+Example-1
+
+How to block any particular machine to access the SSH remote login using TCP- Wrappers.
+
+
+machine-1
+
+# vim  /etc/hosts.deny  
+
+
+
+sshd:  172.25.0.250
+
+:wq
+
+# systemctl  restart sshd 
+
+machine-2
+
+# ssh root@172.25.0.20
+
+Note:    you should get errors here...remote login will not allowed by server machine [172.25.0.20]
+
+======================================
+note: do this activity only on rhel-7 OS, it will not support in rhel-8
+======================================
+******************************************************************
+
+        Possible examples or rules in TCP - wrappers   OR  Syntax  
+
+******************************************************************
+
+#  vim  /etc/hosts.deny  or   hosts.allow 
+
+sshd:  172.25.0.250
+sshd:  172.25.0.250  172.25.0.251  172.25.0.252
+sshd:  172.25.0.0/24
+sshd:  .example.com
+sshd:  10.0.0.0/8    172.25.0.0/24
+sshd:  ALL 
+vsftpd: 192.168.0.250 
+sshd,vsftpd: ALL
+ALL:  172.25.0.250
+ALL:  ALL
+sshd: ALL EXCEPT 172.25.0.250
+sshd: ALL EXCEPT  172.25.0.0/24
+ALL EXCEPT sshd: ALL
+**************************************************************************************
+Advance Options:
+
+#  vim  /etc/hosts.deny 
+
+sshd:  172.25.0.250  :  ALLOW 
+:wq
+
+#  vim  /etc/hosts.allow
+
+sshd:  172.25.0.250 :  DENY
+
+:wq
+*****************************************************************************************
+
+
+Second Topic 
+
+****************   IP-Tables   **********************************************************
+
+
+1- IP-Tables is also an example of Software firewalls.
+2- With the help of IP-Tables we can apply incomming , outgoing and port forwarding based rules.
+
+
+*****************************************************************************
+
+Package :    iptables 
+Daemon  :    iptables 
+File    :    /etc/sysconfig/iptables    <=== Rules are store here
+Command :    iptables  <options> 
+
+******************************************************************************
+/etc/hosts.allow or  /etc/hosts.deny  ==> TCP wrapper  Examples
+
+IP Tables  ==> # iptables  <options-1>  <option-2> .... so on  
+==============================================================================
+
+
+
+
+
+ACCEPT    ==> Traffic is allowed.
+
+REJECT    ==> Traffic is block and error mesg send to END user.
+
+DROP      ==> Traffic is block but no error mesg send to END user.
+
+REDIRECT  ==> It always use in Port Forwarding Based Examples.
+
+
+******************************************************************************
+
+Examples of IP-Tables 
+
+Note: 
+
+1- in RHEL-8 at a time we can use IP-tables or Firewalld .
+2- in RHEL-8 if we want to apply rules using iptables in that case 
+   first we need to install iptables RPMs first....and need to stop the firewalld  service.
+
+********************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

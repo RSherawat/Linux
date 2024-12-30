@@ -1,0 +1,17 @@
+=============================================
+Cockpit Tool ?   ==> New Tools  ==> RHEL - 8   ==> Package  + Service
+=============================================
+
+What is Cockpit project for Linux?
+
+
+1- Cockpit is a browser-based graphical administration tool for your Linux servers.
+
+
+2- With Cockpit installed on your server, you can access the server from a browser and perform all 
+   the regular admin tasks such as configuring firewall, changing network settings, manage storage, 
+   manage user accounts, run containers, install updates, update software and more. 
+
+3- You can also analyze CPU load, memory usage, network activity and disk performance
+
+=============================================

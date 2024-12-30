@@ -1,0 +1,459 @@
+===========================================
+
+    Networking Concept Theory Session 
+
+===========================================
+
+Before Networking ?
+
+===========================================
+
+1- machine/desktop/laptop/Rack mounted server/Tower Machine/Virtual Machine 
+2- motherboard
+3- NIC/Virtual NIC	
+4- RJ45 Connector
+5- Ethernet Cable ==> eight wire ==> color coding ==> cable ==> design 
+6- Hub/Switch 
+7- How these machine can communicate with each other ?
+8- MAC address
+9- IP v4 and IP v6 adress
+10- classes
+11- private ip and public ip
+12- subnet mask
+13- router/gateway/DNS/DHCP concept
+14- How we can test network between two or more machine.
+
+============================================
+
+15- Network  configuration between two or more machines ?
+
+============================================
+============================================
+Machine to machine ==> communication ==> without networking it's not possible
+============================================
+
+
+
+Machine-1  <===  RHEL-8 OS   <=== n number of services or application or tools
+
+Machine-2  <===  RHEL-8 OS
+
+Machine-3  <===  CENTOS 8 OS
+
+Machine-4  <===  Ubuntu Linux
+
+Machine-5  <===  Windows
+
+============================================
+
+Gaurav   ==> samsung  mobile  <=== inbuilt  Android    + SIM [ number ]
+
+Rohit    ==> VIVO  mobile     <=== ibnuilt  Android    + SIM [ number ]
+
+
+user1   =====> call ==> connect  ==> user2
+
+user2   =====> call ==> connect  ==> user1
+
+============================================
+
+Types of Machine ?
+
+1- physical machine
+2- Virtual machine
+3- Cloud based machine  ==> AWS Azure Google Cloud other vendors
+
+============================================ 
+
+Machine-1               Machine-2
+
+OS                        OS
+
+
+wants to communicate ===> IP  Address 
+
+===========================================
+
+Address  ===>
+
+1- Physical address  ==> MAC  address 
+
+
+2- Logical Address   ==> IP-V4  and  IP-V6
+
+==========================================
+# ifconfig  
+ 
+==> LAN Card or NIC Card OR Ethernet card  Name
+
+==> IP Address 
+
+==> Physical address   ==> MAC address 
+
+=========================================
+NIC
+Ethernet Cable
+RJ45 Connector
+Cross Cable  ==> two computers
+HUB      ==> in current markets it's not a recommened device
+SWITCH   ==> highly recommended device in production setup
+
+========================================
+RHEL-8   ==> MAC address  <=== IP-V4  OR  IP-V6
+========================================
+
+IP Address   OR Internet Protocol address 
+
+========================================
+
+Internet  ==> Bombay
+
+Home machine  ==> internet ==>
+
+Internet     <====> Internet
+
+=======================================
+IP Address
+
+Two types of IP Address
+
+
+1- Private IP address Range   ===> LAN   ==> Free IP Range
+
+2- Public IP address Range    ===> WAN   ==> PAID IP
+
+======================================
+IANA  ===> IP address  ==> Rules 
+======================================
+MAC address  
+
+===>   6 Block 
+===>   each block is seperated by  :   symbol 
+===>   8 bit  ==> per block 
+===>   8 * 6  ==> 48 Bit address
+===>   Addressing  ==> Hexa decimal   ==>  ( A-F, 0-9)16
+
+=====================================
+
+IP address   ==> IP-V4
+
+===>   4 Block 
+===>   each block is seperated by  .   symbol 
+===>   8 bit  ==> per block 
+===>   8 * 4  ==> 32 Bit address
+===>   Addressing  ==> decimal   ==>  ( 0-9 )10
+
+====================================
+
+block1.block2.block3.block4
+
+====================================
+IP address    ==> IP-V6
+
+===>   8 Block 
+===>   each block is seperated by  :   symbol 
+===>   16 bit  ==> per block 
+===>   8 * 16  ==> 128 Bit address
+===>   Addressing  ==> Hexadecimal   ==>  ( 0-9, A-F )16
+
+====================================
+IANA  ===> IP address  ==> Rules
+====================================
+Bit  ==> 0   ==> off bit
+     ==> 1   ==>  on bit
+
+8.8.8.8     ==> 32 Bit 
+
+
+00000000   ==>      0
+11111111   ==>    255
+
+
+====================================
+700.800.900.290  ==> not a valid ip
+
+192.168.300.400 ==> Not valid
+192.168.0.1     ==> Valid IP + Class C  ?
+
+====================================
+192.168.0.0    ==> Network Address
+192.168.0.1
+192.168.0.2
+192.168.0.3    ==> HOST IP
+...........
+192.168.0.254
+192.168.0.255  ==> Broadcast address
+
+===================================
+Classes 
+
+A     ==>  0 -  126
+
+B     ==>  128 - 191
+
+C     ==>  192 - 223
+
+D     ==>  224 - 239
+
+E     ==>  240 - 255
+
+==================================
+Computer  ==> NIC  ==> default IP ==> loop Back address or local ip  ==> 127.0.0.1
+==================================
+one to one    ==> A B C
+one to many   ==> D
+many to many  ==> E
+==================================
+A - C  Class
+==================================
+
+Tyes of IP
+
+1- Free IP range
+2- Paid IP Range
+
+=================================
+
+Private IP Range
+
+A    ==>  10.0.0.0    to  10.255.255.255
+
+B    ==>  172.16.0.0  to  172.31.255.255
+
+C    ==>  192.168.0.0  to  192.168.255.255  
+
+================================
+
+11.1.1.2      ==> Class A  ==> public IP
+10.0.0.1      ==> Class A  ==> private IP
+10.56.70.300  ==> Class A  ==> not a valid ip
+         
+================================
+
+172.10.0.1   ==> Class B  ==> public IP
+172.16.0.1   ==> CLass B  ==> private IP
+172.32.10.1  ==> Class B  ==> public ip
+172.25.250.11  ==> Class B  ==> Private IP
+171.25.250.1   ==> Class B  ==> public IP
+================================
+
+192.168.0.1   ==> Class C  ==>  Private IP
+
+192.170.10.11  ==> CLass C  ==> Public Range
+
+================================
+Subnet Mask 
+
+A    ==> N.H.H.H
+
+B    ==> N.N.H.H
+
+C    ==> N.N.N.H
+
+===============================
+default subnet mask
+
+A ==>  255.0.0.0
+
+B ==>  255.255.0.0
+
+C ==>  255.255.255.0
+
+===============================
+
+10.0.0.1    OR   10.0.0.1/8
+255.0.0.0
+
+================================
+
+172.25.0.11  OR  172.25.0.11/16
+255.255.0.0
+
+192.168.0.10  OR   192.168.0.10/24
+255.255.255.0
+
+
+================================
+Subnetting ==> Subnet mask ==> Change ==> 172.25.0.11  OR  172.25.0.11/24
+                                      ==> 255.255.255.0
+================================
+ping OR communicate
+================================
+1- Class should be same
+2- network ID block numbers also should be same
+================================
+Router  ==> use to communication between two or more different network and classes
+================================
+Machine-1          Machine-2
+
+192.168.0.10      192.168.0.20     ===>    YES
+
+192.168.1.10      192.168.1.20     ===>    YES
+
+192.168.1.20      192.168.2.20     ===>    NO
+
+10.0.0.1          10.11.12.13      ===>    YES
+
+172.25.10.11      172.24.10.12     ===>    NO
+
+10.0.0.1          192.168.0.11     ===>    NO    ==> we need to configure router with routing 
+
+10.0.0.1          11.12.12.14      ===>    NO
+
+==============================
+
+192.168.0.0    ==> network address
+
+192.168.0.1
+192.168.0.2
+192.168.0.3   ==> Valid IP or HOST ID
+
+...........
+
+192.168.0.254
+
+192.168.0.255  ===> Brodcast address
+
+==============================
+192.168.1.0    ==> network address
+
+192.168.1.1
+192.168.1.2
+...........
+192.168.1.254
+192.168.1.255
+
+==============================
+192.168.2.0
+192.168.2.1
+192.168.2.2
+192.168.2.254
+192.168.2.255
+=============================
+
+192.168.255.255
+
+=============================
+
+A ==> number of host  ==>   1,67,77,214
+
+B ==> number of host  ==>        65,534
+
+C ==> number of host  ==>           254
+
+============================
+
+Personal Practise ==> Same Class  +  same network ID
+
+============================
+Machine-1      192.168.0.10/24
+
+                                         YES
+
+machine-2      192.168.0.20/24
+
+============================
+
+Machine Install  ===> IP Demand
+
+1- Manual Configuration         ==> configured by system admin
+2- Automatic IP Configuration   ==> using DHCP Server  
+
+============================
+
+============================
+Machine-1   IP  + Subnet   ==> YES
+Machine-2   IP  + Subnet   ==> YES
+
+============================
+Gateway  ==> Router IP 
+
+DNS master
+DNS Slave
+============================
+
+IP  + IP  ==>      YES
+hostname + hostname  ==>  NO ==> using DNS server 
+
+===========================  
+IP
+Subnet
+gateway
+DNS1     ==> master DNS
+DNS2     ==> Slave DNS
+===========================
+DNS + DHCP
+===========================
+/etc/resolv.conf  ==> DNS Client 
+===========================
+Machine-1      Machine-2
+
+/etc/hosts  ==> without DNS concept
+
+===========================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+

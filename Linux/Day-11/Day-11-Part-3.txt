@@ -1,0 +1,64 @@
+=========================================
+
+       Day-11  part-3
+
+=========================================
+
+
+
+
+How we can copy DVD or ISO image files
+in my Virtual Machine using CLI ?
+
+  123  lsblk 
+  124  mkdir  /redhatdvd  
+  125  cd  /run/media/root
+  126  ls
+  127  cd RHEL-8-0-0-BaseOS-x86_64
+  128  ls
+  129  cd
+  130  lsblk 
+  131  cd /run/media/root
+  132  ls
+  133  cd RHEL-8-0-0-BaseOS-x86_64
+  134  cd
+  135  cd /run/media/root/RHEL-8-0-0-BaseOS-x86_64
+  136  ls
+  137  cp -rf  *    /redhatdvd
+  138  cd
+  139  ls  /redhatdvd
+  140  ls  /redhatdvd/AppStream
+  141  ls  /redhatdvd/BaseOS
+  142  lsblk 
+  143  eject 
+  144  lsblk 
+  145  ls /
+  146  mount /dev/sr0  /mnt 
+  147  lsblk 
+  148  ls  /mnt 
+  149  rm -rf /redhatdvd
+  150  mkdir  /redhatdvd  
+  151  cd /mnt 
+  152  ls
+  153  cp -rf  *   /redhatdvd
+  154  cd
+  155  umount  /mnt 
+  156  lsblk 
+  157  lsblk  
+  158  cd /dev/sr0  
+  159  lsblk  
+  160  mkdir  /my-dir 
+  161  mount  /dev/sr0   /my-dir
+  162  lsblk  
+  163  ls  /my-dir
+  164  umount /my-dir 
+  165  lsblk 
+
+
+
+
+
+
+
+=========================================
+

@@ -1,0 +1,152 @@
+=================================================
+Day-6 Session
+=================================================
+Head and Tail
+
+=================================================
+
+cat  ==> use to read content of any file on the screen.
+
+Head  ==> It is use to print by default 10 lines from top of any file or from any command output.
+
+Tail  ==> It is use to print by default 10 lines from bottom of any file or from any command output.
+
+
+
+Syntax:- 
+
+# head  <options>   <Filename> 
+# tail  <options>   <filename>
+ 
+          OR
+
+# < any-xyz-command > | head  <options> 
+# < any-xyz-command > | head  <options>
+
+=================================================
+
+# head   /etc/passwd 
+# head   /etc/crontab   ===> File based Examples
+
+# lsblk | head -n 2     ==> Command Based Examples
+# cat /etc/passwd | head 
+
+
+sed ==> it is alsouse to print any line numbers from any file or from any command outputs.
+
+# sed  -n   'p'    <filename>
+         
+        OR
+
+# <any-xyz-command> | sed  -n  'p'
+
+================================================
+    1  cat /etc/passwd 
+    2  cat -n  /etc/passwd 
+    3  head /etc/passwd
+    4  tail /etc/passwd
+    5  head /etc/passwd | cat -n 
+    6  head /etc/passwd 
+    7  head /etc/passwd  | wc -l 
+    8  head /etc/passwd
+    9  cat  /etc/passwd | head 
+   10  head -n 2 /etc/passwd
+   11  head -n 12 /etc/passwd
+   12  head -2 /etc/passwd
+   13  head -5 /etc/passwd
+   14  useradd  user1
+   15  useradd  user2
+   16  useradd  user3
+   17  useradd  user4
+   18  useradd  user5
+   19  ls /home 
+   20  cat  /etc/passwd
+   21  tail -n 5  /etc/passwd
+   22  head -n 1  /etc/passwd
+   23  cat -n /etc/passwd |  head 
+   24  cat -n /etc/passwd |  tail
+   25  cat -n /etc/passwd |  head -n 5 
+   26  cat -n /etc/passwd |  tail -n 5 
+   27  head -n 5 /etc/passwd | cat -n 
+   28  tail  -n 5 /etc/passwd | cat -n 
+   29  cat -n /etc/passwd |  head -n 5 
+   30  cat -n /etc/passwd |  tail -n 5 
+   31  cat -n /etc/passwd |  head -n 5 ; cat -n /etc/passwd |  tail -n 5
+   32  cat -n  /etc/passwd 
+   33  head  /etc/passwd
+   34  head  /etc/passwd  >  /tmp/report  
+   35  cat  /tmp/report 
+   36  cat -n /etc/passwd | head -n 25
+   37  cat -n /etc/passwd | head -n 25 | tail -n 5  
+   38  cat  -n /etc/passwd
+   39  cat  -n /etc/passwd | head -n 25
+   40  cat  -n /etc/passwd | head -n 25 | tail -n 5 
+   41  head -n 25 /etc/passwd | tail -n 5 
+   42  head -n 25 /etc/passwd | tail -n 5  >>  /tmp/report 
+   43  lsblk  
+   44  lsblk   | head 
+   45  lsblk   | tail 
+   46  lsblk   | head -n 1
+   47  lsblk   | head -n 2
+   48  lsblk   | tail -n 1
+   49  lsblk   | tail -n 2
+   50  lsblk | cat -n 
+   51  lsblk | cat -n  | head -n 4
+   52  lsblk | cat -n  | head -n 4 | tail -n 3
+   53  lsblk  head -n 4 | tail -n 3
+   54  lsblk |  head -n 4 | tail -n 3
+   55  lscpu 
+   56  lscpu | cat -n 
+   57  lscpu | cat -n  | head -n 3 
+   58  lscpu | cat -n  | tail -n 15
+   59  lscpu | cat -n  | head -n 15
+   60  lscpu | cat -n  | head -n 15 | tail -n 5
+   61  lsblk | cat -n  | head -n 4 
+   62  lsblk | cat -n  | head -n 4  | tail -n 3
+   63  lsblk | cat -n  | head -n 4  | tail -n 3 ; scpu | cat -n  | head -n 15 | tail -n 5
+   64  lsblk | cat -n  | head -n 4  | tail -n 3 ; lscpu | cat -n  | head -n 15 | tail -n 5
+   65  lsblk  | head -n 4  | tail -n 3 ; lscpu | head -n 15 | tail -n 5
+   66  lscpu | cat-n 
+   67  lscpu | cat -n 
+   68  lscpu | cat -n  | head -n 13
+   69  lscpu | cat -n  | head -n 13 | tail -n 1
+   70  lsblk 
+   71  sed  '1p' /etc/passwd 
+   72  sed  -n  '1p' /etc/passwd 
+   73  sed  -n  '51p' /etc/passwd 
+   74  sed  -n  '1p' /etc/passwd 
+   75  sed  -n  '5p' /etc/passwd 
+   76  sed  -n  '1,5p' /etc/passwd 
+   77  sed  -n  '1p;5p' /etc/passwd 
+   78  cat -n  /etc/passwd | sed -n '1p'
+   79  cat -n  /etc/passwd | sed -n '5p'
+   80  cat -n  /etc/passwd | sed -n '1,5p'
+   81  cat -n  /etc/passwd | sed -n '1p;5p'
+   82  cat -n  /etc/passwd | sed -n '1p'
+   83  cat -n  /etc/passwd | sed -n '$p'
+   84  cat -n  /etc/passwd | sed -n '1p;$p'
+   85  cat -n  /etc/passwd | sed -n '1p;$p'  >>  /tmp/report 
+   86  cat -n  /etc/passwd | sed -n  '21,25p' 
+   87  cat -n  /etc/passwd | sed -n  '1p;5,10p;21p;45,$p' 
+   88  lsblk 
+   89  lsblk  | cat -n 
+   90  lsblk  | cat -n  | head -n 4
+   91  lsblk  | cat -n  | head -n 4 | tail -n 3
+   92  lsblk  | cat -n  | sed -n  '2,4p'
+   93  lsblk  | cat -n  | sed -n  '1p;2,4p'
+   94  lscpu | cat -n |  sed  -n  '13p'
+   95  lscpu | cat -n  | head -n 13 | tail -n 1
+   96  df -h 
+   97  df -h | cat -n 
+   98  df -h | cat -n  | head -n 7
+   99  df -h | cat -n  | head -n 7 | tail -n 2
+  100  df -h | cat -n  | sed -n  '1p;6,7p'
+  101  df -h  | sed -n  '1p;6,7p'
+  102  ifconfig 
+  103  ifconfig | sed  -n '2p'
+  104  ifconfig | head -n 2 
+  105  ifconfig | head -n 2  | tail -n 1
+  106  history 
+
+
+

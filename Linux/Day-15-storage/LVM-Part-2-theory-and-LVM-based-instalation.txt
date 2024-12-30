@@ -1,0 +1,23 @@
+====================
+LVM part-2
+
+======================
+=============================================
+Pending Part ?
+=============================================
+
+How we can restore LVM and Volume Groups using thier indexing point or restore point ?
+
+How we can resolve Ctrl + D Error ?
+
+How we can remove LVM from the machine step by step ?
+
+How we can install rhel OS with LVM based Storage concept ?
+
+=============================================
+
+
+
+
+
+

@@ -1,0 +1,121 @@
+***************************************************
+
+  SAMBA  OR SMB [ Server message block ] Server 
+
+*************************************************** 
+
+1- SAMBA  Server is mainly use for file and printer shaing between windows and linux machines.
+
+2- SAMBA Server  use SMB protocol to browse any shared files on any browser.  smb://
+
+3- Samba always CIFS { common internet file system } file system to mount any shared directory; 
+
+
+
+Features of samba server  ?
+
+1- File and printer sharing between windows and linux machines.
+2- printing
+3- browsing  
+4- mounting 
+5- downloading
+6- uploading  
+7- network based security
+8- username and password based security 
+9- can be use in integration for AD and LDAP authentication.
+
+***********************************************************************************
+
+Types of samba users ?
+
+1- Anonymous or  guest
+2- samba valid  users  ==> smbpasswd 
+
+# useradd sachin 
+# passwd sachin 
+
+# smbpasswd  -a   sachin  
+
+*************************************************************************************
+
+public  =  yes    <======
+
+************************************************************************************
+
+valid  users = sachin deepak rahul  
+
+************************************************************************************      
+
+
+/etc/exports  ==> NFS     ==>     two fields  
+
+/etc/samba/smb.conf   ==> samba 
+
+
+**********************************************************************************
+
+/publicdata  
+
+/privatedata  
+
+[network]
+path = /publicdata  
+public = yes 
+
+
+*****************************
+
+[cloud]
+path = /privatedata  
+public = no  
+valif  users = sachin deepak  
+
+******************************
+
+section name  OR Share name   ==> Always must be uniq 
+
+*****************************
+
+Types of section in samba file
+
+1- Default section  
+2- Custom section  
+
+***************************************************************************************
+Service - profile  
+
+package:   samba 
+daemon :   smb 
+port number:  445  (TCP) 
+              139  (UDP)
+
+File:    /etc/samba/smb.conf   ==> data sharing  file  
+
+log:   /var/log/samba/log.smbd    OR   /var/log/samba/smbd.log 
+
+
+**************************************************************************************
+
+Client Side ?
+
+Types of samba server accessing method  ?
+
+1- browser       ===>   smb://192.168.0.10
+2  downloading   +  uploading   ===>  smbclient  ==> package  ==>  samba-client 
+3- mounting      ==> package ==>  cifs-utils
+
+
+************************************************************************************** 
+
+  #      OR   ;     ==>  both are called commented lines...
+
+192.168.0.
+
+10.0.0.1
+10.0.0.2 
+10.0.0. 
+
+
+
+
+*************************************************************************************

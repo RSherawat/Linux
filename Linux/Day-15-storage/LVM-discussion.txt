@@ -1,0 +1,78 @@
+=========================================
+    LVM [ Logical Volume management ]
+=========================================
+
+1- Standard Partition OR Standard Volume
+2- LVM - Logical Volume management
+
+=========================================
+
+1-  SVM  ==> Fixed Size Concept
+2-  LVM  ==> Scalable Concept
+
+=========================================
+
+
+
+
+
+
+
+
+===========================
+
+1- disk infor
+2- enter + partition + save
+3- update
+4- format
+5- mount
+
+===========================
+
+1- disk infor
+2- enter + partition + save  ==> 82
+3- update
+4- mkswap
+5- swap
+
+==========================
+1- disk infor
+2- enter + partition + save  ==>  8e
+3- update
+now:- don't format it directly
+
+4- pvcreate
+5- vgcreate
+6- lvceate
+7- format
+8- mount
+9- testing
+10- operation
+
+=========================
+LVM create :-
+
+
+1- During the OS installation to provider LVM based storage for OS defined Directory
+2- After the OS installation
+
+
+=========================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

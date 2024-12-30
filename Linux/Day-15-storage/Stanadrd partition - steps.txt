@@ -1,0 +1,1395 @@
+===============
+Step-1
+===============
+
+[root@localhost ~]# fdisk -l 
+Disk /dev/sda: 30 GiB, 32212254720 bytes, 62914560 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x8ccda7d4
+
+Device     Boot    Start      End  Sectors  Size Id Type
+/dev/sda1  *        2048  2050047  2048000 1000M 83 Linux
+/dev/sda2        2050048 32770047 30720000 14.7G 83 Linux
+/dev/sda3       32770048 36964351  4194304    2G 82 Linux swap / Solaris
+
+
+[root@localhost ~]# 
+[root@localhost ~]# parted  /dev/sda print
+Model: ATA VMware Virtual S (scsi)
+Disk /dev/sda: 32.2GB
+Sector size (logical/physical): 512B/512B
+Partition Table: msdos
+Disk Flags: 
+
+Number  Start   End     Size    Type     File system     Flags
+ 1      1049kB  1050MB  1049MB  primary  xfs             boot
+ 2      1050MB  16.8GB  15.7GB  primary  xfs
+ 3      16.8GB  18.9GB  2147MB  primary  linux-swap(v1)
+
+[root@localhost ~]# 
+[root@localhost ~]# lsblk 
+[root@localhost ~]# lsblk 
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda      8:0    0   30G  0 disk 
++-sda1   8:1    0 1000M  0 part /boot
++-sda2   8:2    0 14.7G  0 part /
++-sda3   8:3    0    2G  0 part [SWAP]
+sr0     11:0    1  6.6G  0 rom  
+[root@localhost ~]# 
+
+
+
+=================
+
+Step-2
+==================
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# fdisk  /dev/sda 
+
+Welcome to fdisk (util-linux 2.32.1).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+
+Command (m for help): n
+Partition type
+   p   primary (3 primary, 0 extended, 1 free)
+   e   extended (container for logical partitions)
+Select (default e): e
+
+Selected partition 4
+First sector (36964352-62914559, default 36964352): 
+Last sector, +sectors or +size{K,M,G,T,P} (36964352-62914559, default 62914559): 
+
+Created a new partition 4 of type 'Extended' and of size 12.4 GiB.
+
+Command (m for help): p
+Disk /dev/sda: 30 GiB, 32212254720 bytes, 62914560 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x8ccda7d4
+
+Device     Boot    Start      End  Sectors  Size Id Type
+/dev/sda1  *        2048  2050047  2048000 1000M 83 Linux
+/dev/sda2        2050048 32770047 30720000 14.7G 83 Linux
+/dev/sda3       32770048 36964351  4194304    2G 82 Linux swap / Solaris
+/dev/sda4       36964352 62914559 25950208 12.4G  5 Extended
+
+Command (m for help): n
+All primary partitions are in use.
+Adding logical partition 5
+First sector (36966400-62914559, default 36966400): 
+Last sector, +sectors or +size{K,M,G,T,P} (36966400-62914559, default 62914559): +2G
+
+Created a new partition 5 of type 'Linux' and of size 2 GiB.
+
+Command (m for help): F
+Unpartitioned space /dev/sda: 10.4 GiB, 11136925696 bytes, 21751808 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+
+   Start      End  Sectors  Size
+41162752 62914559 21751808 10.4G
+
+Command (m for help): p
+Disk /dev/sda: 30 GiB, 32212254720 bytes, 62914560 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x8ccda7d4
+
+Device     Boot    Start      End  Sectors  Size Id Type
+/dev/sda1  *        2048  2050047  2048000 1000M 83 Linux
+/dev/sda2        2050048 32770047 30720000 14.7G 83 Linux
+/dev/sda3       32770048 36964351  4194304    2G 82 Linux swap / Solaris
+/dev/sda4       36964352 62914559 25950208 12.4G  5 Extended
+/dev/sda5       36966400 41160703  4194304    2G 83 Linux
+
+Command (m for help): w
+The partition table has been altered.
+Failed to add partition 5 to system: Device or resource busy
+
+The kernel still uses the old partitions. The new table will be used at the next reboot. 
+Syncing disks.
+
+[root@localhost ~]# 
+
+====================
+Step-3
+
+
+====================
+   15  mkfs.xfs  /dev/sda5 
+   16  lsblk  -f  
+   17  mkdir  /storage  
+   18  mount  /dev/sda5  /storage
+   19  lsblk  
+   20  ls  /
+   21  vim /etc/fstab 
+   22  systemctl daemon-reload
+   23  lsblk 
+   24  df  -Th
+   25  du -sh   /storage
+   23  lsblk 
+   24  df  -Th
+   25  du -sh   /storage
+   26  history 
+   27  ls /storage
+   28  df -Th
+   29  ls /
+   30  du -sh  /etc 
+   31  cp -rf  /etc  /storage
+   32  ls /storage
+   33  du -sh /storage
+   34  df -Th
+   35  cp -rf  /usr/bin   /storage
+   36  df -Th
+   37  lsblk 
+   38  umount /storage
+   39  lsblk 
+   40  ls  /storage
+   41  mount  /dev/sda5 /storage
+   42  lsblk 
+   43  ls  /storage
+   44  history 
+
+[root@localhost ~]# 
+[root@localhost ~]# lsblk 
+[root@localhost ~]# lsblk 
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda      8:0    0   30G  0 disk 
++-sda1   8:1    0 1000M  0 part /boot
++-sda2   8:2    0 14.7G  0 part /
++-sda3   8:3    0    2G  0 part [SWAP]
++-sda4   8:4    0    1K  0 part 
++-sda5   8:5    0    2G  0 part /storage
+sr0     11:0    1 1024M  0 rom  
+[root@localhost ~]# 
+[root@localhost ~]# ls /storage
+bin  etc
+[root@localhost ~]# 
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# cat  /etc/fstab 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@localhost ~]# cat  /etc/fstab 
+
+#
+# /etc/fstab
+# Created by anaconda on Sat Mar 19 04:05:00 2022
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk/'.
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info.
+#
+# After editing this file, run 'systemctl daemon-reload' to update systemd
+# units generated from this file.
+#
+UUID=19258060-9d15-4767-8b9b-d2ba2ecb3b2e /                       xfs     defaults        0 0
+UUID=0cdaa421-adac-40a4-a500-c4200f41de31 /boot                   xfs     defaults        0 0
+UUID=faf430ea-3393-4296-aea8-d5934c8cb668 swap                    swap    defaults        0 0
+/dev/sda5				  /storage                xfs     defaults        0 0
+[root@localhost ~]# 
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# blkid 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@localhost ~]# blkid 
+/dev/sda2: UUID="19258060-9d15-4767-8b9b-d2ba2ecb3b2e" TYPE="xfs" PARTUUID="8ccda7d4-02"
+/dev/sda1: UUID="0cdaa421-adac-40a4-a500-c4200f41de31" TYPE="xfs" PARTUUID="8ccda7d4-01"
+/dev/sda3: UUID="faf430ea-3393-4296-aea8-d5934c8cb668" TYPE="swap" PARTUUID="8ccda7d4-03"
+/dev/sda5: UUID="608ae5c8-2c2d-42dc-9854-0412707febcf" TYPE="xfs" PARTUUID="8ccda7d4-05"
+[root@localhost ~]# 
+[root@localhost ~]# blkid   /dev/sda5
+/dev/sda5: UUID="608ae5c8-2c2d-42dc-9854-0412707febcf" TYPE="xfs" PARTUUID="8ccda7d4-05"
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# blkid  -U  608ae5c8-2c2d-42dc-9854-0412707febcf
+/dev/sda5
+[root@localhost ~]# vim  /etc/fstab 
+[root@localhost ~]# systemctl daemon-reload
+[root@localhost ~]# 
+[root@localhost ~]# df -Th 
+Filesystem     Type      Size  Used Avail Use% Mounted on
+devtmpfs       devtmpfs  1.9G     0  1.9G   0% /dev
+tmpfs          tmpfs     1.9G     0  1.9G   0% /dev/shm
+tmpfs          tmpfs     1.9G  9.9M  1.9G   1% /run
+tmpfs          tmpfs     1.9G     0  1.9G   0% /sys/fs/cgroup
+/dev/sda2      xfs        15G  3.9G   11G  27% /
+/dev/sda5      xfs       2.0G  283M  1.8G  14% /storage
+/dev/sda1      xfs       994M  165M  830M  17% /boot
+tmpfs          tmpfs     376M   16K  376M   1% /run/user/42
+tmpfs          tmpfs     376M  3.5M  373M   1% /run/user/0
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# umount /storage
+[root@localhost ~]# 
+[root@localhost ~]# ls /storage
+[root@localhost ~]# 
+[root@localhost ~]# mount  /dev/sda5  /storage
+[root@localhost ~]# 
+[root@localhost ~]# ls /storage
+bin  etc
+[root@localhost ~]# 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@localhost ~]# fdisk -l 
+Disk /dev/sda: 30 GiB, 32212254720 bytes, 62914560 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x8ccda7d4
+
+Device     Boot    Start      End  Sectors  Size Id Type
+/dev/sda1  *        2048  2050047  2048000 1000M 83 Linux
+/dev/sda2        2050048 32770047 30720000 14.7G 83 Linux
+/dev/sda3       32770048 36964351  4194304    2G 82 Linux swap / Solaris
+/dev/sda4       36964352 62914559 25950208 12.4G  5 Extended
+/dev/sda5       36966400 41160703  4194304    2G 83 Linux
+
+
+[root@localhost ~]# 
+
+
+
+
+
+
+
+
+
+[root@localhost ~]# 
+[root@localhost ~]# fdisk  /dev/sda
+
+Welcome to fdisk (util-linux 2.32.1).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+
+Command (m for help): p
+Disk /dev/sda: 30 GiB, 32212254720 bytes, 62914560 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x8ccda7d4
+
+Device     Boot    Start      End  Sectors  Size Id Type
+/dev/sda1  *        2048  2050047  2048000 1000M 83 Linux
+/dev/sda2        2050048 32770047 30720000 14.7G 83 Linux
+/dev/sda3       32770048 36964351  4194304    2G 82 Linux swap / Solaris
+/dev/sda4       36964352 62914559 25950208 12.4G  5 Extended
+/dev/sda5       36966400 41160703  4194304    2G 83 Linux
+
+Command (m for help): n
+All primary partitions are in use.
+Adding logical partition 6
+First sector (41162752-62914559, default 41162752): 
+Last sector, +sectors or +size{K,M,G,T,P} (41162752-62914559, default 62914559): +1G
+
+Created a new partition 6 of type 'Linux' and of size 1 GiB.
+
+Command (m for help): p
+Disk /dev/sda: 30 GiB, 32212254720 bytes, 62914560 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x8ccda7d4
+
+Device     Boot    Start      End  Sectors  Size Id Type
+/dev/sda1  *        2048  2050047  2048000 1000M 83 Linux
+/dev/sda2        2050048 32770047 30720000 14.7G 83 Linux
+/dev/sda3       32770048 36964351  4194304    2G 82 Linux swap / Solaris
+/dev/sda4       36964352 62914559 25950208 12.4G  5 Extended
+/dev/sda5       36966400 41160703  4194304    2G 83 Linux
+/dev/sda6       41162752 43259903  2097152    1G 83 Linux
+
+Command (m for help): 
+
+
+Command (m for help): n
+
+All primary partitions are in use.
+Adding logical partition 7
+First sector (43261952-62914559, default 43261952): 
+Last sector, +sectors or +size{K,M,G,T,P} (43261952-62914559, default 62914559): +500M
+
+Created a new partition 7 of type 'Linux' and of size 500 MiB.
+
+Command (m for help): p
+Disk /dev/sda: 30 GiB, 32212254720 bytes, 62914560 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x8ccda7d4
+
+Device     Boot    Start      End  Sectors  Size Id Type
+/dev/sda1  *        2048  2050047  2048000 1000M 83 Linux
+/dev/sda2        2050048 32770047 30720000 14.7G 83 Linux
+/dev/sda3       32770048 36964351  4194304    2G 82 Linux swap / Solaris
+/dev/sda4       36964352 62914559 25950208 12.4G  5 Extended
+/dev/sda5       36966400 41160703  4194304    2G 83 Linux
+/dev/sda6       41162752 43259903  2097152    1G 83 Linux
+/dev/sda7       43261952 44285951  1024000  500M 83 Linux
+
+Command (m for help): w
+The partition table has been altered.
+Syncing disks.
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# partprobe   /dev/sda
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# mkfs.xfs  /dev/sda6
+meta-data=/dev/sda6              isize=512    agcount=4, agsize=65536 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=0
+         =                       reflink=1
+data     =                       bsize=4096   blocks=262144, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+log      =internal log           bsize=4096   blocks=2560, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+[root@localhost ~]# 
+[root@localhost ~]# mkfs.ext4  /dev/sda7
+mke2fs 1.44.3 (10-July-2018)
+Creating filesystem with 512000 1k blocks and 128016 inodes
+Filesystem UUID: 4005568c-d3b6-4742-a48d-7ba8cee133e8
+Superblock backups stored on blocks: 
+	8193, 24577, 40961, 57345, 73729, 204801, 221185, 401409
+
+Allocating group tables: done                            
+Writing inode tables: done                            
+Creating journal (8192 blocks): done
+Writing superblocks and filesystem accounting information: done 
+
+[root@localhost ~]# 
+[root@localhost ~]# lsblk -f  
+NAME   FSTYPE LABEL UUID                                 MOUNTPOINT
+sda                                                      
++-sda1 xfs          0cdaa421-adac-40a4-a500-c4200f41de31 /boot
++-sda2 xfs          19258060-9d15-4767-8b9b-d2ba2ecb3b2e /
++-sda3 swap         faf430ea-3393-4296-aea8-d5934c8cb668 [SWAP]
++-sda4                                                   
++-sda5 xfs          608ae5c8-2c2d-42dc-9854-0412707febcf /storage
++-sda6 xfs          b55febc3-7a99-4fe5-b027-00ae770bebf1 
++-sda7 ext4         4005568c-d3b6-4742-a48d-7ba8cee133e8 
+sr0                                                      
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# mkdir  /data
+[root@localhost ~]# 
+[root@localhost ~]# mkdir  /movie  
+[root@localhost ~]# 
+[root@localhost ~]# mount /dev/sda6   /data
+[root@localhost ~]# 
+[root@localhost ~]# mount  /dev/sda7   /movie
+[root@localhost ~]# 
+[root@localhost ~]# lsblk 
+
+
+
+
+[root@localhost ~]# lsblk 
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda      8:0    0   30G  0 disk 
++-sda1   8:1    0 1000M  0 part /boot
++-sda2   8:2    0 14.7G  0 part /
++-sda3   8:3    0    2G  0 part [SWAP]
++-sda4   8:4    0    1K  0 part 
++-sda5   8:5    0    2G  0 part /storage
++-sda6   8:6    0    1G  0 part /data
++-sda7   8:7    0  500M  0 part /movie
+sr0     11:0    1 1024M  0 rom  
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# blkid 
+/dev/sda2: UUID="19258060-9d15-4767-8b9b-d2ba2ecb3b2e" TYPE="xfs" PARTUUID="8ccda7d4-02"
+/dev/sda1: UUID="0cdaa421-adac-40a4-a500-c4200f41de31" TYPE="xfs" PARTUUID="8ccda7d4-01"
+/dev/sda3: UUID="faf430ea-3393-4296-aea8-d5934c8cb668" TYPE="swap" PARTUUID="8ccda7d4-03"
+/dev/sda5: UUID="608ae5c8-2c2d-42dc-9854-0412707febcf" TYPE="xfs" PARTUUID="8ccda7d4-05"
+/dev/sda6: UUID="b55febc3-7a99-4fe5-b027-00ae770bebf1" TYPE="xfs" PARTUUID="8ccda7d4-06"
+/dev/sda7: UUID="4005568c-d3b6-4742-a48d-7ba8cee133e8" TYPE="ext4" PARTUUID="8ccda7d4-07"
+[root@localhost ~]# 
+[root@localhost ~]# blkid  |  grep -E "sda6|sda7"
+
+
+
+
+[root@localhost ~]# blkid  |  grep -E "sda6|sda7"
+/dev/sda6: UUID="b55febc3-7a99-4fe5-b027-00ae770bebf1" TYPE="xfs" PARTUUID="8ccda7d4-06"
+/dev/sda7: UUID="4005568c-d3b6-4742-a48d-7ba8cee133e8" TYPE="ext4" PARTUUID="8ccda7d4-07"
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# blkid  |  grep -E "sda6|sda7" |  awk  '{print $2}'
+UUID="b55febc3-7a99-4fe5-b027-00ae770bebf1"
+UUID="4005568c-d3b6-4742-a48d-7ba8cee133e8"
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# vim /etc/fstab 
+[root@localhost ~]# 
+[root@localhost ~]# systemctl daemon-reload  
+
+[root@localhost ~]# 
+[root@localhost ~]# df -Th
+
+
+
+
+
+
+
+
+
+[root@localhost ~]# df -Th
+Filesystem     Type      Size  Used Avail Use% Mounted on
+devtmpfs       devtmpfs  1.9G     0  1.9G   0% /dev
+tmpfs          tmpfs     1.9G     0  1.9G   0% /dev/shm
+tmpfs          tmpfs     1.9G  9.9M  1.9G   1% /run
+tmpfs          tmpfs     1.9G     0  1.9G   0% /sys/fs/cgroup
+/dev/sda2      xfs        15G  3.9G   11G  27% /
+/dev/sda1      xfs       994M  165M  830M  17% /boot
+tmpfs          tmpfs     376M   16K  376M   1% /run/user/42
+tmpfs          tmpfs     376M  3.5M  373M   1% /run/user/0
+/dev/sda5      xfs       2.0G  283M  1.8G  14% /storage
+/dev/sda6      xfs      1014M   40M  975M   4% /data
+/dev/sda7      ext4      477M  2.3M  445M   1% /movie
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# cp -rf  /etc  /data
+[root@localhost ~]# cp -rf  /etc  /movie
+[root@localhost ~]# 
+[root@localhost ~]# df -Th
+Filesystem     Type      Size  Used Avail Use% Mounted on
+devtmpfs       devtmpfs  1.9G     0  1.9G   0% /dev
+tmpfs          tmpfs     1.9G     0  1.9G   0% /dev/shm
+tmpfs          tmpfs     1.9G  9.9M  1.9G   1% /run
+tmpfs          tmpfs     1.9G     0  1.9G   0% /sys/fs/cgroup
+/dev/sda2      xfs        15G  3.9G   11G  27% /
+/dev/sda1      xfs       994M  165M  830M  17% /boot
+tmpfs          tmpfs     376M   16K  376M   1% /run/user/42
+tmpfs          tmpfs     376M  3.5M  373M   1% /run/user/0
+/dev/sda5      xfs       2.0G  283M  1.8G  14% /storage
+/dev/sda6      xfs      1014M   93M  922M  10% /data
+/dev/sda7      ext4      477M   28M  420M   7% /movie
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# fdisk  -F  /dev/sda
+fdisk: invalid option -- 'F'
+Try 'fdisk --help' for more information.
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# fdisk  /dev/sda
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@localhost ~]# fdisk  /dev/sda
+
+Welcome to fdisk (util-linux 2.32.1).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+
+Command (m for help): F
+Unpartitioned space /dev/sda: 8.9 GiB, 9536798720 bytes, 18626560 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+
+   Start      End  Sectors  Size
+44288000 62914559 18626560  8.9G
+
+Command (m for help): n
+All primary partitions are in use.
+Adding logical partition 8
+First sector (44288000-62914559, default 44288000): 
+Last sector, +sectors or +size{K,M,G,T,P} (44288000-62914559, default 62914559): 
+
+Created a new partition 8 of type 'Linux' and of size 8.9 GiB.
+
+Command (m for help): p
+Disk /dev/sda: 30 GiB, 32212254720 bytes, 62914560 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x8ccda7d4
+
+Device     Boot    Start      End  Sectors  Size Id Type
+/dev/sda1  *        2048  2050047  2048000 1000M 83 Linux
+/dev/sda2        2050048 32770047 30720000 14.7G 83 Linux
+/dev/sda3       32770048 36964351  4194304    2G 82 Linux swap / Solaris
+/dev/sda4       36964352 62914559 25950208 12.4G  5 Extended
+/dev/sda5       36966400 41160703  4194304    2G 83 Linux
+/dev/sda6       41162752 43259903  2097152    1G 83 Linux
+/dev/sda7       43261952 44285951  1024000  500M 83 Linux
+/dev/sda8       44288000 62914559 18626560  8.9G 83 Linux
+
+Command (m for help): w
+The partition table has been altered.
+Syncing disks.
+
+
+[root@localhost ~]# 
+[root@localhost ~]# partprobe   /dev/sda
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# mkfs.xfs  /dev/sda8
+meta-data=/dev/sda8              isize=512    agcount=4, agsize=582080 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=0
+         =                       reflink=1
+data     =                       bsize=4096   blocks=2328320, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+log      =internal log           bsize=4096   blocks=2560, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+[root@localhost ~]# 
+[root@localhost ~]# mkdir  /newdata  
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# mount /dev/sda8  /newdata
+[root@localhost ~]# 
+[root@localhost ~]# fdisk  /dev/sda
+[root@localhost ~]# fdisk  /dev/sda
+
+Welcome to fdisk (util-linux 2.32.1).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+
+Command (m for help): F
+Unpartitioned space /dev/sda: 0 B, 0 bytes, 0 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+
+Command (m for help): q
+
+[root@localhost ~]# 
+
+
+
+
+
+
+
+
+
+
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# fdisk -l 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@localhost ~]# fdisk -l 
+Disk /dev/sda: 30 GiB, 32212254720 bytes, 62914560 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x8ccda7d4
+
+Device     Boot    Start      End  Sectors  Size Id Type
+/dev/sda1  *        2048  2050047  2048000 1000M 83 Linux
+/dev/sda2        2050048 32770047 30720000 14.7G 83 Linux
+/dev/sda3       32770048 36964351  4194304    2G 82 Linux swap / Solaris
+/dev/sda4       36964352 62914559 25950208 12.4G  5 Extended
+/dev/sda5       36966400 41160703  4194304    2G 83 Linux
+/dev/sda6       41162752 43259903  2097152    1G 83 Linux
+/dev/sda7       43261952 44285951  1024000  500M 83 Linux
+/dev/sda8       44288000 62914559 18626560  8.9G 83 Linux
+
+
+
+
+Disk /dev/sdb: 5 GiB, 5368709120 bytes, 10485760 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# lsblk 
+[root@localhost ~]# lsblk 
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda      8:0    0   30G  0 disk 
++-sda1   8:1    0 1000M  0 part /boot
++-sda2   8:2    0 14.7G  0 part /
++-sda3   8:3    0    2G  0 part [SWAP]
++-sda4   8:4    0    1K  0 part 
++-sda5   8:5    0    2G  0 part /storage
++-sda6   8:6    0    1G  0 part /data
++-sda7   8:7    0  500M  0 part /movie
++-sda8   8:8    0  8.9G  0 part /newdata
+sdb      8:16   0    5G  0 disk 
+sr0     11:0    1 1024M  0 rom  
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# blkid 
+/dev/sda2: UUID="19258060-9d15-4767-8b9b-d2ba2ecb3b2e" TYPE="xfs" PARTUUID="8ccda7d4-02"
+/dev/sda1: UUID="0cdaa421-adac-40a4-a500-c4200f41de31" TYPE="xfs" PARTUUID="8ccda7d4-01"
+/dev/sda3: UUID="faf430ea-3393-4296-aea8-d5934c8cb668" TYPE="swap" PARTUUID="8ccda7d4-03"
+/dev/sda5: UUID="608ae5c8-2c2d-42dc-9854-0412707febcf" TYPE="xfs" PARTUUID="8ccda7d4-05"
+/dev/sda6: UUID="b55febc3-7a99-4fe5-b027-00ae770bebf1" TYPE="xfs" PARTUUID="8ccda7d4-06"
+/dev/sda7: UUID="4005568c-d3b6-4742-a48d-7ba8cee133e8" TYPE="ext4" PARTUUID="8ccda7d4-07"
+/dev/sda8: UUID="9265a95a-1fc0-49b0-afe0-35324bccadf2" TYPE="xfs" PARTUUID="8ccda7d4-08"
+[root@localhost ~]# vim /etc/fstab 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# systemctl daemon-reload l
+Too many arguments.
+[root@localhost ~]# systemctl daemon-reload 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# df  -th 
+df: no file systems processed
+[root@localhost ~]# df  -Th 
+Filesystem     Type      Size  Used Avail Use% Mounted on
+devtmpfs       devtmpfs  1.9G     0  1.9G   0% /dev
+tmpfs          tmpfs     1.9G     0  1.9G   0% /dev/shm
+tmpfs          tmpfs     1.9G   10M  1.9G   1% /run
+tmpfs          tmpfs     1.9G     0  1.9G   0% /sys/fs/cgroup
+/dev/sda2      xfs        15G  3.9G   11G  27% /
+/dev/sda1      xfs       994M  165M  830M  17% /boot
+tmpfs          tmpfs     376M   16K  376M   1% /run/user/42
+tmpfs          tmpfs     376M  3.5M  373M   1% /run/user/0
+/dev/sda5      xfs       2.0G  283M  1.8G  14% /storage
+/dev/sda6      xfs      1014M   69M  946M   7% /data
+/dev/sda7      ext4      477M   28M  420M   7% /movie
+/dev/sda8      xfs       8.9G   96M  8.8G   2% /newdata
+[root@localhost ~]# 
+
+
+
+
+
+
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# fdisk -l 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@localhost ~]# fdisk -l 
+Disk /dev/sda: 30 GiB, 32212254720 bytes, 62914560 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x8ccda7d4
+
+Device     Boot    Start      End  Sectors  Size Id Type
+/dev/sda1  *        2048  2050047  2048000 1000M 83 Linux
+/dev/sda2        2050048 32770047 30720000 14.7G 83 Linux
+/dev/sda3       32770048 36964351  4194304    2G 82 Linux swap / Solaris
+/dev/sda4       36964352 62914559 25950208 12.4G  5 Extended
+/dev/sda5       36966400 41160703  4194304    2G 83 Linux
+/dev/sda6       41162752 43259903  2097152    1G 83 Linux
+/dev/sda7       43261952 44285951  1024000  500M 83 Linux
+/dev/sda8       44288000 62914559 18626560  8.9G 83 Linux
+
+
+
+
+Disk /dev/sdb: 5 GiB, 5368709120 bytes, 10485760 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# fdisk -l  /dev/sdb 
+Disk /dev/sdb: 5 GiB, 5368709120 bytes, 10485760 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# parted    /dev/sdb  print
+Error: /dev/sdb: unrecognised disk label
+Model: ATA VMware Virtual S (scsi)                                        
+Disk /dev/sdb: 5369MB
+Sector size (logical/physical): 512B/512B
+Partition Table: unknown
+Disk Flags: 
+[root@localhost ~]# 
+
+
+
+
+
+
+
+
+
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# mkfs.xfs  /dev/sdb
+meta-data=/dev/sdb               isize=512    agcount=4, agsize=327680 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=0
+         =                       reflink=1
+data     =                       bsize=4096   blocks=1310720, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+log      =internal log           bsize=4096   blocks=2560, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+[root@localhost ~]# 
+[root@localhost ~]# mkdir  /common 
+[root@localhost ~]# 
+[root@localhost ~]# mount  /dev/sdb  /common
+[root@localhost ~]# lsblk 
+
+
+
+
+
+
+
+[root@localhost ~]# lsblk 
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda      8:0    0   30G  0 disk 
++-sda1   8:1    0 1000M  0 part /boot
++-sda2   8:2    0 14.7G  0 part /
++-sda3   8:3    0    2G  0 part [SWAP]
++-sda4   8:4    0    1K  0 part 
++-sda5   8:5    0    2G  0 part /storage
++-sda6   8:6    0    1G  0 part /data
++-sda7   8:7    0  500M  0 part /movie
++-sda8   8:8    0  8.9G  0 part /newdata
+sdb      8:16   0    5G  0 disk /common
+sr0     11:0    1 1024M  0 rom  
+[root@localhost ~]# 
+
+
+
+
+
+
+
+
+
+
+
+
+[root@localhost ~]# lsblk 
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda      8:0    0   30G  0 disk 
++-sda1   8:1    0 1000M  0 part /boot
++-sda2   8:2    0 14.7G  0 part /
++-sda3   8:3    0    2G  0 part [SWAP]
++-sda4   8:4    0    1K  0 part 
++-sda5   8:5    0    2G  0 part /storage
++-sda6   8:6    0    1G  0 part /data
++-sda7   8:7    0  500M  0 part /movie
++-sda8   8:8    0  8.9G  0 part /newdata
+sdb      8:16   0    5G  0 disk /common
+sdc      8:32   0    5G  0 disk 
+sr0     11:0    1 1024M  0 rom  
+[root@localhost ~]# 
+
+
+
+
+
+
+
+
+
+
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# fdisk  /dev/sdc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@localhost ~]# fdisk  /dev/sdc
+
+Welcome to fdisk (util-linux 2.32.1).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+Device does not contain a recognized partition table.
+Created a new DOS disklabel with disk identifier 0xec7704f5.
+
+Command (m for help): n
+Partition type
+   p   primary (0 primary, 0 extended, 4 free)
+   e   extended (container for logical partitions)
+Select (default p): p
+Partition number (1-4, default 1): 1
+First sector (2048-10485759, default 2048): 
+Last sector, +sectors or +size{K,M,G,T,P} (2048-10485759, default 10485759): +2G
+
+Created a new partition 1 of type 'Linux' and of size 2 GiB.
+
+Command (m for help): p
+Disk /dev/sdc: 5 GiB, 5368709120 bytes, 10485760 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xec7704f5
+
+Device     Boot Start     End Sectors Size Id Type
+/dev/sdc1        2048 4196351 4194304   2G 83 Linux
+
+Command (m for help): F  
+Unpartitioned space /dev/sdc: 3 GiB, 3220176896 bytes, 6289408 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+
+  Start      End Sectors Size
+4196352 10485759 6289408   3G
+
+Command (m for help): n
+Partition type
+   p   primary (1 primary, 0 extended, 3 free)
+   e   extended (container for logical partitions)
+Select (default p): p
+Partition number (2-4, default 2): 2
+First sector (4196352-10485759, default 4196352): 
+Last sector, +sectors or +size{K,M,G,T,P} (4196352-10485759, default 10485759): +3G
+Value out of range.
+Last sector, +sectors or +size{K,M,G,T,P} (4196352-10485759, default 10485759): 
+
+Created a new partition 2 of type 'Linux' and of size 3 GiB.
+
+Command (m for help): p
+Disk /dev/sdc: 5 GiB, 5368709120 bytes, 10485760 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xec7704f5
+
+Device     Boot   Start      End Sectors Size Id Type
+/dev/sdc1          2048  4196351 4194304   2G 83 Linux
+/dev/sdc2       4196352 10485759 6289408   3G 83 Linux
+
+Command (m for help): F
+Unpartitioned space /dev/sdc: 0 B, 0 bytes, 0 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+
+Command (m for help): n
+All space for primary partitions is in use.
+
+Command (m for help): w
+The partition table has been altered.
+Calling ioctl() to re-read partition table.
+Syncing disks.
+
+[root@localhost ~]# 
+[root@localhost ~]# partprobe  /dev/sdc
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@localhost ~]# lsblk 
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda      8:0    0   30G  0 disk 
++-sda1   8:1    0 1000M  0 part /boot
++-sda2   8:2    0 14.7G  0 part /
++-sda3   8:3    0    2G  0 part [SWAP]
++-sda4   8:4    0    1K  0 part 
++-sda5   8:5    0    2G  0 part /storage
++-sda6   8:6    0    1G  0 part /data
++-sda7   8:7    0  500M  0 part /movie
++-sda8   8:8    0  8.9G  0 part /newdata
+sdb      8:16   0    5G  0 disk /common
+sdc      8:32   0    5G  0 disk 
++-sdc1   8:33   0    2G  0 part 
++-sdc2   8:34   0    3G  0 part 
+sdd      8:48   0    5G  0 disk 
+sr0     11:0    1 1024M  0 rom  
+[root@localhost ~]# 
+
+
+
+
+
+
+
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda      8:0    0   30G  0 disk 
++-sda1   8:1    0 1000M  0 part /boot
++-sda2   8:2    0 14.7G  0 part /
++-sda3   8:3    0    2G  0 part [SWAP]
++-sda4   8:4    0    1K  0 part 
++-sda5   8:5    0    2G  0 part /storage
++-sda6   8:6    0    1G  0 part /data
++-sda7   8:7    0  500M  0 part /movie
++-sda8   8:8    0  8.9G  0 part /newdata
+sdb      8:16   0    5G  0 disk /common
+sdc      8:32   0    5G  0 disk 
++-sdc1   8:33   0    2G  0 part 
++-sdc2   8:34   0    3G  0 part 
+sdd      8:48   0    5G  0 disk 
+sr0     11:0    1 1024M  0 rom  
+[root@localhost ~]# 
+
+
+
+
+
+
+[root@localhost ~]# fdisk -l  /dev/sdd
+Disk /dev/sdd: 5 GiB, 5368709120 bytes, 10485760 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# fdisk  /dev/sdd
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@localhost ~]# fdisk  /dev/sdd
+
+Welcome to fdisk (util-linux 2.32.1).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+Device does not contain a recognized partition table.
+Created a new DOS disklabel with disk identifier 0xf1a79215.
+
+Command (m for help): n
+Partition type
+   p   primary (0 primary, 0 extended, 4 free)
+   e   extended (container for logical partitions)
+Select (default p): p
+Partition number (1-4, default 1): 1
+First sector (2048-10485759, default 2048): 
+Last sector, +sectors or +size{K,M,G,T,P} (2048-10485759, default 10485759): +500M
+
+Created a new partition 1 of type 'Linux' and of size 500 MiB.
+
+Command (m for help): p
+Disk /dev/sdd: 5 GiB, 5368709120 bytes, 10485760 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xf1a79215
+
+Device     Boot Start     End Sectors  Size Id Type
+/dev/sdd1        2048 1026047 1024000  500M 83 Linux
+
+Command (m for help): n
+Partition type
+   p   primary (1 primary, 0 extended, 3 free)
+   e   extended (container for logical partitions)
+Select (default p): p
+Partition number (2-4, default 2): 2
+First sector (1026048-10485759, default 1026048): 
+Last sector, +sectors or +size{K,M,G,T,P} (1026048-10485759, default 10485759): +200M
+
+Created a new partition 2 of type 'Linux' and of size 200 MiB.
+
+Command (m for help): p
+Disk /dev/sdd: 5 GiB, 5368709120 bytes, 10485760 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xf1a79215
+
+Device     Boot   Start     End Sectors  Size Id Type
+/dev/sdd1          2048 1026047 1024000  500M 83 Linux
+/dev/sdd2       1026048 1435647  409600  200M 83 Linux
+
+Command (m for help): n
+Partition type
+   p   primary (2 primary, 0 extended, 2 free)
+   e   extended (container for logical partitions)
+Select (default p): p
+Partition number (3,4, default 3): 3
+First sector (1435648-10485759, default 1435648): 
+Last sector, +sectors or +size{K,M,G,T,P} (1435648-10485759, default 10485759): +1G
+
+Created a new partition 3 of type 'Linux' and of size 1 GiB.
+
+Command (m for help): p
+Disk /dev/sdd: 5 GiB, 5368709120 bytes, 10485760 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xf1a79215
+
+Device     Boot   Start     End Sectors  Size Id Type
+/dev/sdd1          2048 1026047 1024000  500M 83 Linux
+/dev/sdd2       1026048 1435647  409600  200M 83 Linux
+/dev/sdd3       1435648 3532799 2097152    1G 83 Linux
+
+Command (m for help): n
+Partition type
+   p   primary (3 primary, 0 extended, 1 free)
+   e   extended (container for logical partitions)
+Select (default e): e
+
+Selected partition 4
+First sector (3532800-10485759, default 3532800): 
+Last sector, +sectors or +size{K,M,G,T,P} (3532800-10485759, default 10485759): 
+
+Created a new partition 4 of type 'Extended' and of size 3.3 GiB.
+
+Command (m for help): 
+
+
+Command (m for help): p
+
+Disk /dev/sdd: 5 GiB, 5368709120 bytes, 10485760 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xf1a79215
+
+Device     Boot   Start      End Sectors  Size Id Type
+/dev/sdd1          2048  1026047 1024000  500M 83 Linux
+/dev/sdd2       1026048  1435647  409600  200M 83 Linux
+/dev/sdd3       1435648  3532799 2097152    1G 83 Linux
+/dev/sdd4       3532800 10485759 6952960  3.3G  5 Extended
+
+Command (m for help): n
+All primary partitions are in use.
+Adding logical partition 5
+First sector (3534848-10485759, default 3534848): 
+Last sector, +sectors or +size{K,M,G,T,P} (3534848-10485759, default 10485759): +500M
+
+Created a new partition 5 of type 'Linux' and of size 500 MiB.
+
+Command (m for help): p
+Disk /dev/sdd: 5 GiB, 5368709120 bytes, 10485760 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xf1a79215
+
+Device     Boot   Start      End Sectors  Size Id Type
+/dev/sdd1          2048  1026047 1024000  500M 83 Linux
+/dev/sdd2       1026048  1435647  409600  200M 83 Linux
+/dev/sdd3       1435648  3532799 2097152    1G 83 Linux
+/dev/sdd4       3532800 10485759 6952960  3.3G  5 Extended
+/dev/sdd5       3534848  4558847 1024000  500M 83 Linux
+
+Command (m for help): n
+All primary partitions are in use.
+Adding logical partition 6
+First sector (4560896-10485759, default 4560896): 
+Last sector, +sectors or +size{K,M,G,T,P} (4560896-10485759, default 10485759): 
+
+Created a new partition 6 of type 'Linux' and of size 2.8 GiB.
+
+Command (m for help): F
+Unpartitioned space /dev/sdd: 0 B, 0 bytes, 0 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+
+Command (m for help): p
+Disk /dev/sdd: 5 GiB, 5368709120 bytes, 10485760 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xf1a79215
+
+Device     Boot   Start      End Sectors  Size Id Type
+/dev/sdd1          2048  1026047 1024000  500M 83 Linux
+/dev/sdd2       1026048  1435647  409600  200M 83 Linux
+/dev/sdd3       1435648  3532799 2097152    1G 83 Linux
+/dev/sdd4       3532800 10485759 6952960  3.3G  5 Extended
+/dev/sdd5       3534848  4558847 1024000  500M 83 Linux
+/dev/sdd6       4560896 10485759 5924864  2.8G 83 Linux
+
+Command (m for help): 
+
+
+Command (m for help): 
+
+
+Command (m for help): 
+
+
+Command (m for help): 
+
+
+Command (m for help): 
+
+
+Command (m for help): 
+
+
+Command (m for help): 
+
+
+Command (m for help): w
+
+The partition table has been altered.
+Calling ioctl() to re-read partition table.
+Syncing disks.
+
+[root@localhost ~]# partprobe   /dev/vdd
+Error: Could not stat device /dev/vdd - No such file or directory.
+[root@localhost ~]# partprobe   /dev/sdd
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+

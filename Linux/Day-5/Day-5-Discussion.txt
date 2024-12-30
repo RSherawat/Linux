@@ -1,0 +1,282 @@
+================================================
+        Day-5 Session
+
+     Linux basic Commands
+================================================
+Day-4 Discussions
+================================================
+touch             ==> to create any blank file on any place
+mkdir             ==> to create directory
+mkdir -p          ==> to created nested directory
+ls                ==> to check data listing
+cd                ==> to go into any directory
+pwd               ==> to check my present working directory
+cd <direcotyname> ==> we are trying to enter into this directory
+cd  ..            ==> to go one one parent directory
+cd  ../..         ==> to go on two level back directory
+cd  -             ==> to go on my last working directory
+cd  .             ==> it repesent my current directory
+tree              ==> to check data listing in tree formats
+ls  -R            ==> to check entire data listing
+cd ~ or cd or cd /root ==> meaning same ==> to move in my home account 
+cd  /             ==> to go on linux parent directory
+echo              ==> to print mesg
+$                 ==> to call any value of any variables 
+$()               ==> to print output of any linux based commands
+
+/                 ==> parent directory
+/root             ==> root's home directory
+root              ==> super username 
+deepak            ==> normal username
+/home/deepak      ==> normal user's home directory
+================================================
+
+Black Color  ==> File 
+Blue         ==> Directory
+===============================================
+
+File  <====>  File
+Folder  <===> Directory
+
+===============================================
+How we can read the content of any file.
+
+#  cat  <options>   <file-location or filenam>
+
+cat   ==> 
+tac   ==> 
+==============================================
+
+/etc/passwd 
+/etc/crontab  ==> system defined File 
+
+============================================== 
+
+echo  ==> use to print any mesg
+
+==============================================
+
+wc ==> word count  ==> it is use to count number of lines,number of charcters and number of words from any file.
+
+#  wc   <options>    <filename>
+
+============================================== 
+
+Symbols ?
+
+1-  ;     ==> semicolon     ==> to run more then one command at a time in sequencing order 
+
+2-  |     ==> pipe Symbol   ==> to join multiple command to get any custmomised output.
+
+
+==============================================
+
+>     ==> to store output of any command or file into any file on any location 
+
+
+>>    ==> use to append something into same file without data overwrite
+
+==============================================
+=============================================
+Day-5 Notes
+=============================================
+
+
+
+
+    1  ls
+    2  ls  /
+    3  cat  /etc/crontab 
+    4  cat  /etc/passwd 
+    5  useradd  user1
+    6  useradd  user2
+    7  useradd  user3
+    8  useradd  user4
+    9  useradd  user5
+   10  ls /home 
+   11  cat  /etc/passwd
+   12  cat -n  /etc/crontab 
+   13  cat -b  /etc/crontab 
+   14  cat  /etc/passwd
+   15  cat  -n /etc/passwd
+   16  cat  /etc/crontab 
+   17  tac   /etc/crontab 
+   18  cat  /etc/crontab   /etc/passwd 
+   19  sh
+   20  ls
+   21  cat anaconda-ks.cfg 
+   22  cat initial-setup-ks.cfg 
+   23  cat anaconda-ks.cfg 
+   24  pwd
+   25  cat  /root/anaconda-ks.cfg 
+   26  ls
+   27  cat  ~/anaconda-ks.cfg 
+   28  echo 
+   29  echo  hello
+   30  echo  hello krishna  how are you  ?
+   31  wc  /etc/passwd  
+   32  wc  /etc/group 
+   33  wc  -l  /etc/passwd  
+   34  wc  -w  /etc/passwd  
+   35  wc  -c   /etc/passwd  
+   36  wc  -l  -c     /etc/passwd  
+   37  cat  -n  /etc/passwd
+   38  wc -l   /etc/passwd
+   48  date  
+   49  cal 
+   50  date cal 
+   51  date ; cal 
+   52  date ; echo  hello ; cal 
+   53  mkdir  /data  ; touch  /data/abc  
+   54  ls /data
+   55  useradd  soniya  ;  passwd soniya  
+   56  systemctl restart crond ; systemctl enable crond 
+   57  dates ; echo  hello ; cal 
+   58  lsblk 
+   59  lsblk | wc -l 
+   60  lsblk | head -n 2
+   61  lsblk 
+   62  lsblk | head -n 2
+   63  lsblk | head -n 2 | cat -n 
+   64  lsblk 
+   65  lsblk -f 
+   66  lsblk -f -s 
+   67  history 
+   68  lsblk -f -s | cat -n 
+   69  lsblk -f -s | cat -n  | head -n 2
+   70  lsblk 
+   71  lsblk  | cat 
+   72  lsblk  | head -n 5
+   73  lsblk  | head -n 5 | cat -n 
+   74  lsblk  | head -n 5 | wc -l 
+   75  who 
+   76  who | wc -l 
+   77  lsblk 
+   78  lsblk  | wc -l 
+   79  lscpu 
+   80  lscpu  | cat  -n 
+   81  lscpu  | cat  -n  | head  -n 3
+   82  lscpu  | head  -n 3
+   83  lscpu  | head  -n 3 | cat -n 
+   84  cat  /etc/crontab 
+   85  wc  -l  /etc/passwd
+   86  head -n 2  /etc/passwd
+   87  lsblk | cat -n 
+   88  lsblk | head -n 2
+   89  lsblk | wc  -l 
+   90  ls 
+   91  ls  | wc -l 
+   92  cat  /etc/passwd | head -n 5
+   93  cat  /etc/passwd | wc -l 
+   94  cat  /etc/passwd | cat 
+   95  lsblk 
+   96  lsblk  | cat 
+   97  lsblk  | cat -n
+   98  mkdir  /linux ;  touch  /linux/abc  
+   99  ls  /linux
+  100  lsblk 
+  101  ls /
+  102  lsblk >  /report  
+  103  ls /
+  104  cat /report 
+  105  date >>  /report 
+  106  ls /
+  107  cat  /report 
+  108  echo this is my last final report >>  /report 
+  109  cat  /report 
+  110  cat  /report > /backup 
+  111  ls /
+  112  cat  /report 
+  113  cat  /backup 
+  114  echo  >  /report 
+  115  cat  /report 
+  116  > /report 
+  117  cat /report 
+  118  ls  /
+  119  rm  -f  /report 
+  120  ls /
+  121  cat /backup
+  122  ls /
+  123  echo  "hello team-1"  >  /test-1  
+  124  ls /
+  125  cat  /test-1 
+  126  echo  "hello team-2"  >  /test-2  
+  127  ls /
+  128  cat  /test-1
+  129  cat  /test-2
+  130  cat  /test-1   /test-2 
+  131  cat  /test-1   /test-2   >  /new-backup 
+  132  ls /
+  133  cat  /new-backup 
+  134  echo  "hello team-3" > /test-3
+  135  cat  /test-3
+  136  cat  /test-3  >>  /new-backup
+  137  cat  /new-backup
+  138  >  /test-1
+  139  >  /test-2
+  140  >  /test-3
+  141  cat  /test-1
+  142  cat  /test-2
+  143  cat  /test-3
+  144  ls /
+  145  rm -f  /test-1   /test-2  /test-3  
+  146  ls  /
+  147  lsblk | head  -n 2  
+  148  lsblk | head  -n 2   | cat -n 
+  149  lsblk | head  -n 2   | cat -n  >  /disk-info 
+  150  cat  /disk-info 
+  151  lscpu | cat -n | head -n 5
+  152  lscpu | cat -n | head -n 5 >>  /disk-info 
+  153  cat  /disk-info 
+  154  lscpu | cat -n | head -n 5
+  155  lsblk | head  -n 2   | cat -n 
+  156  lscpu | cat -n | head -n 5 ; lsblk | head  -n 2   | cat -n
+  157  lscpu | cat -n | head -n 5 > /my-info  ; lsblk | head  -n 2   | cat -n >> /my-info
+  158  cat /my-info 
+  159   
+  160  date 
+  161  cal
+  162  date  ; cal
+  163  date  ; cal  >  /personal  
+  164  cat  /personal 
+  165  date  > /personal ; cal  >>  /personal  
+  166  cat  /personal 
+  167  lsblk 
+  168  lsblk  | tee   /my-new-file  
+  169  ls /
+  170  cat  /my-new-file 
+  171  lscpu | head  -n 3  | tee  -a  /my-new-file 
+  172  cat /my-new-file 
+  173  echo  hello india |  tee  -a  /my-new-file 
+  174  cat  /my-new-file 
+  175  cat /etc/crontab 
+  176  cat < /etc/crontab 
+  177  cat  /etc/crontab 
+  178  cat  < /etc/crontab >  /KR
+  179  cat  /KR
+  180  cat > my-file 
+  181  ls
+  182  cat  my-file 
+  183  cat >> my-file 
+  184  cat  my-file 
+  185  cat 
+  186  history 
+  187  ls
+  188  rm my-file 
+  189  ls
+  190  rm -f  my-file 
+================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+

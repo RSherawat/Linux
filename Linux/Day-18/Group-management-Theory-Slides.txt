@@ -1,0 +1,89 @@
+==================================================
+
+  Group Management
+      OR
+  How we can add any users in one or more groups ?
+             remove
+
+==================================================
+
+# groupadd  <options>  <groupname>
+# groupmod  <options>  <groupname>
+# groupdel  <options>  <groupname>
+========================
+# groupadd  networking   ==>  /etc/group    networking:x:1050:
+========================
+# useradd sachin   
+==> /etc/passwd    ==> sachin:x:1005:1005::/home/sachin/bin/bash
+==> /etc/group     ==> sachin:x:1005:
+
+========================
+
+========================
+Groups ==> there are two concepts to assign any user into any group .
+1- Primary group membership concept
+2- Secondary group membership concept
+========================
+1- Users are assigned to groups.
+
+2- Every group is assigned a unique Group ID Number (GID).
+
+3- Group’s Names and GIDs are stored in /etc/group file.
+
+4- Each users is given their own private group.
+
+5- By default the groupname is same as their usernames.
+   For example user Krishna is a member of group Krishna
+    and by default, is the only member of that group.
+
+=================================
+
+1- Users can be added to other groups for additional access.
+2- All users in a group can share files that belong to the group.
+3- Primary and Secondary Group
+4- A user’s primary group is defined in the /etc/passswd file.
+
+5- A user’s secondary groups are defined in the /etc/group file.
+
+6- The primary group is important because files created by this user
+   will inherit that group affiliation.
+
+==================================
+
+1-  one user can have min or max one
+    primary group membership .
+
+
+2- secondary can be more then one.
+
+
+3-  -g   option use to give primary membership 
+4-  -G   option use to give secondary memership 
+    next time if we are adding same user in different group we need add with -a options. 
+
+5-  A group can not be directlly  deleted if it have any one primary memebrs.
+    but it is possible in case of secondary.
+
+6- one user always shoud have one UID and ONE primary GID.
+
+===========================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

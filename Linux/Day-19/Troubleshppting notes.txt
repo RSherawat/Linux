@@ -1,0 +1,227 @@
+================================================
+Task-1
+
+[root@localhost ~]# history 
+    1  history 
+    2  cat  /etc/redhat-release 
+    3  uname -r  
+    4  hostname
+    5  uname -a 
+    6  ls /boot
+    7  rm -rf  /boot/vmlinuz-4.18.0-80.el8.x86_64 
+    8  history 
+    9  reboot
+   10  ls  /
+   11  ls  /boot
+   12  lsblk 
+   13  mount   /dev/sr0   /mnt
+   14  ls  /mnt  
+   15  find  /mnt   -name   "kernel*"
+   16  rpm -ivh  /mnt/BaseOS/Packages/kernel-4.18.0-80.el8.x86_64.rpm
+   17  rpm -ivh  /mnt/BaseOS/Packages/kernel-4.18.0-80.el8.x86_64.rpm  --force 
+   18  rpm -ivh  /mnt/BaseOS/Packages/kernel-core-4.18.0-80.el8.x86_64.rpm --force
+   19  grub2-mkconfig  -o  /boot/grub2/grub.cfg 
+   20  ls /boot 
+   21  history 
+   22  reboot
+
+================================================
+Task-2
+
+[root@localhost ~]# rm -rf  /boot/initramfs-4.18.0-80.el8.x86_64.img 
+[root@localhost ~]# reboot
+   30  cd /boot 
+   31  mkinitrd   initramfs-$(uname -r).img   $(uname -r) 
+   32  ls
+   33  cd
+   34  grub2-mkconfig -o   /boot/grub2/grub.cfg 
+   35  history 
+   36  reboot
+
+
+
+
+=============================
+
+task-3
+
+power on firmware  ==>   +   ==> set boot device cd/dvd
+
+F10  ==> save
+
+
+Troubleshooting  ==> Rescue
+    OR
+ESC   ==> boot  ===>  :linux rescue
+
+
+
+
+
+==============================
+Task-4
+
+
+[root@localhost ~]# rm -rf /boot/grub2
+[root@localhost ~]# rm -rf /boot/vmlinuz-4.18.0-80.el8.x86_64 
+[root@localhost ~]# rm -rf /boot/initramfs-4.18.0-80.el8.x86_64.img 
+[root@localhost ~]# 
+
+
+
+
+
+============
+Ctrl+D error
+============
+
+[root@localhost ~]# lsblk 
+NAME          MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda             8:0    0   30G  0 disk 
+├─sda1          8:1    0    1G  0 part /boot
+└─sda2          8:2    0   29G  0 part 
+  ├─rhel-root 253:0    0   26G  0 lvm  /
+  └─rhel-swap 253:1    0    3G  0 lvm  [SWAP]
+sdb             8:16   0    5G  0 disk 
+sr0            11:0    1 1024M  0 rom  
+[root@localhost ~]# 
+[root@localhost ~]# fdisk  /dev/sdb 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@localhost ~]# fdisk  /dev/sdb 
+
+Welcome to fdisk (util-linux 2.32.1).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+Device does not contain a recognized partition table.
+Created a new DOS disklabel with disk identifier 0x68e29b0a.
+
+Command (m for help): n
+Partition type
+   p   primary (0 primary, 0 extended, 4 free)
+   e   extended (container for logical partitions)
+Select (default p): p
+Partition number (1-4, default 1): 1
+First sector (2048-10485759, default 2048): 
+Last sector, +sectors or +size{K,M,G,T,P} (2048-10485759, default 10485759): +2G 
+
+Created a new partition 1 of type 'Linux' and of size 2 GiB.
+
+Command (m for help): t
+Selected partition 1
+Hex code (type L to list all codes): 8e
+Changed type of partition 'Linux' to 'Linux LVM'.
+
+Command (m for help): p
+Disk /dev/sdb: 5 GiB, 5368709120 bytes, 10485760 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x68e29b0a
+
+Device     Boot Start     End Sectors Size Id Type
+/dev/sdb1        2048 4196351 4194304   2G 8e Linux LVM
+
+Command (m for help): w
+The partition table has been altered.
+Calling ioctl() to re-read partition table.
+Syncing disks.
+
+[root@localhost ~]# 
+[root@localhost ~]# partprobe   /dev/sdb  
+[root@localhost ~]# 
+[root@localhost ~]# pvcreate  /dev/sdb1
+  Physical volume "/dev/sdb1" successfully created.
+[root@localhost ~]# 
+[root@localhost ~]# vgcreate  myvg1  /dev/sdb1  
+  Volume group "myvg1" successfully created
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# lvcreate  -L  +1G -n  mylv1    /dev/myvg1   
+  Logical volume "mylv1" created.
+[root@localhost ~]# mkfs.xfs  /dev/myvg1/mylv1 
+meta-data=/dev/myvg1/mylv1       isize=512    agcount=4, agsize=65536 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=0
+         =                       reflink=1
+data     =                       bsize=4096   blocks=262144, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+log      =internal log           bsize=4096   blocks=2560, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+[root@localhost ~]# 
+[root@localhost ~]# mkdir /data
+[root@localhost ~]# 
+[root@localhost ~]# mount  /dev/myvg1/mylv1 /data
+[root@localhost ~]# 
+[root@localhost ~]# lvs
+  LV    VG    Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  mylv1 myvg1 -wi-ao----   1.00g                                                    
+  root  rhel  -wi-ao---- <26.00g                                                    
+  swap  rhel  -wi-ao----   3.00g                                                    
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# vim  /etc/fstab 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# systemctl daemon-reload 
+[root@localhost ~]# 
+[root@localhost ~]# reboot
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# umount  /data
+[root@localhost ~]# 
+[root@localhost ~]# lvremove   /dev/myvg1/mylv1 
+Do you really want to remove active logical volume myvg1/mylv1? [y/n]: y
+  Logical volume "mylv1" successfully removed
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# reboot   
+
+  67  lvremove   /dev/myvg1/mylv1 
+   68  reboot   
+   69  lsblk 
+   70  vgcfgrestore  -l  myvg1
+   71  vgcfgrestore -f /etc/lvm/archive/myvg1_00002-750901833.vg   myvg1  
+   72  lvs
+   73  lvchange -ay   /dev/myvg1/mylv1 
+   74  lvs
+   75  vim  /etc/fstab 
+   76  systemctl daemon-reload 
+   77  lvs
+   78  mount  /dev/myvg1/mylv1  /data
+   79  lvs
+   80  history 
+
+
+==============
+Single user mode
+Grub password
+fstab 
+Storage ==
+targets
+Runlevel
+Service=> systemctl
+login ==>
+=============
+

@@ -1,0 +1,519 @@
+======================================
+
+    Chattr  [  change attributes ]
+
+======================================
+
+chattr basically use to apply very high level permissions on any file and directory.
+
+chattr also will applicable on super user account plus normal user account.
+
+chattr basically restirct the direct and indirect attack into any area.
+
+======================================
+# lsattr   ==> information get
+
+# chattr   ==> apply or remove
+======================================
+operator  ==>   +   ==> apply
+          ==>   -   ==> remove
+
+
+Attributes  ==> a ==> allow only read,copy and append but not edit,delete,modify,rename,move,link..so on
+            ==> i ==> allow only read and copy only but not append also.
+
+=====================================
+
+[root@localhost ~]# 
+[root@localhost ~]# mkdir  /redhat-linux 
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld /redhat-linux
+drwxr-xr-x. 2 root root 6 Dec 11 13:26 /redhat-linux
+[root@localhost ~]# 
+[root@localhost ~]# chmod 000  /redhat-linux
+[root@localhost ~]# 
+[root@localhost ~]# ls -ld /redhat-linux
+d---------. 2 root root 6 Dec 11 13:26 /redhat-linux
+[root@localhost ~]# 
+[root@localhost ~]# touch  /redhat-linux/abc
+[root@localhost ~]# 
+[root@localhost ~]# ls /redhat-linux
+abc
+[root@localhost ~]# 
+[root@localhost ~]# rm -rf  /redhat-linux
+[root@localhost ~]# 
+[root@localhost ~]# 
+
+
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+
+
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# echo  hello india  > xyz  
+[root@localhost ~]# 
+[root@localhost ~]# cat xyz 
+hello india
+[root@localhost ~]# 
+[root@localhost ~]# ll xyz 
+-rw-r--r--. 1 root root 12 Dec 11 13:36 xyz
+[root@localhost ~]# 
+[root@localhost ~]# lsattr xyz 
+------------------ xyz
+[root@localhost ~]# 
+[root@localhost ~]# chattr  +a  xyz 
+
+
+
+
+
+
+
+
+[root@localhost ~]# chattr  +a  xyz 
+[root@localhost ~]# 
+[root@localhost ~]# lsattr xyz 
+-----a------------ xyz
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# cat xyz 
+hello india
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# mkdir  /red
+[root@localhost ~]# 
+[root@localhost ~]# cp xyz  /red
+[root@localhost ~]# 
+[root@localhost ~]# ls /red
+xyz
+[root@localhost ~]# mkdir /red2
+[root@localhost ~]# 
+[root@localhost ~]# mv xyz  /red2
+mv: cannot move 'xyz' to '/red2/xyz': Operation not permitted
+[root@localhost ~]# 
+
+
+
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# ls
+anaconda-ks.cfg  Documents  initial-setup-ks.cfg  Pictures  Templates  xyz
+Desktop          Downloads  Music                 Public    Videos
+[root@localhost ~]# 
+[root@localhost ~]# mv xyz  newxyz  
+mv: cannot move 'xyz' to 'newxyz': Operation not permitted
+[root@localhost ~]# 
+[root@localhost ~]# echo hello  > xyz  
+bash: xyz: Operation not permitted
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# echo hello  >> xyz  
+[root@localhost ~]# 
+[root@localhost ~]# cat xyz 
+hello india
+hello
+[root@localhost ~]# rm -rf xyz 
+
+
+
+[root@localhost ~]# 
+[root@localhost ~]# rm -rf xyz 
+rm: cannot remove 'xyz': Operation not permitted
+[root@localhost ~]# 
+[root@localhost ~]# lsattr xyz 
+-----a------------ xyz
+[root@localhost ~]# 
+[root@localhost ~]# chattr  -a xyz 
+[root@localhost ~]# 
+[root@localhost ~]# lsattr xyz 
+------------------ xyz
+[root@localhost ~]# 
+[root@localhost ~]# chattr +i xyz 
+
+
+
+
+
+
+
+
+
+[root@localhost ~]# chattr +i xyz 
+[root@localhost ~]# 
+[root@localhost ~]# lsattr xyz
+----i------------- xyz
+[root@localhost ~]# 
+[root@localhost ~]# cat xyz 
+hello india
+hello
+[root@localhost ~]# 
+[root@localhost ~]# cp xyz /red2
+[root@localhost ~]# 
+[root@localhost ~]# mv xyz /tmp 
+mv: overwrite '/tmp/xyz'? y
+mv: cannot move 'xyz' to '/tmp/xyz': Operation not permitted
+[root@localhost ~]# 
+[root@localhost ~]# rm -rf xyz 
+rm: cannot remove 'xyz': Operation not permitted
+[root@localhost ~]# 
+[root@localhost ~]# echo  hello > xyz 
+bash: xyz: Operation not permitted
+[root@localhost ~]# echo  hello >> xyz 
+bash: xyz: Operation not permitted
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# lsattr xyz 
+----i------------- xyz
+[root@localhost ~]# 
+[root@localhost ~]# chattr -i xyz 
+[root@localhost ~]# 
+[root@localhost ~]# lsattr xyz 
+------------------ xyz
+[root@localhost ~]# 
+[root@localhost ~]# 
+
+
+
+
+
+
+
+
+
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# lsattr  /etc/passwd
+------------------ /etc/passwd
+[root@localhost ~]# 
+[root@localhost ~]# useradd ram
+[root@localhost ~]# 
+[root@localhost ~]# userdel -rf   ram
+[root@localhost ~]# 
+[root@localhost ~]# chattr +i  /etc/passwd
+[root@localhost ~]# 
+[root@localhost ~]# lsattr  /etc/passwd
+----i------------- /etc/passwd
+[root@localhost ~]# 
+[root@localhost ~]# rm -rf /etc/passwd
+rm: cannot remove '/etc/passwd': Operation not permitted
+[root@localhost ~]# 
+
+
+
+
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# useradd ram 
+useradd: cannot open /etc/passwd
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# ls /home 
+alok    harry  i2  i6     krishna  rajeev  sarah   sunil  u2  user1  user5
+gaurav  i1     i5  kapil  natasha  rakesh  soniya  u1     u3  user2  user6
+[root@localhost ~]# 
+[root@localhost ~]# userdel soniya 
+userdel: cannot open /etc/passwd
+[root@localhost ~]# 
+[root@localhost ~]# chattr -i  /etc/passwd
+[root@localhost ~]# 
+[root@localhost ~]# userdel -rf  soniya 
+[root@localhost ~]# 
+[root@localhost ~]# useradd ram  
+[root@localhost ~]# 
+
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# passwd ram
+Changing password for user ram.
+New password: 
+BAD PASSWORD: The password is shorter than 8 characters
+Retype new password: 
+passwd: all authentication tokens updated successfully.
+[root@localhost ~]# 
+[root@localhost ~]# chattr +i /etc/shadow
+[root@localhost ~]# 
+[root@localhost ~]# passwd ram
+Changing password for user ram.
+New password: 
+BAD PASSWORD: The password is shorter than 8 characters
+Retype new password: 
+passwd: Authentication token manipulation error
+[root@localhost ~]# 
+
+
+
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# passwd 
+Changing password for user root.
+New password: 
+BAD PASSWORD: The password is shorter than 8 characters
+Retype new password: 
+passwd: Authentication token manipulation error
+[root@localhost ~]# 
+[root@localhost ~]# chattr -i /etc/shadow
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# su - ram
+[ram@localhost ~]$ 
+[ram@localhost ~]$ touch abc 
+[ram@localhost ~]$ ls
+abc
+[ram@localhost ~]$ exit
+logout
+[root@localhost ~]# chattr -R  +i  /home 
+
+
+[root@localhost ~]# chattr -R  +i  /home 
+[root@localhost ~]# 
+[root@localhost ~]# su - ram  
+[ram@localhost ~]$ 
+[ram@localhost ~]$ ls
+abc
+[ram@localhost ~]$ touch  abc1
+touch: setting times of 'abc1': No such file or directory
+[ram@localhost ~]$ mkdir dada
+mkdir: cannot create directory ‘dada’: Operation not permitted
+[ram@localhost ~]$ exit
+logout
+[root@localhost ~]# 
+[root@localhost ~]# chattr -R  -i  /home 
+[root@localhost ~]# 
+[root@localhost ~]# su - ram  
+[ram@localhost ~]$ 
+[ram@localhost ~]$ touch abc 
+[ram@localhost ~]$ ls
+abc
+[ram@localhost ~]$ mkdir data
+[ram@localhost ~]$ ls
+abc  data
+[ram@localhost ~]$ exit
+logout
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# useradd kapil  
+useradd: user 'kapil' already exists
+[root@localhost ~]# 
+[root@localhost ~]# su - kapil  
+[kapil@localhost ~]$ 
+[kapil@localhost ~]$ echo hello > abc 
+[kapil@localhost ~]$ 
+[kapil@localhost ~]$ cat abc  
+hello
+[kapil@localhost ~]$ lsattr abc  
+------------------ abc
+[kapil@localhost ~]$ 
+[kapil@localhost ~]$ chattr +i  abc  
+chattr: Operation not permitted while setting flags on abc
+[kapil@localhost ~]$ exit
+logout
+[root@localhost ~]# 
+
+
+
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# which chattr
+/usr/bin/chattr
+[root@localhost ~]# ls -l  /usr/bin/chattr
+-rwxr-xr-x. 1 root root 17528 Dec 17  2018 /usr/bin/chattr
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# chmod   u+s  /usr/bin/chattr 
+[root@localhost ~]# 
+[root@localhost ~]# ls -l  /usr/bin/chattr
+-rwsr-xr-x. 1 root root 17528 Dec 17  2018 /usr/bin/chattr
+[root@localhost ~]# 
+[root@localhost ~]# ls  /home 
+alok    harry  i2  i6     krishna  rajeev  ram    sunil  u2  user1  user5
+gaurav  i1     i5  kapil  natasha  rakesh  sarah  u1     u3  user2  user6
+[root@localhost ~]# 
+[root@localhost ~]# su -  kapil 
+
+
+[root@localhost ~]# su -  kapil 
+[kapil@localhost ~]$ 
+[kapil@localhost ~]$ ls
+abc
+[kapil@localhost ~]$ 
+[kapil@localhost ~]$ lsattr abc 
+------------------ abc
+[kapil@localhost ~]$ 
+[kapil@localhost ~]$ chattr +i abc 
+[kapil@localhost ~]$ 
+[kapil@localhost ~]$ lsattr abc 
+----i------------- abc
+[kapil@localhost ~]$ 
+[kapil@localhost ~]$ cat abc 
+hello
+[kapil@localhost ~]$ rm   -rf abc 
+rm: cannot remove 'abc': Operation not permitted
+[kapil@localhost ~]$ 
+[kapil@localhost ~]$ echo hello > abc 
+-bash: abc: Operation not permitted
+[kapil@localhost ~]$ echo hello >> abc 
+-bash: abc: Operation not permitted
+[kapil@localhost ~]$ exit
+logout
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# cat  /home/kapil/abc 
+hello
+[root@localhost ~]# 
+[root@localhost ~]# rm -rf   /home/kapil/abc 
+rm: cannot remove '/home/kapil/abc': Operation not permitted
+[root@localhost ~]# 
+[root@localhost ~]# lsattr   /home/kapil/abc 
+----i------------- /home/kapil/abc
+[root@localhost ~]# 
+[root@localhost ~]# chattr -i  /home/kapil/abc 
+[root@localhost ~]# 
+[root@localhost ~]# lsattr   /home/kapil/abc 
+------------------ /home/kapil/abc
+[root@localhost ~]# 
+[root@localhost ~]# rm -rf   /home/kapil/abc 
+[root@localhost ~]# 
+[root@localhost ~]# 
+
+
+
+
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# mkdir  /net-data
+[root@localhost ~]# 
+[root@localhost ~]# touch /net-data/abc1
+[root@localhost ~]# touch /net-data/abc2
+[root@localhost ~]# 
+[root@localhost ~]# chattr +i  /net-data
+[root@localhost ~]# 
+[root@localhost ~]# chattr +i  /net-data/abc1 
+[root@localhost ~]# chattr -i  /net-data
+[root@localhost ~]# 
+[root@localhost ~]# lsattr /net-data
+----i------------- /net-data/abc1
+------------------ /net-data/abc2
+[root@localhost ~]# 
+[root@localhost ~]# lsattr -d  /net-data
+------------------ /net-data
+[root@localhost ~]# 
+[root@localhost ~]# rm -rf /net-data
+rm: cannot remove '/net-data/abc1': Operation not permitted
+[root@localhost ~]# 
+[root@localhost ~]# lsattr -d /net-data
+[root@localhost ~]# lsattr -d /net-data
+------------------ /net-data
+[root@localhost ~]# 
+[root@localhost ~]# lsattr  /net-data
+----i------------- /net-data/abc1
+[root@localhost ~]# 
+[root@localhost ~]# chattr -i  /net-data/abc1 
+[root@localhost ~]# 
+[root@localhost ~]# lsattr  /net-data
+------------------ /net-data/abc1
+[root@localhost ~]# 
+[root@localhost ~]# touch  /net-data/abc2
+[root@localhost ~]# 
+[root@localhost ~]# lsattr  /net-data
+------------------ /net-data/abc1
+------------------ /net-data/abc2
+[root@localhost ~]# 
+[root@localhost ~]# lsattr -d  /net-data
+------------------ /net-data
+[root@localhost ~]# 
+[root@localhost ~]# chattr +i /net-data
+[root@localhost ~]# lsattr -d  /net-data
+----i------------- /net-data
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# rm -rf /net-data/abc1
+rm: cannot remove '/net-data/abc1': Operation not permitted
+[root@localhost ~]# rm -rf /net-data/abc2
+rm: cannot remove '/net-data/abc2': Operation not permitted
+[root@localhost ~]# 
+[root@localhost ~]# rm -rf /net-data
+rm: cannot remove '/net-data/abc1': Operation not permitted
+rm: cannot remove '/net-data/abc2': Operation not permitted
+[root@localhost ~]# 
+[root@localhost ~]# lsattr -d /net-data
+----i------------- /net-data
+[root@localhost ~]# 
+[root@localhost ~]# 
+[root@localhost ~]# chattr -i  /net-data
+[root@localhost ~]# lsattr -d /net-data
+------------------ /net-data
+[root@localhost ~]# 
+[root@localhost ~]# rm -rf /net-data/abc1
+[root@localhost ~]# rm -rf /net-data/abc2
+[root@localhost ~]# rm -rf /net-data
+[root@localhost ~]# 
+[root@localhost ~]# 
+
+
+
+
+
+
+
+
+
+
+=====================================

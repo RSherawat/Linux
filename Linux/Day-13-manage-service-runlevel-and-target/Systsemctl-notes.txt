@@ -1,0 +1,105 @@
+[root@station10 ~]# history 
+    1  pidof systemd
+    2  pidof init 
+    3  pstree
+    4  pstree |  grep crond  
+    5  pstree |  grep sshd
+    6  pidof crond
+    7  pidof sshd
+    8  systemctl status crond 
+    9  systemctl status sshd
+   10  systemctl is-active sshd
+   11  systemctl is-enabled  sshd
+   12  systemctl status sshd
+   13  systemctl status sshd.service 
+   14  systemctl stop sshd 
+   15  pidof sshd  
+   16  systemctl is-active sshd
+   17  systemctl is-enabled  sshd
+   18  systemctl status sshd
+   19  systemctl disable sshd
+   20  systemctl status sshd
+   21  systemctl start  httpd  
+   22  systemctl start  sshd
+   23  systemctl is-active sshd
+   24  systemctl is-enabled  sshd
+   25  systemctl status sshd
+   26  systemctl enable sshd 
+   27  systemctl is-active sshd
+   28  systemctl is-enabled sshd
+   29  systemctl is-active sshd crond 
+   30  systemctl is-enabled sshd crond 
+   31  ls /usr/lib/systemd/system
+   32  ls  /etc/systemd/system/multi-user.target.wants
+   33  ls  /etc/systemd/system/multi-user.target.wants | grep crond
+   34  ls /usr/lib/systemd/system |  grep crond 
+   35  systemctl stop crond
+   36  systemctl disable crond
+   37  ls /usr/lib/systemd/system |  grep crond 
+   38  ls  /etc/systemd/system/multi-user.target.wants | grep crond
+   39  systemctl start crond 
+   40  ls  /etc/systemd/system/multi-user.target.wants | grep crond
+   41  systemctl enable crond 
+   42  ls -l  /etc/systemd/system/multi-user.target.wants/crond.service
+   43  ls -l  /etc/systemd/system/multi-user.target.wants/sshd.service 
+   44  systemctl is-active crond sshd
+   45  systemctl is-enabled crond sshd
+   46  systemctl stop crond
+   47  systemctl disable crond
+   48  systemctl is-active crond
+   49  systemctl is-enabled  crond
+   50  systemctl start crond
+   51  systemctl enable  crond
+   52  pidof crond 
+   53  service start crond 
+   54  service crond start 
+   55  chkconfig  crond  on  
+   56  systemctl start crond.service
+   57  systemctl enable crond.service
+   58  pidof sshd  
+   59  systemctl reload sshd  
+   60  pidof sshd  
+   61  systemctl restart   sshd  
+   62  pidof sshd  
+   63  systemctl status crond
+   64  systemctl status sshd
+   65  systemctl  list-units 
+   66  systemctl  list-units  | grep crond
+   67  systemctl  list-units  | grep  cups
+   68  systemctl  list-units  | grep  chronyd 
+   69  systemctl  list-units  | grep  httpd
+   70  systemctl  list-units  | grep  ntpd
+   71  systemctl  list-units  | grep  crond 
+   72  systemctl  
+   73  systemctl  | grep crond 
+   74  systemctl  list-units  | grep crond 
+   75  systemctl list-unit-files  
+   76  systemctl list-unit-files   | grep crond  
+   77  systemctl list-unit-files   | grep sshd.service
+   78  systemctl list-unit-files | grep enabled
+   79  systemctl list-unit-files | grep enabled | wc -l 
+   80  systemctl list-unit-files | grep disabled | wc -l 
+   81  systemctl list-units  --type=path 
+   82  systemctl list-units  --type=service
+   83  systemctl list-units  --type=socket
+   84  systemctl list-units  --type failed
+   85  systemctl list-units  --type=failed
+   86  systemctl list-units  --type=fail
+   87  systemctl list-units  --failed
+   88  history 
+   89  systemctl start psacct
+   90  systemctl enable  psacct
+   91  systemctl status  iptables
+   92  systemctl status  firewalld
+   93  systemctl stop firewalld
+   94  systemctl disable firewalld
+   95  systemctl  start firewalld 
+   96  systemctl stop firewalld
+   97  systemctl disable firewalld
+   98  systemctl mask firewalld  
+   99  systemctl status firewalld
+  100  systemctl list-unit-files  |  grep mask  
+  101  systemctl start firewalld  
+  102  systemctl unmask firewalld  
+  103  systemctl start firewalld  
+  104  systemctl enable firewalld  

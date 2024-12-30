@@ -1,0 +1,171 @@
+==============================================
+
+         Day-1 Session
+
+==============================================
+         Linux Training
+             OR
+        Redhat Linux Training
+
+==============================================
+
+Mobile    <== Samsung Mobile  <===     Pre Installed Operating System  <== Applications/App Pre Installed + As per need
+          <== Nokia Mobile    <===     "   "      "      "     "    "  <== "  "   "
+          <== Vivo Mobile     <===     "  "  "   "   "  "  "  " "   "  <== "  "   " 
+
+
+Machine  <== Motherboard <== RAM + CPU + DISK + Monitor + inout devices
+
+
+Laptops/Desktop/Rackmounted Machine <==== Operating System <==  Application/Software/Tools
+
+
+==============================================
+
+
+
+machines <==== Pre Installed Operating System after purchaging we can change this OS any as per needs.
+         <==== Without Pre Installed Operating system
+
+==============================================
+Machine <=== Operating System <=== Software/Application/Tools
+==============================================
+
+Mobile vendor and same application vendors
+
+==============================================
+1- Machine Vendor
+
+   Dell Machine
+   HP machine
+   Lenevo Machine 
+
+
+2- OS Vendor  ==> 1- Unix Based Flavors
+                  2- Linux Based Flavors
+                  3- MAC OS
+                  4- Windows
+
+3- Application Vendor ==> 1- VLC Media Player 
+
+==============================================
+
+
+Machine  <=== Linux ====> Application
+
+==============================================
+
+Linux 
+
+     1-  Redhat Linux 
+     2-  Ubuntu Linux
+     3-  Kali Linux
+     4-  CentOS Linux
+     5-  Fedora Linux
+     6-  Suse Linux
+==============================================
+
+Linux  ==> redhat ==> RHEL  ==> RHEL-8
+
+==============================================
+
+Types of Machine ?
+
+
+1- Physical Machine            <=== Operating System [Linux] <=== Application as per company needs
+2- Virtual Machine 
+3- Cloud Based Machine ==> AWS Cloud, Azure Cloud , Google Cloud Etc.
+
+==============================================
+Linux admin ==> 1- Installation
+                2- deploy
+                3- configure
+                4- backup ....daily rutiens task .....  machine ==> Login ==> activity start 
+==============================================
+Types of Application ?
+1  OS based Command ==> Regular life 
+2- OS Vendor Based Application ==> NFS,FTP,HTTP,NTP.......so on 
+3- Global Application OR Third party Vendor ==> Nagios,Zabbix...other tools
+4- Inhouse Application ==> which is developed by inhouse developeres
+==============================================
+HCL  ==> Linux
+HCL  ==> Windows
+HCL  ==> network
+HCL  ==> Database
+HCL  ==> Firewall
+==============================================
+
+HCL <=== n number EMP Available <== HR team <== Design  <===  ICICI bank [ Projects ]
+HCL <=== Bank of Ameria   ==> 50 machine  ==> Windows
+                          ==> 100 Machine ==> Linux 
+==============================================
+
+Support ?  Team OR levels 
+
+==============================================
+
+1- Self Support  ==> 1- Inhouse   2- outsourse
+
+    1- Desktop Support [ L1 ]
+    2- L2
+    3- L3
+
+2- OS Vendor Support
+
+
+3- Application vendor Support 
+
+
+=============================================
+
+
+ 
+Linux Admin  ==> 1- HCL
+                 2- RedHat  ==> Direct   ==> 1- Support providing team  2- Client based
+                                             3- Developer 
+
+=============================================
+              Linux Flavor ==> Top Vendor ==> Enteripise ==> 1- Redhat  2- Others vendors
+=============================================
+Machine  <=== Linux based OS  <== Login  <=== Activity <===
+=============================================
+
+A+     ==> Computer Hardware 
+N+     ==> networking Course
+CCNA   ==> Networking Course
+Mysql or Oracle  ==> Database Field
+
+Linux or redhat linux ==> Linux Training ==> Operating system 
+
+============================================
+
+Linux Training  ==> First Track 
+
+============================================
+Sat     ==> 3Hours  ==> 6 Hours ==> Four Hours ==> Practise
+Sunday  ==> 3Hours
+Four Months  ==> 
+============================================
+Linux
+  Redhat linux 
+           RHEL
+               RHEL-8
+
+============================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

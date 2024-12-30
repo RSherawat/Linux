@@ -1,0 +1,31 @@
+   41  hostname
+   42  ifconfig 
+   43  lsblk 
+   44  cd /run/media/root/RHEL-8-0-0-BaseOS-x86_64
+   45  ls
+   46  cd AppStream/Packages
+   47  rpm  -ivh  vsftpd-3.0.3-28.el8.x86_64.rpm 
+   48  cd
+   49  systemctl restart vsftpd  
+   50  systemctl enable  vsftpd  
+   51  netstat -tunlp  | grep vsftpd  
+   52  systemctl stop firewalld  
+   53  systemctl disable   firewalld  
+   54  grep ftp /etc/passwd
+   55  useradd deepak 
+   56  passwd  deepak 
+   57  grep -i -n   anonymous  /etc/vsftpd/vsftpd.conf 
+   58  grep -i -n   local  /etc/vsftpd/vsftpd.conf 
+   59  vim  /etc/vsftpd/vsftpd.conf 
+   60  systemctl  restart vsftpd  
+   61  cd /var/ftp
+   62  ls
+   63  mkdir rhel 
+   64  ls
+   65  echo hello india > xyz 
+   66  ls
+   67  touch pub/abc{1..3}
+   68  touch  rhel/ibm.txt 
+   69  tree
+   70  cd
+   71  su - deepak 

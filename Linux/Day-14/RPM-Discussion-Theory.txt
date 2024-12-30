@@ -1,0 +1,112 @@
+===========================================
+     RPM installation OR management
+===========================================
+
+
+
+In windows  ==> application/tool/software ==>  .exe or setup files
+IN redhat   ==>  "   "    "   "  "    "   ==>  .rpm or packages
+
+===========================================
+VLC media player for windows  ==>  .exe
+VLC media player for redhat   ==>  .rpm ==> supporting files of extention 
+
+RPM management tool or utility ==> rpm & yum ==> 1- Install  2- erase  3- querry   4- upgrade
+===========================================
+
+Machine  <== 1- Physical machine
+             2- Virtual machine
+             3- Cloud based machine ==> aws azure google cloud ..so on  
+
+===========================================
+
+Machine  <=== Operating System <=== Application or tools or utility or services
+
+===========================================
+
+Machine <== Windows OS
+        <== Linux based Flavor <=== RHEL <== version <== RHEL-8
+
+===========================================
+
+OS Provider Vendors ==> developers  => Application build ==> os supported 
+
+1- OS Provider Vendor Based Application 
+2- Global Application
+3- Inhouse Based Application ==>  
+
+===========================================
+Windows  OS  ==> VLC Media Player ==> download  ==> install  ==> play 
+             ==> MS office  
+
+===========================================
+
+Windows  ==> software        ==> download or copy       ==> setup files  ==>  .exe format
+Redhat   ==> Package OR RPM  ==> Redhat package manager ==>
+
+===========================================
+
+VLC media player download for windows  ==> link ==>  .exe 
+VLC media player download for RHEL-8   ==> link ==>  .rpm
+
+===========================================
+
+Software or Package  ==> Code ==> write  ==> application ==> convert ==> public market ==> download 
+
+===========================================
+Machine <== RHEL-8  <== Package <=== 1- redhat os  2- other vendors 3- inhouse developers
+===========================================
+Redhat ==> OS installation  ==> ISO image OR Bootable ==> OS install 
+===========================================
+RPM Installation Choices ?               ==> Example ==> ISO image ==> Folders ==> 6500 RPMs
+
+1- During the OS installation Time ==> groups ==> 1- Server with GUI  ==> 6500 RPMS ==> 1320 Rpms
+                                              ==> 2- Minimal installation ==> 6500 RPMS ==> 470 RPMs
+
+
+2- After the OS installation ==> we can install any required rpms as per demands
+
+   ==> Choice-1   ISO image ==> folders ==> rpm install
+   ==> Choice-2   Direct URL from OS vendor website
+   ==> Choice-3   global application ==> URL  ==> Vmware workstation,nagios,Zabbix,google chrome
+   ==> Choice-4   Inhouse Application => using local FTP Server ==> download ==> install 
+
+===========================================
+
+redhat  ==> OS installation ==> Browser  ==> firefox 
+                                         ==> google chrome
+
+telecom ==> linux serer ==> software ==> nokia or erricson ==> inhouse application 
+
+===========================================
+
+Example-1    During the OS installation ==> group or bundle  ==> OS Ready
+
+
+Example-2    After the OS installation  ==>
+
+===========================================
+
+ISO ==> Folder  ==>  6500 RPMS  ==> 1320 RPMS 
+
+6500 - 1320  ==> Remainig RPMS  ==> XYZ calculation
+
+6500 -  470  ==> Remainig RPMS  ==> XYZ calculation
+
+===========================================
+rpm command
+yum or dnf 
+
+# rpm  -i  packagename  
+===========================================
+# yum install  packagename
+# dnf  install packagename
+===========================================
+
+
+
+
+
+
+
+

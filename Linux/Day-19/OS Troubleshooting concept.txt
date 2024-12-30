@@ -1,0 +1,63 @@
+=======================================  
+Task-1 How we can troubleshoot
+       OS during boot time ?
+      
+Task-2  Booting Process 
+
+=======================================
+Machine <== OS <== Install 
+=======================================
+Power on  =====> step by step ==> boot ==> Sequence ==> Login Screen ==> # ==> activity start
+=======================================
+BIOS  ==> MBR   ==> Bootloader [Grub-2] ==> Kernel ( VMLINUZ)
+                                        ==> Initrd.img or  initramfs.img
+=======================================
+
+Task-1 ==> How we can resinstall kernel using Rescue kernel ?  ==> DONE
+Task-2 ==> How we can rebuild the initrd or initramfs image file using rescue kernel ? ==> DONE
+Task-3 ==> How we can reinstall bootloader ( grub2 ) using rescue mode ?
+Task-4 ==> How we can reinstall kernel and initramfs.img file using rescue mode ?
+Task-6 ==> Single user Mode or how we can break root password using single user mode ?
+Task-7 ==> How we can troubleshoot Ctrl + D error  OR Filesystem issue OR
+           Maintenance mode  or during the booting time ?
+           /etc/fstab ==> entry ==> always must be correct + every device must be accesible 
+
+======================================
+/boot
+
+/etc/grub.conf  or    /boot/grub/grub.conf  
+/etc/grub2.cfg  OR    /boot/grub2/grub.cfg 
+/etc/lilo.conf
+
+Bootloader  ==> LILO, Grub , Grub2
+
+======================================
+Task-8  direct kernel update from redhat website 
+======================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+

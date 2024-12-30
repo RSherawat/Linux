@@ -1,0 +1,105 @@
+[root@localhost ~]# history 
+    1  ls /var/log
+    2  cat /var/log/secure 
+    3  userdel -rf  gaurav  
+    4  cat /var/log/secure 
+    5  tail  /var/log/secure 
+    6  tail -f  /var/log/secure 
+    7  tail -f  /var/log/messages 
+    8  tail -f  /var/log/secure   /var/log/messages 
+    9  tail -f  /var/log/secure   /var/log/cron 
+   10  touch abc  
+   11  ls
+   12  file  abc  
+   13  echo hello > abc  
+   14  cat abc 
+   15  file  abc  
+   16  file  /etc  
+   17  file  /etc/passwd
+   18  ls /
+   19  file  /bin 
+   20  file  /sbin 
+   21  file  /lib 
+   22  file  /lib64
+   23  cd  /bin 
+   24  ls
+   25  cd
+   26  cd /usr/bin
+   27  ls
+   28  cd
+   29  ls /
+   30  file  /bin 
+   31  ls -ld  /bin  
+   32  ls  /bin 
+   33  vim
+   34  ls  /bin  | wc -l 
+   35  ls  /sbin  | wc -l 
+   36  ls /usr/bin  | wc -l 
+   37  ls  /bin  | wc -l 
+   38  ls  /sbin  | wc -l 
+   39  ls /usr/sbin  | wc -l 
+   40  expr 594 + 1475
+   41  rpm -q  -a 
+   42  .el8.x86_64
+   43  tpm2-tools-3.1.1-4.el8.
+   44  rpm -qa  
+   45  rpm -qa   | wc -l 
+   46  ls /usr/bin  | wc -l 
+   47  ls /usr/sbin  | wc -l 
+   48  expr 1475 + 594 
+   49  which tree
+   50  ls /usr/bin  | grep tree
+   51  ls /usr/sbin  | grep tree
+   52  which tree  
+   53  which useradd
+   54  which userdel 
+   55  which usermod 
+   56  which fdisk
+   57  which lsblk 
+   58  rpm -qa  | wc -l 
+   59  which tree 
+   60  rpm -qa tree   
+   61  ls /bin 
+   62  ls /usr/bin 
+   63  ls /usr/sbin 
+   64  ls /sbin 
+   65  cat  /etc/redhat-release 
+   66  cat  /etc/system-release
+   67  file  /etc/redhat-release 
+   68  file  /etc/system-release
+   69  ls -l  /etc/system-release
+   70  useradd dinesh 
+   71  adduser punit 
+   72  which useradd 
+   73  which adduser
+   74  ls -l  /usr/sbin/adduser 
+   75  ls -l  /usr/sbin/useradd 
+   76  ls -l  /etc/system-release
+   77  ls -l  /etc/redhat-release 
+   78  which ftp  
+   79  rpm -qa  ftp 
+   80  rpm -qa  tree
+   81  which tree
+   82  rpm -q -f  /usr/bin/tree
+   83  rpm -e tree  
+   84  which tree
+   85  mkdir  -p /kr/network/cloud 
+   86  tree  /kr  
+   87  lsblk 
+   88  /run/media/root/RHEL-8-0-0-BaseOS-x86_64
+   89  cd /run/media/root/RHEL-8-0-0-BaseOS-x86_64
+   90  ls
+   91  cd
+   92  find /run/media/root/RHEL-8-0-0-BaseOS-x86_64  -name   "tree*"
+   93  rpm -i /run/media/root/RHEL-8-0-0-BaseOS-x86_64/BaseOS/Packages/tree-1.7.0-15.el8.x86_64.rpm
+   94  which  tree
+   95  tree  /kr 
+   96  rpm -qa  | wc -l 
+   97  rpm -e  tree
+   98  rpm -qa  | wc -l 
+   99  rpm -i /run/media/root/RHEL-8-0-0-BaseOS-x86_64/BaseOS/Packages/tree-1.7.0-15.el8.x86_64.rpm
+  100  rpm -qa  | wc -l 
+  101  rpm -qa  
+  102  rpm -qa   | cat -n 
+  103  rpm -qa   | wc -l 
+  104  history 
